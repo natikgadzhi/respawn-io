@@ -7,15 +7,16 @@ import PostBody from '../../components/post-body'
 import Header from '../../components/header'
 import PostHeader from '../../components/post-header'
 import Layout from '../../components/layout'
-import { getPostBySlug, getAllPosts } from '../../lib/api'
 
+import { getPostBySlug, getAllPosts } from '../../lib/api'
 import markdownToHtml from '../../lib/markdownToHtml'
 
-export default function Post({ post, morePosts, preview }) {
+export default function Post({ post, preview }) {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
+
   return (
     <Layout preview={preview}>
       <Container>
@@ -29,7 +30,6 @@ export default function Post({ post, morePosts, preview }) {
                 <title>
                   {post.title}
                 </title>
-                <meta property="og:image" content={post.ogImage.url} />
               </Head>
               <PostHeader
                 title={post.title}
@@ -49,10 +49,7 @@ export async function getStaticProps({ params }) {
     'title',
     'date',
     'slug',
-    'author',
     'content',
-    'ogImage',
-    'coverImage',
   ])
   const content = await markdownToHtml(post.content || '')
 
