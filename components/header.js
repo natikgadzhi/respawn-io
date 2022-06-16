@@ -1,12 +1,19 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { config } from '../blog.config'
 
 export default function Header() {
+
+  const router = useRouter()
+
   return (
-    <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
-      <Link href="/">
-        <a className="hover:underline">Blog</a>
-      </Link>
-      .
-    </h2>
+    <section className="max-w-2xl mx-auto flex-col flex items-center mt-16 mb-16 md:mb-12">
+      <h2 className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight md:pr-8">
+        { router.asPath === '/' ? config.title : <Link href="/"><a className="hover:underline">{config.title}</a></Link> }
+      </h2>
+      <p className="text-center md:text-left text-md mt-5 md:pl-8">
+        { config.description }
+      </p>
+    </section>
   )
 }
