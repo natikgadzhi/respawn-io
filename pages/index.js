@@ -1,11 +1,12 @@
+import Head from 'next/head'
+
 import Container from '../components/container'
 import Layout from '../components/layout'
 import Header from '../components/header'
 import Posts from '../components/posts'
-import { getAllPosts } from '../lib/api'
-import Head from 'next/head'
 
 import { config } from '../blog.config'
+import { getAllPosts } from '../lib/api'
 
 export default function Index({ allPosts }) {
   return (
@@ -28,8 +29,6 @@ export async function getStaticProps() {
     'title',
     'date',
     'slug',
-    'author',
-    'coverImage',
     'excerpt',
   ])
 

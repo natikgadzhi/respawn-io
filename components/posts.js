@@ -3,7 +3,7 @@ import DateFormatter from '../components/date-formatter'
 
 export default function Posts({ posts }) {
   return (
-    <section className='max-w-2xl mx-auto'>
+    <section>
       <ul>
         {posts.map((post) => (
           <li className="mb-16">

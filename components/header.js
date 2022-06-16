@@ -3,11 +3,10 @@ import { useRouter } from 'next/router'
 import { config } from '../blog.config'
 
 export default function Header() {
-
   const router = useRouter()
 
   return (
-    <section className="max-w-2xl mx-auto flex-col flex items-center mt-16 mb-16 md:mb-12">
+    <section className="flex-col flex items-center mt-16 mb-16 md:mb-12">
       <h2 className="text-3xl md:text-5xl font-bold tracking-tighter leading-tight md:pr-8">
         { router.asPath === '/' ? config.title : <Link href="/"><a className="hover:underline">{config.title}</a></Link> }
       </h2>
