@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# editor config
+/.vscode
+
 # next.js
 /.next/
 /out/

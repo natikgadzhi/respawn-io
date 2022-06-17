@@ -1,14 +1,11 @@
-import Head from 'next/head'
-
 import Container from '../components/container'
 import Layout from '../components/layout'
 import Header from '../components/header'
-import Posts from '../components/posts'
+import Head from 'next/head'
 
 import { config } from '../blog.config'
-import { getAllPosts } from '../lib/api'
 
-export default function Index({ allPosts }) {
+export default function About() {
   return (
     <>
       <Layout>
@@ -17,22 +14,11 @@ export default function Index({ allPosts }) {
         </Head>
         <Container>
           <Header />
-          <Posts posts={allPosts} />
+          <section className='max-w-2xl mx-auto'>
+            About
+          </section>
         </Container>
       </Layout>
     </>
   )
-}
-
-export async function getStaticProps() {
-  const allPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'excerpt',
-  ])
-
-  return {
-    props: { allPosts },
-  }
 }
