@@ -25,7 +25,7 @@ export default function Post({ post, preview }) {
           <h1>Loading…</h1>
         ) : (
           <>
-            <article className="mb-32">
+            <article className="prose mb-32">
               <Head>
                 <title>
                   {post.title}
