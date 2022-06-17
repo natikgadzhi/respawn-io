@@ -2,9 +2,13 @@
 
 export const config = {
   title: "Nate's Journal",
-  description: 'Notes on enginering leadership and software development.',
+  description: "Notes on enginering leadership and software development.",
   meta: {
     description: "A blog on engineering leadership and software development.",
     ogImage: ""
+  },
+
+  footer: {
+    copyright: "© Nate Gadzhi",
   }
 }
