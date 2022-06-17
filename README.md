@@ -5,7 +5,8 @@ This repo contains the source code for (yet another?) iteration of
 
 ## TODO
 
-- [ ] Plug the \_posts directory into Obsidian and see if I can manage my posts
+- [x] Plug the \_posts directory into Obsidian and see if I can manage my posts
       that way.
 - [ ] Ship the first iteration to Vercel
 - [ ] Setup the domain
+- [ ] Add Google Analytics and Webmaster tools
