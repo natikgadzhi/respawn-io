@@ -6,11 +6,11 @@ export default function Layout({ children }) {
   return (
     <>
       <Meta />
-      <Analytics />
       <div className="min-h-screen max-w-3xl mx-auto">
         <main>{children}</main>
       </div>
       <Footer />
+      <Analytics />
     </>
   )
 }
