@@ -1,8 +1,9 @@
 ---
-date: "2022-06-16"
-title: New website! Obsidian, Next.js, and Vercel.
+title: "New website! Obsidian, Next.js, and Vercel."
+
 excerpt:
-  I had a couple hours on a Thursday night, and wanted to clean up my website.
+  "I had a couple hours on a Thursday night, and wanted to clean up my website."
+date: "2022-06-16"
 ---
 
 Here's how this thing works:
@@ -24,7 +25,3 @@ Here's how this thing works:
   Another approach would be to point `postsDirectory` to a subdirectory in the
   Obsidian vault. While you can get away without hardlinks, you might run into
   issues with links between notes and linking assets later.
-
-  I haven't figured out assets (images) and links between notes yet. But since
-  it's just `remark`, I should be able to hook into it's processor and process
-  wikilinks.
