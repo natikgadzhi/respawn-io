@@ -8,12 +8,12 @@ export default function Posts({ posts }) {
         {posts.map((post) => (
           <li className="mb-16" key={`${post.slug}`}>
             <div className="flex flex-col md:flex-row justify-between">
-              <h3 className="text-3xl mb-3 leading-snug">
+              <h3 className="text-2xl mb-3 leading-snug">
                 <Link href={`/posts/${post.slug}`}>
                   <a className="hover:underline">{post.title}</a>
                 </Link>
               </h3>
-              <div className="text-md text-en whitespace-nowrap mt-3 mh-2">
+              <div className="text-sm text-en whitespace-nowrap mt-3 mh-2">
                 <DateFormatter dateString={post.date} />
               </div>
             </div>

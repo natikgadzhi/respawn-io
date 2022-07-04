@@ -5,8 +5,8 @@ import Head from 'next/head'
 import Container from '../../components/container'
 import PostBody from '../../components/post-body'
 import Header from '../../components/header'
-import PostHeader from '../../components/post-header'
 import Layout from '../../components/layout'
+import DateFormatter from '../../components/date-formatter'
 
 import { getPostBySlug, getAllPosts } from '../../lib/api'
 import markdownToHtml from '../../lib/markdownToHtml'
@@ -31,11 +31,14 @@ export default function Post({ post, preview }) {
                   {post.title}
                 </title>
               </Head>
-              <PostHeader
-                title={post.title}
-                date={post.date}
-              />
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-tight md:leading-none mb-8 text-center md:text-left">
+                {post.title}
+              </h1>
               <PostBody content={post.content} />
+              <div className="mb-6 text-sm">
+                Originally published on&nbsp;
+                <DateFormatter dateString={post.date} />.
+              </div>
             </article>
           </>
         )}
