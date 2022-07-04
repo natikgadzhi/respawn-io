@@ -1,11 +1,13 @@
 ---
-title: "New website! Obsidian, Next.js, and Vercel."
+title: "New site! Obsidian, Next.js, and Vercel"
 excerpt:
   "I had a couple hours on a Thursday night, and wanted to clean up my website."
 date: "2022-06-16"
 created: 2022-06-16
-modified: 2022-06-30
+modified: 2022-07-03
 ---
+
+# Obsidian, Next.js, and Vercel
 
 Here's how this thing works:
 
