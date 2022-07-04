@@ -9,6 +9,9 @@
   @apply my-6;
 }
 
+.markdown h1 {
+  @apply text-3xl md:text-5xl lg:text-7xl font-bold tracking-tighter leading-tight md:leading-none mb-8 text-center md:text-left;
+}
 .markdown h2 {
   @apply text-3xl mt-12 mb-4 leading-snug;
 }
