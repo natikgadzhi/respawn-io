@@ -6,7 +6,8 @@ import Header from '../components/header'
 import Posts from '../components/posts'
 
 import { config } from '../blog.config'
-import { getAllPosts } from '../lib/api'
+import { getAllPosts } from '../lib/posts'
+import generateFeeds from '../lib/feed'
 
 export default function Index({ allPosts }) {
   return (
@@ -36,6 +37,11 @@ export async function getStaticProps() {
     'slug',
     'excerpt',
   ])
+
+  // pre-generate all feeds when generating the index page.
+  // this will only work as long as the index page has all the posts. So I'll need to clean it out later.
+  // But I'm not dealing with CJS vs ESM today.
+  await generateFeeds(allPosts);
 
   return {
     props: { allPosts },

@@ -8,7 +8,7 @@ import Layout from '../../components/layout'
 import DateFormatter from '../../components/date-formatter'
 import markdownStyles from '../../components/markdown-styles.module.css'
 
-import { getPostBySlug, getAllPosts } from '../../lib/api'
+import { getPostBySlug, getAllPosts } from '../../lib/posts'
 import markdownToHtml from '../../lib/markdownToHtml'
 
 export default function Post({ post, preview }) {
