@@ -30,6 +30,10 @@ export default function Post({ post, preview }) {
                 <title>
                   {post.title}
                 </title>
+                <meta
+                  name="description"
+                  content={post.excerpt}
+                />
               </Head>
 
               <div

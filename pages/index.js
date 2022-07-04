@@ -14,6 +14,11 @@ export default function Index({ allPosts }) {
       <Layout>
         <Head>
           <title>{ config.title }</title>
+          <meta
+            name="description"
+            content={config.meta.description}
+          />
+          <meta property="og:image" content={config.meta.ogImage} />
         </Head>
         <Container>
           <Header />
