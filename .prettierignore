@@ -1,0 +1,2 @@
+# Don't run prettier on files in _posts, they're hardlinked from Obsidian.
+_posts
