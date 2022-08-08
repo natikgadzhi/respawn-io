@@ -4,16 +4,17 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 import { MDXRemote } from 'next-mdx-remote'
+import { getPostBySlug, getAllPosts, getPostMDXSource } from '../../lib/posts'
 
 import Container from '../../components/container'
 import Header from '../../components/header'
 import Layout from '../../components/layout'
+import Article from '../../components/article'
+import Callout from '../../components/callout'
 import DateFormatter from '../../components/date-formatter'
-import markdownStyles from '../../components/markdown-styles.module.css'
 
-import { getPostBySlug, getAllPosts, getPostMDXSource } from '../../lib/posts'
 
-const components = { img: Image }
+const components = { img: Image, Callout }
 
 export default function Post({ post, source }) {
   const router = useRouter()
@@ -39,16 +40,14 @@ export default function Post({ post, source }) {
               />
             </Head>
 
-            <article className="prose mb-32">
-              <div className={markdownStyles['markdown']}>
-                <MDXRemote {...source} components={components} />
-              </div>
+            <Article>
+              <MDXRemote {...source} components={components} />
 
               <div className="mb-6 text-md">
                 Originally published on&nbsp;
                 <DateFormatter dateString={post.date} />.
               </div>
-            </article>
+            </Article>
           </>
         )}
       </Container>
