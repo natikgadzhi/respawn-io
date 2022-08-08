@@ -1,5 +1,5 @@
 import fs from 'fs'
-import { join } from 'path'
+import path, { join } from 'path'
 import matter from 'gray-matter'
 
 const postsDirectory = join(process.cwd(), '_posts')
@@ -13,33 +13,30 @@ interface Post {
 }
 
 // returns an array of posts file names
-export function getPostFiles(): Array<string> {
+export function getPostSlugs(): Array<string> {
   return fs.readdirSync(postsDirectory)
+    .map(path => path.replace(/\.md$/, ''))
 }
 
-export function getPostFromFile(filename: string): Post {
-  const fullPath = join(postsDirectory, filename)
+export function getPostBySlug(slug: string): Post {
+  const fullPath = join(postsDirectory, slug + '.md')
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const { data, content } = matter(fileContents)
 
   return {
-    slug: data.slug,
     title: data.title,
     excerpt: data.excerpt,
-    content,
-    date: data.date
+    content: content,
+    date: data.date,
+    slug: slug,
+    ...data
   }
 }
 
 export function getAllPosts(): Array<Post> {
-  const files = getPostFiles()
-  const posts = files
-    .map((file) => getPostFromFile(file))
+  const slugs = getPostSlugs()
+  const posts = slugs
+    .map((file) => getPostBySlug(file))
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
   return posts
-}
-
-export function getPostBySlug(slug: string): Post {
-  const posts = getAllPosts()
-  return posts.find((post) => post.slug === slug)
 }

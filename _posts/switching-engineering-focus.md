@@ -1,10 +1,7 @@
 ---
-created: 2022-07-03
-modified: 2022-08-01
 date: "2022-07-03"
 title: Levels of Engineering (Management) Focus
 excerpt: "Switching back and forth between engineering and engineering management is totally fine."
-slug: "switching-engineering-focus"
 ---
 
 # Levels of Engineering (Management) Focus
