@@ -1,16 +1,21 @@
-# respawn.io source code
+# respawn.io
 
 This repo contains the source code for (yet another?) iteration of [respawn.io](https://respawn.io) blog. That one uses
 Next.js and Tailwind.
 
-## TODO
+A few more things under the hood:
 
-Aside from writing that I utterly suck at, there are a few things to clean up here.
+- Simple posts layout with meta-information (no twitter cards yet)
+- RSS feed that includes all posts.
+- MDX format support for posts, which allows me to use nice components like next/image, or embed tweets, etc.
 
-- [ ] Posts meta-information and twitter cards.
-- [ ] Add an RSS feed.
-- [ ] Add MDX / images support.
-- [ ] Add the About page.
+A few things to add when I have time:
+
+- [ ] Link to examples of using components in mdx.
+- [ ] Add opengraph images generator.
+- [ ] Extract building feeds into a build step script.
+
+If you want to use this code for your projects, please make sure to swap out the analytics settings in `blog.config.js`.
 
 ## License
 
