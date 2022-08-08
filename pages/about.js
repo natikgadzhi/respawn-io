@@ -3,15 +3,16 @@ import Layout from '../components/layout'
 import Header from '../components/header'
 import Head from 'next/head'
 
-
 import fs from 'fs'
 import { join } from 'path'
-import markdownToHtml from '../lib/markdownToHtml'
 import markdownStyles from '../components/markdown-styles.module.css'
+
+import { getPostMDXSource } from '../lib/posts'
+import { MDXRemote } from 'next-mdx-remote';
 
 import { config } from '../blog.config'
 
-export default function About({ about }) {
+export default function About({ source }) {
   return (
     <>
       <Layout>
@@ -21,10 +22,9 @@ export default function About({ about }) {
         <Container>
           <Header />
           <section className='prose'>
-            <div
-              className={markdownStyles['markdown']}
-              dangerouslySetInnerHTML={{ __html: about }}
-            />
+            <div className={markdownStyles['markdown']}>
+              <MDXRemote {...source} />
+            </div>
           </section>
         </Container>
       </Layout>
@@ -35,10 +35,10 @@ export default function About({ about }) {
 
 export async function getStaticProps() {
   const aboutPath = join(process.cwd(), '_about.md')
-  const about = await markdownToHtml(fs.readFileSync(aboutPath, 'utf8'))
+  const source = await getPostMDXSource(fs.readFileSync(aboutPath, 'utf8'))
   return {
     props: {
-      about: about
+      source: source
     },
   }
 }

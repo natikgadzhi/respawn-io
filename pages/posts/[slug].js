@@ -8,38 +8,43 @@ import Layout from '../../components/layout'
 import DateFormatter from '../../components/date-formatter'
 import markdownStyles from '../../components/markdown-styles.module.css'
 
-import { getPostBySlug, getAllPosts } from '../../lib/posts'
-import markdownToHtml from '../../lib/markdownToHtml'
+import { getPostBySlug, getAllPosts, getPostMDXSource } from '../../lib/posts'
 
-export default function Post({ post, preview }) {
+import { MDXRemote } from 'next-mdx-remote';
+
+import Image from 'next/image';
+
+const components = { img: Image };
+
+
+export default function Post({ post, source }) {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
 
   return (
-    <Layout preview={preview}>
+    <Layout>
       <Container>
         <Header />
         {router.isFallback ? (
           <h1>Loading…</h1>
         ) : (
           <>
-            <article className="prose mb-32">
-              <Head>
-                <title>
-                  {post.title}
-                </title>
-                <meta
-                  name="description"
-                  content={post.excerpt}
-                />
-              </Head>
-
-              <div
-                className={markdownStyles['markdown']}
-                dangerouslySetInnerHTML={{ __html: post.content }}
+            <Head>
+              <title>
+                {post.title}
+              </title>
+              <meta
+                name="description"
+                content={post.excerpt}
               />
+            </Head>
+
+            <article className="prose mb-32">
+              <div className={markdownStyles['markdown']}>
+                <MDXRemote {...source} components={components} />
+              </div>
 
               <div className="mb-6 text-md">
                 Originally published on&nbsp;
@@ -56,14 +61,14 @@ export default function Post({ post, preview }) {
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug)
 
-  const content = await markdownToHtml(post.content || '')
+  const source = await getPostMDXSource(post.content)
 
   return {
     props: {
       post: {
         ...post,
-        content,
       },
+      source: source
     },
   }
 }

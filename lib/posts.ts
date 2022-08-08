@@ -1,8 +1,12 @@
 import fs from 'fs'
-import path, { join } from 'path'
+import { join } from 'path'
 import matter from 'gray-matter'
+import wikilinks from 'remark-wiki-link'
 
-const postsDirectory = join(process.cwd(), '_posts')
+import { MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { serialize } from 'next-mdx-remote/serialize'
+
+import { config } from '../blog.config'
 
 interface Post {
   slug: string,
@@ -11,6 +15,12 @@ interface Post {
   content: string,
   date: Date
 }
+
+const postsDirectory = join(process.cwd(), '_posts')
+const hrefTemplate = (permalink: string) => `${config.baseURL}/posts/${permalink}`
+const pageResolver = (name: string) => [name.split('/').slice(1).join('/').replace(/ /g, '_').toLowerCase()]
+
+
 
 // returns an array of posts file names
 export function getPostSlugs(): Array<string> {
@@ -39,4 +49,16 @@ export function getAllPosts(): Array<Post> {
     .map((file) => getPostBySlug(file))
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1))
   return posts
+}
+
+
+export async function getPostMDXSource(source: string): Promise<MDXRemoteSerializeResult> {
+  const compiledMDX = await serialize(source, {
+    mdxOptions: {
+      remarkPlugins: [
+        [wikilinks, {pageResolver, hrefTemplate}]
+      ],
+    }
+  })
+  return compiledMDX
 }
