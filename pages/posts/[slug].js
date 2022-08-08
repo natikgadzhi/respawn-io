@@ -1,6 +1,9 @@
 import { useRouter } from 'next/router'
 import ErrorPage from 'next/error'
 import Head from 'next/head'
+import Image from 'next/image'
+
+import { MDXRemote } from 'next-mdx-remote'
 
 import Container from '../../components/container'
 import Header from '../../components/header'
@@ -10,12 +13,7 @@ import markdownStyles from '../../components/markdown-styles.module.css'
 
 import { getPostBySlug, getAllPosts, getPostMDXSource } from '../../lib/posts'
 
-import { MDXRemote } from 'next-mdx-remote';
-
-import Image from 'next/image';
-
-const components = { img: Image };
-
+const components = { img: Image }
 
 export default function Post({ post, source }) {
   const router = useRouter()
