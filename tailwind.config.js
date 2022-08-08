@@ -1,9 +1,16 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: ['./components/**/*.js', './pages/**/*.js'],
   plugins: [
     require('@tailwindcss/typography'),
   ],
   theme: {
+    fontFamily: {
+      'sans': ['iA Writer Quattro V', ...defaultTheme.fontFamily.sans],
+      'serif': ['iA Writer Quattro V', ...defaultTheme.fontFamily.serif],
+      'mono': [...defaultTheme.fontFamily.mono]
+    },
     extend: {
       colors: {
         'accent-1': '#FAFAFA',
@@ -28,8 +35,7 @@ module.exports = {
         '8xl': '6.25rem',
       },
       boxShadow: {
-        sm: '0 5px 10px rgba(0, 0, 0, 0.12)',
-        md: '0 8px 30px rgba(0, 0, 0, 0.12)',
+        sm: '0 3px 6px rgba(0, 0, 0, 0.075)'
       },
     },
   },
