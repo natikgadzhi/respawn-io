@@ -18,5 +18,7 @@ export const config = {
 
   footer: {
     copyright: "© Nate Gadzhi",
-  }
+  },
+
+  googleAnalyticsPropertyID: "G-0KK7Z9WP3",
 }
