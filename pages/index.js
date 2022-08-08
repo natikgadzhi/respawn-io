@@ -31,12 +31,7 @@ export default function Index({ allPosts }) {
 }
 
 export async function getStaticProps() {
-  const allPosts = getAllPosts([
-    'title',
-    'date',
-    'slug',
-    'excerpt',
-  ])
+  const allPosts = getAllPosts()
 
   // pre-generate all feeds when generating the index page.
   // this will only work as long as the index page has all the posts. So I'll need to clean it out later.
