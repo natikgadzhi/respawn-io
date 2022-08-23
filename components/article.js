@@ -9,6 +9,9 @@ export default function Article({ children }) {
 
             prose-h2:italic
             prose-h2:pt-8
+            prose-blockquote:font-thin
+            prose-blockquote:not-italic
+            prose-quoteless
 
             md:prose-lg lg:prose-xl
 
