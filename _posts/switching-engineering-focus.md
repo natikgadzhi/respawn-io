@@ -1,5 +1,5 @@
 ---
-date: "2022-07-03"
+date: 2022-07-03
 title: Levels of Engineering (Management) Focus
 excerpt: "Switching back and forth between engineering and engineering management is totally fine."
 ---

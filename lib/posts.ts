@@ -37,9 +37,8 @@ export function getPostBySlug(slug: string): Post {
     title: data.title,
     excerpt: data.excerpt,
     content: content,
-    date: data.date,
-    slug: slug,
-    ...data
+    date: data.date.toISOString().slice(0, 10),
+    slug: slug
   }
 }
 

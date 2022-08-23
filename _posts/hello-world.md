@@ -2,7 +2,7 @@
 title: "New site! Obsidian, Next.js, and Vercel"
 excerpt:
   "I had a couple hours on a Thursday night, and wanted to clean up my website."
-date: "2022-06-16"
+date: 2022-06-16
 ---
 
 # Obsidian, Next.js, and Vercel
