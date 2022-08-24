@@ -3,14 +3,14 @@ created: 2022-08-23
 modified: 2022-08-23
 date: 2022-08-23
 title: "Training, Coaching, and Mentoring as an Engineering Manager"
-excerpt: "What role your play for each person on your team, and in your organizaion."
+excerpt: "What role your play for each person on your team, and in your organization."
 ---
 
 # Training, Coaching, and Mentoring as an Engineering Manager
 
-A big part of your job as an engineering maanger is to figure out who to spend time with, what role to play in a relationship with that person, and how to support them best.
+A big part of your job as an engineering manager is to figure out who to spend time with, what role to play in a relationship with that person, and how to support them best.
 
-Whether you're an individual contributor, a team lead, or a manager, you'll have plenty of opportunities to work in each of these roles. 
+Whether you're an individual contributor, a team lead, or a manager, you'll have plenty of opportunities to work in each of these roles.
 
 ### Training
 
@@ -32,10 +32,10 @@ The more you coach people on the team, the more they form intuitions and "gut ch
 
 > **You need to lift others to grow as an engineering leader.** If you find yourself jumping into code often, because "_no one has the gut check to jump into the right area and fix things quickly_", and you want to be the safety net for your team — you're effectively spending time on a one-off problem, instead of coaching your team on how to deal with problems like that in general.
 
-If you don't coach people on your team well, you will not see a whole lot of progress. Sure, your team will ship projects, but they won't gain velocity and experience at the pace that they could. And you're going to be stuck, as well. It just makes you a bad manager.
+If you don't coach people on your team well, you will not see a whole lot of progress. Sure, your team will ship projects, but they won't gain velocity and experience at the pace that they could. And you're going to be stuck. It just makes you a bad manager.
 
 My regular self-assessment questions:
-- Does everyone on my team have a clear growth path and a plan for this year written down?
+- Does everyone on my team have a clear, written growth path and a plan for this year?
 - What are the specific things that I'm doing to help them progress in their plan this month?
 - If I want to scale things up, what are the patterns or commonalities that I see in the plans for members of my team?
 - What am I doing to put systems in place that would support people with similar milestones, instead of coaching "from scratch" every time?
@@ -45,26 +45,26 @@ My regular self-assessment questions:
 
 **Mentorship is like coaching, but it's driven by the mentee. _They_ set the agenda.** As a mentor, you help someone navigate situations that are new, curious, or tricky for them. You help them see what happens next, align their goals, and learn from the situations. Your help as a mentor spans wider than their immediate role in your team.
 
-Be very intentional about your commitments to mentor people. You can't mentor everyone — you will meet people in your career who you're absolutely fine working with on your team, but you just can't be their mentor. 
+Be very intentional about your commitments to mentor people. You can't mentor everyone — you will meet people in your career who you're fine working with on your team, but you just can't be their mentor.
 
 _Being someone's manager, you have the power to define their path and career trajectory_. If someone's long-term career goals are not aligned with what you think you need on your team in the next year, you don't have the immediate incentive to mentor them. 
 
 **Put people first. Always**. Mentoring folks on your team towards their personal, career goals, is what creates strong relationships that ascend beyond companies.
 - If someone on your team wants to work towards a new skill that you might not immediately need in your current org — be upfront about it, and see if you have the energy and time to mentor them towards it.
-- If someone asks for more mentorship than you can give — reach out to your network and help them find the right people to support them, outside of your organization.
-- Building the right mentoring relationships always pays off. It makes all the difference between you being an average manager (for that person), and you being the best manager they've ever had. So if you're an early stage startup that relies on referrals in sourcing candidates, you better be an excellent mentor.
+- If someone asks for more mentorship than you can give — reach out to your network and help them find the right people to support them, outside your organization.
+- Building the right mentoring relationships always pays off. It makes all the difference between you being an average manager (for that person), and you being the best manager they've ever had. If you're an early stage startup that relies on referrals in sourcing candidates, you better be an excellent mentor.
 
 
 ### Learning to be a better leader
 
-**You don't expect a new manager to excel at training, coaching, and mentorship in their first year of managing a team**, the same way as you don't expect your intermediate software engineer to lead an extremely complex project that spans across 4 teams.
+You don't expect a new manager to excel at training, coaching, AND mentorship, all in their first year of managing a team, the same way as you don't expect your intermediate software engineer to lead a complex project that spans across 4 teams.
 
 - Even as an individual contributor, **you will have opportunities to train people on your team**.
 	- As an individual contributor, your training is focused on _one person, not a full team_.
 	- Maybe you train others as an onboarding buddy.
 	- Or maybe you mentor engineers from other teams in your tech stack that they're curious about, if your company has a dedicated mentorship rotation program.
 - Once you become a people manager, your job is to _support your team_, and be accountable for delivery.
-	- Yes, if the projects are not shipping on time, you're in trouble. But you also have your first year to figure out the coaching piece. 
+	- Yes, if the projects are not shipping on time, you're in trouble. But you also have your first year to figure out the coaching piece.
 	- Unlike in an IC role, you're now responsible for training and coaching your full team.
 	- Coaching intermediate engineers is more straightforward, because you have a clear direction — they're expected to advance in the career leveling ladder, and you're expected to help them.
 	- Coaching senior engineers takes more time and attention, but has much bigger impact.
