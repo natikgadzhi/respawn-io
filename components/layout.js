@@ -1,6 +1,5 @@
 import Footer from '../components/footer'
 import Meta from '../components/meta'
-import Analytics from '../components/analytics'
 
 export default function Layout({ children }) {
   return (
@@ -10,7 +9,6 @@ export default function Layout({ children }) {
         <main>{children}</main>
       </div>
       <Footer />
-      <Analytics />
     </>
   )
 }
