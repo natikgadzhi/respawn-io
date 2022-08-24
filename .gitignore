@@ -18,6 +18,8 @@
 # production
 /build
 /public/rss
+/public/sitemap*
+/public/robots.txt
 
 # misc
 .DS_Store
