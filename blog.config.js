@@ -20,5 +20,5 @@ export const config = {
     copyright: "© Nate Gadzhi",
   },
 
-  googleAnalyticsPropertyID: "G-0KK7Z9WP3",
+  googleAnalyticsPropertyID: "G-0KK7Z9WP39",
 }
