@@ -14,6 +14,7 @@ interface Post {
   excerpt: string,
   content: string,
   date: Date
+  modified: Date
 }
 
 const postsDirectory = join(process.cwd(), '_posts')
@@ -38,6 +39,7 @@ export function getPostBySlug(slug: string): Post {
     excerpt: data.excerpt,
     content: content,
     date: data.date.toISOString().slice(0, 10),
+    modified: data.modified.toISOString().slice(0, 10),
     slug: slug
   }
 }

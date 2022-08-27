@@ -43,9 +43,18 @@ export default function Post({ post, source }) {
             <Article>
               <MDXRemote {...source} components={components} />
 
-              <div className="mb-6 text-md">
-                Originally published on&nbsp;
-                <DateFormatter dateString={post.date} />.
+              <div className="py-12 text-sm">
+                <span>
+                  Originally published on&nbsp;
+                  <DateFormatter dateString={post.date} />.
+                </span>
+
+                { post.date != post.modified &&
+                  <span>
+                    Last update on&nbsp;
+                    <DateFormatter dateString={post.modified} />.
+                  </span>
+                }
               </div>
             </Article>
           </>
