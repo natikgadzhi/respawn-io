@@ -6,11 +6,6 @@ module.exports = {
     require('@tailwindcss/typography'),
   ],
   theme: {
-    fontFamily: {
-      'sans': ['iA Writer Quattro V', ...defaultTheme.fontFamily.sans],
-      'serif': ['iA Writer Quattro V', ...defaultTheme.fontFamily.serif],
-      'mono': [...defaultTheme.fontFamily.mono]
-    },
     extend: {
       typography: {
         quoteless: {
