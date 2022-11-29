@@ -6,7 +6,7 @@ export default function Posts({ posts }) {
     <section>
       <ul>
         {posts.map((post) => (
-          <li className="mb-8 md:my-12" key={`${post.slug}`}>
+          <li className="mb-8 md:my-14" key={`${post.slug}`}>
             <div className="flex flex-col md:flex-row justify-between items-baseline">
               <h3 className="text-2xl mb-2 leading-snug tracking-tight font-semibold">
                 <Link href={`/posts/${post.slug}`}>
