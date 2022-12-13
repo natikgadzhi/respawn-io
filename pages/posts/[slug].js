@@ -3,7 +3,7 @@ import ErrorPage from "next/error";
 import Head from "next/head";
 import Image from "next/image";
 
-import { config } from "../blog.config";
+import { config } from "../../blog.config";
 import { MDXRemote } from "next-mdx-remote";
 import { getPostBySlug, getAllPosts, getPostMDXSource } from "../../lib/posts";
 
