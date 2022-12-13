@@ -1,25 +1,25 @@
-import { useRouter } from 'next/router'
-import ErrorPage from 'next/error'
-import Head from 'next/head'
-import Image from 'next/image'
+import { useRouter } from "next/router";
+import ErrorPage from "next/error";
+import Head from "next/head";
+import Image from "next/image";
 
-import { MDXRemote } from 'next-mdx-remote'
-import { getPostBySlug, getAllPosts, getPostMDXSource } from '../../lib/posts'
+import { config } from "../blog.config";
+import { MDXRemote } from "next-mdx-remote";
+import { getPostBySlug, getAllPosts, getPostMDXSource } from "../../lib/posts";
 
-import Container from '../../components/container'
-import Header from '../../components/header'
-import Layout from '../../components/layout'
-import Article from '../../components/article'
-import Callout from '../../components/callout'
-import DateFormatter from '../../components/date-formatter'
+import Container from "../../components/container";
+import Header from "../../components/header";
+import Layout from "../../components/layout";
+import Article from "../../components/article";
+import Callout from "../../components/callout";
+import DateFormatter from "../../components/date-formatter";
 
-
-const components = { img: Image, Callout }
+const components = { img: Image, Callout };
 
 export default function Post({ post, source }) {
-  const router = useRouter()
+  const router = useRouter();
   if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />
+    return <ErrorPage statusCode={404} />;
   }
 
   return (
@@ -31,12 +31,11 @@ export default function Post({ post, source }) {
         ) : (
           <>
             <Head>
-              <title>
-                {post.title}
-              </title>
-              <meta
-                name="description"
-                content={post.excerpt}
+              <title> {post.title} </title>
+              <meta name="description" content={post.excerpt} />
+              <link
+                rel="canonical"
+                href={`${config.baseURL}/posts/${post.slug}`}
               />
             </Head>
 
@@ -49,38 +48,38 @@ export default function Post({ post, source }) {
                   <DateFormatter dateString={post.date} />.
                 </span>
 
-                { post.date != post.modified &&
+                {post.date != post.modified && (
                   <span>
                     Last update on&nbsp;
                     <DateFormatter dateString={post.modified} />.
                   </span>
-                }
+                )}
               </div>
             </Article>
           </>
         )}
       </Container>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps({ params }) {
-  const post = getPostBySlug(params.slug)
+  const post = getPostBySlug(params.slug);
 
-  const source = await getPostMDXSource(post.content)
+  const source = await getPostMDXSource(post.content);
 
   return {
     props: {
       post: {
         ...post,
       },
-      source: source
+      source: source,
     },
-  }
+  };
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts()
+  const posts = getAllPosts();
 
   return {
     paths: posts.map((post) => {
@@ -88,8 +87,8 @@ export async function getStaticPaths() {
         params: {
           slug: post.slug,
         },
-      }
+      };
     }),
     fallback: false,
-  }
+  };
 }

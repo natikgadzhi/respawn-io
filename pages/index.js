@@ -1,25 +1,23 @@
-import Head from 'next/head'
+import Head from "next/head";
 
-import Container from '../components/container'
-import Layout from '../components/layout'
-import Header from '../components/header'
-import Posts from '../components/posts'
+import Container from "../components/container";
+import Layout from "../components/layout";
+import Header from "../components/header";
+import Posts from "../components/posts";
 
-import { config } from '../blog.config'
-import { getAllPosts } from '../lib/posts'
-import generateFeeds from '../lib/feed'
+import { config } from "../blog.config";
+import { getAllPosts } from "../lib/posts";
+import generateFeeds from "../lib/feed";
 
 export default function Index({ allPosts }) {
   return (
     <>
       <Layout>
         <Head>
-          <title>{ config.title }</title>
-          <meta
-            name="description"
-            content={config.meta.description}
-          />
+          <title>{config.title}</title>
+          <meta name="description" content={config.meta.description} />
           <meta property="og:image" content={config.meta.ogImage} />
+          <link rel="canonical" href={config.baseURL} />
         </Head>
         <Container>
           <Header />
@@ -27,11 +25,11 @@ export default function Index({ allPosts }) {
         </Container>
       </Layout>
     </>
-  )
+  );
 }
 
 export async function getStaticProps() {
-  const allPosts = getAllPosts()
+  const allPosts = getAllPosts();
 
   // pre-generate all feeds when generating the index page.
   // this will only work as long as the index page has all the posts. So I'll need to clean it out later.
@@ -40,5 +38,5 @@ export async function getStaticProps() {
 
   return {
     props: { allPosts },
-  }
+  };
 }
