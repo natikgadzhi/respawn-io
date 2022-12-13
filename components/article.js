@@ -7,7 +7,6 @@ export default function Article({ children }) {
         <article className="prose prose-neutral
             prose-li:leading-relaxed prose-p:leading-relaxed
 
-            prose-h2:italic
             prose-h2:pt-8
             prose-blockquote:font-thin
             prose-blockquote:not-italic
@@ -16,7 +15,7 @@ export default function Article({ children }) {
             md:prose-lg lg:prose-xl
 
             mb-32">
-            { children }
+            {children}
         </article>
     )
 }
