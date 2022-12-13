@@ -10,7 +10,7 @@ excerpt: "Here's a minimal set of signals I'm looking for when interviewing engi
 
 At the core, engineering managers are accountable for two things: delivering projects, and supporting their teams. But they can operate on different levels, from constant firefighting to building resilient systems and tuning them.
 
-Just like most small companies can't afford hiring and training junior engineers, most small companies can't affor hiring and training junior engineering managers — training them is much more expensive and complex.
+Just like most small companies can't afford hiring and training junior engineers, most small companies can't afford hiring and training junior engineering managers — training them is much more expensive and complex.
 
 So you want managers who can operate at least on the most basic level autonomously, who already made some mistakes, and have seen some situations in their managerial career, and learned from them.
 
