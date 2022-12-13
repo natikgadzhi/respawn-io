@@ -31,7 +31,7 @@ export default function Post({ post, source }) {
         ) : (
           <>
             <Head>
-              <title> {post.title} </title>
+              <title>{post.title}</title>
               <meta name="description" content={post.excerpt} />
               <link
                 rel="canonical"

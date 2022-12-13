@@ -11,7 +11,7 @@ export default function Header() {
         <h2 className="text-xl md:text-2xl font-bold tracking-tighter leading-tight md:mb-2">
           {router.asPath === '/' ? config.title : <Link href="/" className="hover:underline">{config.title}</Link>}
         </h2>
-        <ul className='text-md md:text-lg flex-row justify-start space-x-4'>
+        <ul className='text-md md:text-lg flex-row justify-start space-x-4 text-sky-600'>
           <li className='inline-flex'>
             <Link href="/about" className='hover:underline'>About</Link>
           </li>
