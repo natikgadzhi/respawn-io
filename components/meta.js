@@ -13,7 +13,7 @@ export default function Meta() {
       <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
       <meta name="theme-color" content="#fff" />
 
-      <link rel="alternate" type="application/rss+xml" title="RSS Feed for petefreitag.com" href="/rss/feed.xml" />
+      <link rel="alternate" type="application/rss+xml" title="RSS Feed for respawn.io" href="/rss/feed.xml" />
     </Head>
   );
 }
