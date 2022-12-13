@@ -34,20 +34,13 @@ I'm usually looking for candidates that can open up, admit this area of work is 
 
 Again, I'm usually looking for folks who can share stories and go into details in follow up questions. If a candidate tells you that they had an underperforming engineer, ran a single performance review, asked someone to pair with them for 3 weeks and that solved the problem — they're *very* junior.
 
-### Sourcing and hiring
-
-**Tell me about a situation your team were not sure if they should hire a candidate, and reached out to you for help**. Hopefully, at some point your new manager will have to hire people. If you already have a hiring pipeline and an interview loop in place, they can work by your book. But you can learn a lot from how they work with candidates.
-- How do they foster inclusive environment?
-- How do they remove bias from hiring decisions?
-
 
 ### Building trust in the organization
 
-The three areas above are the bare minimum. If there's a project blowing up, or an engineer on the team lost motivation, a manager might switch into firefighting mode and take care of the situation. New eng managers can spend quite a lot of time in firefighting mode. 
+The two areas above are the bare minimum for _operational work_ of an engineering manager. If there's a project blowing up, or an engineer on the team lost motivation, a manager might switch into firefighting mode and take care of the situation. New eng managers can spend quite a lot of time in firefighting mode. 
 
 But good engineering leadership is more than that — it's about building systems (of relationships, trust, communications, and plans) that support your teams and other teams around.
 
 - **How do you provide a clear view into your team's work and roadmap for other teams, and for leadership?** At certain point, your leadership team is going to ask your boss to ask you what the hell are your engineers doing. How do you provide visibility into their work, without demanding that they submit their pull requests every week?
 - **Tell me about a situation when you helped your team understand and work through a significant unexpected change in your company.** Good managers listen around, get information early, package it up in a way that's easier for their team to process. Take the outside chaos and digest it into calmness. Good managers know what's important to talk about in a safe team space, and what can be just posted in a company-wide email. 
 - **Tell me about a situation you worked with your peers in other organizations (product, design, customer support) on an organization-wide change / process that affected multiple teams.** How did you design the change? How did you ratify it and get it approved? How did you implement and roll out the change? It's extremely hard to get to agree 10 people in different departments that 2 × 2 is 4, let alone commit to a new process. If the candidate did attempt a change, they will have invaluable lessons out of it.
-
