@@ -44,3 +44,11 @@ But good engineering leadership is more than that — it's about building syste
 - **How do you provide a clear view into your team's work and roadmap for other teams, and for leadership?** At certain point, your leadership team is going to ask your boss to ask you what the hell are your engineers doing. How do you provide visibility into their work, without demanding that they submit their pull requests every week?
 - **Tell me about a situation when you helped your team understand and work through a significant unexpected change in your company.** Good managers listen around, get information early, package it up in a way that's easier for their team to process. Take the outside chaos and digest it into calmness. Good managers know what's important to talk about in a safe team space, and what can be just posted in a company-wide email. 
 - **Tell me about a situation you worked with your peers in other organizations (product, design, customer support) on an organization-wide change / process that affected multiple teams.** How did you design the change? How did you ratify it and get it approved? How did you implement and roll out the change? It's extremely hard to get to agree 10 people in different departments that 2 × 2 is 4, let alone commit to a new process. If the candidate did attempt a change, they will have invaluable lessons out of it.
+
+### Bigger picture
+
+The scope of enginering management work is so wide that it's hard to define in an article, let alone design an interview loop that would surface signal around all the things managers do. The best short overview I found is in the [Engineering Manager's Bill of Rights](https://www.honeycomb.io/blog/an-engineering-managers-bill-of-rights-and-responsibilities). 
+
+The list has 8 bullet point, each of them covering a broad area of work. In a given 45-minute interview, you have time for one topic with follow up questions, or maybe two separate questions. Even assuming one qustion is enough to get the signal on one area of work, that's 4-6 interviews, easily. 
+
+Neither most startups, nor candidates can afford to invest in 6 interviews. You'll have to figure out what areas are important for you, your teams, and your companies, and build your interview loop around them, and make decisions with partial, and flawed, data.
