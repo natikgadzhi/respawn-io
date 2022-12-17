@@ -13,7 +13,7 @@ export default function Posts({ posts }) {
                   {post.title}
                 </Link>
               </h3>
-              <div className="text-md whitespace-nowrap text-sky-600">
+              <div className="text-md whitespace-nowrap text-blue-700">
                 <DateFormatter dateString={post.date} />
               </div>
             </div>

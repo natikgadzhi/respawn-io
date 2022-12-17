@@ -4,11 +4,17 @@
 
 export default function Article({ children }) {
     return (
-        <article className="prose prose-neutral
+        <article className="prose prose-stone
             prose-li:leading-relaxed prose-p:leading-relaxed
 
             prose-h2:pt-8
-            prose-blockquote:font-thin
+
+            prose-a:text-blue-700
+
+            prose-blockquote:border-blue-700
+            prose-blockquote:boder-l-8
+
+            prose-blockquote:font-normal
             prose-blockquote:not-italic
             prose-quoteless
 
