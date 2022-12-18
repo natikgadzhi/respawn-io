@@ -8,7 +8,7 @@ import { serialize } from 'next-mdx-remote/serialize'
 
 import { config } from '../blog.config'
 
-interface Post {
+export interface Post {
   slug: string,
   title: string,
   excerpt: string,
@@ -29,6 +29,7 @@ export function getPostSlugs(): Array<string> {
     .map(path => path.replace(/\.md$/, ''))
 }
 
+// getPostBySlug returns a Post object by it's slug (file name)
 export function getPostBySlug(slug: string): Post {
   const fullPath = join(postsDirectory, slug + '.md')
   const fileContents = fs.readFileSync(fullPath, 'utf8')
@@ -44,6 +45,7 @@ export function getPostBySlug(slug: string): Post {
   }
 }
 
+// getAllPosts returns an array of all Post objects
 export function getAllPosts(): Array<Post> {
   const slugs = getPostSlugs()
   const posts = slugs
@@ -52,7 +54,8 @@ export function getAllPosts(): Array<Post> {
   return posts
 }
 
-
+// getPostMDXSource returns a compiled MDX source for a given post content as string.
+// It's used in the getStaticProps in [slug]
 export async function getPostMDXSource(source: string): Promise<MDXRemoteSerializeResult> {
   const compiledMDX = await serialize(source, {
     mdxOptions: {

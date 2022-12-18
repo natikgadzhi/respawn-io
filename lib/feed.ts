@@ -2,7 +2,9 @@ import { Feed } from "feed";
 import { config } from "../blog.config";
 import fs from "fs";
 
-export default async function generateFeeds(posts) {
+import { Post } from "./posts";
+
+export default async function generateFeeds(posts:Array<Post>) {
   const date = new Date();
 
   const author = {
@@ -32,6 +34,7 @@ export default async function generateFeeds(posts) {
 
   posts.forEach((post) => {
     const url = `${config.baseURL}/posts/${post.slug}`;
+
     feed.addItem({
       title: post.title,
       id: url,

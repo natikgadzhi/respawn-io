@@ -5,6 +5,7 @@ export const config = {
   description: "Notes on enginering leadership and software development.",
   baseURL: "https://respawn.io",
   githubURL: "https://github.com/natikgadzhi/respawn-io",
+
   meta: {
     description: "A blog on engineering leadership and software development.",
     ogImage: ""
