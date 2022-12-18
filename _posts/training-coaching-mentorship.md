@@ -3,7 +3,7 @@ created: 2022-08-23
 modified: 2022-08-23
 date: 2022-08-23
 title: "Training, Coaching, and Mentoring as an Engineering Manager"
-excerpt: "What role your play for each person on your team, and in your organization."
+excerpt: "What role you play for each person on your team, and in your organization."
 ---
 
 # Training, Coaching, and Mentoring as an Engineering Manager
