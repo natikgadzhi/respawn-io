@@ -7,7 +7,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 
 import Container from '../components/container'
 import Layout from '../components/layout'
-import Header from '../components/header'
+import Header from '../components/header/header'
 import Article from '../components/article'
 
 import { getPostMDXSource } from '../lib/posts'

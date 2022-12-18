@@ -8,7 +8,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { getPostBySlug, getAllPosts, getPostMDXSource, Post as PostType } from "../../lib/posts";
 
 import Container from "../../components/container";
-import Header from "../../components/header";
+import Header from "../../components/header/header";
 import Layout from "../../components/layout";
 import Article from "../../components/article";
 import Callout from "../../components/callout";
