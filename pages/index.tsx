@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 import Container from "../components/container";
 import Layout from "../components/layout";
@@ -16,12 +17,14 @@ type Props = {
 export default function Index({ allPosts }: Props) {
   return (
     <>
+      <NextSeo
+        title = {config.meta.title}
+        description = {config.meta.description}
+        canonical = {config.baseURL}
+      />
       <Layout>
         <Head>
           <title>{config.title}</title>
-          <meta name="description" content={config.meta.description} />
-          <meta property="og:image" content={config.meta.ogImage} />
-          <link rel="canonical" href={config.baseURL} />
         </Head>
         <Container>
           <Header />

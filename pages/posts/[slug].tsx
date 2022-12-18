@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import Head from "next/head";
-import Image from "next/image";
+
+import { NextSeo, ArticleJsonLd } from "next-seo";
 
 import { config } from "../../blog.config";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
@@ -39,22 +39,36 @@ export default function Post({ post, source }: Props) {
   }
 
   return (
-    <Layout>
-      <Container>
-        <Header />
-        {router.isFallback ? (
-          <h1>Loading…</h1>
-        ) : (
-          <>
-            <Head>
-              <title>{post.title}</title>
-              <meta name="description" content={post.excerpt} />
-              <link
-                rel="canonical"
-                href={`${config.baseURL}/posts/${post.slug}`}
-              />
-            </Head>
-
+    <>
+      <NextSeo
+        canonical = {`${config.baseURL}/posts/${post.slug}`}
+        openGraph = {{
+          title: post.title,
+          description: post.excerpt,
+          url: `${config.baseURL}/posts/${post.slug}`,
+          type: "article",
+          article: {
+            publishedTime: post.date,
+            modifiedTime: post.modified,
+          }
+        }}
+      />
+      <ArticleJsonLd
+        type = "BlogPosting"
+        url = {`${config.baseURL}/posts/${post.slug}`}
+        title = {post.title}
+        images = {[]}
+        datePublished = {post.date}
+        dateModified = {post.modified}
+        authorName = {config.author.name}
+        description = {post.excerpt}
+      />
+      <Layout>
+        <Container>
+          <Header />
+          {router.isFallback ? (
+            <h1>Loading…</h1>
+          ) : (
             <Article>
               <MDXRemote {...source} components={MDXComponents} />
 
@@ -72,10 +86,11 @@ export default function Post({ post, source }: Props) {
                 )}
               </div>
             </Article>
-          </>
-        )}
-      </Container>
-    </Layout>
+          )}
+        </Container>
+      </Layout>
+    </>
+
   );
 }
 

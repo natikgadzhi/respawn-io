@@ -7,6 +7,7 @@ export const config = {
   githubURL: "https://github.com/natikgadzhi/respawn-io",
 
   meta: {
+    title: "Natik's Journal: Blog on engineering management",
     description: "A blog on engineering leadership and software development.",
     ogImage: ""
   },
@@ -15,6 +16,7 @@ export const config = {
     name: "Natik Gadzhi",
     email: "nate@respawn.io",
     twitterURL: "https://twitter.com/natikgadzhi",
+    twitterHandle: "@natikgadzhi",
   },
 
   footer: {

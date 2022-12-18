@@ -4,7 +4,7 @@ import fs from "fs";
 
 import { Post } from "./posts";
 
-export default async function generateFeeds(posts:Array<Post>) {
+export default async function generateFeeds(posts: Array<Post>) {
   const date = new Date();
 
   const author = {
