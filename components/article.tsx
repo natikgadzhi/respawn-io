@@ -22,6 +22,8 @@ const Article = ({ children }: Props) => {
             prose-blockquote:not-italic
             prose-quoteless
 
+            prose-code:bg-slate-100
+
             md:prose-lg lg:prose-xl
 
             mb-32">

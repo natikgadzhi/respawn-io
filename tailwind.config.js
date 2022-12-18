@@ -15,6 +15,15 @@ module.exports = {
           css: {
             'blockquote p:first-of-type::before': { content: 'none' },
             'blockquote p:first-of-type::after': { content: 'none' },
+            'code::before': { content: 'none' },
+            'code::after': { content: 'none' },
+            code: {
+              borderRadius: '0.25rem',
+              paddingLeft: '0.375rem',
+              paddingRight: '0.375rem',
+              paddingTop: '0.25rem',
+              paddingBottom: '0.25rem',
+            },
           },
         },
       },
