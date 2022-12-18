@@ -13,7 +13,7 @@ const BlogTitle = ({ title }: Props) => {
           {router.asPath === "/" ? (
             title
           ) : (
-            <Link href="/" className="hover:underline">
+            <Link href="/" className="hover:underline underline-offset-4">
               {title}
             </Link>
           )}
