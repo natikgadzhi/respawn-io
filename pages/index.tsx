@@ -6,10 +6,14 @@ import Header from "../components/header";
 import Posts from "../components/posts";
 
 import { config } from "../blog.config";
-import { getAllPosts } from "../lib/posts";
+import { Post, getAllPosts } from "../lib/posts";
 import generateFeeds from "../lib/feed";
 
-export default function Index({ allPosts }) {
+type Props = {
+  allPosts: Array<Post>;
+}
+
+export default function Index({ allPosts }: Props) {
   return (
     <>
       <Layout>

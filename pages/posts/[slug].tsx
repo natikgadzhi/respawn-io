@@ -4,8 +4,8 @@ import Head from "next/head";
 import Image from "next/image";
 
 import { config } from "../../blog.config";
-import { MDXRemote } from "next-mdx-remote";
-import { getPostBySlug, getAllPosts, getPostMDXSource } from "../../lib/posts";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { getPostBySlug, getAllPosts, getPostMDXSource, Post as PostType } from "../../lib/posts";
 
 import Container from "../../components/container";
 import Header from "../../components/header";
@@ -14,9 +14,23 @@ import Article from "../../components/article";
 import Callout from "../../components/callout";
 import DateFormatter from "../../components/date-formatter";
 
-const components = { img: Image, Callout };
+const MDXComponents = {
+  img: Image,
+  Callout
+}
 
-export default function Post({ post, source }) {
+type Props = {
+  post: PostType,
+  source: MDXRemoteSerializeResult<Record<string, unknown>, Record<string, string>>
+}
+
+type Params = {
+  params: {
+    slug: string
+  }
+}
+
+export default function Post({ post, source }: Props) {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -40,7 +54,7 @@ export default function Post({ post, source }) {
             </Head>
 
             <Article>
-              <MDXRemote {...source} components={components} />
+              <MDXRemote {...source} components={MDXComponents} />
 
               <div className="py-12 text-sm">
                 <span>
@@ -63,7 +77,7 @@ export default function Post({ post, source }) {
   );
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params }: Params) {
   const post = getPostBySlug(params.slug);
 
   const source = await getPostMDXSource(post.content);
