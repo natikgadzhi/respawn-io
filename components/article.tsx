@@ -2,7 +2,11 @@
 // Applies the shared tailwind prose styles to all spots
 // where I need to render large chunks of text
 
-export default function Article({ children }) {
+type Props = {
+    children: React.ReactNode
+}
+
+const Article = ({ children }: Props) => {
     return (
         <article className="prose prose-stone
             prose-li:leading-relaxed prose-p:leading-relaxed
@@ -25,3 +29,5 @@ export default function Article({ children }) {
         </article>
     )
 }
+
+export default Article

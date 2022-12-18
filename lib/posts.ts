@@ -8,19 +8,18 @@ import { serialize } from 'next-mdx-remote/serialize'
 
 import { config } from '../blog.config'
 
-export interface Post {
+export type Post = {
   slug: string,
   title: string,
   excerpt: string,
   content: string,
-  date: Date
-  modified: Date
+  date: string
+  modified: string
 }
 
 const postsDirectory = join(process.cwd(), '_posts')
 const hrefTemplate = (permalink: string) => `${config.baseURL}/posts/${permalink}`
 const pageResolver = (name: string) => [name.split('/').slice(1).join('/').replace(/ /g, '_').toLowerCase()]
-
 
 
 // returns an array of posts file names

@@ -1,7 +1,12 @@
 import Link from 'next/link'
-import DateFormatter from '../components/date-formatter'
+import DateFormatter from './date-formatter'
+import { Post } from '../lib/posts'
 
-export default function Posts({ posts }) {
+type Props = {
+  posts: Array<Post>
+}
+
+const Posts = ({ posts }: Props) => {
   return (
     <section>
       <ul>
@@ -26,3 +31,5 @@ export default function Posts({ posts }) {
     </section>
   )
 }
+
+export default Posts
