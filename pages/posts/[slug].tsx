@@ -15,7 +15,9 @@ import Callout from "../../components/callout";
 import DateFormatter from "../../components/date-formatter";
 
 const MDXComponents = {
-  img: Image,
+  // FIXME: Passing img as a key to MDXComponents blows up a type check.
+  // As I did not yet use images, that's fine for now.
+  // img: Image,
   Callout
 }
 
