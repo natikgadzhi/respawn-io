@@ -12,7 +12,8 @@ source code for this blog, along with all the essays in Markdown, are
 
 Get in touch:
 
-- Email: nate@respawn.io
-- Twitter: [@nategadzi](https://twitter.com/natikgadzhi)
+- Email: natik@respawn.io
 - [GitHub](https://github.com/natikgadzhi)
 - [Linkedin](https://linkedin.com/in/natikgadzhi)
+- [@natik@achyderm.io](https://hachyderm.io/@natik)
+- [Twitter](https://twitter.com/natikgadzhi)
