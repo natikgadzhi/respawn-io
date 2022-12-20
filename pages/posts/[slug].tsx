@@ -38,6 +38,8 @@ export default function Post({ post, source }: Props) {
     return <ErrorPage statusCode={404} />;
   }
 
+  const ogImageURL = `${config.baseURL}/api/opengraph/post?title=${encodeURIComponent(post.title)}&description=${encodeURIComponent(post.excerpt)}&slug=${encodeURIComponent(post.slug)}`
+
   return (
     <>
       <NextSeo
@@ -48,7 +50,7 @@ export default function Post({ post, source }: Props) {
           url: `${config.baseURL}/posts/${post.slug}`,
           type: "article",
           images: [{
-            url: `${config.baseURL}/api/opengraph/post?title=${encodeURIComponent(post.title)}&description=${encodeURIComponent(post.excerpt)}&slug=${encodeURIComponent(post.slug)}`,
+            url: ogImageURL,
             width: 1200,
             height: 630,
             alt: `${post.title}. ${post.excerpt}`
@@ -63,7 +65,7 @@ export default function Post({ post, source }: Props) {
         type = "BlogPosting"
         url = {`${config.baseURL}/posts/${post.slug}`}
         title = {post.title}
-        images = {[]}
+        images = {[ogImageURL]}
         datePublished = {post.date}
         dateModified = {post.modified}
         authorName = {config.author.name}
