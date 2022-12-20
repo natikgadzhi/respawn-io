@@ -16,6 +16,7 @@ const OpengraphImage = ({ title, description, postURL, width, height }: Props) =
           width: width,
           height: height,
           fontFamily: '"Jetbrains Mono"',
+          backgroundImage: "linear-gradient(90deg, #cbd5e1 0%, #f8fafc 100%)",
         }}
         tw="flex flex-col justify-start w-full h-full p-12 bg-slate-50">
 
