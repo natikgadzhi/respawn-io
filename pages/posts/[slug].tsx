@@ -47,6 +47,12 @@ export default function Post({ post, source }: Props) {
           description: post.excerpt,
           url: `${config.baseURL}/posts/${post.slug}`,
           type: "article",
+          images: [{
+            url: `${config.baseURL}/api/opengraph/post?title=${encodeURIComponent(post.title)}&description=${encodeURIComponent(post.excerpt)}&slug=${encodeURIComponent(post.slug)}`,
+            width: 1200,
+            height: 630,
+            alt: `${post.title}. ${post.excerpt}`
+          }],
           article: {
             publishedTime: post.date,
             modifiedTime: post.modified,
