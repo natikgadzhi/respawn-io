@@ -10,7 +10,7 @@ modified: 2022-08-27
 
 Here's how this thing works:
 
-- The [source repository is open](https://github.com/nategadzhi/respawn-io).
+- The [source repository is open](https://github.com/natikgadzhi/respawn-io).
 - It's based off Next.js static gen blog starter kit. Tailwind for markup. First time I use either of those. But hey, I have an [execute program typescript](https://www.executeprogram.com/courses/typescript) course sitting for 6 months, and I need to spike on a few typescript things at work anyway.
 - I'm using [Obsidian](https://obsidian.md/) for my notes, and decided to try and use it to write the blog, too. I then `ln path/to/obsidian/vault/respawn.io/*` to my `_posts` dir. This should work for any static site generator.
 
@@ -20,3 +20,4 @@ Here's how this thing works:
 
 - Markdown is rendered using [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote), so I can use `next/image`, or other callout, diagrams, or chart blocks.
 - Fathom analytics with [`fathom-client`](https://github.com/derrickreimer/fathom-client). The way it's plugged in the code is crap, but it works out of the box with Next routing.
+- Opengraph images are [generated with `@vercel/og`](https://github.com/natikgadzhi/respawn-io/commit/ab9ee315b62c094da27cb4e5cc7226d042fb2b19). This feels like dark magic and I have no idea how it works, but hey, it works.
