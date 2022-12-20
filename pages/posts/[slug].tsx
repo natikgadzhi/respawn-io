@@ -83,14 +83,19 @@ export default function Post({ post, source }: Props) {
             <Article>
               <MDXRemote {...source} components={MDXComponents} />
 
-              <div className="py-12 text-sm">
+
+              <div className="text-2xl font-regular text-center my-20">
+              ⌘ ⌘ ⌘
+              </div>
+
+              <div>
                 <span>
                   Originally published on&nbsp;
                   <DateFormatter dateString={post.date} />.
                 </span>
 
                 {post.date != post.modified && (
-                  <span>
+                  <span className="ml-2">
                     Last update on&nbsp;
                     <DateFormatter dateString={post.modified} />.
                   </span>

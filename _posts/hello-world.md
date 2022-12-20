@@ -3,7 +3,7 @@ title: "New site! Obsidian, Next.js, and Vercel"
 excerpt:
   "I had a couple hours on a Thursday night, and wanted to clean up my website."
 date: 2022-06-16
-modified: 2022-08-27
+modified: 2022-12-19
 ---
 
 # Obsidian, Next.js, and Vercel
