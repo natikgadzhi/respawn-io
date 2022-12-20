@@ -20,4 +20,6 @@ Here's how this thing works:
 
 - Markdown is rendered using [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote), so I can use `next/image`, or other callout, diagrams, or chart blocks.
 - Fathom analytics with [`fathom-client`](https://github.com/derrickreimer/fathom-client). The way it's plugged in the code is crap, but it works out of the box with Next routing.
-- Opengraph images are [generated with `@vercel/og`](https://github.com/natikgadzhi/respawn-io/commit/ab9ee315b62c094da27cb4e5cc7226d042fb2b19). This feels like dark magic and I have no idea how it works, but hey, it works.
+- Opengraph images are [generated with `@vercel/og`](https://github.com/natikgadzhi/respawn-io/commit/ab9ee315b62c094da27cb4e5cc7226d042fb2b19). This feels like dark magic and I have no idea how it works, but hey, it works. Here's an example for this post:
+
+<Image src="https://respawn.io/api/opengraph/post?title=New site! Obsidian, Next.js, and Vercel&description=I had a couple hours on a Thursday night, and wanted to clean up my website.&slug=hello-world" width="1200" height="630" />

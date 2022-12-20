@@ -26,7 +26,7 @@ const OpengraphImage = ({ title, description, postURL, width, height }: Props) =
           "-webkit-background-clip": "text",
           color: "transparent",
         }}
-          tw="text-7xl font-extrabold mb-8">
+          tw="text-7xl break-keep font-extrabold mb-8">
           {title}
         </h1>
 
@@ -35,7 +35,7 @@ const OpengraphImage = ({ title, description, postURL, width, height }: Props) =
         <div tw="flex mt-auto flex-row justify-between items-baseline w-full">
           <a
             href={postURL}
-            tw="text-xl text-blue-700 ml-auto">
+            tw="text-2xl text-blue-700 ml-auto">
             {postURL}
           </a>
         </div>

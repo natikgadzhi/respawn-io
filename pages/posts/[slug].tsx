@@ -7,6 +7,8 @@ import { config } from "../../blog.config";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { getPostBySlug, getAllPosts, getPostMDXSource, Post as PostType } from "../../lib/posts";
 
+import Image from "next/image"
+
 import Container from "../../components/container";
 import Header from "../../components/header/header";
 import Layout from "../../components/layout";
@@ -18,7 +20,8 @@ const MDXComponents = {
   // FIXME: Passing img as a key to MDXComponents blows up a type check.
   // As I did not yet use images, that's fine for now.
   // img: Image,
-  Callout
+  Callout,
+  Image
 }
 
 type Props = {
