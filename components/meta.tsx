@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { config } from "../blog.config";
 
 const Meta = () => {
   return (
@@ -15,6 +16,7 @@ const Meta = () => {
       <meta name="theme-color" content="#fff" />
 
       <link rel="alternate" type="application/rss+xml" title="RSS Feed for respawn.io" href="/rss/feed.xml" />
+      <link rel="me"  href={config.author.fediverseURL} />
     </Head>
   )
 }

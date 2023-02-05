@@ -6,10 +6,15 @@ export const config = {
   baseURL: "https://respawn.io",
   githubURL: "https://github.com/natikgadzhi/respawn-io",
 
+  fathom: {
+    domain: "respawn.io",
+    propertyID: "CHCUIZHD",
+    scriptURL: "https://lets-dance-thirtyeight.respawn.io/script.js"
+  },
+
   meta: {
     title: "Natik's Journal: Blog on engineering management",
     description: "A blog on engineering leadership and software development.",
-    ogImage: ""
   },
 
   author: {
@@ -17,6 +22,7 @@ export const config = {
     email: "nate@respawn.io",
     twitterURL: "https://twitter.com/natikgadzhi",
     twitterHandle: "@natikgadzhi",
+    fediverseURL: "https://hachyderm.io/@natik"
   },
 
   footer: {

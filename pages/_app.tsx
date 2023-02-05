@@ -5,7 +5,6 @@ import { DefaultSeo } from "next-seo";
 import * as Fathom from "fathom-client";
 
 import "../styles/index.css";
-import { config } from "process";
 import { config as blogConfig } from "../blog.config";
 
 function App({ Component, pageProps }: AppProps) {
@@ -13,13 +12,9 @@ function App({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     // Initialize Fathom when the app loads
-    // Example: yourdomain.com
-    //  - Do not include https://
-    //  - This must be an exact match of your domain.
-    //  - If you're using www. for your domain, make sure you include that here.
-    Fathom.load("CHCUIZHD", {
-      includedDomains: ["respawn.io"],
-      url: "https://lets-dance-thirtyeight.respawn.io/script.js",
+    Fathom.load(blogConfig.fathom.propertyID, {
+      includedDomains: [blogConfig.fathom.domain],
+      url: blogConfig.fathom.scriptURL,
     });
 
     function onRouteChangeComplete() {
