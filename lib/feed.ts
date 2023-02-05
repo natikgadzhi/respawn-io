@@ -10,7 +10,7 @@ export default async function generateFeeds(posts: Array<Post>) {
   const author = {
     name: config.author.name,
     email: config.author.email,
-    link: config.author.twitterURL,
+    link: config.author.fediverseURL,
   };
 
   const feed = new Feed({
