@@ -7,7 +7,7 @@ import { config as blogConfig } from "../../../blog.config";
 import OpengraphImage from "../../../components/opengraph/image";
 
 export const config = {
-  runtime: "experimental-edge",
+  runtime: "edge",
 };
 
 export default async function handler(req: NextRequest) {
