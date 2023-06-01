@@ -8,6 +8,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { getPostBySlug, getAllPosts, getPostMDXSource, Post as PostType } from "../../lib/posts";
 
 import Image from "next/image"
+import Head from "next/head"
 
 import Container from "../../components/container";
 import Header from "../../components/header/header";
@@ -76,37 +77,34 @@ export default function Post({ post, source }: Props) {
       />
       <Layout>
         <Container>
-          <Header />
-          {router.isFallback ? (
-            <h1>Loading…</h1>
-          ) : (
-            <Article>
-              <MDXRemote {...source} components={MDXComponents} />
+          <Head>
+            <title>{post.title}</title>
+          </Head>
+          <Header/>
+          <Article>
+            <MDXRemote {...source} components={MDXComponents} />
 
+            <div className="text-2xl font-regular text-center my-20">
+            ⌘ ⌘ ⌘
+            </div>
 
-              <div className="text-2xl font-regular text-center my-20">
-              ⌘ ⌘ ⌘
-              </div>
+            <div>
+              <span>
+                Originally published on&nbsp;
+                <DateFormatter dateString={post.date} />.
+              </span>
 
-              <div>
-                <span>
-                  Originally published on&nbsp;
-                  <DateFormatter dateString={post.date} />.
+              {post.date != post.modified && (
+                <span className="ml-2">
+                  Last update on&nbsp;
+                  <DateFormatter dateString={post.modified} />.
                 </span>
-
-                {post.date != post.modified && (
-                  <span className="ml-2">
-                    Last update on&nbsp;
-                    <DateFormatter dateString={post.modified} />.
-                  </span>
                 )}
-              </div>
-            </Article>
-          )}
+            </div>
+          </Article>
         </Container>
       </Layout>
     </>
-
   );
 }
 
