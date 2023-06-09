@@ -22,4 +22,4 @@ Here's how this thing works:
 - Fathom analytics with [`fathom-client`](https://github.com/derrickreimer/fathom-client). The way it's plugged in the code is crap, but it works out of the box with Next routing.
 - Opengraph images are [generated with `@vercel/og`](https://github.com/natikgadzhi/respawn-io/commit/ab9ee315b62c094da27cb4e5cc7226d042fb2b19). This feels like dark magic and I have no idea how it works, but hey, it works. Here's an example for this post:
 
-<img src="https://respawn.io/api/opengraph/post?title=New site! Obsidian, Next.js, and Vercel&description=I had a couple hours on a Thursday night, and wanted to clean up my website.&slug=hello-world" width="1200" height="630" />
+<img src="/posts/hello-world/og-image.png" width="1200" height="630" />

@@ -53,12 +53,7 @@ const Post = defineDocumentType(() => ({
     },
     ogImageURL: {
       type: "string",
-      resolve: (doc) =>
-        `${blogConfig.baseURL}/api/opengraph/post?title=${encodeURIComponent(
-          doc.title
-        )}&description=${encodeURIComponent(
-          doc.excerpt
-        )}&slug=${encodeURIComponent(doc._raw.sourceFileName.replace(/\.md$/, ""))}`,
+      resolve: (doc) => `/posts/${doc._raw.sourceFileName.replace(/\.md$/, "")}/og-image.png`,
     },
   },
 }));

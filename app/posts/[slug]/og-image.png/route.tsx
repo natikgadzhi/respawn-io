@@ -1,36 +1,25 @@
-/* eslint-disable import/no-anonymous-default-export */
-import { ImageResponse } from "@vercel/og";
+import { ImageResponse } from "next/server";
 import { NextRequest } from "next/server";
 
-import { config as blogConfig } from "../../../blog.config";
+import { allPosts } from "contentlayer/generated";
 
-import OpengraphImage from "../../../components/opengraph/image";
+import OpengraphImage from "app/posts/[slug]/og-image.png/image";
 
-export const config = {
-  runtime: "edge",
-};
+export const runtime = "edge";
 
-export default async function handler(req: NextRequest) {
+export async function GET(req: NextRequest, { params }: { params: { slug: string }}) {
   try {
     const regular = fetch(
-      new URL("../../../assets/fonts/JetBrainsMono-Regular.ttf", import.meta.url)
+      new URL("assets/fonts/JetBrainsMono-Regular.ttf", import.meta.url)
     ).then((res) => res.arrayBuffer());
 
     const bold = fetch(
-      new URL("../../../assets/fonts/JetBrainsMono-ExtraBold.ttf", import.meta.url)
+      new URL("assets/fonts/JetBrainsMono-ExtraBold.ttf", import.meta.url)
     ).then((res) => res.arrayBuffer());
 
+    const post = allPosts.find((post) => post.slug === params.slug);
+
     const { searchParams } = new URL(req.url);
-    const title = searchParams.get("title");
-    const description = searchParams.get("description");
-    const slug = searchParams.get("slug");
-    const postURL = blogConfig.baseURL + "/posts/" + slug;
-
-    if (!title || !description) {
-      console.log("Missing title or description.");
-      return new Response(`Missing title or description.`, { status: 404 });
-    }
-
     const width = searchParams.has("w")
       ? parseInt(searchParams.get("w") as string)
       : 1200;
@@ -41,9 +30,7 @@ export default async function handler(req: NextRequest) {
     return new ImageResponse(
       (
         <OpengraphImage
-          title={title}
-          description={description}
-          postURL={postURL}
+          post={post}
           width={width}
           height={height}
         />

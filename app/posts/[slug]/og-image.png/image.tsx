@@ -1,12 +1,12 @@
+import type { Post } from "contentlayer/generated";
+
 type Props = {
-  title: String;
-  description: String;
-  postURL: string;
+  post: Post;
   width: number;
   height: number;
-};
+}
 
-const OpengraphImage = ({ title, description, postURL, width, height }: Props) => {
+const OpengraphImage = ({ post, width, height}: Props) => {
   return (
     <>
       <div
@@ -26,16 +26,16 @@ const OpengraphImage = ({ title, description, postURL, width, height }: Props) =
           color: "transparent",
         }}
           tw="text-7xl break-keep font-extrabold mb-8">
-          {title}
+          {post.title}
         </h1>
 
-        <p tw="mt-4 text-2xl text-black">{description}</p>
+        <p tw="mt-4 text-2xl text-black">{post.excerpt}</p>
 
         <div tw="flex mt-auto flex-row justify-between items-baseline w-full">
           <a
-            href={postURL}
+            href={post.absoluteURL}
             tw="text-2xl text-blue-700 ml-auto">
-            {postURL}
+            {post.absoluteURL}
           </a>
         </div>
       </div>
