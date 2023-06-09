@@ -6,8 +6,6 @@ import { format, parseISO } from "date-fns";
 import { getMDXComponent } from "next-contentlayer/hooks";
 import { mdxComponents } from "lib/mdxComponents";
 
-import Container from "components/container";
-import Header from "components/header/header";
 import Article from "components/article";
 
 type Params = {
@@ -68,26 +66,23 @@ export default async function Post( { params }: Params ) {
 
   return (
     <>
-      <Container>
-        <Header />
-        <Article>
-          <MDXContent components={mdxComponents} />
+      <Article>
+        <MDXContent components={mdxComponents} />
 
-          <div className="text-2xl font-regular text-center my-20">⌘ ⌘ ⌘</div>
-          <div>
-            <span>
-              Originally published on&nbsp;
-              {format(parseISO(post.date), "MMM do yyyy")}
+        <div className="text-2xl font-regular text-center my-20">⌘ ⌘ ⌘</div>
+        <div>
+          <span>
+            Originally published on&nbsp;
+            {format(parseISO(post.date), "MMM do yyyy")}
+          </span>
+          {post.date != post.modified && (
+            <span className="ml-2">
+              Last update on&nbsp;
+              {format(parseISO(post.modified), "MMM do yyyy")}
             </span>
-            {post.date != post.modified && (
-              <span className="ml-2">
-                Last update on&nbsp;
-                {format(parseISO(post.modified), "MMM do yyyy")}
-              </span>
-            )}
-          </div>
-        </Article>
-      </Container>
+          )}
+        </div>
+      </Article>
     </>
   );
 }

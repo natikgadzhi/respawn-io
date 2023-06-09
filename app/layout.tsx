@@ -1,9 +1,12 @@
 import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
-import Footer from "components/footer";
 
 import "../styles/index.css";
 import { config as blogConfig } from "../blog.config";
+
+import Container from "components/container";
+import Header from "components/header/header";
+import Footer from "components/footer";
 
 type Props = {
   children: React.ReactNode;
@@ -48,7 +51,10 @@ export default function RootLayout({ children }: Props) {
       <Analytics />
       <body>
         <main className="min-h-screen max-w-3xl mx-auto">
-          {children}
+          <Container>
+            <Header />
+            {children}
+          </Container>
         </main>
         <Footer />
       </body>

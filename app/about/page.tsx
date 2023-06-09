@@ -1,11 +1,9 @@
 import { Metadata } from "next"
 import { config } from "blog.config"
-import { allPages, type Page } from "contentlayer/generated"
+import { allPages } from "contentlayer/generated"
 import { useMDXComponent } from "next-contentlayer/hooks"
 import { mdxComponents } from "lib/mdxComponents"
 
-import Container from 'components/container'
-import Header from 'components/header/header'
 import Article from 'components/article'
 
 export const metadata: Metadata = {
@@ -27,12 +25,9 @@ export default function About() {
 
   return (
     <>
-      <Container>
-        <Header />
-        <Article>
-          <MDXComponent components={mdxComponents} />
-        </Article>
-      </Container>
+      <Article>
+        <MDXComponent components={mdxComponents} />
+      </Article>
     </>
   )
 }
