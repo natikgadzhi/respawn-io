@@ -9,7 +9,10 @@ const hrefTemplate = (permalink: string) => `${blogConfig.baseURL}/posts/${perma
 const pageResolver = (name: string) => [name.split('/').slice(1).join('/').replace(/ /g, '_').toLowerCase()]
 
 const prettyCodeOptions: Partial<Options> = {
-  theme: "github-light"
+  theme: {
+    light: "github-light",
+    dark: "github-dark"
+  }
 }
 
 const Post = defineDocumentType(() => ({

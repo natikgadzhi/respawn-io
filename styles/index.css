@@ -4,8 +4,34 @@
 
 pre>code {
     display: grid;
+    @apply m-0;
 }
 
 pre {
     --tw-prose-pre-bg: initial;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    pre[data-theme='dark'] {
+        @apply bg-stone-900;
+    }
+
+    pre[data-theme='light'],
+    code[data-theme='light'] {
+        display: none;
+    }
+}
+
+@media (prefers-color-scheme: light),
+(prefers-color-scheme: no-preference) {
+
+    pre[data-theme='light'] {
+        @apply bg-blue-50;
+    }
+
+    pre[data-theme='dark'],
+    code[data-theme='dark'] {
+        display: none;
+    }
 }
