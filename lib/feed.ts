@@ -1,8 +1,7 @@
 import { Feed } from "feed";
 import { config } from "../blog.config";
 import fs from "fs";
-
-import { Post } from "./posts";
+import { Post } from "contentlayer/generated";
 
 export default async function generateFeeds(posts: Array<Post>) {
   const date = new Date();
@@ -33,14 +32,13 @@ export default async function generateFeeds(posts: Array<Post>) {
   });
 
   posts.forEach((post) => {
-    const url = `${config.baseURL}/posts/${post.slug}`;
-
     feed.addItem({
       title: post.title,
-      id: url,
-      link: url,
+      id: post.url,
+      link: post.url,
       description: post.excerpt,
-      content: post.content,
+      // FIXME: Provide rendered content for the RSS feed.
+      content: post.body.raw,
       author: [author],
       contributor: [author],
       date: new Date(post.date),

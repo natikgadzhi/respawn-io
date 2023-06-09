@@ -1,10 +1,11 @@
-import Link from 'next/link'
-import DateFormatter from './date-formatter'
-import { Post } from '../lib/posts'
+import { format, parseISO } from "date-fns";
+import { Post } from "contentlayer/generated";
+
+import Link from "next/link";
 
 type Props = {
-  posts: Array<Post>
-}
+  posts: Array<Post>;
+};
 
 const Posts = ({ posts }: Props) => {
   return (
@@ -14,22 +15,18 @@ const Posts = ({ posts }: Props) => {
           <li className="mb-8 md:my-14" key={`${post.slug}`}>
             <div className="flex flex-col md:flex-row justify-between items-baseline">
               <h3 className="text-2xl mb-2 leading-snug tracking-tight font-semibold">
-                <Link href={`/posts/${post.slug}`}>
-                  {post.title}
-                </Link>
+                <Link href={post.url}>{post.title}</Link>
               </h3>
               <div className="text-md whitespace-nowrap text-blue-700">
-                <DateFormatter dateString={post.date} />
+                { format(parseISO(post.date), 'MMM do yyyy')}
               </div>
             </div>
-            <p className="text-md leading-relaxed">
-              {post.excerpt}
-            </p>
+            <p className="text-md leading-relaxed">{post.excerpt}</p>
           </li>
         ))}
       </ul>
     </section>
-  )
-}
+  );
+};
 
-export default Posts
+export default Posts;

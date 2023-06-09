@@ -1,14 +1,16 @@
+const { withContentlayer } = require("next-contentlayer");
 
-// next.config.js
-module.exports = {
-    images: {
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'respawn.io',
-                port: '',
-                pathname: '/api/opengraph/**',
-            },
-        ],
-    },
-}
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "respawn.io",
+        port: "",
+        pathname: "/api/opengraph/**",
+      },
+    ],
+  },
+};
+
+module.exports = withContentlayer(nextConfig);

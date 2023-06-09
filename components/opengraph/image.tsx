@@ -1,5 +1,3 @@
-import DateFormatter from "../date-formatter";
-
 type Props = {
   title: String;
   description: String;

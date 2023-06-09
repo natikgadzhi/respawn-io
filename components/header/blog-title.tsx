@@ -1,24 +1,26 @@
-import { useRouter } from "next/router";
+'use client'
+
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 type Props = {
-    title: String
-}
+  title: String;
+};
 
 const BlogTitle = ({ title }: Props) => {
-    const router = useRouter();
+  const path = usePathname();
 
-    return (
-        <h2 className="inline-flex text-xl md:text-2xl font-bold tracking-tighter leading-tight">
-          {router.asPath === "/" ? (
-            title
-          ) : (
-            <Link href="/" className="hover:underline underline-offset-4">
-              {title}
-            </Link>
-          )}
-        </h2>
-    )
-}
+  return (
+    <h2 className="inline-flex text-xl md:text-2xl font-bold tracking-tighter leading-tight">
+      {path === "/" ? (
+        title
+      ) : (
+        <Link href="/" className="hover:underline underline-offset-4">
+          {title}
+        </Link>
+      )}
+    </h2>
+  );
+};
 
-export default BlogTitle
+export default BlogTitle;

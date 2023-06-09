@@ -17,7 +17,18 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "moduleResolution": "node",
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "contentlayer/generated": [
+        ".contentlayer/generated"
+      ]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
@@ -25,6 +36,8 @@
     "**/*.tsx",
     "postcss.config.js",
     "tailwind.config.js",
+    ".contentlayer/generated",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

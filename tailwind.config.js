@@ -3,7 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   content: [
     './components/**/*.tsx',
-    './pages/**/*.tsx'
+    './app/**/*.tsx'
   ],
   plugins: [
     require('@tailwindcss/typography'),

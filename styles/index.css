@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+pre>code {
+    display: grid;
+}
+
+pre {
+    --tw-prose-pre-bg: initial;
+}
