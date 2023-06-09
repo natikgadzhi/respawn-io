@@ -18,8 +18,8 @@ Here's how this thing works:
 
   Another approach would be to point `postsDirectory` to a subdirectory in the Obsidian vault. While you can get away without hardlinks, you might run into issues with links between notes and linking assets later.
 
-- Markdown is rendered using [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote), so I can use `next/image`, or other callout, diagrams, or chart blocks.
-- Fathom analytics with [`fathom-client`](https://github.com/derrickreimer/fathom-client). The way it's plugged in the code is crap, but it works out of the box with Next routing.
+- Markdown is rendered ~~using [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote), so I can use `next/image`, `next/link`, or other callout, diagrams, or chart blocks~~. Upd: switched to [`contentlayer`](https://www.contentlayer.dev/) and it's great.
+- ~~Fathom analytics with [`fathom-client`](https://github.com/derrickreimer/fathom-client). The way it's plugged in the code is crap, but it works out of the box with Next routing.~~ Fathom is good, but Vercel shipped their own analytics, so that simplifies things a bit.
 - Opengraph images are [generated with `@vercel/og`](https://github.com/natikgadzhi/respawn-io/commit/ab9ee315b62c094da27cb4e5cc7226d042fb2b19). This feels like dark magic and I have no idea how it works, but hey, it works. Here's an example for this post:
 
 <img src="/posts/hello-world/og-image.png" width="1200" height="630" />

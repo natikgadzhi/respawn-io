@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    text-decoration-thickness: 2pt;
+}
 pre>code {
     display: grid;
     @apply m-0;

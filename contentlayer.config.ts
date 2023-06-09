@@ -2,6 +2,7 @@ import { config as blogConfig } from "./blog.config";
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 
 import rehypePrettyCode, { type Options } from "rehype-pretty-code"
+import remarkGfm from "remark-gfm";
 
 import wikilinks from "remark-wiki-link"
 
@@ -74,6 +75,7 @@ export default makeSource({
 
   mdx: {
     remarkPlugins: [
+      remarkGfm,
       [wikilinks, {pageResolver, hrefTemplate}]
     ],
     rehypePlugins: [
