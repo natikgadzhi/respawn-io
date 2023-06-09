@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import { Metadata, ResolvingMetadata } from "next";
 import { allPosts, type Post } from "contentlayer/generated";
 
@@ -23,6 +24,11 @@ type Props = {
 
 export async function generateMetadata( { params }: Props, parent: ResolvingMetadata ): Promise<Metadata> {
   const post = allPosts.find((post) => post.slug === params.slug);
+
+  if (!post) {
+    notFound();
+  }
+
   return {
     title: post.title,
     openGraph: {
@@ -53,6 +59,11 @@ export async function generateStaticParams() {
 
 export default async function Post( { params }: Params ) {
   const post = allPosts.find((post) => post.slug === params.slug);
+
+  if (!post) {
+    notFound();
+  }
+
   const MDXContent = getMDXComponent(post.body.code);
 
   return (
