@@ -8,7 +8,7 @@ type Props = {
 const Article = ({ children }: Props) => {
   return (
     <article
-      className="prose prose-stone dark:prose-invert
+      className="prose prose-slate dark:prose-invert
             prose-li:leading-relaxed prose-p:leading-relaxed
 
             prose-h2:pt-8
