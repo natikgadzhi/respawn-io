@@ -6,7 +6,7 @@ type Props = {
   height: number;
 }
 
-const OpengraphImage = ({ post, width, height}: Props) => {
+export default function OpengraphImage({ post, width, height}: Props) {
   return (
     <>
       <div
@@ -42,5 +42,3 @@ const OpengraphImage = ({ post, width, height}: Props) => {
     </>
   );
 };
-
-export default OpengraphImage;
