@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import Footer from "components/footer";
-import Meta from "components/meta";
 
 import "../styles/index.css";
 import { config as blogConfig } from "../blog.config";
@@ -19,6 +18,7 @@ export const metadata: Metadata = {
       'application/rss+xml': `${blogConfig.baseURL}'/rss/feed.xml`,
     },
   },
+
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -45,7 +45,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <Meta />
       <Analytics />
       <body>
         <div className="min-h-screen max-w-3xl mx-auto">
