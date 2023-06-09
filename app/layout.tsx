@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/react";
 import "../styles/index.css";
 import { config as blogConfig } from "../blog.config";
 
-import Container from "components/container";
 import Header from "components/header/header";
 import Footer from "components/footer";
 
@@ -51,10 +50,10 @@ export default function RootLayout({ children }: Props) {
       <Analytics />
       <body>
         <main className="min-h-screen max-w-3xl mx-auto">
-          <Container>
+          <div className="container mx-auto px-5">
             <Header />
             {children}
-          </Container>
+          </div>
         </main>
         <Footer />
       </body>
