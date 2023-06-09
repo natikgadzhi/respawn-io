@@ -48,7 +48,7 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <Analytics />
-      <body>
+      <body className="bg-stone-50 dark:bg-stone-950 text-stone950 dark:text-stone-50  ">
         <main className="min-h-screen max-w-3xl mx-auto">
           <div className="container mx-auto px-5">
             <Header />

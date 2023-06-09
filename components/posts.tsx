@@ -17,7 +17,7 @@ const Posts = ({ posts }: Props) => {
               <h3 className="text-2xl mb-2 leading-snug tracking-tight font-semibold">
                 <Link href={post.url}>{post.title}</Link>
               </h3>
-              <div className="text-md whitespace-nowrap text-blue-700">
+              <div className="text-md whitespace-nowrap text-blue-700 dark:text-sky-400">
                 { format(parseISO(post.date), 'MMM do yyyy')}
               </div>
             </div>
