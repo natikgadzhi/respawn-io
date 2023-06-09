@@ -47,9 +47,9 @@ export default function RootLayout({ children }: Props) {
     <html lang="en">
       <Analytics />
       <body>
-        <div className="min-h-screen max-w-3xl mx-auto">
-          <main>{children}</main>
-        </div>
+        <main className="min-h-screen max-w-3xl mx-auto">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
