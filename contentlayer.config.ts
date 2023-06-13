@@ -46,6 +46,11 @@ const Post = defineDocumentType(() => ({
       description: "The last update date for the post",
       required: true,
     },
+    draft: {
+      type: "boolean",
+      description: "Whether the post is a draft",
+      required: false,
+    }
   },
   computedFields: {
     slug: {

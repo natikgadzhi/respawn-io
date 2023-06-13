@@ -23,7 +23,7 @@ type Props = {
 export async function generateMetadata( { params }: Props, parent: ResolvingMetadata ): Promise<Metadata> {
   const post = allPosts.find((post) => post.slug === params.slug);
 
-  if (!post) {
+  if (!post || post.draft) {
     notFound();
   }
 
