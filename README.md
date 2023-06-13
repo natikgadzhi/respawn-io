@@ -5,16 +5,15 @@ This repo contains the source code for (yet another?) iteration of
 
 A few more things under the hood:
 
-- Simple posts layout with meta-information, open graph cards, and json-ld
-  articles markup.
+- Simple posts layout with metadata and opengraph cards support.
 - RSS feed that includes all posts.
-- MDX format support for posts, which allows me to use nice components like
-  next/image, or embed tweets, etc.
-- Support for generating opengraph images via `@vercel/og`, see
+- Mark posts as `draft: true` in front matter to hide them from the generated
+  site.
+- MDX support for posts, pre-configured to use `next/image` and `next/link`.
+  Also supports Markdown image tags. Callouts support is pending.
+- Support for generating opengraph images via `ImageResponse` in `edge runtime`, see
   [hello-world.md](https://respawn.io/posts/hello-world) for details.
-
-If you want to use this code for your projects, please make sure to swap out the
-analytics settings in `blog.config.js`.
+- Uses Vercel built-in analytics with zero configuration.
 
 ## License
 
