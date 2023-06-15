@@ -7,6 +7,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@microflash/remark-figure-caption": "^1.0.0",
     "@vercel/analytics": "^1.0.1",
     "classnames": "2.3.2",
     "contentlayer": "^0.3.3",

@@ -1,7 +1,8 @@
-import { config as blogConfig } from "./blog.config";
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import { config as blogConfig } from "./blog.config"
+import { defineDocumentType, makeSource } from "contentlayer/source-files"
 
 import rehypePrettyCode, { type Options } from "rehype-pretty-code"
+import remarkFigureCaption from "@microflash/remark-figure-caption"
 import remarkGfm from "remark-gfm";
 
 import wikilinks from "remark-wiki-link"
@@ -86,6 +87,7 @@ export default makeSource({
   mdx: {
     remarkPlugins: [
       remarkGfm,
+      [remarkFigureCaption, {captionClassName: "text-center italic"}],
       [wikilinks, {pageResolver, hrefTemplate}]
     ],
     rehypePlugins: [

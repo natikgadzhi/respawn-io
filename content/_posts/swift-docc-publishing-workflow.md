@@ -4,7 +4,7 @@ excerpt: Using SwiftPM docc plugin to build and export your package docs, and th
 date: 2023-06-09
 created: 2023-06-09
 modified: 2023-06-09
-draft: true
+draft: false
 ---
 
 # Building Swift DocC on GitHub Actions
@@ -47,7 +47,7 @@ $ swift package --disable-sandbox generate-documentation \
 	--target PackageDescription
 ```
 
-![](test.png)
+![Xcode documentation viewer with `PackageDescription`](test.png)
 
 You can drag and drop the archive to your
 - Add swift-docc-plugin as a dependency on your package.
@@ -55,5 +55,4 @@ You can drag and drop the archive to your
 - Previewing documentation.
 - Generating for a static website.
 - Embedding your documentation in a Github Pages website.
-
 
