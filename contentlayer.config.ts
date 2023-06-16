@@ -8,7 +8,7 @@ import remarkGfm from "remark-gfm";
 import wikilinks from "remark-wiki-link"
 
 const hrefTemplate = (permalink: string) => `${blogConfig.baseURL}/posts/${permalink}`
-const pageResolver = (name: string) => [name.split('/').slice(1).join('/').replace(/ /g, '_').toLowerCase()]
+const pageResolver = (name: string) => [name]
 
 const prettyCodeOptions: Partial<Options> = {
   theme: {
