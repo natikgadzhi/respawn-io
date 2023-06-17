@@ -88,7 +88,7 @@ export default makeSource({
     remarkPlugins: [
       remarkGfm,
       [remarkFigureCaption, {captionClassName: "text-center italic"}],
-      [wikilinks, {pageResolver, hrefTemplate}]
+      [wikilinks, {pageResolver, hrefTemplate, aliasDivider: "|"}]
     ],
     rehypePlugins: [
       [rehypePrettyCode, prettyCodeOptions]
