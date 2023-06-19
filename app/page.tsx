@@ -9,8 +9,9 @@ import { allPosts } from "contentlayer/generated";
 import Posts from "components/posts";
 
 async function getPosts() {
+  const env_name = process.env.ENV_NAME;
   const posts = allPosts
-    .filter((post) => !post.draft)
+    .filter((post) => env_name == "localhost" || !post.draft)
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
   // FIXME: Extract into a separate CLI tool
