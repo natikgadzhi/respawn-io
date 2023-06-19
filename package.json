@@ -3,8 +3,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "postbuild": "next-sitemap"
+    "start": "next start"
   },
   "dependencies": {
     "@microflash/remark-figure-caption": "^1.0.0",
@@ -34,7 +33,6 @@
     "autoprefixer": "^10.4.2",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
-    "next-sitemap": "^4.1.3",
     "postcss": "^8.4.20",
     "tailwindcss": "^3.2.4",
     "typescript": "^5.0.4"
