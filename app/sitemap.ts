@@ -8,7 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
   return posts.map((post) => ({
-    url: post.url,
+    url: post.absoluteURL,
     lastModified: new Date(post.modified),
     changeFrequency: 'daily'
   }));
