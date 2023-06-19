@@ -51,6 +51,16 @@ const Post = defineDocumentType(() => ({
       type: "boolean",
       description: "Whether the post is a draft",
       required: false,
+    },
+    meta_description: {
+      type: "string",
+      description: "The meta description of the post",
+      required: false,
+    },
+    meta_keywords: {
+      type: "string",
+      description: "The meta keywords of the post",
+      required: false,
     }
   },
   computedFields: {

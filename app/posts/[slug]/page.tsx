@@ -29,6 +29,8 @@ export async function generateMetadata( { params }: Props, parent: ResolvingMeta
 
   return {
     title: post.title,
+    description: post.meta_description === undefined ? post.excerpt : post.meta_description,
+    keywords: post.meta_keywords,
     openGraph: {
       title: post.title,
       description: post.excerpt,
