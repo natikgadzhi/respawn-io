@@ -23,7 +23,7 @@ Working in the open channels is essential (to me) in remote environments: it let
 
 If you don't see open chatter — it's either because no one is talking about day-to-day work at all (unlikely, but that's a different problem), or because everyone is siloed in their DMs.
 
-If you've seen the chatter _before_ you left, but it died out without you — think about why nobody else sees talking in the open as beneficial, or why are they afraid to or shy to post in the open. Do you see judgement, "well, actually", or other form of lack of support when people did talk in the open previously?
+> If you've seen the chatter _before_ you left, but it died out without you — think about why nobody else sees talking in the open as beneficial, or why are they afraid to or shy to post in the open. Do you see judgement, "well, actually", or other form of lack of support when people did talk in the open previously?
 
 ## Are people asking for help?
 
@@ -33,7 +33,7 @@ Some teams prefer a more open and direct culture than others. But in all teams w
 
 So if you don't see any of the vulnerability and camaraderie in the team, it could be that no one needs help, or makes mistakes, or gets blocked ever (lol no, they do). However, it's much more likely that people are afraid to talk about their mistakes in the open because they don't trust that other people on the team, or you, will not use that against them.
 
-In my experience, that kind of trust starts with leadership. Believe it or not, nobody expects you to _always be right_. And when you tell your team that you need help, or share that you've asked your manager or your peers for help, or tell them that you made a mistake — it empowers your team to do the same. Of course, that only works if you don't punish people for making honest mistakes.
+> In my experience, that kind of trust starts with leadership. Believe it or not, **nobody expects you to _always be right_**. **And when you tell your team that you need help, or ask for help for help, or tell them that you made a mistake — it empowers your team to do the same.** Of course, that only works if you don't punish people for making honest mistakes.
 
 ## Are people debating ideas?
 
@@ -41,9 +41,9 @@ Do you see any new RFCs, or just discussions about how to build a feature, or wh
 
 RFCs, Disagreements, and debates are all critical to building a resilient, open, serene organization that sources ideas from all the talented people on the team. But it's pretty hard to get right.
 
-Discussions take time to think and prepare through a problem at hand. Articulating engineering opinion is both a communication task (writing and presenting), and an engineering task (research, proof of concept or a spike). It's your job as a leader to balance your team's backlog [in a way that gives them enough slack-time](https://fs.blog/slack/).
+**Discussions take time to think and prepare through a problem at hand.** Articulating engineering opinion is both a communication task (writing and presenting), and an engineering task (research, proof of concept or a spike). It's your job as a leader to balance your team's backlog [in a way that gives them enough slack-time](https://fs.blog/slack/).
 
-Disagreeing in public and taking time for research work can feel scary for the people on your team. If that work is not recognized, or if the discussions are routinely shut down and discarded because of a pressing deadline — no one will risk taking the time to articulate and post their opinion anymore. Which is pretty bad for your team's culture, and for the company as a whole, as it limits where you get new ideas. Why hire the smartest people you could find, and then shut them down?
+**Disagreeing in public and taking time for research work can feel scary for the people on your team.** If that work is not recognized, or if the discussions are routinely shut down and discarded because of a pressing deadline — no one will risk taking the time to articulate and post their opinion anymore. Which is pretty bad for your team's culture, and for the company as a whole, as it limits where you get new ideas. Why hire the smartest people you could find, and then shut them down?
 
 So, if you don't see any back-and-forth on ideas on how to implement features, and close to zero feedback on pull requests overall — you should absolutely dive deeper.
 
@@ -62,10 +62,8 @@ The same goes for understanding where the company, the organization, and the tea
 ## Are people cheerful?
 
 Do you see folks recognize each other's work, and support each other?
-
-If your team has daily written check-ins, do you see people reacting to each other's check-ins? Congratulating each other on work well done? Do people check-in at all? If you see any outliers that dropped the habit, can you figure out why?
-
-If you have regular sync calls to check in — do people gladly share their work in progress with each other, and ask questions, or do you have to call out each team member one by one and inquire about their progress?
+- If your team has daily written check-ins, do you see people reacting to each other's check-ins? Congratulating each other on work well done? Do people check-in at all? If you see any outliers that dropped the habit, can you figure out why?
+- If you have regular sync calls to check in — do people gladly share their work in progress with each other, and ask questions, or do you have to call out each team member one by one and inquire about their progress?
 
 Engaged teams work together. The recognition and energy helps _push_ the project forward. If you have to _pull_ the progress out of people on your team, and the morale seems down — it's likely a combination of factors described above. Lack of clarity, lack of autonomy, lack of recognition, lack of support, or an otherwise toxic environment.
 
