@@ -16,7 +16,7 @@ export default function OpengraphImage({ post, width, height}: Props) {
           fontFamily: '"Jetbrains Mono"',
           backgroundImage: "linear-gradient(90deg, #cbd5e1 0%, #f8fafc 100%)",
         }}
-        tw="flex flex-col justify-start w-full h-full p-12 bg-slate-50">
+        tw="flex flex-col justify-start w-full h-full p-12 px-24 bg-slate-50">
 
         <h1 style={{
           backgroundImage: "linear-gradient(90deg, #1d4ed8 0%, #581c87 100%)",
@@ -29,7 +29,7 @@ export default function OpengraphImage({ post, width, height}: Props) {
           {post.title}
         </h1>
 
-        <p tw="mt-4 text-2xl text-black">{post.excerpt}</p>
+        <p tw="mt-4 text-4xl font-extrabold leading-normal">{post.excerpt}</p>
 
         <div tw="flex mt-auto flex-row justify-between items-baseline w-full">
           <a
