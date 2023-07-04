@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "next build && tsx scripts/rss.ts",
     "start": "next start"
   },
   "dependencies": {
@@ -23,7 +23,8 @@
     "remark-gfm": "^3.0.1",
     "remark-html": "15.0.2",
     "remark-wiki-link": "^1.0.4",
-    "shiki": "^0.14.3"
+    "shiki": "^0.14.3",
+    "tsx": "^3.12.7"
   },
   "devDependencies": {
     "@next/env": "^13.4.8",

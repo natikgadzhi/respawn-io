@@ -1,9 +1,10 @@
 import { Feed } from "feed";
 import { config } from "../blog.config";
 import fs from "fs";
-import { Post } from "contentlayer/generated";
+import { getPosts } from "../lib/posts";
 
-export default async function generateFeeds(posts: Array<Post>) {
+export default async function generateFeeds() {
+  const posts = await getPosts();
   const date = new Date();
 
   const author = {
@@ -50,3 +51,9 @@ export default async function generateFeeds(posts: Array<Post>) {
   fs.writeFileSync("./public/rss/atom.xml", feed.atom1());
   fs.writeFileSync("./public/rss/feed.json", feed.json1());
 }
+
+generateFeeds().then(() => {
+  console.log("[RSS] feeds generated");
+}).catch((err) => {
+  console.error("[RSS] error generating feeds", err);
+});
