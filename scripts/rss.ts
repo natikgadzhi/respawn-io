@@ -1,10 +1,15 @@
 import { Feed } from "feed";
 import { config } from "../blog.config";
 import fs from "fs";
-import { getPosts } from "../lib/posts";
+import { allPosts } from "../.contentlayer/generated/index.mjs";
+import { compareDesc } from "date-fns";
 
 export default async function generateFeeds() {
-  const posts = await getPosts();
+  const env_name = process.env.ENV_NAME;
+  const posts = allPosts
+    .filter((post) => env_name == "localhost" || !post.draft)
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+
   const date = new Date();
 
   const author = {

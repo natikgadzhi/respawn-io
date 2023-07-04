@@ -2,8 +2,9 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "next build && tsx scripts/rss.ts",
-    "start": "next start"
+    "build": "next build && yarn run rss",
+    "start": "next start",
+    "rss": "tsx scripts/rss.ts"
   },
   "dependencies": {
     "@microflash/remark-figure-caption": "^1.0.0",
