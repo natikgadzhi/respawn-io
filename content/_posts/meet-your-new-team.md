@@ -4,6 +4,7 @@ excerpt: Things to do to get to know your new team, and start building trust.
 date: 2023-06-25
 created: 2023-06-25
 modified: 2023-06-25
+draft: true
 ---
 
 # Meet your team
@@ -37,11 +38,11 @@ Let's unpack the definition of engineering manager's job in the context of your 
 - It's 2023, chances are your team works remotely. If that's the case, run a quick [[remote-team-health-check|remote team healthcheck]].
 
 
-- I'd say be vulnerable and admit that you're also just learning and listening to the team. But that's building trust, and you do in in whatever way that you like to lead. 
+- It's okay to be vulnerable and admit that you're also just learning and listening to the team. But that's building trust, and you do in in whatever way that you like to lead. 
 
 
 
-### Summarize
+## Summary
 
 - Figure out how the team fits into the company's strategic roadmap. What are the tactical expectations from the team in the next 3, 6, 12 months?
 - Talk to their previous leadership, and for each person, figure out their strong sides, growth areas, preferences, any ongoing growth projects.
