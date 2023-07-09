@@ -26,6 +26,11 @@ export const config = {
     github: "https://github.com/natikgadzhi"
   },
 
+  daily: {
+    title: "Daily",
+    description: "Quick notes on things I learned that day. Mostly coding, and some a-ha moment in working with people, or tricks to get projects done on time."
+  },
+
   footer: {
     copyright: "© Natik Gadzhi",
   }

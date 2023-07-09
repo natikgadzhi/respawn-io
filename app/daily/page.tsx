@@ -2,7 +2,7 @@ import { allDailies } from "contentlayer/generated";
 
 import { Metadata } from "next";
 
-import { config as blogConfig } from "blog.config";
+import { config } from "blog.config";
 import { compareDesc, format, parse } from "date-fns";
 
 const getDailyNotes = async () => {
@@ -18,8 +18,8 @@ const formatDate = (date: string) => {
 };
 
 export const metadata: Metadata = {
-  title: "TIL and Daily Notes: " + blogConfig.title,
-  description: "Quick notes on things I learned that day. Mostly coding, and some a-ha moment in working with people, or tricks to get projects done on time.",
+  title: "TIL and Daily Notes: " + config.title,
+  description: config.daily.description,
 };
 
 export default async function Page() {
@@ -31,7 +31,7 @@ export default async function Page() {
         <h1 className="text-xl md:text-2xl font-bold">Daily Notes</h1>
 
         <p className="text-md md:text-lg">
-          Quick notes on things I learned that day. Mostly coding, and some a-ha moment in working with people, or tricks to get projects done on time.
+          { config.daily.description }
         </p>
 
         <ul>
