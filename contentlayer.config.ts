@@ -83,24 +83,36 @@ const Post = defineDocumentType(() => ({
   },
 }));
 
+// Page is a simple type to hold the content
+// of a page. Currently used in `/about`.
 const Page = defineDocumentType(() => ({
   name: "Page",
   filePathPattern: `pages/*.md`,
   contentType: "mdx",
 }));
 
-const TIL = defineDocumentType(() => ({
-  name: "TIL",
-  filePathPattern: `TIL/*.md`,
+// Daily are short TIL notes.
+const Daily = defineDocumentType(() => ({
+  name: "Daily",
+  filePathPattern: `daily/*.md`,
   contentType: "mdx",
   fields: {
     title: {
+      required: true,
       type: "string",
-      description: "The title of the TIL",
+      description: "The title of the note",
     },
+    // Obsidian likes creating these fields in Linters
+    // but they are not used.
     created: {
       type: "date",
-      description: "The creation date for the TIL",
+      required: false,
+      description: "The creation date for the note",
+    },
+    modified: {
+      type: "date",
+      required: false,
+      description: "The last update date for the note",
     }
   }
 }));
@@ -108,7 +120,7 @@ const TIL = defineDocumentType(() => ({
 export default makeSource({
   disableImportAliasWarning: true,
   contentDirPath: "content/",
-  documentTypes: [Post, Page, TIL],
+  documentTypes: [Post, Page, Daily],
 
   mdx: {
     remarkPlugins: [
