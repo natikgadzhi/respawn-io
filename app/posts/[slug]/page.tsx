@@ -35,6 +35,7 @@ export async function generateMetadata( { params }: Props, parent: ResolvingMeta
     keywords: post.meta_keywords,
     openGraph: {
       type: "article",
+      url: post.absoluteURL,
       title: post.title,
       description: post.excerpt,
       images: [
