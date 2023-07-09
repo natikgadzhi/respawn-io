@@ -18,6 +18,8 @@ export const metadata: Metadata = {
     canonical: blogConfig.baseURL,
     types: {
       'application/rss+xml': `${blogConfig.baseURL}'/rss/feed.xml`,
+      'application/rss+json': `${blogConfig.baseURL}'/rss/feed.json`,
+      'application/atom+xml': `${blogConfig.baseURL}'/rss/atom.xml`
     },
   },
 
