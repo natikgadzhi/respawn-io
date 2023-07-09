@@ -8,6 +8,8 @@ import { mdxComponents } from "lib/mdxComponents";
 
 import Article from "components/article";
 
+import { config } from "blog.config";
+
 type Params = {
   params: {
     slug: string;
@@ -32,6 +34,7 @@ export async function generateMetadata( { params }: Props, parent: ResolvingMeta
     description: post.meta_description === undefined ? post.excerpt : post.meta_description,
     keywords: post.meta_keywords,
     openGraph: {
+      type: "article",
       title: post.title,
       description: post.excerpt,
       images: [
@@ -41,11 +44,15 @@ export async function generateMetadata( { params }: Props, parent: ResolvingMeta
           height: 630,
           alt: `${post.title}. ${post.excerpt}`,
         }
-      ]
+      ],
+      siteName: config.title,
     },
     twitter: {
       title: post.title,
       description: post.excerpt,
+      creator: config.author.twitterHandle,
+      site: config.author.twitterHandle,
+      card: "summary_large_image"
     },
     alternates: {
       canonical: post.absoluteURL

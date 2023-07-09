@@ -14,7 +14,7 @@ export const config = {
 
   meta: {
     title: "Natik's Journal: Blog on engineering management",
-    description: "A blog on engineering leadership and software development.",
+    description: "Notes on engineering leadership and software development.",
   },
 
   author: {
@@ -22,7 +22,8 @@ export const config = {
     email: "nate@respawn.io",
     twitterURL: "https://twitter.com/natikgadzhi",
     twitterHandle: "@natikgadzhi",
-    fediverseURL: "https://hachyderm.io/@natik"
+    fediverseURL: "https://hachyderm.io/@natik",
+    github: "https://github.com/natikgadzhi"
   },
 
   footer: {

@@ -8,12 +8,23 @@ import Article from 'components/article'
 
 export const metadata: Metadata = {
   title: config.title,
+  description: config.meta.description,
+
   openGraph: {
-    title: config.title
+    title: config.title,
+    description: config.description,
+    type: "website",
+    locale: "en_US",
+    siteName: config.title
   },
+
   twitter: {
-    title: config.title
+    title: config.title,
+    creator: config.author.twitterHandle,
+    site: config.author.twitterHandle,
+    card: "summary_large_image"
   },
+
   alternates: {
     canonical: `${config.baseURL}/about`
   }
