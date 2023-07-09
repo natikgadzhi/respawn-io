@@ -3,11 +3,9 @@ import { NextRequest } from "next/server";
 
 import { allPosts } from "contentlayer/generated";
 
-import OpengraphImage from "app/posts/[slug]/og-image.png/image";
+import OpengraphImage from "./image";
 
 export const runtime = "edge";
-
-
 
 // `ImageResponseOptions` are passed into `ImageResponse` alongside the
 // component to actually draw the image. It contains width, height, and fonts.

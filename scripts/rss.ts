@@ -1,8 +1,9 @@
 import { Feed } from "feed";
-import { config } from "../blog.config";
 import fs from "fs";
-import { allPosts } from "../.contentlayer/generated/index.mjs";
 import { compareDesc } from "date-fns";
+
+import { config } from "../blog.config";
+import { allPosts } from "../.contentlayer/generated/index.mjs";
 
 export default async function generateFeeds() {
   const env_name = process.env.ENV_NAME;
