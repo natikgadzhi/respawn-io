@@ -19,7 +19,7 @@ const prettyCodeOptions: Partial<Options> = {
 
 const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: `_posts/*.md`,
+  filePathPattern: `posts/*.md`,
   contentType: "mdx",
   fields: {
     title: {
@@ -85,14 +85,30 @@ const Post = defineDocumentType(() => ({
 
 const Page = defineDocumentType(() => ({
   name: "Page",
-  filePathPattern: `_pages/*.md`,
+  filePathPattern: `pages/*.md`,
   contentType: "mdx",
+}));
+
+const TIL = defineDocumentType(() => ({
+  name: "TIL",
+  filePathPattern: `TIL/*.md`,
+  contentType: "mdx",
+  fields: {
+    title: {
+      type: "string",
+      description: "The title of the TIL",
+    },
+    created: {
+      type: "date",
+      description: "The creation date for the TIL",
+    }
+  }
 }));
 
 export default makeSource({
   disableImportAliasWarning: true,
   contentDirPath: "content/",
-  documentTypes: [Post, Page],
+  documentTypes: [Post, Page, TIL],
 
   mdx: {
     remarkPlugins: [
