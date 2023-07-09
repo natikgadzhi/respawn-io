@@ -5,7 +5,7 @@ import rehypePrettyCode, { type Options } from "rehype-pretty-code"
 import remarkFigureCaption from "@microflash/remark-figure-caption"
 import remarkGfm from "remark-gfm";
 
-import wikilinks from "remark-wiki-link"
+import wikilinks from "remark-wiki-link";
 
 const hrefTemplate = (permalink: string) => `${blogConfig.baseURL}/posts/${permalink}`
 const pageResolver = (name: string) => [name]
@@ -102,6 +102,7 @@ const Daily = defineDocumentType(() => ({
       type: "string",
       description: "The title of the note",
     },
+
     // Obsidian likes creating these fields in Linters
     // but they are not used.
     created: {
@@ -113,6 +114,17 @@ const Daily = defineDocumentType(() => ({
       type: "date",
       required: false,
       description: "The last update date for the note",
+    },
+    draft: {
+      type: "boolean",
+      required: false,
+      description: "Whether the note is a draft"
+    }
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (doc) => `${doc._raw.sourceFileName.split(".")[0]}`
     }
   }
 }));
