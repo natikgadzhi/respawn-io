@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     title: blogConfig.title,
     locale: "en_US",
     siteName: blogConfig.title,
-    url: `${blogConfig.baseURL}/posts`
+    url: blogConfig.baseURL
   },
   twitter: {
     title: blogConfig.title,
