@@ -98,7 +98,7 @@ const Daily = defineDocumentType(() => ({
   contentType: "mdx",
   fields: {
     title: {
-      required: true,
+      required: false,
       type: "string",
       description: "The title of the note",
     },
