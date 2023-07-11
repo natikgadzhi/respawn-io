@@ -15,31 +15,10 @@ const getPosts = async () => {
   return posts;
 }
 
+// twitter and openGraph keys will be merged from defaults in layout.tsx
 export const metadata: Metadata = {
   title: blogConfig.title,
-  description: blogConfig.description,
-
-  openGraph: {
-    type: "website",
-    title: blogConfig.title,
-    locale: "en_US",
-    siteName: blogConfig.title,
-    url: blogConfig.baseURL
-  },
-  twitter: {
-    title: blogConfig.title,
-    description: blogConfig.description,
-    creator: blogConfig.author.twitterHandle,
-    site: blogConfig.author.twitterHandle,
-    card: "summary_large_image"
-  },
-
-  alternates: {
-    canonical: blogConfig.baseURL,
-    types: {
-      'application/rss+xml': `${blogConfig.baseURL}'/rss/feed.xml`,
-    },
-  },
+  description: blogConfig.description
 };
 
 export default async function Page() {

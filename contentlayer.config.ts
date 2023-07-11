@@ -5,7 +5,7 @@ import rehypePrettyCode, { type Options } from "rehype-pretty-code"
 import remarkFigureCaption from "@microflash/remark-figure-caption"
 import remarkGfm from "remark-gfm";
 
-import wikilinks from "remark-wiki-link"
+import wikilinks from "remark-wiki-link";
 
 const hrefTemplate = (permalink: string) => `${blogConfig.baseURL}/posts/${permalink}`
 const pageResolver = (name: string) => [name]
@@ -19,7 +19,7 @@ const prettyCodeOptions: Partial<Options> = {
 
 const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: `_posts/*.md`,
+  filePathPattern: `posts/*.md`,
   contentType: "mdx",
   fields: {
     title: {
@@ -83,16 +83,56 @@ const Post = defineDocumentType(() => ({
   },
 }));
 
+// Page is a simple type to hold the content
+// of a page. Currently used in `/about`.
 const Page = defineDocumentType(() => ({
   name: "Page",
-  filePathPattern: `_pages/*.md`,
+  filePathPattern: `pages/*.md`,
   contentType: "mdx",
+}));
+
+// Daily are short TIL notes.
+const Daily = defineDocumentType(() => ({
+  name: "Daily",
+  filePathPattern: `daily/*.md`,
+  contentType: "mdx",
+  fields: {
+    title: {
+      required: false,
+      type: "string",
+      description: "The title of the note",
+    },
+
+    // Obsidian likes creating these fields in Linters
+    // but they are not used.
+    created: {
+      type: "date",
+      required: false,
+      description: "The creation date for the note",
+    },
+    modified: {
+      type: "date",
+      required: false,
+      description: "The last update date for the note",
+    },
+    draft: {
+      type: "boolean",
+      required: false,
+      description: "Whether the note is a draft"
+    }
+  },
+  computedFields: {
+    slug: {
+      type: "string",
+      resolve: (doc) => `${doc._raw.sourceFileName.split(".")[0]}`
+    }
+  }
 }));
 
 export default makeSource({
   disableImportAliasWarning: true,
   contentDirPath: "content/",
-  documentTypes: [Post, Page],
+  documentTypes: [Post, Page, Daily],
 
   mdx: {
     remarkPlugins: [

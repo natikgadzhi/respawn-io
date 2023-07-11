@@ -25,12 +25,15 @@ export const metadata: Metadata = {
 
   openGraph: {
     type: "website",
+    title: blogConfig.title,
     locale: "en_US",
     siteName: blogConfig.title,
     url: blogConfig.baseURL
   },
 
   twitter: {
+    title: blogConfig.title,
+    description: blogConfig.description,
     creator: blogConfig.author.twitterHandle,
     site: blogConfig.author.twitterHandle,
     card: "summary_large_image"
