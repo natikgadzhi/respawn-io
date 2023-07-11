@@ -22,6 +22,18 @@ const formatDate = (date: string) => {
 export const metadata: Metadata = {
   title: "TIL and Daily Notes: " + config.title,
   description: config.daily.description,
+
+  alternates: {
+    canonical: `${config.baseURL}/daily`,
+
+    // because Next.js doesn't do deep merge, these are here.
+    // TODO: make a util function that generates basic meta tags based on a template.
+    types: {
+      'application/rss+xml': `${config.baseURL}'/rss/feed.xml`,
+      'application/rss+json': `${config.baseURL}'/rss/feed.json`,
+      'application/atom+xml': `${config.baseURL}'/rss/atom.xml`
+    },
+  },
 };
 
 // A component to render a single daily note.
