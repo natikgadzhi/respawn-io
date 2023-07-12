@@ -27,6 +27,7 @@ const Article = ({ children }: Props) => {
             md:prose-lg lg:prose-xl
 
             prose-pre:not-prose
+            prose-pre:text-sm
 
             mb-32">
       {children}
