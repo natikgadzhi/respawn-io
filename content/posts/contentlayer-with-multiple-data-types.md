@@ -2,7 +2,7 @@
 title: "Using Contentlayer with Next.js"
 excerpt: |
   Contentlayer is the easiest way to setup markdown with mdx source to static website pipeline. Here's how it's implemented in respawn.io.
-draft: true
+draft: false
 date: 2023-07-10
 created: 2023-07-10
 modified: 2023-07-10
