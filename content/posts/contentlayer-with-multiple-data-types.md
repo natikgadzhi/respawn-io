@@ -1,7 +1,7 @@
 ---
 title: "Using Contentlayer with Next.js"
 excerpt: |
-  Setting up Contentlayer with Next.js and adding additional data types, commit by commit.
+  Contentlayer is the easiest way to setup markdown with mdx source to static website pipeline. Here's how it's implemented in respawn.io.
 draft: true
 date: 2023-07-10
 created: 2023-07-10
