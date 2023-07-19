@@ -23,6 +23,22 @@ export const metadata: Metadata = {
   title: "TIL and Daily Notes: " + config.title,
   description: config.daily.description,
 
+  openGraph: {
+    type: "website",
+    title: config.title,
+    locale: "en_US",
+    siteName: config.title,
+    url: `${config.baseURL}/daily`
+  },
+
+  twitter: {
+    title: config.title,
+    description: config.description,
+    creator: config.author.twitterHandle,
+    site: config.author.twitterHandle,
+    card: "summary_large_image"
+  },
+
   alternates: {
     canonical: `${config.baseURL}/daily`,
 
