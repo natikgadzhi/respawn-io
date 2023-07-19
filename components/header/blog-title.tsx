@@ -15,7 +15,7 @@ const BlogTitle = ({ title }: Props) => {
       {path === "/" ? (
         title
       ) : (
-        <Link href="/" className="hover:underline underline-offset-4">
+        <Link href="/" className="hover:underline hover:decoration-2 underline-offset-4">
           {title}
         </Link>
       )}

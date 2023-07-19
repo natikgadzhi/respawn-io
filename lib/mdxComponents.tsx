@@ -5,7 +5,11 @@ import Callout from "components/callout";
 import type { MDXComponents } from "mdx/types";
 
 export const mdxComponents: MDXComponents = {
-  a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
+  a: ({ href, children }) => (
+    <Link href={href as string} className="decoration-1 hover:decoration-2">
+      {children}
+    </Link>
+  ),
   img: ({ src, alt }) => (
     <span className="inline-block relative w-full pb-[56.25%] max-h-[800px]">
       <Image
