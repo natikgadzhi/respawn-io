@@ -4,6 +4,7 @@ modified: 2022-08-23
 date: 2022-08-23
 title: "Training, Coaching, and Mentoring as an Engineering Manager"
 excerpt: "What role you play for each person on your team, and in your organization."
+meta_keywords: "Engineering leadership, engineering management, mentorship for engineering managers"
 ---
 
 # Training, Coaching, and Mentoring as an Engineering Manager
@@ -71,3 +72,6 @@ You don't expect a new manager to excel at training, coaching, AND mentorship, a
 - Once you get more experience as a manager, you'll get to build coaching and mentoring relationships, and partnerships with your senior and staff engineers.
 
 Hopefully, while all that is happening, your manager is coaching you to be a better leader for your team. Once you soak up enough experience, you'll be ready to coach team leads and managers of your own.
+
+## Links
+- [[you-should-really-say-no-more-often|On delegating work and coaching your team to work yourself out of (some) jobs effectively]]
