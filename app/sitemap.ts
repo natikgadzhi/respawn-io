@@ -17,18 +17,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: config.baseURL,
       lastModified: new Date(posts[0].modified),
-      changeFrequency: 'daily'
+      changeFrequency: "daily"
     },
     {
       url: `${config.baseURL}/daily`,
       lastModified: new Date(daily[0].slug),
-      changeFrequency: 'daily'
+      changeFrequency: "daily"
     }
   ];
 
+  // @ts-ignore: Type 'string' is not assignable to type '"always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never"'.
   return index.concat(posts.map((post) => ({
     url: post.absoluteURL,
     lastModified: new Date(post.modified),
-    changeFrequency: 'daily'
+    changeFrequency: "daily"
   })));
 }
