@@ -1,7 +1,6 @@
 ---
 title: Remote Team Health Check
 excerpt: How to quickly check-in with your team, and make sure people feel safe, supported, and motivated, in a remote environment.
-date: 2023-06-25
 created: 2023-06-25
 modified: 2023-07-03
 draft: false

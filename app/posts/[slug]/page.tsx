@@ -83,9 +83,9 @@ export default async function Post( { params }: Params ) {
         <div>
           <span>
             Originally published on&nbsp;
-            {format(parseISO(post.date), "MMM do yyyy")}
+            {format(parseISO(post.created), "MMM do yyyy")}
           </span>
-          {post.date != post.modified && (
+          {post.created != post.modified && (
             <span className="ml-2">
               Last update on&nbsp;
               {format(parseISO(post.modified), "MMM do yyyy")}

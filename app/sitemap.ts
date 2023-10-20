@@ -7,7 +7,7 @@ import { config } from 'blog.config';
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = allPosts
     .filter((post) => !post.draft)
-    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+    .sort((a, b) => compareDesc(new Date(a.created), new Date(b.created)));
 
   const daily = allDailies
     .filter((d) => !d.draft)

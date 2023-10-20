@@ -1,8 +1,8 @@
 ---
-date: 2022-08-08
 title: Structured Learning
 excerpt: |
   Getting un-stuck and picking up one learning subject at a time.
+created: 2022-08-08
 modified: 2022-08-08
 ---
 

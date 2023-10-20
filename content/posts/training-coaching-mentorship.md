@@ -1,7 +1,6 @@
 ---
 created: 2022-08-23
 modified: 2022-08-23
-date: 2022-08-23
 title: "Training, Coaching, and Mentoring as an Engineering Manager"
 excerpt: "What role you play for each person on your team, and in your organization."
 meta_keywords: "Engineering leadership, engineering management, mentorship for engineering managers"

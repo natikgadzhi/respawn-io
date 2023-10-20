@@ -10,7 +10,7 @@ const getPosts = async () => {
   const env_name = process.env.ENV_NAME;
   const posts = allPosts
     .filter((post) => env_name == "localhost" || !post.draft)
-    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
+    .sort((a, b) => compareDesc(new Date(a.created), new Date(b.created)));
 
   return posts;
 }

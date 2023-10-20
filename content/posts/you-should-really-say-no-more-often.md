@@ -2,7 +2,6 @@
 title: You Should Really Say "No" More Often
 excerpt: Saying "No" is extremely valuable. But not just for you — for your team
   and larger organization as well. Here's how.
-date: 2023-08-05
 created: 2023-08-05
 modified: 2023-08-05
 draft: 

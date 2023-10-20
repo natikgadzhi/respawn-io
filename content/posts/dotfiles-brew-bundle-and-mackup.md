@@ -1,7 +1,6 @@
 ---
 created: 2022-12-14
 modified: 2023-07-24
-date: 2022-12-14
 title: "Setting up a New Mac with dotfiles, brew bundle, and mackup"
 excerpt:
   "When you can't quite use the Migration Assistant, but not ready to geek out

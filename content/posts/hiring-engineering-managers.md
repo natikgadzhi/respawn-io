@@ -1,7 +1,6 @@
 ---
 created: 2022-11-29
 modified: 2022-11-29
-date: 2022-11-29
 title: "Barebones Engineering Management Interview Questions"
 excerpt: "Here's a minimal set of signals I'm looking for when interviewing engineering managers."
 ---

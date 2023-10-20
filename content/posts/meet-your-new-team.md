@@ -1,7 +1,6 @@
 ---
 title: Meet your new team
 excerpt: Things to do to get to know your new team, and start building trust.
-date: 2023-06-25
 created: 2023-06-25
 modified: 2023-06-25
 draft: true

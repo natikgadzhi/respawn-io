@@ -1,7 +1,6 @@
 ---
 title: Building Swift DocC as a Static Website
 excerpt: Using swift-docc-plugin for SwiftPM to export your docs, and swift-docc-render to get a static website with your documentation.
-date: 2023-06-09
 created: 2023-06-09
 modified: 2023-06-09
 draft: false
