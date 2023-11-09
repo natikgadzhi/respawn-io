@@ -1,3 +1,4 @@
+import { RSSIcon } from "components/icons";
 import Link from "next/link";
 
 type Props = {
@@ -7,8 +8,10 @@ type Props = {
 const NavigationLink = ({ href, children }) => (
   <Link
     href={href}
-    className="hover:underline hover:decoration-2 underline-offset-4">
-    {children}
+    className="whitespace-nowrap hover:underline hover:decoration-2 underline-offset-4 flex items-baseline">
+    <div className="flex items-center">
+      {children}
+    </div>
   </Link>
 );
 
@@ -23,7 +26,10 @@ const Navigation = ({ className }: Props) => {
         <NavigationLink href="/about">About</NavigationLink>
       </li>
       <li className="inline-block">
-        <NavigationLink href="/rss/feed.xml">RSS</NavigationLink>
+        <NavigationLink href="/rss/feed.xml">
+          <RSSIcon/>
+          RSS
+        </NavigationLink>
       </li>
     </ul>
   );

@@ -16,7 +16,7 @@ const Header = () => {
         {config.description}
       </p>
 
-      <Navigation className="my-2 md:hidden" />
+      <Navigation className="my-2 inline-flex md:hidden" />
     </section>
   );
 };
