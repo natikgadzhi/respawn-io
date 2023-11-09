@@ -6,6 +6,7 @@ import { config } from "blog.config";
 import { compareDesc, format, parse } from "date-fns";
 import { getMDXComponent } from "next-contentlayer/hooks";
 import { mdxComponents } from "lib/mdxComponents";
+import { LinkedH4 } from "components/headerLinks";
 
 const getDailyNotes = async () => {
   const env_name = process.env.ENV_NAME;
@@ -52,15 +53,16 @@ export const metadata: Metadata = {
   },
 };
 
+
 // A component to render a single daily note.
 function DailyNote({ daily }: { daily: Daily }) {
   const MDXContent = getMDXComponent(daily.body.code);
   return (
     <>
-      <h4 className="pr-1 md:pr-2 inline">
-        { `${formatDate(daily.slug)}:` }
-      </h4>
-
+      <LinkedH4 className="pr-1 md:pr-2 inline">
+       { `${formatDate(daily.slug)}:` }
+      </LinkedH4>
+      
       {( daily.title && daily.title.length > 0 ) && (<strong className="pr-1 md:pr-2">
         { daily.title }
       </strong>)}
