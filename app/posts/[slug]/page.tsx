@@ -10,19 +10,13 @@ import Article from "components/article";
 
 import { config } from "blog.config";
 
-type Params = {
-  params: {
-    slug: string;
-  };
-};
-
-type Props = {
+type PostPageProps = {
   params: {
     slug: string
   }
 }
 
-export async function generateMetadata( { params }: Props, parent: ResolvingMetadata ): Promise<Metadata> {
+export async function generateMetadata( { params }: PostPageProps, parent: ResolvingMetadata ): Promise<Metadata> {
   const post = allPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
@@ -65,7 +59,7 @@ export async function generateStaticParams() {
   return allPosts.map((post) => { slug: post.slug });
 }
 
-export default async function Post( { params }: Params ) {
+export default async function Post( { params }: PostPageProps ) {
   const post = allPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
