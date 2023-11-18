@@ -1,5 +1,6 @@
 import { defineDocumentType } from "contentlayer/source-files";
 import { config } from "../blog.config";
+import { titleCase } from "./titleCase";
 
 export const Post = defineDocumentType(() => ({
     name: "Post",
@@ -43,6 +44,10 @@ export const Post = defineDocumentType(() => ({
       }
     },
     computedFields: {
+      formattedTitle: {
+        type: "string",
+        resolve: (doc) => titleCase(doc.title),
+      },
       slug: {
         type: "string",
         resolve: (doc) => `${doc._raw.sourceFileName.replace(/\.md$/, "")}`,
