@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 };
 
 export default function About() {
-  const page = allPages.find((page) => page._raw.sourceFileName === "_about.md")
+  const page = allPages.find((page) => page._raw.sourceFileName === "about.md")
   const MDXComponent = useMDXComponent(page.body.code)
 
   return (
