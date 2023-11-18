@@ -28,7 +28,7 @@ What would you say to someone else struggling to fit 20 hobby projects into thei
 
 *The big lesson of looking at your learning from this angle is that you only have enough time for a few topics each year. Making the right choice will bring you lots of fun, and can change your career trajectory dramatically.*
 
-<Callout>You only have 5 months left in 2022. Each new skill you want will take at least 2 months to develop. What are the skills you want most, and what's the type of work that you need to do to acquire them?</Callout>
+> You only have 5 months left in 2022. Each new skill you want will take at least 2 months to develop. What are the skills you want most, and what's the type of work that you need to do to acquire them?
 
 This approach might look clean and nice in theory, but in practice it means that now you have a new problem: instead of working on a project _right now_, you have a new meta-project of exploring time commitments and trade offs. It's up to you to decide how much time is reasonable to spend on this.
 

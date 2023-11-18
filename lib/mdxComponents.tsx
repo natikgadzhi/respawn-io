@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import Callout from "components/callout";
 import { LinkedH2, LinkedH3 } from "components/headerLinks";
 
 import type { MDXComponents } from "mdx/types";
@@ -21,5 +20,4 @@ export const mdxComponents: MDXComponents = {
       />
     </span>
   ),
-  Callout,
 };
