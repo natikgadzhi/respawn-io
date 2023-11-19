@@ -12,6 +12,7 @@ const Article = ({ children }: Props) => {
             prose-li:leading-relaxed prose-p:leading-relaxed
 
             prose-h2:pt-8
+            lg:prose-p:mb-10
 
             prose-a:text-blue-700
             prose-a:dark:text-sky-400
