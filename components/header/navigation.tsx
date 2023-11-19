@@ -28,19 +28,25 @@ const Navigation = ({ className }: NavigationProps) => {
       <li className="inline-block">
         <NavigationLink href="/about">
           <UserCircleIcon />
-          About
+          <span className="pl-0.25">
+            About
+          </span>
         </NavigationLink>
       </li>
       <li className="inline-block">
         <NavigationLink href="/daily">
           <ChatBubbleIcon />
-          TIL
+          <span className="pl-0.25">
+            TIL
+          </span>
         </NavigationLink>
       </li>
       <li className="inline-block">
         <NavigationLink href="/rss/feed.xml">
           <RSSIcon/>
-          RSS
+          <span className="pl-0.25">
+            RSS
+          </span>
         </NavigationLink>
       </li>
     </ul>
