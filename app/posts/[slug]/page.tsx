@@ -24,26 +24,26 @@ export async function generateMetadata( { params }: PostPageProps, parent: Resol
   }
 
   return {
-    title: post.title,
+    title: post.formattedTitle,
     description: post.meta_description === undefined ? post.excerpt : post.meta_description,
     keywords: post.meta_keywords,
     openGraph: {
       type: "article",
       url: post.absoluteURL,
-      title: post.title,
+      title: post.formattedTitle,
       description: post.excerpt,
       images: [
         {
           url: post.ogImageURL,
           width: 1200,
           height: 630,
-          alt: `${post.title}. ${post.excerpt}`,
+          alt: `${post.formattedTitle}. ${post.excerpt}`,
         }
       ],
       siteName: config.title,
     },
     twitter: {
-      title: post.title,
+      title: post.formattedTitle,
       description: post.excerpt,
       creator: config.author.twitterHandle,
       site: config.author.twitterHandle,

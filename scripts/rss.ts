@@ -40,7 +40,7 @@ export default async function generateFeeds() {
 
   posts.forEach((post) => {
     feed.addItem({
-      title: post.title,
+      title: post.formattedTitle,
       id: post.url,
       link: post.url,
       description: post.excerpt,

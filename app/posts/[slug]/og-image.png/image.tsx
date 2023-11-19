@@ -26,7 +26,7 @@ export default function OpengraphImage({ post, width, height}: Props) {
           color: "transparent",
         }}
           tw="text-7xl break-keep font-extrabold mb-8">
-          {post.title}
+          {post.formattedTitle}
         </h1>
 
         <p tw="mt-4 text-4xl font-extrabold leading-normal">{post.excerpt}</p>
