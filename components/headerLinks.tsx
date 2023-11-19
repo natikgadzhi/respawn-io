@@ -49,7 +49,7 @@ export const LinkedH3 = ({ children, className }: HeaderProps) => {
   return (
     <>
       <h3 id={id} className={`${className} relative`}>
-        <HeaderLink id={id} />
+        <HeaderLink id={id} linkPosition="-left-10 top-1" />
         {children}
       </h3>
     </>
