@@ -4,7 +4,7 @@ import { config as blogConfig } from "blog.config";
 import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 
-import Posts from "components/posts";
+import { PostsList } from "components/posts";
 
 const getPosts = async () => {
   const env_name = process.env.ENV_NAME;
@@ -26,7 +26,7 @@ export default async function Page() {
 
   return (
     <>
-      <Posts posts={posts} />
+      <PostsList posts={posts} />
     </>
   );
 }

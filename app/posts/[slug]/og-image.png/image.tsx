@@ -1,3 +1,4 @@
+import { PostDescription } from "components/posts";
 import type { Post } from "contentlayer/generated";
 
 type Props = {
@@ -32,7 +33,9 @@ export default function OpengraphImage({ post, width, height }: Props) {
         </h1>
 
         {post.formattedTitle.length < 60 && (
-          <p tw="mt-4 text-4xl font-extrabold leading-normal">{post.excerpt}</p>
+          <p tw="mt-4 text-4xl font-extrabold leading-normal">
+            <PostDescription post={post} />
+          </p>
         )}
 
         {post.formattedTitle.length < 60 && (

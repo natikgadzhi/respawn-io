@@ -43,7 +43,7 @@ export default async function generateFeeds() {
       title: post.formattedTitle,
       id: post.url,
       link: post.url,
-      description: post.excerpt,
+      description: post.rawExcerpt,
       // FIXME: Provide rendered content for the RSS feed.
       content: post.body.raw,
       author: [author],

@@ -25,13 +25,13 @@ export async function generateMetadata( { params }: PostPageProps, parent: Resol
 
   return {
     title: post.formattedTitle,
-    description: post.meta_description === undefined ? post.excerpt : post.meta_description,
+    description: post.meta_description === undefined ? post.rawExcerpt : post.meta_description,
     keywords: post.meta_keywords,
     openGraph: {
       type: "article",
       url: post.absoluteURL,
       title: post.formattedTitle,
-      description: post.excerpt,
+      description: post.rawExcerpt,
       images: [
         {
           url: post.ogImageURL,
@@ -44,7 +44,7 @@ export async function generateMetadata( { params }: PostPageProps, parent: Resol
     },
     twitter: {
       title: post.formattedTitle,
-      description: post.excerpt,
+      description: post.rawExcerpt,
       creator: config.author.twitterHandle,
       site: config.author.twitterHandle,
       card: "summary_large_image"

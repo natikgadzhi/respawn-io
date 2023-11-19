@@ -1,13 +1,23 @@
 import { format, parseISO } from "date-fns";
 import { Post } from "contentlayer/generated";
-
 import Link from "next/link";
+import { getMDXComponent } from "next-contentlayer/hooks";
+import { mdxComponents } from "lib/mdxComponents";
 
-type Props = {
+type PostsListProps = {
   posts: Array<Post>;
 };
 
-const Posts = ({ posts }: Props) => {
+type PostDescriptionProps = {
+  post: Post;
+};
+
+export const PostDescription = ({ post }: PostDescriptionProps) => {
+  const MDXContent = getMDXComponent(post.excerpt.code);
+  return <MDXContent components={mdxComponents} />;
+};
+
+export const PostsList = ({ posts }: PostsListProps) => {
   return (
     <section>
       <ul>
@@ -21,12 +31,12 @@ const Posts = ({ posts }: Props) => {
                 { format(parseISO(post.created), 'MMM do yyyy')}
               </div>
             </div>
-            <p className="text-md leading-relaxed">{post.excerpt}</p>
+            <p className="text-md leading-relaxed">
+              <PostDescription post={post}/>
+            </p>
           </li>
         ))}
       </ul>
     </section>
   );
 };
-
-export default Posts;

@@ -13,7 +13,7 @@ export const Post = defineDocumentType(() => ({
         required: true,
       },
       excerpt: {
-        type: "string",
+        type: "mdx",
         description: "The excerpt of the post",
         required: true,
       },
@@ -46,7 +46,17 @@ export const Post = defineDocumentType(() => ({
     computedFields: {
       formattedTitle: {
         type: "string",
+        description: "Title Case Formatted Post Title",
         resolve: (doc) => titleCase(doc.title),
+      },
+      rawExcerpt: {
+        type: "string",
+        description: "Excerpt cleaned of markdown formatting.",
+        resolve: (doc) => (
+          doc.excerpt.raw
+            .replace(/\*\*(.*?)\*\*/g, "$1")
+            .replace(/\*(.*?)\*/g, "$1")
+        )
       },
       slug: {
         type: "string",
