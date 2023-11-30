@@ -28,7 +28,7 @@ pre {
 (prefers-color-scheme: no-preference) {
 
     pre[data-theme='light'] {
-        @apply bg-blue-50;
+        @apply bg-sky-50;
     }
 
     pre[data-theme='dark'],

@@ -11,6 +11,8 @@ const Article = ({ children }: Props) => {
       className="prose prose-slate dark:prose-invert
             prose-li:leading-relaxed prose-p:leading-relaxed
 
+            text-stone-950
+            dark:text-gray-50
             prose-h2:pt-8
             lg:prose-p:mb-10
 
