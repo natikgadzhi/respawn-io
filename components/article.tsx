@@ -13,7 +13,11 @@ const Article = ({ children }: Props) => {
 
             text-stone-950
             dark:text-gray-50
+            
             prose-h2:pt-8
+
+            prose-p:last-of-type:mb-0
+            
             lg:prose-p:mb-10
 
             prose-a:text-blue-700

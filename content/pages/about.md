@@ -11,7 +11,6 @@ source code for this blog, along with all the essays in Markdown, are
 [available on Github](https://github.com/natikgadzhi/respawn-io).
 
 Get in touch:
-
 - Email: natik@respawn.io
 - [GitHub](https://github.com/natikgadzhi)
 - [Linkedin](https://linkedin.com/in/natikgadzhi)
