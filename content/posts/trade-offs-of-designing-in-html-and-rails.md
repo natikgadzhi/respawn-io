@@ -13,11 +13,11 @@ og_image_hide_description: true
 
 # The Trade-offs of Designing in HTML and Rails
 
-Folks at 37Signals have _strong opinions_ on how to build products for the Web. Between ShapeUp, design philosophy, and Rails approaches to frontend, monolith vs services, and infrastructure, there are a _number of conventions_.
+Folks at 37Signals have [_strong opinions_](https://world.hey.com/dhh/design-for-the-web-without-figma-4bc3a218) on how to design and build products for the Web. Between ShapeUp, design philosophy, and Rails approaches to frontend, monolith vs services, and infrastructure, there are a _number of conventions_.
 
-I don't like the personalities behind them, but the approaches are _generally very sane_ for the audience they're articulated for. They just don't generalize well, in my experience.
+I don't like the personalities behind them, but the approaches are _generally very sane_ for the audience they're articulated for. 
 
-I'm yet to see an organization successfully and happily using ShapeUp in a team bigger than 50 people. _Get it? Rails (approach) doesn't scale? Hehe._
+The Basecamp way of ShapeUp, and the design philosophy, though, don't generalize very well, in my experience.I'm yet to see an organization successfully and happily using ShapeUp in a team bigger than 50 people. _Get it? Rails (approach) doesn't scale? Hehe._
 
 ## Designers Who Can Write Code Absolutely Rock
 
