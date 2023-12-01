@@ -14,7 +14,7 @@ og_image_hide_description: true
 
 Folks at 37Signals have _strong opinions_ on how to build products for the Web. Between ShapeUp, design philosophy, and Rails approaches to frontend, monolith vs services, and infrastructure, there are a _number of conventions_.
 
-I don't like the personalities behind them, but the approaches are _generally very sane_ for the audience they're articulated for. They just don't generalize well_, in my experience. 
+I don't like the personalities behind them, but the approaches are _generally very sane_ for the audience they're articulated for. They just don't generalize well, in my experience.
 
 I'm yet to see an organization successfully and happily using ShapeUp in a team bigger than 50 people. _Get it? Rails (approach) doesn't scale? Hehe._
 
