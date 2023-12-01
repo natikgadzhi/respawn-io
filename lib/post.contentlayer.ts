@@ -63,6 +63,7 @@ export const Post = defineDocumentType(() => ({
             .replace(/\*(.*?)\*/g, "$1")       // Remove * tags
             .replace(/__(.*?)__/g, "$1")       // Remove __ tags
             .replace(/_(.*?)_/g, "$1")         // Remove _ tags
+            .replace(/~~(.*?)~~/g, "$1")       // Remove ~~ tags
         )
       },
       slug: {
