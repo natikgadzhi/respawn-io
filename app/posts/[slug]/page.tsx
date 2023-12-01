@@ -27,11 +27,13 @@ export async function generateMetadata( { params }: PostPageProps, parent: Resol
     title: post.formattedTitle,
     description: post.meta_description === undefined ? post.rawExcerpt : post.meta_description,
     keywords: post.meta_keywords,
+    authors: [{ name: config.author.name, url: config.baseURL }],
     openGraph: {
       type: "article",
       url: post.absoluteURL,
       title: post.formattedTitle,
       description: post.rawExcerpt,
+      publishedTime: post.modified,
       images: [
         {
           url: post.ogImageURL,
