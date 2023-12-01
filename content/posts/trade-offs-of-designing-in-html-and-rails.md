@@ -1,15 +1,16 @@
 ---
 title: The Trade-offs of Designing in HTML and Rails
-excerpt: Rails approach to designing products (in code) allows teams to build _extremely quickly_, but constraints the team's ability to think with unorthodox or new approaches. Here's what I've seen happen in practice, when designing in code works well, what are some of the downsides, and when it just doesn't work at all.
+excerpt: "Rails approach to designing products (in code) allows teams to build _extremely quickly_, but constraints the team's ability to think with unorthodox or new approaches. Here's what I've seen happen in practice, when designing in code works well, what are some of the downsides, and when it just doesn't work at all."
 created: 2023-11-30
-modified: 2023-11-30
+modified: 2023-12-01
 draft: false
-meta_description: Here's what I've seen happen in practice, when designing in code works well, what are some of the downsides, and when it just doesn't work at all.
+meta_description: "Here's what I've seen happen in practice, when designing in code works well, what are some of the downsides, and when it just doesn't work at all."
 meta_keywords: Ruby on Rails, design in html, design in code
 tags:
   - rails
 og_image_hide_description: true
 ---
+
 # The Trade-offs of Designing in HTML and Rails
 
 Folks at 37Signals have _strong opinions_ on how to build products for the Web. Between ShapeUp, design philosophy, and Rails approaches to frontend, monolith vs services, and infrastructure, there are a _number of conventions_.
@@ -18,7 +19,7 @@ I don't like the personalities behind them, but the approaches are _generally ve
 
 I'm yet to see an organization successfully and happily using ShapeUp in a team bigger than 50 people. _Get it? Rails (approach) doesn't scale? Hehe._
 
-## Designers who can write code absolutely rock
+## Designers Who Can Write Code Absolutely Rock
 
 > People who span across several areas of the work, generally, have a much stronger understanding of the overall goals, values, and motivations of the product. And as such, they're able to bring extreme clarity to the rest of the team. They're moving quickly. They have their own opinions about the product you're building. Designer + Engineer combo is not an exception from that rule.
 
@@ -30,7 +31,7 @@ In Amplifr, we were not just building a standard-issue Rails application. We wer
 
 I do have to admit, teams that build with Rails are capable of building _a lot_, and doing so _quickly_. So while it might be very difficult to scale and grow such a team beyond certain threshold (more on this below), you can get _very, very far_ with a small team.
 
-## Designers who can code are also rather rare
+## Designers Who Can Code Are Also Rather Rare
 
 When we've been recently looking to hire product design folks at Zipline, it became pretty clear that even in the 2022-2023 market, folks who can design and implement their designs in HTML are rather rare. Folks who can do that, and are also experienced in the Rails stack, are even more exceedingly rare.
 
@@ -41,9 +42,10 @@ The problem here is that once you set up a team where your designers are expecte
 - If your team _thinks and designs_ in code, they won't really like jumping into Figma and navigating your product designs in Figma once the team starts using it.
 - Rails apps usually have a semblance of an implicit design system in their views and partials. Once you try to design in Figma, there will be a very well-meaning designer who starts tweaking the very primitives of your controls, and the design system brain split will be painful.
 
-## Designing in code limits your creativity
+## Designing in Code Limits Your Creativity
 
-> Sticking with just one mental model limits the number of angles you consider, limits your creativity in how you solve a problem.
+> [!tip]
+> Sticking with just one mental model limits the points of view you consider, limits your creativity in how you solve a problem.
 
 The problem with designing and prototyping straight in HTML or Rails views is that it limits the level of polish and creativity that your team can apply to solving a problem.
 
@@ -54,3 +56,15 @@ Think about the most beautiful and amazingly functional products you know of. Th
 Admittedly, _most Rails apps don't need to push design to the limit of what's possible with modern HTML and CSS_. Depending on what audience is using your product, perhaps Rails frontend and Rails approach to design are totally fine! Most SaaS products out there just take content in, process it, perhaps sync in some more data from other systems, and present text content in different views and drilldowns. It's fine to use primitives that people already know and love, take an off the shelf design system and go for it. [Twitter Bootstrap](https://getbootstrap.com/), [Tailwind](https://tailwindcss.com), [Shopify Polaris](https://polaris.shopify.com/), [GitHub Primer](https://primer.style/), [Stripe Elements](https://stripe.com/payments/elements).
 
 But sometimes, you need to drop the constraints of the technology that you have today, and think about what a great solution to the problem looks like, and then think backwards from that — think about what technology you need to make that solution a reality. If you only have designers-who-html on the team, they likely won't be as great at that type of work.
+
+## The cost of lifting the product design process away from HTML
+
+Designing a good product starts with the problem, and describes the _why_, _what_, and _how_ of the solution. It's not just the visuals. Starting with what and why means thinking about the product and the people using it, and what success looks like to them, and articulating that thinking in a format that others can read and debate.
+
+Designing and prototyping in HTML gives your team that shared language of the prototype. Not designing in HTML means that the design and product team need to find that language, and build that system and the process of how you talk about your product, design, and implementation. That's usually expensive. At the very least, that would mean using additional tools (Figma, Miro, you name it), having more channels for conversations (not just issues and PRs, now you have threads of comments on Figma, too), and the process will take more time, more discussion, more deliberation. 
+
+And the biggest cost of all is that you as a leader have to bring clarity to everyone, put them on the same page, make sure they have the same goals in mind for your features, your product, and your customers. And that's usually _extremely_ difficult to achieve.
+
+> That's why many folks in the Rails ecosystem revert to the fat marker sketch, design-in-HTML approach. They know it works. They don't trust the other process that seems risky and wasteful. And so they stick with what they know. But quite often, it's the right approach for them.
+
+For some products, you need to move quickly and be able to take the prototype, clean it up a little bit, handle the edge cases, and ship it as a new feature, all in just a few hours. For others, you _need_ that space, you _need_ more people, more opinions, more angles, and more time before you commit and build.
