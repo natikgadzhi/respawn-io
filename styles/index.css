@@ -12,10 +12,14 @@ pre {
     --tw-prose-pre-bg: initial;
 }
 
+article blockquote {
+   margin-inline: -2vw;
+}
+
 .callout {
     position: relative;
     padding: 1rem;
-    margin: -2vw;
+    margin-inline: -2vw;
     @apply bg-sky-100 dark:bg-stone-900;
     @apply border-blue-700 dark:border-sky-400;
 }
