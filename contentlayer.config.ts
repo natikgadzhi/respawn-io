@@ -4,6 +4,7 @@ import { makeSource } from "contentlayer/source-files"
 import rehypePrettyCode, { type Options } from "rehype-pretty-code"
 import remarkFigureCaption from "@microflash/remark-figure-caption"
 import remarkGfm from "remark-gfm";
+import callouts from "remark-callouts";
 
 import wikilinks from "remark-wiki-link";
 
@@ -29,7 +30,8 @@ export default makeSource({
     remarkPlugins: [
       remarkGfm,
       [remarkFigureCaption, {captionClassName: "text-center italic"}],
-      [wikilinks, {pageResolver, hrefTemplate, aliasDivider: "|"}]
+      [wikilinks, {pageResolver, hrefTemplate, aliasDivider: "|"}],
+      callouts
     ],
     rehypePlugins: [
       [rehypePrettyCode, prettyCodeOptions]

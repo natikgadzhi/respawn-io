@@ -12,6 +12,24 @@ pre {
     --tw-prose-pre-bg: initial;
 }
 
+.callout {
+    position: relative;
+    padding: 1rem;
+    margin: -2vw;
+    @apply bg-sky-100 dark:bg-stone-900;
+    @apply border-blue-700 dark:border-sky-400;
+}
+
+.callout-title, .callout-icon {
+    display: none;
+}
+
+.callout-content > p {
+    margin-top: 0;
+    @apply font-extrabold;
+    @apply leading-loose;
+}
+
 @media (prefers-color-scheme: dark) {
 
     pre[data-theme='dark'] {
