@@ -59,8 +59,10 @@ export const Post = defineDocumentType(() => ({
         description: "Excerpt cleaned of markdown formatting.",
         resolve: (doc) => (
           doc.excerpt.raw
-            .replace(/\*\*(.*?)\*\*/g, "$1")
-            .replace(/\*(.*?)\*/g, "$1")
+            .replace(/\*\*(.*?)\*\*/g, "$1")   // Remove ** tags
+            .replace(/\*(.*?)\*/g, "$1")       // Remove * tags
+            .replace(/__(.*?)__/g, "$1")       // Remove __ tags
+            .replace(/_(.*?)_/g, "$1")         // Remove _ tags
         )
       },
       slug: {
