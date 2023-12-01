@@ -73,17 +73,19 @@ export default async function Post( { params }: PostPageProps ) {
       <Article>
         <MDXContent components={mdxComponents} />
 
-        <div className="text-2xl font-regular text-center my-20">⌘ ⌘ ⌘</div>
-        <div>
-          <span>
+        <div className="text-2xl font-regular text-center my-20 relative">
+          ⌘ ⌘ ⌘
+        </div>
+        <div className="text-sm lg:text-lg text-center">
+          <div>
             Originally published on&nbsp;
-            {format(parseISO(post.created), "MMM do yyyy")}
-          </span>
+            {format(parseISO(post.created), "MMM do yyyy")}.
+          </div>
           {post.created != post.modified && (
-            <span className="ml-2">
+            <div>
               Last update on&nbsp;
-              {format(parseISO(post.modified), "MMM do yyyy")}
-            </span>
+              {format(parseISO(post.modified), "MMM do yyyy")}.
+            </div>
           )}
         </div>
       </Article>
