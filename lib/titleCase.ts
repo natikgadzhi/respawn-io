@@ -21,9 +21,10 @@ export const titleCase = (str: React.ReactNode) => {
     "Onto",
     "To",
     "With",
+    "Vs"
   ];
 
-  const uppers = ["Id", "Tv"];
+  const uppers = ["Id", "Tv", "Html", "Css", "Js", "Json", "Xml"];
 
   const lowersRegex = new RegExp("\\s(" + lowers.join("|") + ")\\s", "g");
   const uppersRegex = new RegExp("\\b(" + uppers.join("|") + ")\\b", "g");
