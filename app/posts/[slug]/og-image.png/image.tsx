@@ -32,7 +32,7 @@ export default function OpengraphImage({ post, width, height }: Props) {
           {post.formattedTitle}
         </h1>
 
-        {post.formattedTitle.length < 60 && (
+        {(post.formattedTitle.length < 60 && !post.og_image_hide_description) && (
           <p tw="mt-4 text-4xl font-extrabold leading-normal">
             <PostDescription post={post} />
           </p>

@@ -8,6 +8,7 @@ meta_description: Here's what I've seen happen in practice, when designing in co
 meta_keywords: Ruby on Rails, design in html, design in code
 tags:
   - rails
+og_image_hide_description: true
 ---
 # The Trade-offs of Designing in HTML and Rails
 

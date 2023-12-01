@@ -41,6 +41,11 @@ export const Post = defineDocumentType(() => ({
         type: "string",
         description: "The meta keywords of the post",
         required: false,
+      },
+      og_image_hide_description: {
+        type: "boolean",
+        description: "Whether to hide the description of the post in the og:image",
+        required: false,
       }
     },
     computedFields: {
