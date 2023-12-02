@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 
+ul.contains-task-list {
+    @apply ml-0 pl-0;
+}
+
+.task-list-item {
+    @apply list-none;
+}
+
 pre>code {
     display: grid;
     @apply m-0;
