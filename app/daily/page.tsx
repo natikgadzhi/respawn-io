@@ -21,6 +21,7 @@ const formatDate = (date: string) => {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(config.baseURL),
   title: "TIL and Daily Notes: " + config.title,
   description: config.daily.description,
 

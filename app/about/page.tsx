@@ -7,6 +7,7 @@ import { mdxComponents } from "lib/mdxComponents"
 import Article from 'components/article'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(config.baseURL),
   title: config.title,
   description: config.meta.description,
 
