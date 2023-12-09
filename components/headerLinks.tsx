@@ -36,7 +36,7 @@ export const LinkedH2 = ({children, className}: HeaderProps) => {
   const id = makeID(children);
   return (
     <>
-      <h2 id={id} className={`${className} relative`}>
+      <h2 id={id} className={`relative ${className ? className : ''}`}>
         <HeaderLink id={id} linkPosition="-left-10 top-9" />
         {children}
       </h2>
