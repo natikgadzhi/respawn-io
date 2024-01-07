@@ -16,7 +16,7 @@ I'm making a little hobby app for myself. Generalist and all, working in design 
 3. Export the icon.
 4. Use a service to make an `AppIcon.appiconset` from your icon.
 
-<iframe width="560" height="315" style={{margin: '0 auto'}} src="https://www.youtube-nocookie.com/embed/QbYwE9_gjp0?si=9C1xqVfweMRXdVoL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" style={{margin: '0 auto'}} src="https://www.youtube-nocookie.com/embed/QbYwE9_gjp0?si=9C1xqVfweMRXdVoL" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
 
 ## An Icon in a SwiftUI View
 
@@ -98,8 +98,8 @@ struct IconExportView: View {
     }
     
     /// Grab a snapshot of a target view as a ``UIImage``.
-    @MainActor func snapshot(of view: any View) -> UIImage? {
-        let controller = UIHostingController(rootView: self)
+    @MainActor func snapshot(of view: some View) -> UIImage? {
+        let controller = UIHostingController(rootView: view)
         let view = controller.view
         let targetSize = controller.view.intrinsicContentSize
         view?.bounds = CGRect(origin: .zero, size: targetSize)
@@ -135,9 +135,10 @@ struct IconExportView: View {
 }
 ```
 
-
+![`IconExportView` as a Mac Catalyst app preview](app-icons-in-swiftui/app-icons-in-swiftui-export.png)
 > [!note]
-> In theory, you could save the `UIImage` data and present a share sheet to export it into anything you want — saving into a directory from within a Mac Catalyst app is just the fastest way I've found, personally.
+> In theory, you could save the `UIImage` data and present a share sheet to export it into anything you want. Saving into a directory from within a Mac Catalyst app is just the fastest way I've found, personally. Using `Pictures` is just the first thing that came to my mind and was in the list of autocompletions.
+
 
 ## Make an `appiconset` with CandyIcons asset generator
 
