@@ -24,17 +24,21 @@ export const titleCase = (str: React.ReactNode) => {
     "Vs"
   ];
 
+  const exceptions = ["SwiftUI"];
   const uppers = ["Id", "Tv", "Html", "Css", "Js", "Json", "Xml"];
 
   const lowersRegex = new RegExp("\\s(" + lowers.join("|") + ")\\s", "g");
   const uppersRegex = new RegExp("\\b(" + uppers.join("|") + ")\\b", "g");
+  const exceptionsRegex = new RegExp("\\b(" + exceptions.join("|") + ")\\b", "g");
 
   // Capitalize each word
   return str
     .toString()
     .replace(
       /([^\W_]+[^\s-]*) */g,
-      (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+      (word) => exceptionsRegex.test(word) ?
+        word : 
+        word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
     )
     .replace(lowersRegex, (word) => word.toLowerCase())
     .replace(uppersRegex, (word) => word.toUpperCase());
