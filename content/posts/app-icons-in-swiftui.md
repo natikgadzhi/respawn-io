@@ -98,14 +98,14 @@ struct IconExportView: View {
     }
     
     /// Grab a snapshot of a target view as a ``UIImage``.
-    @MainActor func snapshot(of view: some View) -> UIImage? {
-        let controller = UIHostingController(rootView: view)
+    @MainActor func snapshot(of target: some View) -> UIImage? {
+        let controller = UIHostingController(rootView: target)
         let view = controller.view
         let targetSize = controller.view.intrinsicContentSize
         view?.bounds = CGRect(origin: .zero, size: targetSize)
         view?.backgroundColor = .clear
 
-        let renderer = ImageRenderer(content: self)
+        let renderer = ImageRenderer(content: target)
         renderer.scale = UIScreen.main.scale // Adjust the scale for higher resolution
         return renderer.uiImage
     }
