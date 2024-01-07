@@ -144,6 +144,9 @@ struct IconExportView: View {
 
 There are a bunch of services and apps that take an image, and generate an app asset bundle for you, but they're not all equal. I've tried a few, and [CandyIcons](https://www.candyicons.com/free-tools/app-icon-assets-generator) seems to work best.  It automatically makes a mac app icon with rounded corners, and the output icon quality looks great.
 
+> [!warning]
+> CandyIcons crashes for me when I'm trying to export icons for all platforms at once. But if I only choose iOS and Mac, it works fine.
+
 ---
 
 The full code for this flow is in [the Scrapes repo](https://github.com/natikgadzhi/Scrapes). 
