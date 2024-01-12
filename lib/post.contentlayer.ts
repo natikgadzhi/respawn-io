@@ -12,6 +12,12 @@ export const Post = defineDocumentType(() => ({
         description: "The title of the post",
         required: true,
       },
+      tags: {
+        type: "list",
+        of: { type: "string" },
+        description: "List of tags to for the post. May refer to an existing tag by title",
+        required: false,
+      },
       excerpt: {
         type: "mdx",
         description: "The excerpt of the post",

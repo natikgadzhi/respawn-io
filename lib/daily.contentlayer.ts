@@ -11,9 +11,14 @@ export const Daily = defineDocumentType(() => ({
         type: "string",
         description: "The title of the note",
       },
-
-      // Obsidian likes creating these fields in Linters
-      // but they are not used.
+      tags: {
+        type: "list",
+        of: {
+          type: "string",
+        },
+        required: false,
+        description: "The tags associated with the note"
+      },
       created: {
         type: "date",
         required: false,
