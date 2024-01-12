@@ -1,8 +1,9 @@
 {
   "private": true,
   "scripts": {
+    "copy-images": "./scripts/copy-images.sh",
     "dev": "next",
-    "build": "next build && yarn run rss",
+    "build": "npm run copy-images && next build && npm run rss",
     "start": "next start",
     "rss": "tsx scripts/rss.ts"
   },

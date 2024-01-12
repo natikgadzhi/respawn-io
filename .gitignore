@@ -23,6 +23,9 @@ content-backup
 /public/sitemap*
 /public/robots.txt
 
+# Assets copied over from content for production builds
+/public/**/*.png
+
 # misc
 .DS_Store
 *.pem
@@ -40,5 +43,4 @@ yarn-error.log*
 
 # vercel
 .vercel
-
 .contentlayer
