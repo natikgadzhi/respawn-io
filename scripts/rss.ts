@@ -2,6 +2,8 @@ import { Feed } from "feed";
 import fs from "fs";
 import { compareDesc } from "date-fns";
 
+import { markdownToHTML } from "lib/markdownToHTML";
+
 import { config } from "../blog.config";
 import { allPosts } from "../.contentlayer/generated/index.mjs";
 
@@ -38,19 +40,20 @@ export default async function generateFeeds() {
     author,
   });
 
-  posts.forEach((post) => {
-    feed.addItem({
+  const feedItems = await Promise.all(posts.map(async (post) => {
+    return {
       title: post.formattedTitle,
       id: post.url,
       link: post.url,
       description: post.rawExcerpt,
-      // FIXME: Provide rendered content for the RSS feed.
-      content: post.body.raw,
+      content: await markdownToHTML(post.body.raw),
       author: [author],
       contributor: [author],
       date: new Date(post.created),
-    });
-  });
+    };
+  }));
+
+  feedItems.forEach(item => feed.addItem(item));
 
   fs.mkdirSync("./public/rss", { recursive: true });
   fs.writeFileSync("./public/rss/feed.xml", feed.rss2());
