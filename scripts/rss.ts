@@ -45,6 +45,7 @@ export default async function generateFeeds() {
       title: post.formattedTitle,
       id: post.url,
       link: post.absoluteURL,
+      guid: post.absoluteURL,
       description: post.rawExcerpt,
       content: await markdownToHTML(post.body.raw),
       author: [author],
