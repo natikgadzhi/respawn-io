@@ -45,7 +45,8 @@ export default async function generateFeeds() {
       link: post.absoluteURL,
       guid: post.absoluteURL,
       description: post.rawExcerpt,
-      content: await markdownToHTML(post.body.raw),
+      // @ts-ignore
+      content: await markdownToHTML(post),
       author: [author],
       contributor: [author],
       date: new Date(post.created),

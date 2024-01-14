@@ -54,5 +54,3 @@ export const remarkPlugins = [
 export const rehypePlugins = [
   [rehypePrettyCode, prettyCodeOptions]
 ];
-
-export const unifiedPlugins = [...remarkPlugins, ...rehypePlugins];
