@@ -13,8 +13,6 @@ export default async function generateFeeds() {
     .filter((post) => env_name == "localhost" || !post.draft)
     .sort((a, b) => compareDesc(new Date(a.created), new Date(b.created)));
 
-  const date = new Date();
-
   const author = {
     name: config.author.name,
     email: config.author.email,
@@ -30,7 +28,7 @@ export default async function generateFeeds() {
     image: `${config.baseURL}/images/logo.svg`,
     favicon: `${config.baseURL}/favicon.ico`,
     copyright: config.footer.copyright,
-    updated: date,
+    updated: new Date(posts[0].modified),
     generator: "Next.js using Feed for Node.js",
     feedLinks: {
       rss2: `${config.baseURL}/rss/feed.xml`,
