@@ -2,7 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * post descriptions
+ */
+.post-item p {
+    @apply leading-relaxed;
+}
 
+/*
+ * gfm task lists in posts
+ */
 ul.contains-task-list {
     @apply ml-0 pl-0;
 }
@@ -11,6 +20,9 @@ ul.contains-task-list {
     @apply list-none;
 }
 
+/*
+ * code blocks
+ */
 pre>code {
     display: grid;
     @apply m-0;
@@ -42,8 +54,8 @@ article blockquote {
     @apply leading-loose;
 }
 
-@media (prefers-color-scheme: dark) {
 
+@media (prefers-color-scheme: dark) {
     pre[data-theme='dark'] {
         @apply bg-stone-900;
     }

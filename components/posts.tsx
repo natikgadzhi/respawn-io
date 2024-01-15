@@ -20,9 +20,9 @@ export const PostDescription = ({ post }: PostDescriptionProps) => {
 export const PostsList = ({ posts }: PostsListProps) => {
   return (
     <section>
-      <ul>
+      <ul className="post-list">
         {posts.map((post) => (
-          <li className="mb-8 md:my-14" key={`${post.slug}`}>
+          <li className="post-item mb-8 md:my-14" key={`${post.slug}`}>
             <div className="flex flex-col md:flex-row justify-between items-baseline">
               <h3 className="text-2xl mb-2 mr-2 leading-snug tracking-tight font-semibold">
                 <Link href={post.url}>{post.formattedTitle}</Link>
@@ -31,9 +31,7 @@ export const PostsList = ({ posts }: PostsListProps) => {
                 { format(parseISO(post.created), 'MMM do yyyy')}
               </div>
             </div>
-            <p className="text-md leading-relaxed">
-              <PostDescription post={post}/>
-            </p>
+            <PostDescription post={post}/>
           </li>
         ))}
       </ul>
