@@ -25,7 +25,7 @@ export const titleCase = (str: React.ReactNode) => {
   ];
 
   const exceptions = ["SwiftUI"];
-  const uppers = ["Id", "Tv", "Html", "Css", "Js", "Json", "Xml"];
+  const uppers = ["Id", "Tv", "HJ", "Css", "Js", "Json", "Xml", "Rss"];
 
   const lowersRegex = new RegExp("\\s(" + lowers.join("|") + ")\\s", "g");
   const uppersRegex = new RegExp("\\b(" + uppers.join("|") + ")\\b", "g");

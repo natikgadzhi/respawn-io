@@ -32,7 +32,7 @@ Over the months, I've changed a few things, and mostly it was fun to hack on. I 
 - [x] **Callouts**. Early on, I've had a custom `<Callout>` component that I've fed to MDX, but that would mean that the note in Obsidian has the Callout block that doesn't actually represent a Markdown callout, or a callout block Obsidian would understand. So I've switched to Obsidian-friendly callout format [in this commit](https://github.com/natikgadzhi/respawn-io/commit/831f421c7f34a101b6a49dee4db8136e3b0d0349)
 - [x]  **TODOs**. `remark-gfm` mostly takes care of that, so I can have todo items with checkboxes in both Obsidian, and in the rendered blog with GitHub-flavored Markdown syntax.
 - [ ] **Footnotes**. I want to be able to have footnotes that render as an _aside_ on desktops, but that show up in the usual footnotes section on smaller screens.
-- [ ] **Tables**. Obsidian 1.5 made a great UI on top of Markdown tables, so you can actually use them. I'd love to use tables in my posts, but that might be tricky in mobile layouts, though.
+- [x] **Tables**. Obsidian 1.5 made a great UI on top of Markdown tables, so you can actually use them. I'd love to use tables in my posts, but that might be tricky in mobile layouts, though.
 - [ ] **Diagrams**. Obsidian supports Mermaid diagrams out of the box, and adding them to the site is relatively straightforward. Tweaking their sizes and color schemes to support light mode and dark mode is a little bit tricky, though.
 
 ## Content Types
