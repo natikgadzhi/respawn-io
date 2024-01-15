@@ -50,7 +50,6 @@ article blockquote {
 
 .callout-content > p {
     margin-top: 0;
-    @apply font-extrabold;
     @apply leading-loose;
 }
 

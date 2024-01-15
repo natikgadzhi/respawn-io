@@ -8,21 +8,28 @@ og_image_hide_description: true
 
 # Obsidian, Next.js, and Vercel
 
+> [!warning]
+> `Contentlayer` is currently stuck at `0.3.4` and not actively supported.
+> It works fine for now, but there already are some issues, so if you do
+> decide to start using it for a new project in 2024, prepare to fix some things on your own.
+
 Here's how this thing works:
 
 - The [source repository is open](https://github.com/natikgadzhi/respawn-io).
 - It's based off Next.js static gen blog starter kit. Tailwind for markup. First time I use either of those. But hey, I have an [execute program typescript](https://www.executeprogram.com/courses/typescript) course sitting for 6 months, and I need to spike on a few typescript things at work anyway.
-- I'm using [Obsidian](https://obsidian.md/) for my notes, and decided to try and use it to write the blog, too. I then `ln path/to/obsidian/vault/respawn.io/*` to my `_posts` dir. This should work for any static site generator.
-
-  Since it's just a hard link, I can author the posts in Obsidian and edit them later, then just push it up, and Vercel will spin up a new build.
-
-  Another approach would be to point `postsDirectory` to a subdirectory in the Obsidian vault. While you can get away without hardlinks, you might run into issues with links between notes and linking assets later.
-
-- Markdown is rendered ~~using [`next-mdx-remote`](https://github.com/hashicorp/next-mdx-remote), so I can use `next/image`, `next/link`, or other callout, diagrams, or chart blocks~~. Upd: switched to [`contentlayer`](https://www.contentlayer.dev/) and it's great.
-- ~~Fathom analytics with [`fathom-client`](https://github.com/derrickreimer/fathom-client). The way it's plugged in the code is crap, but it works out of the box with Next routing.~~ Fathom is good, but Vercel shipped their own analytics, so that simplifies things a bit.
+- I'm using [Obsidian](https://obsidian.md/) for my notes, and decided to try and use it to write the blog, too. I then `ln -s path/to/obsidian/vault/respawn.io/*` to the `content` directory. This should work for any static site generator.
+- **Markdown** is rendered using [`contentlayer`](https://www.contentlayer.dev/) and it's great.
+- **Analytics** is on Vercel's side, out of the box.
 - Opengraph images are [generated with `@vercel/og`](https://github.com/natikgadzhi/respawn-io/commit/ab9ee315b62c094da27cb4e5cc7226d042fb2b19). This feels like dark magic and I have no idea how it works, but hey, it works. Here's an example for this post:
 
 <img src="https://respawn.io/posts/hello-world/og-image.png" width="1200" height="630" />
+
+- **RSS feed** is rendered with `feed` library using a script in `scripts/rss.ts`, invoked with `tsx`. Images in the RSS feed are base64-encoded and inlined.
+
+## Caveats
+
+- **Images** are generally stored in the content directory, side by side with a post.
+  - All `.png` images are copied over from `./content/**/*.png` to `./public/` in a build step by `scripts/copy-images.sh`. That way, both the compiled website, and Obsidian vault can have nice images without too much hassle with paths. 
 
 ## Same Markup, Different Presentations 
 
