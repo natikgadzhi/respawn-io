@@ -24,7 +24,7 @@ export const PostsList = ({ posts }: PostsListProps) => {
         {posts.map((post) => (
           <li className="post-item mb-8 md:my-14" key={`${post.slug}`}>
             <div className="flex flex-col md:flex-row justify-between items-baseline">
-              <h3 className="text-xl mb-2 mr-2 leading-snug tracking-tight font-chonkymedium">
+              <h3 className="text-lg lg:text-xl mb-2 mr-2 leading-snug tracking-tight font-chonkymedium">
                 <Link href={post.url}>{post.formattedTitle}</Link>
               </h3>
               <div className="text-md whitespace-nowrap text-blue-700 dark:text-sky-400">
