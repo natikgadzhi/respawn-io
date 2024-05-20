@@ -4,12 +4,12 @@ import { ReactNode } from "react";
 
 const makeID = (input: ReactNode | string) => {
   return input.toString().toLowerCase().replace(/[^\w]/g, "-");
-}
+};
 
 type HeaderProps = {
   children: React.ReactNode;
   className?: string;
-}
+};
 
 type HeaderLinkProps = {
   id: string;
@@ -18,26 +18,27 @@ type HeaderLinkProps = {
 
 const defaultLinkProps = {
   id: "",
-  linkPosition: "-left-10 top-9",
-}
+  linkPosition: "-left-10 top-5",
+};
 
-export const HeaderLink = ({ id, linkPosition}: HeaderLinkProps = defaultLinkProps) => (
+export const HeaderLink = ({ id, linkPosition }: HeaderLinkProps = defaultLinkProps) => (
   <Link
     href={`#${id}`}
     className={`not-prose hidden md:inline-block absolute ${linkPosition} p-1
-      opacity-70 hover:opacity-100 transition-opacity duration-100
+      opacity-50 hover:opacity-100 transition-opacity duration-100
       hover:outline hover:outline-offset-1 hover:outline-1 hover:rounded-md
-    hover:outline-stone-500 hover:dark:outline-blue-100`}>
+    hover:outline-stone-400 hover:dark:outline-blue-100`}
+  >
     <LinkIcon />
   </Link>
 );
 
-export const LinkedH2 = ({children, className}: HeaderProps) => {
+export const LinkedH2 = ({ children, className }: HeaderProps) => {
   const id = makeID(children);
   return (
     <>
-      <h2 id={id} className={`relative ${className ? className : ''}`}>
-        <HeaderLink id={id} linkPosition="-left-10 top-9" />
+      <h2 id={id} className={`relative ${className ? className : ""}`}>
+        <HeaderLink id={id} linkPosition="-left-10 top-5" />
         {children}
       </h2>
     </>

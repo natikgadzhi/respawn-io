@@ -1,6 +1,5 @@
 // Applies the shared tailwind prose styles to all spots
 // where I need to render large chunks of text
-
 type Props = {
   children: React.ReactNode;
 };
@@ -8,35 +7,42 @@ type Props = {
 const Article = ({ children }: Props) => {
   return (
     <article
-      className="prose prose-slate dark:prose-invert
-            prose-li:leading-relaxed prose-p:leading-relaxed
+      className="prose prose-slate
+            dark:prose-invert
 
-            text-stone-950
-            dark:text-gray-50
-            
-            prose-h2:pt-8
+            prose-li:leading-relaxed
+            prose-p:leading-relaxed
+
+            text-stone-700
+            dark:text-gray-300
+
+            prose-h2:pt-4
+            prose-h2:text-2xl
+            prose-h2:font-semibold
 
             prose-p:last-of-type:mb-0
-            
-            lg:prose-p:mb-10
 
-            prose-a:text-blue-700
-            prose-a:dark:text-sky-400
+            lg:prose-p:mb-8
 
-            prose-blockquote:border-blue-700
-            prose-blockquote:dark:border-sky-400
-            prose-blockquote:boder-l-8
+            prose-a:text-blue-600
+            prose-a:dark:text-sky-300
+
+            prose-blockquote:border-blue-600
+            prose-blockquote:dark:border-blue-400
+            prose-blockquote:border-l-4
 
             prose-blockquote:font-normal
             prose-blockquote:not-italic
             prose-quoteless
 
-            md:prose-lg lg:prose-xl
+            md:prose-lg
+            lg:prose-base
 
             prose-pre:not-prose
             prose-pre:text-sm
 
-            mb-32">
+            mb-24"
+    >
       {children}
     </article>
   );
