@@ -27,12 +27,12 @@ export default function OpengraphImage({ post, width, height }: Props) {
             "-webkit-background-clip": "text",
             color: "transparent",
           }}
-          tw="text-7xl break-keep font-extrabold mb-8"
+          tw="text-6xl break-keep font-extrabold mb-8"
         >
           {post.formattedTitle}
         </h1>
 
-        {(post.formattedTitle.length < 60 && !post.og_image_hide_description) && (
+        {post.formattedTitle.length < 60 && !post.og_image_hide_description && (
           <p tw="mt-4 text-4xl font-extrabold leading-normal">
             <PostDescription post={post} />
           </p>

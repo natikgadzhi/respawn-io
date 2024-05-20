@@ -16,6 +16,8 @@ const Article = ({ children }: Props) => {
             text-stone-700
             dark:text-gray-300
 
+            prose-h1:text-3xl
+
             prose-h2:pt-4
             prose-h2:text-2xl
             prose-h2:font-semibold

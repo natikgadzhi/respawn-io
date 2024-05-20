@@ -18,7 +18,7 @@ type PostPageProps = {
 
 export async function generateMetadata(
   { params }: PostPageProps,
-  parent: ResolvingMetadata
+  parent: ResolvingMetadata,
 ): Promise<Metadata> {
   const post = allPosts.find((post) => post.slug === params.slug);
 
@@ -29,10 +29,7 @@ export async function generateMetadata(
   return {
     metadataBase: new URL(config.baseURL),
     title: post.formattedTitle,
-    description:
-      post.meta_description === undefined
-        ? post.rawExcerpt
-        : post.meta_description,
+    description: post.meta_description === undefined ? post.rawExcerpt : post.meta_description,
     keywords: post.meta_keywords,
     authors: [{ name: config.author.name, url: config.baseURL }],
     openGraph: {
@@ -84,10 +81,8 @@ export default async function Post({ params }: PostPageProps) {
       <Article>
         <MDXContent components={mdxComponents} />
 
-        <div className="text-2xl font-regular text-center my-20 relative">
-          ⌘ ⌘ ⌘
-        </div>
-        <div className="text-sm lg:text-lg text-center">
+        <div className="text-2xl font-regular text-center my-20 relative">⌘ ⌘ ⌘</div>
+        <div className="text-sm lg:text-lg text-center text-stone-400">
           <div>
             Originally published on&nbsp;
             {format(parseISO(post.created), "MMM do yyyy")}.
