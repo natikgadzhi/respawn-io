@@ -14,7 +14,6 @@ export default function OpengraphImage({ post, width, height }: Props) {
         style={{
           width: width,
           height: height,
-          fontFamily: '"Jetbrains Mono"',
           backgroundImage: "linear-gradient(90deg, #cbd5e1 0%, #f8fafc 100%)",
         }}
         tw="flex flex-col justify-start w-full h-full p-12 px-24 bg-slate-50"

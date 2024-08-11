@@ -1,5 +1,4 @@
-
-import { makeSource } from "contentlayer/source-files"
+import { makeSource } from "contentlayer2/source-files";
 
 import { remarkPlugins, rehypePlugins } from "./lib/unifiedPlugins";
 
@@ -15,6 +14,6 @@ export default makeSource({
     // @ts-ignore
     remarkPlugins: remarkPlugins,
     // @ts-ignore
-    rehypePlugins: rehypePlugins
-  }
+    rehypePlugins: rehypePlugins,
+  },
 });

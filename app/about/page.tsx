@@ -1,10 +1,10 @@
-import { Metadata } from "next"
-import { config } from "blog.config"
-import { allPages } from "contentlayer/generated"
-import { useMDXComponent } from "next-contentlayer/hooks"
-import { mdxComponents } from "lib/mdxComponents"
+import { Metadata } from "next";
+import { config } from "blog.config";
+import { allPages } from "contentlayer/generated";
+import { useMDXComponent } from "next-contentlayer2/hooks";
+import { mdxComponents } from "lib/mdxComponents";
 
-import Article from 'components/article'
+import Article from "components/article";
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.baseURL),
@@ -16,24 +16,24 @@ export const metadata: Metadata = {
     description: config.description,
     type: "website",
     locale: "en_US",
-    siteName: config.title
+    siteName: config.title,
   },
 
   twitter: {
     title: config.title,
     creator: config.author.twitterHandle,
     site: config.author.twitterHandle,
-    card: "summary_large_image"
+    card: "summary_large_image",
   },
 
   alternates: {
-    canonical: `${config.baseURL}/about`
-  }
+    canonical: `${config.baseURL}/about`,
+  },
 };
 
 export default function About() {
-  const page = allPages.find((page) => page._raw.sourceFileName === "about.md")
-  const MDXComponent = useMDXComponent(page.body.code)
+  const page = allPages.find((page) => page._raw.sourceFileName === "about.md");
+  const MDXComponent = useMDXComponent(page.body.code);
 
   return (
     <>
@@ -41,5 +41,5 @@ export default function About() {
         <MDXComponent components={mdxComponents} />
       </Article>
     </>
-  )
+  );
 }
