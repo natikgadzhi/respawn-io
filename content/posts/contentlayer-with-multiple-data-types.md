@@ -5,7 +5,7 @@ excerpt: |
 draft: false
 created: 2023-07-10
 modified: 2023-07-10
-meta_description: 
+meta_description:
 meta_keywords: javascript, mdx, contentlayer, nextjs
 ---
 # Using Contentlayer with Next.js

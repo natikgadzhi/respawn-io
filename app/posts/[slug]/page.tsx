@@ -3,7 +3,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import { allPosts, type Post } from "contentlayer/generated";
 
 import { format, parseISO } from "date-fns";
-import { getMDXComponent } from "next-contentlayer/hooks";
+import { getMDXComponent } from "next-contentlayer2/hooks";
 import { mdxComponents } from "lib/mdxComponents";
 
 import Article from "components/article";

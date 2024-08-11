@@ -1,7 +1,7 @@
 import { format, parseISO } from "date-fns";
 import { Post } from "contentlayer/generated";
 import Link from "next/link";
-import { getMDXComponent } from "next-contentlayer/hooks";
+import { getMDXComponent } from "next-contentlayer2/hooks";
 import { mdxComponents } from "lib/mdxComponents";
 
 type PostsListProps = {
