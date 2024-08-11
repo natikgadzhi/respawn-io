@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react";
 
 import "../styles/index.css";
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: blogConfig.baseURL,
     types: {
-      'application/rss+xml': `${blogConfig.baseURL}'/rss/feed.xml`,
-      'application/rss+json': `${blogConfig.baseURL}'/rss/feed.json`,
-      'application/atom+xml': `${blogConfig.baseURL}'/rss/atom.xml`
+      "application/rss+xml": `${blogConfig.baseURL}'/rss/feed.xml`,
+      "application/rss+json": `${blogConfig.baseURL}'/rss/feed.json`,
+      "application/atom+xml": `${blogConfig.baseURL}'/rss/atom.xml`,
     },
   },
 
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: blogConfig.title,
     locale: "en_US",
     siteName: blogConfig.title,
-    url: blogConfig.baseURL
+    url: blogConfig.baseURL,
   },
 
   twitter: {
@@ -36,17 +36,20 @@ export const metadata: Metadata = {
     description: blogConfig.description,
     creator: blogConfig.author.twitterHandle,
     site: blogConfig.author.twitterHandle,
-    card: "summary_large_image"
+    card: "summary_large_image",
   },
 
-  themeColor: "#f0f9ff",
   manifest: "/site.webmanifest",
 
   verification: {
     other: {
-      me: [blogConfig.author.fediverseURL]
-    }
-  }
+      me: [blogConfig.author.fediverseURL],
+    },
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#f0f9ff",
 };
 
 export default function RootLayout({ children }: Props) {
