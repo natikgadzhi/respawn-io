@@ -23,8 +23,6 @@ const prettyCodeOptions: Partial<Options> = {
 import remarkFigureCaption from "@microflash/remark-figure-caption";
 
 // GFM for extended markdown, including todo items and such.
-// TODO: Contentlayer is stuck at 0.3.4, and it does not work with the new
-// GFM 4.0.
 import remarkGfm from "remark-gfm";
 
 // Callouts support, i.e. `>[!note]`.
