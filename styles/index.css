@@ -23,14 +23,13 @@ ul.contains-task-list {
 /*
  * code blocks
  */
-pre > code {
+/* pre > code {
     display: grid;
-    @apply m-0;
-}
+} */
 
-pre {
+/* pre {
     --tw-prose-pre-bg: initial;
-}
+} */
 
 article blockquote {
     margin-inline: -2vw;
@@ -53,24 +52,16 @@ article blockquote {
     @apply leading-loose;
 }
 
-@media (prefers-color-scheme: dark) {
-    pre[data-theme="dark"] {
-        @apply bg-stone-800;
-    }
-
-    pre[data-theme="light"],
-    code[data-theme="light"] {
-        display: none;
-    }
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+    color: var(--shiki-light);
+    background-color: var(--shiki-light-bg);
 }
 
-@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) {
-    pre[data-theme="light"] {
-        @apply bg-sky-50;
-    }
-
-    pre[data-theme="dark"],
-    code[data-theme="dark"] {
-        display: none;
+@media (prefers-color-scheme: dark) {
+    code[data-theme*=" "],
+    code[data-theme*=" "] span {
+        color: var(--shiki-dark);
+        background-color: var(--shiki-dark-bg);
     }
 }

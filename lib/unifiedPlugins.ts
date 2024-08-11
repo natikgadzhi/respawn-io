@@ -51,6 +51,4 @@ export const remarkPlugins = [
   callouts,
 ];
 
-export const rehypePlugins = [
-  [rehypePrettyCode, prettyCodeOptions]
-];
+export const rehypePlugins = [[rehypePrettyCode, prettyCodeOptions]];
