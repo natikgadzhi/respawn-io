@@ -1,4 +1,3 @@
-import { ImageResponseOptions } from "next/server";
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
 
@@ -7,33 +6,6 @@ import { allPosts } from "contentlayer/generated";
 import OpengraphImage from "./image";
 
 export const runtime = "edge";
-
-// `ImageResponseOptions` are passed into `ImageResponse` alongside the
-// component to actually draw the image. It contains width, height, and fonts.
-async function imageResponseOptions(width: number, height: number): Promise<ImageResponseOptions> {
-  return {
-    width: width,
-    height: height,
-    fonts: [
-      {
-        name: "Jetbrains Mono",
-        data: await fetch(new URL(`assets/fonts/JetBrainsMono-Regular.ttf`, import.meta.url)).then(
-          (res) => res.arrayBuffer(),
-        ),
-        style: "normal",
-        weight: 400,
-      },
-      {
-        name: "Jetbrains Mono",
-        data: await fetch(
-          new URL(`assets/fonts/JetBrainsMono-ExtraBold.ttf`, import.meta.url),
-        ).then((res) => res.arrayBuffer()),
-        style: "normal",
-        weight: 800,
-      },
-    ],
-  };
-}
 
 // Since this api route is scoped to /posts/:slug, the params will have slug parameter.
 type Params = {
@@ -55,8 +27,8 @@ export async function GET(req: NextRequest, { params }: Params) {
   const width = s.has("w") ? parseInt(s.get("w") as string) : 1200;
   const height = s.has("h") ? parseInt(s.get("h") as string) : 630;
 
-  return new ImageResponse(
-    <OpengraphImage post={post} width={width} height={height} />,
-    await imageResponseOptions(width, height),
-  );
+  return new ImageResponse(<OpengraphImage post={post} width={width} height={height} />, {
+    width: width,
+    height: height,
+  });
 }
