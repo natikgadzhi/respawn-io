@@ -21,16 +21,58 @@ ul.contains-task-list {
 }
 
 /*
- * code blocks
+ * Inline code blocks
+ * Apply a nice background, but don't mess with
+ * the bigger code blocks.
  */
-/* pre > code {
+code::before,
+code::after {
+    content: "`";
+    display: none;
+}
+
+:not(pre) > code {
+    @apply bg-gray-100 text-gray-800 rounded px-1 py-0.5 font-mono;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    :not(pre) > code {
+        @apply bg-gray-700 text-gray-200;
+    }
+}
+
+/*
+ * Code blocks:
+ * We're using shiki to do code highlighting,
+ * the CSS below makes tailwind act nice.
+ */
+
+pre > code {
     display: grid;
-} */
+}
 
-/* pre {
+pre {
     --tw-prose-pre-bg: initial;
-} */
+}
 
+code[data-theme*=" "],
+code[data-theme*=" "] span {
+    color: var(--shiki-light);
+    background-color: var(--shiki-light-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+    code[data-theme*=" "],
+    code[data-theme*=" "] span {
+        color: var(--shiki-dark);
+        background-color: var(--shiki-dark-bg);
+    }
+}
+
+/*
+ * Callout blocks
+ */
 article blockquote {
     margin-inline: -2vw;
 }
@@ -50,18 +92,4 @@ article blockquote {
 .callout-content > p {
     margin-top: 0;
     @apply leading-loose;
-}
-
-code[data-theme*=" "],
-code[data-theme*=" "] span {
-    color: var(--shiki-light);
-    background-color: var(--shiki-light-bg);
-}
-
-@media (prefers-color-scheme: dark) {
-    code[data-theme*=" "],
-    code[data-theme*=" "] span {
-        color: var(--shiki-dark);
-        background-color: var(--shiki-dark-bg);
-    }
 }
