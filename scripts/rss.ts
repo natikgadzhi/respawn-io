@@ -2,7 +2,7 @@ import { Feed } from "feed";
 import fs from "fs";
 import { compareDesc } from "date-fns";
 
-import { markdownToHTML } from "lib/markdownToHTML";
+import { markdownToHTML } from "../lib/markdownToHTML";
 
 import { config } from "../blog.config";
 import { allPosts } from "../.contentlayer/generated/index.mjs";
@@ -38,22 +38,24 @@ export default async function generateFeeds() {
     author,
   });
 
-  const feedItems = await Promise.all(posts.map(async (post) => {
-    return {
-      title: post.formattedTitle,
-      id: post.url,
-      link: post.absoluteURL,
-      guid: post.absoluteURL,
-      description: post.rawExcerpt,
-      // @ts-ignore
-      content: await markdownToHTML(post),
-      author: [author],
-      contributor: [author],
-      date: new Date(post.created),
-    };
-  }));
+  const feedItems = await Promise.all(
+    posts.map(async (post) => {
+      return {
+        title: post.formattedTitle,
+        id: post.url,
+        link: post.absoluteURL,
+        guid: post.absoluteURL,
+        description: post.rawExcerpt,
+        // @ts-ignore
+        content: await markdownToHTML(post),
+        author: [author],
+        contributor: [author],
+        date: new Date(post.created),
+      };
+    }),
+  );
 
-  feedItems.forEach(item => feed.addItem(item));
+  feedItems.forEach((item) => feed.addItem(item));
 
   fs.mkdirSync("./public/rss", { recursive: true });
   fs.writeFileSync("./public/rss/feed.xml", feed.rss2());
@@ -61,8 +63,10 @@ export default async function generateFeeds() {
   fs.writeFileSync("./public/rss/feed.json", feed.json1());
 }
 
-generateFeeds().then(() => {
-  console.log("[RSS] feeds generated");
-}).catch((err) => {
-  console.error("[RSS] error generating feeds", err);
-});
+generateFeeds()
+  .then(() => {
+    console.log("[RSS] feeds generated");
+  })
+  .catch((err) => {
+    console.error("[RSS] error generating feeds", err);
+  });
