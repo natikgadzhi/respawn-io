@@ -6,7 +6,7 @@ modified: 2024-08-20
 tags:
   - growth
   - engineering-leadership
-draft: true
+draft: false
 ---
 # Understand the context, make yourself visible
 
