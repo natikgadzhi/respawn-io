@@ -4,7 +4,7 @@
   "scripts": {
     "copy-images": "./scripts/copy-images.sh",
     "dev": "next",
-    "build": "npm run copy-images && next build && npm run rss",
+    "build": "pnpm run copy-images && pnpm run build:content && next build && pnpm run rss",
     "build:content": "contentlayer2 build",
     "start": "next start",
     "rss": "tsx scripts/rss.ts"
@@ -27,11 +27,11 @@
     "next-mdx-remote": "^5.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "rehype-pretty-code": "^0.13.2",
+    "rehype-pretty-code": "^0.14.0",
     "rehype-stringify": "^10.0.1",
     "remark": "^15.0.1",
     "remark-callouts": "^2.0.0",
-    "remark-embed-images": "^4.0.0",
+    "remark-embed-images": "^5.0.0",
     "remark-gfm": "^4.0.0",
     "remark-html": "^16.0.1",
     "remark-parse": "^11.0.0",
