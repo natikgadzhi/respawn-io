@@ -16,7 +16,7 @@
     "@vercel/analytics": "^1.3.1",
     "classnames": "^2.5.1",
     "contentlayer2": "^0.5.3",
-    "date-fns": "^2.30.0",
+    "date-fns": "^4.1.0",
     "feed": "^4.2.2",
     "gray-matter": "4.0.3",
     "hast-util-whitespace": "^3.0.0",
