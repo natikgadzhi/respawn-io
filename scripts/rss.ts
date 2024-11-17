@@ -1,16 +1,16 @@
-import { Feed } from "feed";
-import fs from "fs";
+import fs from "node:fs";
 import { compareDesc } from "date-fns";
+import { Feed } from "feed";
 
 import { markdownToHTML } from "../lib/markdownToHTML";
 
-import { config } from "../blog.config";
 import { allPosts } from "../.contentlayer/generated/index.mjs";
+import { config } from "../blog.config";
 
 export default async function generateFeeds() {
   const env_name = process.env.ENV_NAME;
   const posts = allPosts
-    .filter((post) => env_name == "localhost" || !post.draft)
+    .filter((post) => env_name === "localhost" || !post.draft)
     .sort((a, b) => compareDesc(new Date(a.created), new Date(b.created)));
 
   const author = {

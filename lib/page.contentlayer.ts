@@ -4,6 +4,6 @@ import { defineDocumentType } from "contentlayer2/source-files";
 // of a page. Currently used in `/about`.
 export const Page = defineDocumentType(() => ({
   name: "Page",
-  filePathPattern: `pages/*.md`,
+  filePathPattern: "pages/*.md",
   contentType: "mdx",
 }));

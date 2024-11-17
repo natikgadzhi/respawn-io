@@ -1,11 +1,11 @@
-import { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import type { Metadata, Viewport } from "next";
 
 import "../styles/index.css";
 import { config as blogConfig } from "../blog.config";
 
-import Header from "components/header/header";
 import Footer from "components/footer";
+import Header from "components/header/header";
 
 type Props = {
   children: React.ReactNode;

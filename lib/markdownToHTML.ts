@@ -1,19 +1,19 @@
 // Provides a utility function to convert a markdown to HTML, 
 // without MDX component support
 
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 
 import { VFile } from 'vfile';
 
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
 import rehypeStringify from 'rehype-stringify';
 import remarkEmbedImages from "remark-embed-images";
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import { unified } from 'unified';
 
-import { remarkPlugins, rehypePlugins } from './unifiedPlugins';
+import { rehypePlugins, remarkPlugins } from './unifiedPlugins';
 
-import { type Post } from 'contentlayer/generated';
+import type { Post } from 'contentlayer/generated';
 
 const wrapInArticle = (html: string) => `<article>${html}</article>`;
 

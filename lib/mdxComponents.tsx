@@ -1,6 +1,6 @@
-import Link from "next/link";
-import Image from "next/image";
 import { LinkedH2, LinkedH3 } from "components/headerLinks";
+import Image from "next/image";
+import Link from "next/link";
 import { titleCase } from "./titleCase";
 
 import type { MDXComponents } from "mdx/types";
@@ -19,7 +19,7 @@ export const mdxComponents: MDXComponents = {
   img: ({ src, alt }) => (
     <span className="inline-block relative w-full pb-[56.25%] max-h-[800px]">
       <Image
-        src={"/" + src}
+        src={`/${src}`}
         alt={alt}
         fill={true}
         style={{ objectFit: "contain", margin: "0px" }}

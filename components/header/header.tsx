@@ -1,7 +1,7 @@
 import { config } from "../../blog.config";
 
-import Navigation from "./navigation";
 import BlogTitle from "./blog-title";
+import Navigation from "./navigation";
 
 const Header = () => {
   return (

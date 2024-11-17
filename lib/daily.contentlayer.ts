@@ -3,7 +3,7 @@ import { defineDocumentType } from "contentlayer2/source-files";
 // Daily are short TIL notes.
 export const Daily = defineDocumentType(() => ({
   name: "Daily",
-  filePathPattern: `daily/*.md`,
+  filePathPattern: "daily/*.md",
   contentType: "mdx",
   fields: {
     title: {

@@ -1,6 +1,6 @@
-import Link, { LinkProps } from "next/link";
 import { LinkIcon } from "components/icons";
-import { ReactNode } from "react";
+import Link, { LinkProps } from "next/link";
+import type { ReactNode } from "react";
 
 const makeID = (input: ReactNode | string) => {
   return input.toString().toLowerCase().replace(/[^\w]/g, "-");

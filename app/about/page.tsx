@@ -1,8 +1,8 @@
-import { Metadata } from "next";
 import { config } from "blog.config";
 import { allPages } from "contentlayer/generated";
-import { useMDXComponent } from "next-contentlayer2/hooks";
 import { mdxComponents } from "lib/mdxComponents";
+import type { Metadata } from "next";
+import { useMDXComponent } from "next-contentlayer2/hooks";
 
 import Article from "components/article";
 

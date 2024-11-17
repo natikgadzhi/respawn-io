@@ -1,5 +1,5 @@
-import { MetadataRoute } from 'next'
 import { config } from 'blog.config'
+import type { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
     },
     host: config.baseURL,
-    sitemap: config.baseURL + '/sitemap.xml'
+    sitemap: `${config.baseURL}/sitemap.xml`
   }
 }

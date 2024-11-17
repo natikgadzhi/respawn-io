@@ -1,17 +1,17 @@
-import { allDailies, type Daily } from "contentlayer/generated";
+import { type Daily, allDailies } from "contentlayer/generated";
 
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 import { config } from "blog.config";
-import { compareDesc, format, parse } from "date-fns";
-import { getMDXComponent } from "next-contentlayer2/hooks";
-import { mdxComponents } from "lib/mdxComponents";
 import { LinkedH4 } from "components/headerLinks";
+import { compareDesc, format, parse } from "date-fns";
+import { mdxComponents } from "lib/mdxComponents";
+import { getMDXComponent } from "next-contentlayer2/hooks";
 
 const getDailyNotes = async () => {
   const env_name = process.env.ENV_NAME;
   const daily = allDailies
-    .filter((d) => env_name == "localhost" || !d.draft)
+    .filter((d) => env_name === "localhost" || !d.draft)
     .sort((a, b) => compareDesc(new Date(a.slug), new Date(b.slug)));
   return daily;
 };
@@ -22,7 +22,7 @@ const formatDate = (date: string) => {
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.baseURL),
-  title: "TIL and Daily Notes: " + config.title,
+  title: `TIL and Daily Notes: ${config.title}`,
   description: config.daily.description,
 
   openGraph: {

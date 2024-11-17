@@ -4,7 +4,7 @@ import { titleCase } from "./titleCase";
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
-  filePathPattern: `posts/*.md`,
+  filePathPattern: "posts/*.md",
   contentType: "mdx",
   fields: {
     title: {

@@ -1,8 +1,8 @@
+import type { Post } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
-import { Post } from "contentlayer/generated";
-import Link from "next/link";
-import { getMDXComponent } from "next-contentlayer2/hooks";
 import { mdxComponents } from "lib/mdxComponents";
+import { getMDXComponent } from "next-contentlayer2/hooks";
+import Link from "next/link";
 
 type PostsListProps = {
   posts: Array<Post>;

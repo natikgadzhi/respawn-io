@@ -1,10 +1,10 @@
+import { type Post, allPosts } from "contentlayer/generated";
+import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import { Metadata, ResolvingMetadata } from "next";
-import { allPosts, type Post } from "contentlayer/generated";
 
 import { format, parseISO } from "date-fns";
-import { getMDXComponent } from "next-contentlayer2/hooks";
 import { mdxComponents } from "lib/mdxComponents";
+import { getMDXComponent } from "next-contentlayer2/hooks";
 
 import Article from "components/article";
 
@@ -87,7 +87,7 @@ export default async function Post({ params }: PostPageProps) {
             Originally published on&nbsp;
             {format(parseISO(post.created), "MMM do yyyy")}.
           </div>
-          {post.created != post.modified && (
+          {post.created !== post.modified && (
             <div>
               Last update on&nbsp;
               {format(parseISO(post.modified), "MMM do yyyy")}.

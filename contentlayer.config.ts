@@ -1,10 +1,10 @@
 import { makeSource } from "contentlayer2/source-files";
 
-import { remarkPlugins, rehypePlugins } from "./lib/unifiedPlugins";
+import { rehypePlugins, remarkPlugins } from "./lib/unifiedPlugins";
 
-import { Post } from "./lib/post.contentlayer";
-import { Page } from "./lib/page.contentlayer";
 import { Daily } from "./lib/daily.contentlayer";
+import { Page } from "./lib/page.contentlayer";
+import { Post } from "./lib/post.contentlayer";
 
 export default makeSource({
   disableImportAliasWarning: true,

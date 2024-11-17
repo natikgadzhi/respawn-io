@@ -1,10 +1,10 @@
 'use client'
 
-import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type Props = {
-  title: String;
+  title: string;
 };
 
 const BlogTitle = ({ title }: Props) => {

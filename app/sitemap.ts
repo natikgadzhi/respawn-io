@@ -1,6 +1,6 @@
-import { MetadataRoute } from 'next';
-import { allPosts, allDailies } from 'contentlayer/generated';
+import { allDailies, allPosts } from 'contentlayer/generated';
 import { compareDesc } from 'date-fns';
+import type { MetadataRoute } from 'next';
 
 import { config } from 'blog.config';
 

@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
 
 import { allPosts } from "contentlayer/generated";
 
@@ -24,8 +24,8 @@ export async function GET(req: NextRequest, { params }: Params) {
 
   // width and height have to be converted to integers
   const s = new URL(req.url).searchParams;
-  const width = s.has("w") ? parseInt(s.get("w") as string) : 1200;
-  const height = s.has("h") ? parseInt(s.get("h") as string) : 630;
+  const width = s.has("w") ? Number.parseInt(s.get("w") as string) : 1200;
+  const height = s.has("h") ? Number.parseInt(s.get("h") as string) : 630;
 
   return new ImageResponse(<OpengraphImage post={post} width={width} height={height} />, {
     width: width,
