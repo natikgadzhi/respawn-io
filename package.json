@@ -21,7 +21,6 @@
     "gray-matter": "4.0.3",
     "hast-util-whitespace": "^3.0.0",
     "mdast-util-from-markdown": "^2.0.2",
-    "mdx": "^0.3.1",
     "next": "^14.2.18",
     "next-contentlayer2": "^0.5.3",
     "next-mdx-remote": "^5.0.0",
