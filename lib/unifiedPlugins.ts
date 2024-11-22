@@ -16,6 +16,7 @@ const prettyCodeOptions: Partial<Options> = {
     light: "github-light",
     dark: "github-dark",
   },
+  bypassInlineCode: true,
 };
 
 // remark-figure-caption makes nice captions under images, and supports

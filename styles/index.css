@@ -50,10 +50,23 @@ code::after {
 
 pre > code {
     display: grid;
+    width: 100%;
 }
 
 pre {
     --tw-prose-pre-bg: initial;
+    position: relative;
+    margin-inline: -2vw; /* Same as your blockquote margin */
+
+    /* For larger screens, extend even further */
+    @media (min-width: 768px) {
+        margin-inline: -4vw;
+    }
+
+    /* For even larger screens */
+    @media (min-width: 1024px) {
+        margin-inline: -8vw;
+    }
 }
 
 code[data-theme*=" "],
