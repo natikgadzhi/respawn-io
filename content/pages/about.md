@@ -8,9 +8,4 @@ I write about engineering leadership, building software, and finding out. The
 source code for this blog, along with all the essays in Markdown, are
 [available on Github](https://github.com/natikgadzhi/respawn-io).
 
-Get in touch:
-- Email: natik@respawn.io
-- [GitHub](https://github.com/natikgadzhi)
-- [Linkedin](https://linkedin.com/in/natikgadzhi)
-- [@natik@achyderm.io](https://hachyderm.io/@natik)
-- [Twitter](https://twitter.com/natikgadzhi)
+You can reach me at natik@respawn.io, or find me on [GitHub](https://github.com/natikgadzhi) and [Linkedin](https://linkedin.com/in/natikgadzhi). I post on [@natik@hachyderm.io](https://hachyderm.io/@natik), [@natikgadzhi.bsky.social](https://bsky.app/profile/natikgadzhi.bsky.social), and [@natikgadzhi](https://twitter.com/natikgadzhi).
