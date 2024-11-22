@@ -1,11 +1,11 @@
 # respawn.io
 
 This repo contains the source code for (yet another?) iteration of
-[respawn.io](https://respawn.io) blog. That one uses Next.js and Tailwind.
+[respawn.io](https://respawn.io) blog. That one uses Next, Tailwind, and Contentlayer.
 
 A few more things under the hood:
 
-- Simple posts layout with metadata and opengraph cards support.
+- Content pipeline is handled by `contentlayer`. See [Contentlayer with multiple data types](http://respawn.io/posts/contentlayer-with-multiple-data-types).
 - RSS feed that includes all posts.
 - Mark posts as `draft: true` in front matter to hide them from the generated
   site.
