@@ -1,11 +1,12 @@
 import { Analytics } from "@vercel/analytics/react";
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 
 import "../styles/index.css";
 import { config as blogConfig } from "../blog.config";
 
 import Footer from "components/footer";
 import Header from "components/header/header";
+import Counterscale from "components/counterscale";
 
 type Props = {
   children: React.ReactNode;
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <Analytics />
+      <Counterscale />
       <body className="dark:bg-stone-950 text-stone-950 dark:text-gray-50">
         <main className="min-h-screen max-w-3xl mx-auto">
           <div className="container mx-auto px-5">

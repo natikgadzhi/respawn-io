@@ -6,12 +6,6 @@ export const config = {
   baseURL: "https://respawn.io",
   githubURL: "https://github.com/natikgadzhi/respawn-io",
 
-  fathom: {
-    domain: "respawn.io",
-    propertyID: "CHCUIZHD",
-    scriptURL: "https://lets-dance-thirtyeight.respawn.io/script.js"
-  },
-
   meta: {
     title: "Natik's Journal: Blog on engineering management",
     description: "Notes on engineering leadership and software development.",
@@ -23,15 +17,21 @@ export const config = {
     twitterURL: "https://twitter.com/natikgadzhi",
     twitterHandle: "@natikgadzhi",
     fediverseURL: "https://hachyderm.io/@natik",
-    github: "https://github.com/natikgadzhi"
+    github: "https://github.com/natikgadzhi",
   },
 
   daily: {
     title: "Daily",
-    description: "Quick notes on things I learned that day. Mostly coding, and some a-ha moment in working with people, or tricks to get projects done on time."
+    description:
+      "Quick notes on things I learned that day. Mostly coding, and some a-ha moment in working with people, or tricks to get projects done on time.",
   },
 
   footer: {
     copyright: "© Natik Gadzhi",
-  }
-}
+  },
+
+  counterscale: {
+    siteId: "respawn-io",
+    url: "https://1ca90c7a.counterscale-a1l.pages.dev",
+  },
+};
