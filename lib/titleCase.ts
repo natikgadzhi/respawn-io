@@ -1,4 +1,46 @@
-export const titleCase = (str: React.ReactNode) => {
+import { ReactNode, isValidElement, cloneElement, Children } from "react";
+
+function hasNestedNodes(node: ReactNode): boolean {
+  // Check if it's an array
+  if (Array.isArray(node)) {
+    return true;
+  }
+
+  // Check if it's a React element and has children
+  if (isValidElement(node)) {
+    return Children.count(node.props.children) > 0;
+  }
+
+  // If it's just a string or number, it doesn't have nested nodes
+  if (typeof node === "string" || typeof node === "number") {
+    return false;
+  }
+
+  return false;
+}
+
+export const titleCase = (input: ReactNode): ReactNode => {
+  // If it's an array, process each element
+  if (Array.isArray(input)) {
+    return input.map((child) => titleCase(child));
+  }
+
+  // If it's a React element with children, process its children
+  if (isValidElement(input) && hasNestedNodes(input)) {
+    // return cloneElement(input, {
+    //   children: titleCase(input.props.children),
+    // });
+    return cloneElement(input, {
+      // @ts-ignore
+      children: titleCase(input.props.children),
+    });
+  }
+
+  // If it's a React element without children, return it unchanged
+  if (isValidElement(input)) {
+    return input;
+  }
+
   const lowers = [
     "A",
     "An",
@@ -21,7 +63,7 @@ export const titleCase = (str: React.ReactNode) => {
     "Onto",
     "To",
     "With",
-    "Vs"
+    "Vs",
   ];
 
   const exceptions = ["SwiftUI"];
@@ -32,13 +74,12 @@ export const titleCase = (str: React.ReactNode) => {
   const exceptionsRegex = new RegExp(`\\b(${exceptions.join("|")})\\b`, "g");
 
   // Capitalize each word
-  return str
+  return input
     .toString()
-    .replace(
-      /([^\W_]+[^\s-]*) */g,
-      (word) => exceptionsRegex.test(word) ?
-        word : 
-        word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+    .replace(/([^\W_]+[^\s-]*) */g, (word) =>
+      exceptionsRegex.test(word)
+        ? word
+        : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
     )
     .replace(lowersRegex, (word) => word.toLowerCase())
     .replace(uppersRegex, (word) => word.toUpperCase());
