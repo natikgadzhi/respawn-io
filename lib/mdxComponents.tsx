@@ -15,7 +15,11 @@ export const mdxComponents: MDXComponents = {
   h1: ({ children }) => <h1>{titleCase(children)}</h1>,
   h2: LinkedH2,
   h3: LinkedH3,
-  a: ({ href, children }) => <Link href={href as string}>{children}</Link>,
+  a: ({ href, children }) => (
+    <Link className="underline underline-offst-2" href={href as string}>
+      {children}
+    </Link>
+  ),
   img: ({ src, alt }) => (
     <span className="inline-block relative w-full pb-[56.25%] max-h-[800px]">
       <Image

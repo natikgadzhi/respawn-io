@@ -8,7 +8,7 @@ export const Post = defineDocumentType(() => ({
   contentType: "mdx",
   fields: {
     title: {
-      type: "string",
+      type: "mdx",
       description: "The title of the post",
       required: true,
     },
@@ -58,7 +58,7 @@ export const Post = defineDocumentType(() => ({
     formattedTitle: {
       type: "string",
       description: "Title Case Formatted Post Title",
-      resolve: (doc) => titleCase(doc.title),
+      resolve: (doc) => titleCase(doc.title.raw),
     },
     rawExcerpt: {
       type: "string",
