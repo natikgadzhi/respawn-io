@@ -3,6 +3,9 @@ title: Automating Swift DocC with Github Actions
 excerpt: Shipping your library's DocC documentation to GitHub Pages, and keeping it up to date with a GitHub action.
 created: 2023-06-16
 modified: 2023-06-16
+tags:
+  - swift
+  - coding
 ---
 
 # Automating Swift DocC with GitHub Actions
