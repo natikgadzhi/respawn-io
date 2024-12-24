@@ -7,6 +7,7 @@ import { config as blogConfig } from "../blog.config";
 import Footer from "components/footer";
 import Header from "components/header/header";
 import Counterscale from "components/counterscale";
+import Head from "next/head";
 
 type Props = {
   children: React.ReactNode;
@@ -53,7 +54,9 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <Analytics />
-      <Counterscale />
+      <Head>
+        <Counterscale />
+      </Head>
       <body className="dark:bg-stone-950 text-stone-950 dark:text-gray-50">
         <main className="min-h-screen max-w-3xl mx-auto">
           <div className="container mx-auto px-5">
