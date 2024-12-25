@@ -1,12 +1,7 @@
-import { type Tag, allTags, type Post, allPosts } from "contentlayer/generated";
-import type { Metadata, ResolvingMetadata } from "next";
+import { allTags, allPosts } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 
-import { mdxComponents } from "lib/mdxComponents";
-import { getMDXComponent } from "next-contentlayer2/hooks";
-
 import { PostsList } from "components/posts";
-import Article from "components/article";
 
 type TagPageParams = {
   params: {
