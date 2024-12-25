@@ -46,7 +46,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // @ts-ignore
   const withTags = withPosts.concat(
     tags.map((tag) => ({
-      url: `${config.baseURL}/tag/${tag.tag}`,
+      url: `${config.baseURL}/tags/${tag.tag}`,
       lastModified: new Date(posts[0].modified),
       changeFrequency: "daily",
     })),
