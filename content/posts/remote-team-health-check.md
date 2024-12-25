@@ -4,6 +4,9 @@ excerpt: How to quickly check-in with your team, and make sure people feel safe,
 created: 2023-06-25
 modified: 2023-07-03
 draft: false
+tags:
+  - engineering-leadership
+  - remote
 ---
 
 # Remote Team Health Check

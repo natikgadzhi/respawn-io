@@ -4,6 +4,9 @@ modified: 2022-08-23
 title: "Training, Coaching, and Mentoring as an Engineering Manager"
 excerpt: "What role you play for each person on your team, and in your organization."
 meta_keywords: "Engineering leadership, engineering management, mentorship for engineering managers"
+tags:
+  - engineering-leadership
+  - lifting-others
 ---
 
 # Training, Coaching, and Mentoring as an Engineering Manager
@@ -20,7 +23,7 @@ Usually, you would not _train_ each of your new hires individually. Instead, you
 
 ### Coaching
 
-**Coaching is the second layer**: the person knows the technology and the tools, now you show them how to get things done using those tools. The part that's not in the manual. 
+**Coaching is the second layer**: the person knows the technology and the tools, now you show them how to get things done using those tools. The part that's not in the manual.
 
 Coaching _is_ like training: you're teaching folks to be successful in their role. You're still setting the agenda, the coaching plan, and highlighting the areas they need to cover, based on how you see the person show up. But, **coaching applies to aspects of the role that require more creative thinking**:
 - You coach your senior engineers to lead a project, if you're grooming them to become a team lead.
@@ -47,7 +50,7 @@ My regular self-assessment questions:
 
 Be very intentional about your commitments to mentor people. You can't mentor everyone — you will meet people in your career who you're fine working with on your team, but you just can't be their mentor.
 
-_Being someone's manager, you have the power to define their path and career trajectory_. If someone's long-term career goals are not aligned with what you think you need on your team in the next year, you don't have the immediate incentive to mentor them. 
+_Being someone's manager, you have the power to define their path and career trajectory_. If someone's long-term career goals are not aligned with what you think you need on your team in the next year, you don't have the immediate incentive to mentor them.
 
 **Put people first. Always**. Mentoring folks on your team towards their personal, career goals, is what creates strong relationships that ascend beyond companies.
 - If someone on your team wants to work towards a new skill that you might not immediately need in your current org — be upfront about it, and see if you have the energy and time to mentor them towards it.

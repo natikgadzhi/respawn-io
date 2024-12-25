@@ -7,11 +7,14 @@ draft: false
 meta_description: How to lead a remote team, and help them manage notifications and mentions across Slack, Google Docs, Figma, and all the tools they are using.
 meta_keywords: Remote, remote work, remote communications, notifications
 og_image_hide_description: true
+tags:
+  - remote
+  - engineering-leadership
 ---
 
 # The endless pile of notifications in remote work
 
-Returning to an inbox of 400 notifications is no fun, yet you get that after a week off. On the chart of things that are difficult for [[remote-and-async-work|teams trying to work remotely]], managing communication channels and notification volume is up there at the top. 
+Returning to an inbox of 400 notifications is no fun, yet you get that after a week off. On the chart of things that are difficult for [[remote-and-async-work|teams trying to work remotely]], managing communication channels and notification volume is up there at the top.
 
 People on remote teams will get overwhelmed from time to time, inevitably. But you've _been_ there already, you've _seen_ it happen again and again — so why don't you prepare your teams for it, and set up your communication systems in a way that doesn't hurt their brains as much?
 
@@ -59,18 +62,18 @@ When people mention someone, they generally expect that the person got the memo.
 
 Worry not, the only thing the recipient has to do to get out of that trap is to just intentionally, deliberately, publicly acknowledge that they're drowning in notifications, and that they will not, in fact, read them at all. Then they mark all as read. And publicly say that if anyone awaits on a response from them, or if there's anything critical for them to see — please mention them again.
 
-I strongly believe people should have that escape hatch. But there's a caveat. *Different cultures, remember?* My product manager once went back online after a few days off, and asked the team to ping them on the highest priority items for them to catch up on first. Someone more senior on another team looked at that and asked _me_ why _that product manager_ thinks _their time is more valuable than ours, and why can't they catch up on their own_. 
+I strongly believe people should have that escape hatch. But there's a caveat. *Different cultures, remember?* My product manager once went back online after a few days off, and asked the team to ping them on the highest priority items for them to catch up on first. Someone more senior on another team looked at that and asked _me_ why _that product manager_ thinks _their time is more valuable than ours, and why can't they catch up on their own_.
 
-This ritual needs to be alright with everyone. It's not because people are lazy, it's because spending days and days reading stale notifications is not the best use of time. Nobody should think less of others just because they default on notifications in extreme situations. 
+This ritual needs to be alright with everyone. It's not because people are lazy, it's because spending days and days reading stale notifications is not the best use of time. Nobody should think less of others just because they default on notifications in extreme situations.
 
 Just like unlimited PTO, of course, it's a trap. If someone starts every other week with "Happy Monday! I won't read my notifications, ping me if you need me" — you two are overdue for a chat.
 
 
 ## When mentioning people, leave meaningful context
 
-This one is best in a form of an example. 
+This one is best in a form of an example.
 
-You have a senior software engineer, Julia, who is just fantastic — she's been with the company for a long time, and built quite a few things, in different areas of your product. She recently led a feature-team, and the feature was merged and shipped under a feature flag a month ago. 
+You have a senior software engineer, Julia, who is just fantastic — she's been with the company for a long time, and built quite a few things, in different areas of your product. She recently led a feature-team, and the feature was merged and shipped under a feature flag a month ago.
 
 Your account managers released it to customers in waves, and now your product manager Patrick has a request for an improvement that they have left as a comment on the Google Doc with the original feature spec.
 
@@ -78,28 +81,26 @@ Patrick made a first comment with a description of an edge case that was, on it'
 
 > **Patrick**: Hey, so in a situation when this widget does not have enough data for the second line on the chart, can we show a little notice with a button to connect additional data stores?
 
-Patrick is smart, they realized their mistake. So they reply to their own comment: 
+Patrick is smart, they realized their mistake. So they reply to their own comment:
 > **Patrick**: Hey @julia, can you take a look?
 
-So, Julia receives an email from Google Docs that has just this — hey Julia, can you take a look? Sure, it has a link, but just scanning this — Julia has no clue what the hell she's stepping into, clicking on that link. She also does not know what Patrick expects her to do — does he expect her to work on the feature? Did he already talk to her engineering manager about it? etc. 
+So, Julia receives an email from Google Docs that has just this — hey Julia, can you take a look? Sure, it has a link, but just scanning this — Julia has no clue what the hell she's stepping into, clicking on that link. She also does not know what Patrick expects her to do — does he expect her to work on the feature? Did he already talk to her engineering manager about it? etc.
 
 > [!tip]
 > When mentioning people, add concise, meaningful context. One sentence should tell people what they're looking at, what action is expected, and where to learn more.
 
-It Patrick asked you how they could improve their comment, you should tell them to write something like: 
+It Patrick asked you how they could improve their comment, you should tell them to write something like:
 
-> **Patrick**: Hey @julia, in the dashboard widget you shipped last month, there's this edge case. I'm looking for your feedback before I file a ticket. Not urgent, I don't expect you to build the thing. 
+> **Patrick**: Hey @julia, in the dashboard widget you shipped last month, there's this edge case. I'm looking for your feedback before I file a ticket. Not urgent, I don't expect you to build the thing.
 
 
 
 ## Read more
 
-I've posted a few notes on remote work: 
+I've posted a few notes on remote work:
 - [[remote-team-health-check|Remote team health check]] on how to quickly assess strong and weak sides of a team, and figure out what to focus on as a leader.
 - [[remote-and-async-work]] on how to strengthen an asynchronous remote-first work environment.
 
 There's no right or wrong way to work. Just like technologies and frameworks, the work communication framework you use is a tool. You choose a tool based on the job at hand, and on what you and your team know well.
 
-If the team likes hybrid work, or likes to huddle at a white board with pizza and bears, and it works well for them — you _probably_ should not try and change _the whole team_. 
-
-
+If the team likes hybrid work, or likes to huddle at a white board with pizza and bears, and it works well for them — you _probably_ should not try and change _the whole team_.

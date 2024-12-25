@@ -6,6 +6,8 @@ modified: 2023-08-05
 draft: false
 meta_description: For engineering management, saying no is extremely valuable. But not just for you — for your team and larger organization as well. Here's how delegating your work unlocks value for your team.
 meta_keywords: Engineering management, engineering leadership, coaching engineers
+tags:
+  - engineering-leadership
 ---
 
 # You Should Really Say "No" More Often
@@ -22,7 +24,7 @@ On a 1:1 with your peer engineering manager, you talk about how your engineers a
 
 Let's get the basics out of the way. When you say "yes" to one thing, you're saying "no" to everything else that you could've done in that time.
 
-If you agree to many small asks from others, you're implicitly not spending the time thinking strategically about the core of your own work and growth. Thinking strategically takes time. Doing lots of one-off tasks also takes time. You'll get many asks and nudges as your work becomes more visible in the company, that's a given. You will not get many nudges to think strategically from your boss in a startup — *they're likely busy doing one-off asks from others*, and didn't make time to think about your growth. 
+If you agree to many small asks from others, you're implicitly not spending the time thinking strategically about the core of your own work and growth. Thinking strategically takes time. Doing lots of one-off tasks also takes time. You'll get many asks and nudges as your work becomes more visible in the company, that's a given. You will not get many nudges to think strategically from your boss in a startup — *they're likely busy doing one-off asks from others*, and didn't make time to think about your growth.
 
 So, saying "no" to small asks from others makes it possible for you to make time and think about the work that is important to you strategically.
 
@@ -57,6 +59,6 @@ Your team is looking up to you, seeks every subtle signal on what you expect fro
 
 ---
 
-Learning to say no and to make time to stop and think strategically is one of the most important skills for a people leader. 
+Learning to say no and to make time to stop and think strategically is one of the most important skills for a people leader.
 
 Especially if you're a manager of managers in your current role — do make sure that your managers are not burning themselves out with endless one-off asks from others. In a way, this makes your job easier — you can coach your managers to take care of themselves and their time, and to think strategically. Then you set a goal for them to coach their team in the same way.

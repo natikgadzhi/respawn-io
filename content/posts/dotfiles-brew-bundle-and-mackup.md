@@ -5,6 +5,8 @@ title: "Setting up a New Mac with dotfiles, brew bundle, and mackup"
 excerpt:
   "When you can't quite use the Migration Assistant, but not ready to geek out
   all the way with Ansible."
+tags:
+  - coding
 ---
 
 # Setting up a New Mac with dotfiles, brew bundle, and mackup

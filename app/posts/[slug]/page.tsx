@@ -1,5 +1,6 @@
 import { type Post, allPosts } from "contentlayer/generated";
 import type { Metadata, ResolvingMetadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { format, parseISO } from "date-fns";
@@ -15,6 +16,29 @@ type PostPageProps = {
     slug: string;
   };
 };
+
+function PostTags({ post }: { post: Post }) {
+  return (
+    <>
+      {post.tags && post.tags.length > 0 && (
+        <div className="text-sm lg:text-lg text-center mb-4">
+          <span className="text-stone-400">Tagged with: </span>
+          {post.tags.map((tag, index) => (
+            <span key={tag}>
+              <Link
+                href={`/tags/${tag.toLowerCase()}`}
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                #{tag}
+              </Link>
+              {index < post.tags.length - 1 && ", "}
+            </span>
+          ))}
+        </div>
+      )}
+    </>
+  );
+}
 
 export async function generateMetadata(
   { params }: PostPageProps,
@@ -67,7 +91,7 @@ export async function generateStaticParams() {
   });
 }
 
-export default async function Post({ params }: PostPageProps) {
+export default async function PostPage({ params }: PostPageProps) {
   const post = allPosts.find((post) => post.slug === params.slug);
 
   if (!post) {
@@ -82,6 +106,9 @@ export default async function Post({ params }: PostPageProps) {
         <MDXContent components={mdxComponents} />
 
         <div className="text-2xl font-regular text-center my-20 relative">⌘ ⌘ ⌘</div>
+
+        <PostTags post={post} />
+
         <div className="text-sm lg:text-lg text-center text-stone-400">
           <div>
             Originally published on&nbsp;

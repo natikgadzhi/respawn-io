@@ -6,6 +6,9 @@ created: 2024-01-06
 modified: 2024-01-06
 title: How to make an app icon in SwiftUI
 excerpt: You can make iOS and Mac app icons directly with SwiftUI, without any design tools like Figma!
+tags:
+  - coding
+  - swift
 ---
 # How to make an app icon in SwiftUI
 
@@ -31,7 +34,7 @@ struct IconView: View {
         ZStack {
             // The background layer.
             Color.iconBackground
-            
+           
             // Slight gradient, will us the radiating light.
             RadialGradient(gradient: Gradient(colors: [Color.white.opacity(0.175), Color.iconBackground]),
                            center: .center,
@@ -74,7 +77,7 @@ struct IconView: View {
 
 You can export any View as an `UIImage`, and then save it. A few caveats:
 - If you want to later use this as an icon, you should set the size of the view that you export appropriately, i.e. in this case, we'll export an `IconView(size: 1024)`, which will be exported as a `2048x2048` PNG image, which we will then convert into an `appiconset`.
-- The snippet is designed to run on macOS. I run it as a Mac Catalyst app _preview_. The snippet below saves the icon into the `Pictures` directory. You can save the file into any directory you have access to. 
+- The snippet is designed to run on macOS. I run it as a Mac Catalyst app _preview_. The snippet below saves the icon into the `Pictures` directory. You can save the file into any directory you have access to.
 
 ```swift
 
@@ -84,19 +87,19 @@ struct IconExportView: View {
             // This is just a preview, and strictly speaking not necessary.
             iconView()
                 .padding()
-            // A button to trigger the export. 
+            // A button to trigger the export.
             Button("Save Icon") {
                 self.exportImage()
             }
             .buttonStyle(.borderedProminent)
         }
     }
-    
+
     /// Make an `IconView` of size `1024`.
     func iconView() -> IconView {
         return IconView(size: 1024)
     }
-    
+
     /// Grab a snapshot of a target view as a ``UIImage``.
     @MainActor func snapshot(of target: some View) -> UIImage? {
         let controller = UIHostingController(rootView: target)
@@ -112,7 +115,7 @@ struct IconExportView: View {
 
     @MainActor func exportImage() {
         print("Saving!")
-        
+
         // 1. Grab the view as an image
         if let image = self.snapshot(of: iconView()) {
             if let imageData = image.pngData() {
@@ -121,7 +124,7 @@ struct IconExportView: View {
                 let pictures = FileManager.default.urls(for: .picturesDirectory, in: .userDomainMask).first!
                 let fileName = "icon-from-swiftUI.png"
                 let fileURL = pictures.appendingPathComponent(fileName)
-                
+
                 do {
                     try imageData.write(to: fileURL)
                 } catch {
@@ -149,4 +152,4 @@ There are a bunch of services and apps that take an image, and generate an app a
 
 ---
 
-The full code for this flow is in [the Scrapes repo](https://github.com/natikgadzhi/Scrapes). 
+The full code for this flow is in [the Scrapes repo](https://github.com/natikgadzhi/Scrapes).

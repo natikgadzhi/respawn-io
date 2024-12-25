@@ -6,20 +6,22 @@ modified: 2023-11-05
 draft: false
 meta_description: Remote doesn't suck. Attempts to shove in-office meeting HiPPO culture into a remote medium suck. Here's how to help your teams work better in an asynchronous environment.
 meta_keywords: Remote, remote work, working remotely, async remote work, trust-driven work
+tags:
+  - remote
 ---
 # Switching to Asynchronous remote work: challenges and best practices
 
 Someone recently mentioned to me that they've gone back to the office for two days each week, and it gave them a huge productivity boost — "we get so much done in those two days — stuff that we can't otherwise get done in a month".
 
 Remote work doesn't suck. Attempts to shove in-office meeting HiPPO culture into a remote medium sucks.
-  
+
 People seem to confuse *asynchronous trust-driven remote work* and office culture inspired remote work. Remote makes many things so much easier, but some things become very challenging. Meeting time becomes an expensive luxury.
 
-So if to get anything done you need a synchronous meeting with several people to discuss a thing, and then another meeting to make a decision, and then yet another meeting to tell other teams about that decision — you're royally screwed. Everyone on your team will be burned out and exhausted after several months of that clown fiesta. 
-  
+So if to get anything done you need a synchronous meeting with several people to discuss a thing, and then another meeting to make a decision, and then yet another meeting to tell other teams about that decision — you're royally screwed. Everyone on your team will be burned out and exhausted after several months of that clown fiesta.
+
 That's why teams who figured it out stress that _communicating in writing with extreme clarity_ is so important. You do that thing called actually reading and writing. A document about why you need a decision and what you're leaning to, inviting others to collaborate. A Slack message (on a public channel, please). An email, if you feel like a fossil today. Bonus points for including a diagram or a Loom video.
-  
-That mode of work requires everyone to trust each other and treat each other like adults. It requires people to be engaged, have the same goal, and be excellent in their communication. Hence, it is difficult to switch to — and I get why larger companies who had to go remote 3 years ago are now going hybrid. All their previous lives they've trained their teams and leaders to work in a certain way, rally their teams around the whiteboard. 
+
+That mode of work requires everyone to trust each other and treat each other like adults. It requires people to be engaged, have the same goal, and be excellent in their communication. Hence, it is difficult to switch to — and I get why larger companies who had to go remote 3 years ago are now going hybrid. All their previous lives they've trained their teams and leaders to work in a certain way, rally their teams around the whiteboard.
 
 
 
@@ -45,7 +47,7 @@ Whether you're making a decision, or just asking where in your codebase a certai
 - **By example.** Do your part — instead of DMs, work in the open. Loop people into conversations — tag and mention people who you know will need this information.
 - **When someone asks _you_ a question** — it's absolutely necessary to post your answer into the open channel, and comment that "Hey folks, @xyz asked about this, and here's what I think. Am I missing anything? Does it look correct to you?". In DMs, politely explain why you prefer to answer this way, and ask that the person posts their questions in the channel and mentions you, instead of a DM next time.
   > You will have to do this many times with many people on your team. Some people get comformtable posting in the open quickly, but others might take several nudges to change their ways.
-  
+
 
 ### Making and documenting decisions
 
@@ -60,19 +62,19 @@ Working asynchronously requires you to communicate in writing instead of video a
 But, async decisions may feel slow. Some decisions are straightforward, and you expect that most or all people on the team will agree with them. Some decisions so small that an RFC-style document is an overkill. Some decisions feel so urgent that it feels like there's no time to have a discussion.
 
 > Remote / async work does not require that you have lengthy discussions about every decision and lose time on them. It's the other way around! **Async work means that you choose the right medium to communicate your goals and intentions.**
-> 
-> **You start an RFC-style discussion where you suggest a plan, and immediately start working on your approach.** 
+>
+> **You start an RFC-style discussion where you suggest a plan, and immediately start working on your approach.**
 >
 > Sometimes, admittedly, that means you will throw away your prototype if the team is convinced that you should take another path ;-)
 
 How to help your team get better at async, documented decision-making (ugh, that's a separate post worth of stuff):
-- **By example**. Write notes where you outline the problem you need to solve, the ideal successful state, a couple of possible approaches, and the approach that you plan to take. 
+- **By example**. Write notes where you outline the problem you need to solve, the ideal successful state, a couple of possible approaches, and the approach that you plan to take.
     - Set the timeline: communicate how much time folks have to contribute.
     - Set the expectation of who should contribute. If you expect certain people to comment, approve, or add suggestions — ask them specifically.
     - Set the expectation about following through on the decision. Who is going to drive the discussion forward? Are you delegating it to someone, or will you return and wrap it up?
 - **Help others write their proposals, notes, and documents.** Especially true if you support software engineers. Help them learn how to communicate their work better, and they will push your whole organization forward.
-- **Help others make their voices heard**. Remote is great at surfacing who is very engaged, and who seems to be shy and just get their own work done. Check-in on them, and make sure you support people who have a lot to contribute, but who shy away from it. 
-  
+- **Help others make their voices heard**. Remote is great at surfacing who is very engaged, and who seems to be shy and just get their own work done. Check-in on them, and make sure you support people who have a lot to contribute, but who shy away from it.
+
   **Set a clear expectation that participating in discussions is a big and important part of their work, and it's okay to spend time on it.** Maybe they're drowning in work on their projects (your job to help them, btw), or perhaps they didn't get the memo (your job to help them, btw), or they don't have anything to contribute (unlikely, but your job to help them level up, or level out, btw).
 
 - **Normalize prototyping and discarding work if the decision changed**. When a decision is urgent, you can ask the team to start working in a direction before it was confirmed. Normalize that style of work — that will help you remove the perceived slowness of remote. Show the team that you know there's a trade-off, and that you deliberately ask them to start working, knowing we might end up discarding some of their early work if we choose to go in a different approach.

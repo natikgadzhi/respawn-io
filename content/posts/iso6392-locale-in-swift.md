@@ -7,7 +7,6 @@ draft: false
 tags:
   - swift
   - coding
-  - projects/scrapes
 ---
 # How to get `iso639.2` locale code in Swift
 
@@ -56,4 +55,3 @@ let alpha3Code = Locale.current.language.languageCode?.identifier(.alpha3)
 ```
 
 That's it. I done goofed. This particular `.identifier(type)` call was difficult to find — there's both a property called `identifier` and an instance function called `identifier(_ type:)`.
-

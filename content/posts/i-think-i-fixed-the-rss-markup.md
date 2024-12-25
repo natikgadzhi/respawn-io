@@ -6,7 +6,7 @@ excerpt: Turns out, rendering MDX in an RSS feed in Next.js is a PITA
 tags:
   - coding
   - obsidian
-  - javascript
+  - contentlayer
 ---
 # I think I fixed the RSS markup?
 
@@ -27,7 +27,7 @@ That's great for pages composed of React components. But there's a problem. In a
 
 Neither of those approaches give you  a page that you can compose with React code.  Usually, you'd use `rss` or `feed` library and shove the result in a file, or an HTTP response.
 
-To render that outside of a React context, you _can_ hypothetically to `ReactDOMServer.renderToString`, but Vercel does not like that. 
+To render that outside of a React context, you _can_ hypothetically to `ReactDOMServer.renderToString`, but Vercel does not like that.
 
 ## Workaround for MDX in RSS is to, well, not use MDX in RSS
 
@@ -38,7 +38,7 @@ Sprinkled with some `//@ts-ignore`, this works, except for custom MDX components
 ## Inlining Images in RSS
 
 The other tricky problem in Obsidian + Next.js combo are paths to posts and assets. Because the site repository has posts in `./content/{type}/{slug}.md`, the relative path from the root is going to be different, so I had to preprocess them:
-- `remark-wiki-links` has `hrefTemplate` that works great to preface the post paths. 
+- `remark-wiki-links` has `hrefTemplate` that works great to preface the post paths.
 - You can treat `<img>` as a custom MDX component and override image path in `src` (or use any rehype plugin to do a similar flow).
 
 But, for the RSS feed and for a newsletter, you'd have to either set absolute asset URLs, or inline them. So I've set up `rehype-embed-images` replace image sources with base64 encoded images. That way, RSS readers should be able to pick them up.

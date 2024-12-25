@@ -12,9 +12,7 @@ const Header = () => {
         <Navigation className="hidden md:inline-flex" />
       </div>
 
-      <p className="flex text-left text-md md:text-lg mt-2">
-        {config.description}
-      </p>
+      <p className="flex text-left text-md md:text-lg mt-2">{config.description}</p>
 
       <Navigation className="my-2 inline-flex md:hidden" />
     </section>

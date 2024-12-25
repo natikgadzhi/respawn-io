@@ -5,6 +5,7 @@ title: Pain is a part of the process
 excerpt: You 👏 won't 👏 grow 👏 without 👏 stetch 👏 goals.
 tags:
   - engineering-leadership
+  - growth
 ---
 # Pain is a part of the process
 

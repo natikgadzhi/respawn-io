@@ -4,6 +4,10 @@ excerpt: "I had a couple hours on a Thursday night, and wanted to clean up my we
 created: 2022-06-16
 modified: 2022-12-19
 og_image_hide_description: true
+tags:
+  - coding
+  - obsidian
+  - contentlayer
 ---
 
 # Obsidian, Next.js, and Vercel
@@ -29,11 +33,11 @@ Here's how this thing works:
 ## Caveats
 
 - **Images** are generally stored in the content directory, side by side with a post.
-  - All `.png` images are copied over from `./content/**/*.png` to `./public/` in a build step by `scripts/copy-images.sh`. That way, both the compiled website, and Obsidian vault can have nice images without too much hassle with paths. 
+  - All `.png` images are copied over from `./content/**/*.png` to `./public/` in a build step by `scripts/copy-images.sh`. That way, both the compiled website, and Obsidian vault can have nice images without too much hassle with paths.
 
-## Same Markup, Different Presentations 
+## Same Markup, Different Presentations
 
-Over the months, I've changed a few things, and mostly it was fun to hack on. I want most of the Obsidian features to work seamlessly in the notes that I publish. Links, callouts, footnotes, perhaps tables, images. Some of that is now solved, but there are more things on that todo list: 
+Over the months, I've changed a few things, and mostly it was fun to hack on. I want most of the Obsidian features to work seamlessly in the notes that I publish. Links, callouts, footnotes, perhaps tables, images. Some of that is now solved, but there are more things on that todo list:
 - [x] Content for pages, posts, and daily notes is [[contentlayer-with-multiple-data-types|generated with `Contentlayer`]].
 - [x] There's some additional code that allows for MDX processing of the fields in the front matter of posts.
 - [x] **Callouts**. Early on, I've had a custom `<Callout>` component that I've fed to MDX, but that would mean that the note in Obsidian has the Callout block that doesn't actually represent a Markdown callout, or a callout block Obsidian would understand. So I've switched to Obsidian-friendly callout format [in this commit](https://github.com/natikgadzhi/respawn-io/commit/831f421c7f34a101b6a49dee4db8136e3b0d0349)
