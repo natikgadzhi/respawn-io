@@ -51,6 +51,7 @@ code::after {
 pre > code {
     display: grid;
     width: 100%;
+    padding: 0.75vw !important;
 }
 
 pre {
