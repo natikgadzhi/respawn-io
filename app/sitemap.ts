@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${config.baseURL}/daily`,
-      lastModified: new Date(daily[0].modified),
+      lastModified: new Date(daily[0].slug),
       changeFrequency: "daily",
     },
     {
