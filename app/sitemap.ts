@@ -47,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const withTags = withPosts.concat(
     tags.map((tag) => ({
       url: `${config.baseURL}/tags/${tag.tag}`,
-      lastModified: new Date(posts[0].modified),
+      lastModified: new Date(posts[0].modified ? posts[0].modified : posts[0].created),
       changeFrequency: "daily",
     })),
   );

@@ -1,7 +1,4 @@
 ---
-tags:
-  - swift
-  - swiftui
 created: 2024-01-06
 modified: 2024-01-06
 title: How to make an app icon in SwiftUI
@@ -9,6 +6,7 @@ excerpt: You can make iOS and Mac app icons directly with SwiftUI, without any d
 tags:
   - coding
   - swift
+  - swiftui
 ---
 # How to make an app icon in SwiftUI
 
