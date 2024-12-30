@@ -10,7 +10,17 @@ import { config } from "../blog.config";
 export default async function generateFeeds() {
   const env_name = process.env.ENV_NAME;
   const posts = allPosts
-    .filter((post) => env_name === "localhost" || !post.draft)
+    .filter((post) => {
+      // In development, show all posts except drafts
+      if (env_name === "localhost") {
+        //@ts-ignore
+        return !post.draft; 
+      }
+      
+      // In production, exclude both drafts and work in progress posts from RSS
+      //@ts-ignore
+      return !post.draft && !post.workInProgress;
+    })
     .sort((a, b) => compareDesc(new Date(a.created), new Date(b.created)));
 
   const author = {

@@ -38,6 +38,11 @@ export const Post = defineDocumentType(() => ({
       description: "Whether the post is a draft",
       required: false,
     },
+    workInProgress: {
+      type: "boolean",
+      description: "Whether the post is a work in progress. Work in progress posts show on the website but not in RSS feeds.",
+      required: false,
+    },
     meta_description: {
       type: "string",
       description: "The meta description of the post",
