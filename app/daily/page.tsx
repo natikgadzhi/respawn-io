@@ -1,5 +1,5 @@
 import { type Daily, allDailies } from "contentlayer/generated";
-
+import Link from "next/link";
 import type { Metadata } from "next";
 
 import { config } from "blog.config";
@@ -43,9 +43,6 @@ export const metadata: Metadata = {
 
   alternates: {
     canonical: `${config.baseURL}/daily`,
-
-    // because Next.js doesn't do deep merge, these are here.
-    // TODO: make a util function that generates basic meta tags based on a template.
     types: {
       "application/rss+xml": `${config.baseURL}'/rss/feed.xml`,
       "application/rss+json": `${config.baseURL}'/rss/feed.json`,
@@ -59,13 +56,17 @@ function DailyNote({ daily }: { daily: Daily }) {
   const MDXContent = getMDXComponent(daily.body.code);
   return (
     <>
-      <LinkedH4 className="pr-1 md:pr-2 inline">{`${formatDate(daily.slug)}:`}</LinkedH4>
+      <Link href={`/daily/${daily.slug}`} className="no-underline hover:underline">
+        <LinkedH4 className="pr-1 md:pr-2 inline">{`${formatDate(daily.slug)}:`}</LinkedH4>
 
-      {daily.title && daily.title.length > 0 && (
-        <strong className="pr-1 md:pr-2">{daily.title}</strong>
-      )}
+        {daily.title && daily.title.length > 0 && (
+          <strong className="pr-1 md:pr-2">{daily.title}</strong>
+        )}
+      </Link>
 
-      <MDXContent components={mdxComponents} />
+      <div className="mt-2">
+        <MDXContent components={mdxComponents} />
+      </div>
     </>
   );
 }

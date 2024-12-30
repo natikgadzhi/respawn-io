@@ -43,8 +43,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
+  // Add individual daily pages
   // @ts-ignore
-  const withTags = withPosts.concat(
+  const withDaily = withPosts.concat(
+    daily.map((d) => ({
+      url: `${config.baseURL}/daily/${d.slug}`,
+      lastModified: new Date(d.modified || d.created || d.slug),
+      changeFrequency: "daily",
+    })),
+  );
+
+  // @ts-ignore
+  const withTags = withDaily.concat(
     tags.map((tag) => ({
       url: `${config.baseURL}/tags/${tag.tag}`,
       lastModified: new Date(posts[0].modified ? posts[0].modified : posts[0].created),
