@@ -1,6 +1,5 @@
-import { LinkIcon } from "components/icons";
-import Link, { LinkProps } from "next/link";
 import type { ReactNode } from "react";
+import Link from "next/link";
 
 const makeID = (input: ReactNode | string) => {
   return input.toString().toLowerCase().replace(/[^\w]/g, "-");
@@ -11,60 +10,54 @@ type HeaderProps = {
   className?: string;
 };
 
-type HeaderLinkProps = {
-  id: string;
-  linkPosition?: string;
-};
+// Base styles for all linked headers
+const baseHeaderStyles = `
+  group relative
+  before:content-['#']
+  before:absolute
+  before:-left-5
+  before:opacity-0
+  before:transition-opacity
+  before:duration-100
+  hover:before:opacity-100
+`;
 
-const defaultLinkProps = {
-  id: "",
-  linkPosition: "-left-10 top-5",
-};
-
-export const HeaderLink = ({ id, linkPosition }: HeaderLinkProps = defaultLinkProps) => (
-  <Link
-    href={`#${id}`}
-    className={`not-prose hidden md:inline-block absolute ${linkPosition} p-1
-      opacity-50 hover:opacity-100 transition-opacity duration-100
-      hover:outline hover:outline-offset-1 hover:outline-1 hover:rounded-md
-    hover:outline-stone-400 hover:dark:outline-blue-100`}
-  >
-    <LinkIcon />
-  </Link>
-);
+// Common link styles for header anchors
+const headerLinkStyles = `
+  no-underline
+  hover:no-underline
+  not-prose
+`;
 
 export const LinkedH2 = ({ children, className }: HeaderProps) => {
   const id = makeID(children);
   return (
-    <>
-      <h2 id={id} className={`relative ${className ? className : ""}`}>
-        <HeaderLink id={id} linkPosition="-left-10 top-5" />
+    <h2 id={id} className={`${baseHeaderStyles} ${className || ""}`}>
+      <Link href={`#${id}`} className={headerLinkStyles}>
         {children}
-      </h2>
-    </>
+      </Link>
+    </h2>
   );
 };
 
 export const LinkedH3 = ({ children, className }: HeaderProps) => {
   const id = makeID(children);
   return (
-    <>
-      <h3 id={id} className={`${className} relative`}>
-        <HeaderLink id={id} linkPosition="-left-10 top-1" />
+    <h3 id={id} className={`${baseHeaderStyles} ${className || ""}`}>
+      <Link href={`#${id}`} className={headerLinkStyles}>
         {children}
-      </h3>
-    </>
+      </Link>
+    </h3>
   );
 };
 
 export const LinkedH4 = ({ children, className }: HeaderProps) => {
   const id = makeID(children);
   return (
-    <>
-      <h4 id={id} className={`${className} relative`}>
-        <HeaderLink id={id} linkPosition="-left-10 -top-1" />
+    <h4 id={id} className={`${baseHeaderStyles} ${className || ""}`}>
+      <Link href={`#${id}`} className={headerLinkStyles}>
         {children}
-      </h4>
-    </>
+      </Link>
+    </h4>
   );
 };
