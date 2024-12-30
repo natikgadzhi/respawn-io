@@ -12,6 +12,11 @@ export const Tag = defineDocumentType(() => ({
       description: "The name of the tag",
       required: true,
     },
+    description: {
+      type: "string",
+      description: "A short description of the tag for meta tags",
+      required: false,
+    }
   },
   computedFields: {
     slug: {
