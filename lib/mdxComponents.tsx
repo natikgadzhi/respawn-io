@@ -1,5 +1,6 @@
 import { LinkedH2, LinkedH3 } from "components/headerLinks";
 import Image from "next/image";
+import Script from "next/script";
 import Link from "next/link";
 import { titleCase } from "./titleCase";
 
@@ -31,4 +32,5 @@ export const mdxComponents: MDXComponents = {
       />
     </span>
   ),
+  Script: ({ src }) => <Script src={src} />,
 };

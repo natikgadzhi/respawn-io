@@ -107,3 +107,7 @@ article blockquote {
     margin-top: 0;
     @apply leading-loose;
 }
+
+.bluesky-embed {
+    margin-top: 1.25em !important;
+}
