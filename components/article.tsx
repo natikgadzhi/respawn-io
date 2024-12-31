@@ -37,7 +37,7 @@ const Article = ({ children }: Props) => {
             prose-blockquote:not-italic
             prose-quoteless
 
-            md:prose-lg
+            md:prose-base
             lg:prose-base
 
             prose-pre:not-prose

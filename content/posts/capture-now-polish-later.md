@@ -1,5 +1,5 @@
 ---
-title: Capture now, polish later
+title: Capture now, improve later
 excerpt: Get it out there. You can fill in the blanks later.
 created: 2024-12-25
 modified: 2024-12-25
@@ -7,19 +7,25 @@ workInProgress: true
 meta_description: A practical approach to consistent writing and note-taking by separating capture and polish phases
 ---
 
-# Capture now, polish later
+# Capture now, improve later
 
 It's pretty common for great mid-career engineers to go MIA when they're supposed to share a design document, or just
 when you expect them to make a pull request with a feature, after they've already demonstrated a quick tracer bullet /
 proof of concept implementation.
 
-Usually, the culprit is they want it to be perfect. They don't want to “Waste team's time on review if it's not fully
-ready yet”, or they don't feel safe working in the open or making mistakes.
+<WithAside>
+Usually, the culprit is they want it to be perfect. They don't want to "Waste team's time on review if it's not fully
+ready yet", or they don't feel safe working in the open or making mistakes.
+
+<Aside>
+Guess who's job it is to ensure people [[remote-team-health-check|feel safe and comfortable sharing their work drafts and general opinions]]? Yep, yours, dear engineering leader. _Culture is what people do when you're not watching._
+</Aside>
+</WithAside>
 
 As an eng leader, you, on the other hand, are likely coaching them to share their work early and iterate quickly,
 include the team as much as possible. That fosters trust, collaboration, and all that.
 
-Surprising absolutely no one, I have a “Do as I say not as I do” situation in that regard with writing. I want to write
+Surprising absolutely no one, I have a "Do as I say not as I do" situation in that regard with writing. I want to write
 a few great posts a year, putting in writing the list of big milestones in my own growth, solid advice for people in
 similar positions. But it doesn't just work that way.
 

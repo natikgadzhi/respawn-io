@@ -1,4 +1,5 @@
 import { LinkedH2, LinkedH3 } from "components/headerLinks";
+import { Aside, WithAside } from "components/aside";
 import Image from "next/image";
 import Script from "next/script";
 import Link from "next/link";
@@ -33,4 +34,6 @@ export const mdxComponents: MDXComponents = {
     </span>
   ),
   Script: ({ src }) => <Script src={src} />,
+  Aside,
+  WithAside,
 };
