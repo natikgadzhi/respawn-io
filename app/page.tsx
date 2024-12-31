@@ -41,7 +41,7 @@ function BlogTagsList() {
   return (
     <>
       {tagsWithCounts.length > 0 && (
-        <div className="mt-8">
+        <div className="mt-8 md:mt-4">
           <div className="text-sm md:text-base flex flex-wrap">
             {tagsWithCounts.map(({ tag, count }) => (
               <Link

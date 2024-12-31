@@ -24,7 +24,7 @@ const PostTitle = ({ post }: PostDescriptionProps) => {
 
 export const PostsList = ({ posts }: PostsListProps) => {
   return (
-    <section>
+    <section className="mt-8 md:mt-4">
       <ul className="post-list">
         {posts.map((post) => (
           <li className="post-item mb-8 md:my-14" key={`${post.slug}`}>
