@@ -15,6 +15,14 @@ A few more things under the hood:
   [hello-world.md](https://respawn.io/posts/hello-world) for details.
 - Uses Vercel built-in analytics with zero configuration.
 
+## Using this for your own site
+
+You're very welcome to use any of the code, or the whole repo as a starting point. A few recommendations:
+
+- I'm using Obsidian as the editor of choice (and a backend, of sorts) for my posts, but you don't have to.
+- Please **please please** make sure you change any analytics IDs in `blog.config.ts`.
+- Use `pnpm run dev` to start both the contentlayer and dev server simultaneously.
+
 ## License
 
 The source code in this repository is [licensed under](/LICENSE) MIT. The

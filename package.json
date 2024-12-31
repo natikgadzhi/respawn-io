@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "copy-images": "./scripts/copy-images.sh",
-    "dev": "next",
+    "dev": "concurrently --kill-others-on-fail \"contentlayer2 dev\" \"next dev\"",
     "build": "pnpm run copy-images && pnpm run build:content && next build && pnpm run rss",
     "build:content": "contentlayer2 build",
     "start": "next start",
@@ -46,6 +46,7 @@
     "@types/node": "^20.17.6",
     "@types/react": "^18.3.12",
     "autoprefixer": "^10.4.20",
+    "concurrently": "^9.1.2",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
     "tsx": "^4.19.2",
