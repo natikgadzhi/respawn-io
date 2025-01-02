@@ -4,7 +4,7 @@ import { tmpdir } from "os";
 import { join } from "path";
 import { writeFileSync, readFileSync, unlinkSync } from "fs";
 import type { Plugin } from "unified";
-import type { Root } from "hast";
+import type { Root, Element, Properties } from "hast";
 
 interface MermaidOptions {
   background?: string;
@@ -13,17 +13,22 @@ interface MermaidOptions {
 
 const rehypeMermaid: Plugin<[MermaidOptions?], Root> = (options = {}) => {
   return (tree) => {
-    visit(tree, "element", (node: any) => {
+    visit(tree, "element", (node: Element) => {
       if (
         node.tagName !== "pre" ||
-        !node.children?.[0]?.tagName === "code" || // @ts-ignore
+        !Array.isArray(node.children) ||
+        node.children.length === 0 ||
+        node.children[0].type !== "element" ||
+        node.children[0].tagName !== "code" ||
+         // @ts-ignore
         !node.children[0].properties?.className?.includes("language-mermaid")
       ) {
         return;
       }
 
       try {
-        const mermaidCode = node.children[0].children[0].value;
+        const codeNode = node.children[0] as Element;
+        const mermaidCode = codeNode.children[0].type === "text" ? codeNode.children[0].value : "";
         const tempDir = tmpdir();
         const inputFile = join(tempDir, `diagram-${Date.now()}.mmd`);
         const outputLightFile = join(tempDir, `diagram-light-${Date.now()}.svg`);
@@ -68,7 +73,8 @@ const rehypeMermaid: Plugin<[MermaidOptions?], Root> = (options = {}) => {
               properties: {
                 src: lightDataUrl,
                 className: "mermaid-light"
-              }
+              },
+              children: []
             },
             {
               type: "element",
@@ -76,7 +82,8 @@ const rehypeMermaid: Plugin<[MermaidOptions?], Root> = (options = {}) => {
               properties: {
                 src: darkDataUrl,
                 className: "mermaid-dark"
-              }
+              },
+              children: []
             }
           ];
 
