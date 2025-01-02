@@ -2,7 +2,7 @@
 title: New site! Obsidian, Next.js, and Vercel
 excerpt: "I had a couple hours on a Thursday night, and wanted to clean up my website. The result is this: a blog built with Obsidian, Markdown, Next.js, Contentlayer, and a few hacks to glue things together."
 created: 2022-06-16
-modified: 2022-12-19
+modified: 2025-01-02
 og_image_hide_description: true
 tags:
   - coding
@@ -13,9 +13,8 @@ tags:
 # Obsidian, Next.js, and Vercel
 
 > [!warning]
-> `Contentlayer` is currently stuck at `0.3.4` and not actively supported.
-> It works fine for now, but there already are some issues, so if you do
-> decide to start using it for a new project in 2024, prepare to fix some things on your own.
+> `Contentlayer` was stuck at `0.3.4` for some time. That version was behind and broken compatibility with a few things.
+> For now, there is `contentlayer2` with `0.5.3` at the time of this update that works well with `Next 14.2`, and seems to work for folks on `Next 15` and `React 19`.
 
 Here's how this thing works:
 
@@ -52,7 +51,7 @@ Over the months, I've changed a few things, and mostly it was fun to hack on. I 
 - [x] **Tags and topics**. There's enough content to add topics, and support "native" Obsidian tags.
 
 
-### Diagrams
+### UPD 2025: Diagrams
 
 Here's an example Mermaid diagram that would render both in Obsidian and in the post correctly. It's rendered in both light and dark mode, and the right one isshown conditionally!
 
