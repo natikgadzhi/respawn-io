@@ -57,14 +57,15 @@ const rehypeMermaid: Plugin<[MermaidOptions?], Root> = (options = {}) => {
                 try {
                     // Generate light mode SVG
                     const backgroundArg = options.background ? `-b "${options.background}"` : "-b transparent";
+                    const configArg = process.env.ENV_NAME === 'localhost' ? '' : '-p puppeteer.config.json';
                     execSync(
-                        `npx -p @mermaid-js/mermaid-cli mmdc -i "${inputFile}" -o "${outputLightFile}" ${backgroundArg} -p puppeteer.config.json`,
+                        `npx -p @mermaid-js/mermaid-cli mmdc -i "${inputFile}" -o "${outputLightFile}" ${backgroundArg} ${configArg}`,
                         { stdio: "pipe" }
                     );
 
                     // Generate dark mode SVG
                     execSync(
-                        `npx -p @mermaid-js/mermaid-cli mmdc -i "${inputFile}" -o "${outputDarkFile}" ${backgroundArg} --theme dark -p puppeteer.config.json`,
+                        `npx -p @mermaid-js/mermaid-cli mmdc -i "${inputFile}" -o "${outputDarkFile}" ${backgroundArg} --theme dark ${configArg}`,
                         { stdio: "pipe" }
                     );
 
