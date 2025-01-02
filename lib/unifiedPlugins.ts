@@ -52,6 +52,10 @@ export const remarkPlugins = [
 ];
 
 export const rehypePlugins = [
-  [rehypeMermaid, { background: "transparent", className: "mermaid-diagram" }],
+  [rehypeMermaid, { 
+    background: "transparent", 
+    className: "mermaid-diagram",
+    browserlessUrl: process.env.BROWSERLESS_URL 
+  }],
   [rehypePrettyCode, prettyCodeOptions],
 ];
