@@ -1,5 +1,5 @@
 {
   "buildCommand": "pnpm build",
-  "installCommand": "dnf install -y $(cat chrome-dependencies.txt) && pnpm install && pnpm exec browsers install chrome-headless-shell --path /vercel/.cache/puppeteer",
+  "installCommand": "dnf install -y $(cat chrome-dependencies.txt) && pnpm install && pnpm exec browsers install chrome --path /vercel/.cache/puppeteer",
   "framework": "nextjs"
 }
