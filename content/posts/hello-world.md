@@ -2,7 +2,7 @@
 title: New site! Obsidian, Next.js, and Vercel
 excerpt: "I had a couple hours on a Thursday night, and wanted to clean up my website. The result is this: a blog built with Obsidian, Markdown, Next.js, Contentlayer, and a few hacks to glue things together."
 created: 2022-06-16
-modified: 2022-12-19
+modified: 2025-01-02
 og_image_hide_description: true
 tags:
   - coding
@@ -13,9 +13,8 @@ tags:
 # Obsidian, Next.js, and Vercel
 
 > [!warning]
-> `Contentlayer` is currently stuck at `0.3.4` and not actively supported.
-> It works fine for now, but there already are some issues, so if you do
-> decide to start using it for a new project in 2024, prepare to fix some things on your own.
+> `Contentlayer` was stuck at `0.3.4` for some time. That version was behind and broken compatibility with a few things.
+> For now, there is `contentlayer2` with `0.5.3` at the time of this update that works well with `Next 14.2`, and seems to work for folks on `Next 15` and `React 19`.
 
 Here's how this thing works:
 
@@ -44,9 +43,22 @@ Over the months, I've changed a few things, and mostly it was fun to hack on. I 
 - [x]  **TODOs**. `remark-gfm` mostly takes care of that, so I can have todo items with checkboxes in both Obsidian, and in the rendered blog with GitHub-flavored Markdown syntax.
 - [ ] **Footnotes**. I want to be able to have footnotes that render as an _aside_ on desktops, but that show up in the usual footnotes section on smaller screens.
 - [x] **Tables**. Obsidian 1.5 made a great UI on top of Markdown tables, so you can actually use them. I'd love to use tables in my posts, but that might be tricky in mobile layouts, though.
-- [ ] **Diagrams**. Obsidian supports Mermaid diagrams out of the box, and adding them to the site is relatively straightforward. Tweaking their sizes and color schemes to support light mode and dark mode is a little bit tricky, though.
+- [x] **Diagrams**. Obsidian supports Mermaid diagrams out of the box, and adding them to the site is relatively straightforward. Tweaking their sizes and color schemes to support light mode and dark mode is a little bit tricky, though.
 
 ## Content Types
 
-- [ ] **Daily notes**. I've added daily notes to be able to write and send quick, small notes, and not think twice about them — and they're fun. But now I think it's time to set up the routing, so I can link to one specific daily note.
-- [ ] **Tags and topics**. There's enough content to add topics, and support "native" Obsidian tags.
+- [x] **Daily notes**. I've added daily notes to be able to write and send quick, small notes, and not think twice about them — and they're fun. But now I think it's time to set up the routing, so I can link to one specific daily note.
+- [x] **Tags and topics**. There's enough content to add topics, and support "native" Obsidian tags.
+
+
+### UPD 2025: Diagrams
+
+Here's an example Mermaid diagram that would render both in Obsidian and in the post correctly. It's rendered in both light and dark mode, and the right one isshown conditionally!
+
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```

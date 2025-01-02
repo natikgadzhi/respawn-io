@@ -22,17 +22,28 @@ export const mdxComponents: MDXComponents = {
       {children}
     </Link>
   ),
-  img: ({ src, alt }) => (
-    <span className="inline-block relative w-full pb-[56.25%] max-h-[800px]">
-      <Image
-        src={`/${src}`}
-        alt={alt}
-        fill={true}
-        style={{ objectFit: "contain", margin: "0px" }}
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      />
-    </span>
-  ),
+  
+  img: ({ src, alt, className }) => { 
+    // If the image is a data URL, return an img element  
+    if (src.startsWith("data:image/svg+xml;base64,")) {
+      return (
+          <img src={src} alt={alt} className={className} />
+      )
+    }
+    return (
+      <span className="inline-block relative w-full pb-[56.25%] max-h-[800px]">
+        <Image
+          src={`/${src}`}
+          alt={alt}
+          fill={true}
+          className={className}
+          style={{ objectFit: "contain", margin: "0px" }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      </span>
+    )
+  },
+  
   Script: ({ src }) => <Script src={src} />,
   Aside,
   WithAside,

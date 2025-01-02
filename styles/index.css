@@ -111,3 +111,29 @@ article blockquote {
 .bluesky-embed {
     margin-top: 1.25em !important;
 }
+
+/*
+ * Mermaid diagrams
+ */
+.mermaid-diagram {
+    @apply mx-auto my-8 flex items-center justify-center;
+}
+
+.mermaid-diagram img {
+    @apply max-h-[300px] lg:max-h-[400px] w-auto max-w-full;
+    min-height: 0; /* Allow image to shrink below max-height */
+}
+
+.mermaid-dark {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .mermaid-light {
+        display: none;
+    }
+    
+    .mermaid-dark {
+        display: block;
+    }
+}
