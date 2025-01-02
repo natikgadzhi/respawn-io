@@ -8,6 +8,7 @@
 //
 
 import rehypePrettyCode, { type Options } from "rehype-pretty-code";
+import rehypeMermaid from "./rehypeMermaid";
 
 // Using two color themes explicitly will make rehype-pretty-code render
 // two code blocks of each theme, and you can toggle between them in CSS.
@@ -50,4 +51,7 @@ export const remarkPlugins = [
   callouts,
 ];
 
-export const rehypePlugins = [[rehypePrettyCode, prettyCodeOptions]];
+export const rehypePlugins = [
+  [rehypeMermaid, { background: "transparent", className: "mermaid-diagram" }],
+  [rehypePrettyCode, prettyCodeOptions],
+];
