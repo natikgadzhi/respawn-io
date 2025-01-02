@@ -1,5 +1,5 @@
 {
   "buildCommand": "pnpm build",
-  "installCommand": "dnf install -y $(cat chrome-dependencies.txt) && npx --yes @puppeteer/browsers install chrome@stable && pnpm install",
+  "installCommand": "dnf install -y $(cat chrome-dependencies.txt) && pnpm install && pnpm exec browsers install chrome@stable",
   "framework": "nextjs"
 }
