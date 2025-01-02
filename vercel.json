@@ -1,5 +1,5 @@
 {
   "buildCommand": "pnpm build",
-  "installCommand": "dnf install -y mesa-libgbm nss nspr at-spi2-atk cups-libs libdrm libXcomposite libXdamage libXext libXrandr libgbm libxcb alsa-lib atk gtk3 pango libXcomposite libXdamage libXrandr libgbm libxkbcommon pango alsa-lib atk at-spi2-atk cups-libs libdrm && npx --yes @puppeteer/browsers install chrome@stable && pnpm install",
+  "installCommand": "dnf install -y $(cat chrome-dependencies.txt) && npx --yes @puppeteer/browsers install chrome@stable && pnpm install",
   "framework": "nextjs"
 }
