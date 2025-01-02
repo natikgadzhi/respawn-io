@@ -14,7 +14,7 @@ import rehypeMermaid from "./rehypeMermaid";
 // two code blocks of each theme, and you can toggle between them in CSS.
 const prettyCodeOptions: Partial<Options> = {
   theme: {
-    light: "github-light",
+    light: "catppuccin-latte",
     dark: "github-dark",
   },
   bypassInlineCode: true,
@@ -55,7 +55,6 @@ export const rehypePlugins = [
   [rehypeMermaid, { 
     background: "transparent", 
     className: "mermaid-diagram",
-    browserlessUrl: process.env.BROWSERLESS_URL 
   }],
   [rehypePrettyCode, prettyCodeOptions],
 ];

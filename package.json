@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "copy-images": "./scripts/copy-images.sh",
-    "dev": "concurrently --kill-others-on-fail \"contentlayer2 dev\" \"next dev\"",
+    "dev": "concurrently --kill-others-on-fail \"ENV_NAME=localhost contentlayer2 dev\" \"next dev\"",
     "build": "pnpm run copy-images && pnpm run build:content && next build && pnpm run rss",
     "build:content": "contentlayer2 build",
     "start": "next start",
