@@ -1,6 +1,6 @@
 ---
 title: Mermaid diagrams in a static site using MDX and Contentlayer
-excerpt: With dark mode support and a custom Vercel build script 
+excerpt: With dark mode support and a custom Vercel build script.
 created: 2025-01-02
 modified: 2025-01-02
 meta_description: Mermaid diagrams in a static site using MDX and Contentlayer, with rendering in a headless browser on Vercel.
