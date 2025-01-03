@@ -194,3 +194,4 @@ conversion configuration is pretty cool.
   highlighting — the best and most flexible I've tried so far.
 - [Today I learned](https://respawn.io/daily) — a pile of short notes on how I
   broke things that day.
+- [[contentlayer-mermaid-diagrams|Mermaid diagrams in a static site using MDX and Contentlayer]] — more on customizing Contentlayer to render Mermaid diagrams.

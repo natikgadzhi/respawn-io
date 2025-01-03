@@ -46,7 +46,7 @@ const pageResolver = (name: string) => [name];
 
 export const remarkPlugins = [
   remarkGfm,
-  [remarkFigureCaption, { captionClassName: "text-center italic" }],
+  [remarkFigureCaption, { captionClassName: "text-center italic mx-auto block" }],
   [wikilinks, { pageResolver, hrefTemplate, aliasDivider: "|" }],
   callouts,
 ];

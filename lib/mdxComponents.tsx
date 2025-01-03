@@ -23,13 +23,16 @@ export const mdxComponents: MDXComponents = {
     </Link>
   ),
   
-  img: ({ src, alt, className }) => { 
-    // If the image is a data URL, return an img element  
-    if (src.startsWith("data:image/svg+xml;base64,")) {
+  img: ({ src, alt, className }) => {
+
+    const ignorePatterns = ["https://media0.giphy.com/media/", "data:image/svg+xml;base64,"];
+
+    if (ignorePatterns.some(pattern => src.startsWith(pattern))) {
       return (
-          <img src={src} alt={alt} className={className} />
+        <img src={src} alt={alt} className={`${className} mx-auto block`} />
       )
     }
+
     return (
       <span className="inline-block relative w-full pb-[56.25%] max-h-[800px]">
         <Image
