@@ -1,6 +1,5 @@
 import { type Post, allPosts } from "contentlayer/generated";
 import type { Metadata, ResolvingMetadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { format, parseISO } from "date-fns";
@@ -8,6 +7,7 @@ import { mdxComponents } from "lib/mdxComponents";
 import { getMDXComponent } from "next-contentlayer2/hooks";
 
 import Article from "components/article";
+import { TagsList } from "components/tags";
 
 import { config } from "blog.config";
 
@@ -16,29 +16,6 @@ type PostPageProps = {
     slug: string;
   };
 };
-
-function PostTags({ post }: { post: Post }) {
-  return (
-    <>
-      {post.tags && post.tags.length > 0 && (
-        <div className="text-sm lg:text-lg text-center mb-4">
-          <span className="text-stone-400">Tagged with: </span>
-          {post.tags.map((tag, index) => (
-            <span key={tag}>
-              <Link
-                href={`/tags/${tag.toLowerCase()}`}
-                className="text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                #{tag}
-              </Link>
-              {index < post.tags.length - 1 && ", "}
-            </span>
-          ))}
-        </div>
-      )}
-    </>
-  );
-}
 
 export async function generateMetadata(
   { params }: PostPageProps,
@@ -105,11 +82,14 @@ export default async function PostPage({ params }: PostPageProps) {
       <Article>
         <MDXContent components={mdxComponents} />
 
-        <div className="text-2xl font-regular text-center my-20 relative">⌘ ⌘ ⌘</div>
+        <div className="text-2xl font-regular mt-20 mb-8 relative flex items-center justify-center">
+          <div className="border-t border-gray-300 dark:border-gray-700 flex-grow"></div>
+          <div className="px-4">⌘ ⌘ ⌘</div>
+          <div className="border-t border-gray-300 dark:border-gray-700 flex-grow"></div>
+        </div>
 
-        <PostTags post={post} />
+        {post.tags && <TagsList tags={post.tags} className="mb-4" />}
 
-        <div className="text-sm lg:text-lg text-center text-stone-400">
           <div>
             Originally published on&nbsp;
             {format(parseISO(post.created), "MMM do yyyy")}.
@@ -120,7 +100,6 @@ export default async function PostPage({ params }: PostPageProps) {
               {format(parseISO(post.modified), "MMM do yyyy")}.
             </div>
           )}
-        </div>
       </Article>
     </>
   );

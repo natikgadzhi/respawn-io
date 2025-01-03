@@ -5,9 +5,8 @@ import { allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import { getTagsWithCounts } from "lib/tagHelpers";
 
-import Link from "next/link";
-
 import { PostsList } from "components/posts";
+import { TagsList } from "components/tags";
 
 const getPosts = async () => {
   const env_name = process.env.ENV_NAME;
@@ -26,36 +25,16 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const posts = await getPosts();
-
-  return (
-    <>
-      <BlogTagsList />
-      <PostsList posts={posts} />
-    </>
-  );
-}
-
-function BlogTagsList() {
   const tagsWithCounts = getTagsWithCounts(allPosts);
+  const tags = tagsWithCounts.map(({ tag }) => tag);
+  const counts = Object.fromEntries(tagsWithCounts.map(({ tag, count }) => [tag, count]));
 
   return (
     <>
       {tagsWithCounts.length > 0 && (
-        <div className="mt-8 md:mt-4">
-          <div className="text-sm md:text-base flex flex-wrap">
-            {tagsWithCounts.map(({ tag, count }) => (
-              <Link
-                key={tag}
-                href={`/tags/${tag}`}
-                className="underline-offset-2 hover:underline pr-3"
-              >
-                #{tag}
-                {count > 1 ? ` (${count})` : ""}
-              </Link>
-            ))}
-          </div>
-        </div>
+        <TagsList tags={tags} showCounts={true} counts={counts} className="mt-8 md:mt-4" />
       )}
+      <PostsList posts={posts} />
     </>
   );
 }
