@@ -52,12 +52,24 @@ pre > code {
     display: grid;
     width: 100%;
     padding: 0.75vw !important;
+    white-space: pre-wrap; /* Enable soft wrapping on mobile */
+    word-break: break-word;
+}
+
+/* Disable soft wrapping on larger screens */
+@media (min-width: 768px) {
+    pre > code {
+        white-space: pre;
+        word-break: normal;
+    }
 }
 
 pre {
     --tw-prose-pre-bg: initial;
     position: relative;
     margin-inline: -2vw; /* Same as your blockquote margin */
+    overflow-x: auto; /* For horizontal scrolling on desktop */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 
     /* For larger screens, extend even further */
     @media (min-width: 768px) {
@@ -68,6 +80,12 @@ pre {
     @media (min-width: 1024px) {
         margin-inline: -8vw;
     }
+}
+
+/* Make sure line numbers (if enabled) stay in place */
+pre > code > .line {
+    display: inline-block;
+    min-width: 100%;
 }
 
 code[data-theme*=" "],

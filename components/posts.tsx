@@ -24,21 +24,26 @@ const PostTitle = ({ post }: PostDescriptionProps) => {
 
 export const PostsList = ({ posts }: PostsListProps) => {
   return (
-    <section className="mt-8 md:mt-4">
-      <ul className="post-list">
+    <section className="mt-6 md:mt-8">
+      <ul className="post-list space-y-8 md:space-y-12">
         {posts.map((post) => (
-          <li className="post-item mb-8 md:my-14" key={`${post.slug}`}>
-            <div className="flex flex-col md:flex-row justify-between items-baseline">
-              <h3 className="text-lg lg:text-xl mb-2 mr-2 leading-snug tracking-tight font-chonkymedium">
+          <li className="post-item" key={`${post.slug}`}>
+            <div className="flex flex-col gap-1 md:flex-row md:gap-0 md:justify-between md:items-baseline">
+              <h3 className="text-xl md:text-2xl font-chonkymedium leading-snug tracking-tight md:mr-4">
                 <Link href={post.url}>
                   <PostTitle post={post} />
                 </Link>
               </h3>
-              <div className="text-md whitespace-nowrap text-blue-700 dark:text-sky-400">
+              <time 
+                dateTime={post.created} 
+                className="text-sm md:text-base text-blue-700 dark:text-sky-400 whitespace-nowrap"
+              >
                 {format(parseISO(post.created), "MMM do yyyy")}
-              </div>
+              </time>
             </div>
-            <PostDescription post={post} />
+            <div className="mt-2 md:mt-3 text-base md:text-lg text-gray-600 dark:text-gray-300">
+              <PostDescription post={post} />
+            </div>
           </li>
         ))}
       </ul>
