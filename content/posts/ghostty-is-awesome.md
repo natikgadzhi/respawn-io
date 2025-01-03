@@ -7,6 +7,7 @@ meta_description: Switching from iTerm to Ghostty and configuring minimal keybin
 tags:
   - terminal
   - ghostty
+  - open-source
 ---
 
 # Ghostty is awesome
@@ -84,6 +85,6 @@ If you're using Raycast, you might just set an Application shortcut for Ghostty 
 
 **Ghostty is using OS-native tabs on MacOS**. If you're still using Yabai (tiling window manager), it freaks out when you make a new tab and you have to retile. Honestly, it's probably time to switch to Raycast for tiling, but alternatively, you could probably get away with `unconsumed:` keybind modifier in Ghostty, and then catch the same keybind in `skhd` and retile on it, after sleeping for 0.2 seconds or something. Hacky.
 
-## Opensource!
+## Open source!
 
 Unsurprisingly Ghostty is open source under Apache 2 License, and it's written in Zig. Just like with Zed, I'm very excited that if I need any changes to my favorite text editor or terminal, I can, in theory, just go and work on them myself, and learn a lot in the process. If you want to play around with Zig, here's a [bunch of `contributor friendly` issues](https://github.com/ghostty-org/ghostty/issues?q=is:issue%20state:open%20label:%22contributor%20friendly%22).
