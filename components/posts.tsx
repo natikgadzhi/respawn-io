@@ -29,19 +29,19 @@ export const PostsList = ({ posts }: PostsListProps) => {
         {posts.map((post) => (
           <li className="post-item" key={`${post.slug}`}>
             <div className="flex flex-col gap-1 md:flex-row md:gap-0 md:justify-between md:items-baseline">
-              <h3 className="text-xl md:text-2xl font-chonkymedium leading-snug tracking-tight md:mr-4">
+              <h3 className="text-lg lg:text-xl font-chonkymedium leading-snug tracking-tight md:mr-4">
                 <Link href={post.url}>
                   <PostTitle post={post} />
                 </Link>
               </h3>
               <time 
                 dateTime={post.created} 
-                className="text-sm md:text-base text-blue-700 dark:text-sky-400 whitespace-nowrap"
+                className="text-sm lg:text-base text-blue-700 dark:text-sky-400 whitespace-nowrap"
               >
                 {format(parseISO(post.created), "MMM do yyyy")}
               </time>
             </div>
-            <div className="mt-2 md:mt-3 text-base md:text-lg text-gray-600 dark:text-gray-300">
+            <div className="mt-1 md:mt-2 text-md md:text-base">
               <PostDescription post={post} />
             </div>
           </li>

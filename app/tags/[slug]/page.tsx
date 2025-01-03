@@ -1,4 +1,5 @@
 import { allTags, allPosts } from "contentlayer/generated";
+import { compareDesc } from "date-fns";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { config as blogConfig } from "../../../blog.config";
@@ -61,6 +62,8 @@ export default async function TagPage({ params }: TagPageParams) {
 
   const posts = allPosts.filter((post) =>
     post.tags?.includes(tag ? tag.title.toLowerCase() : params.slug),
+  ).sort((a, b) => 
+    compareDesc(new Date(a.created), new Date(b.created))
   );
 
   // If the tag is not a valid Tag object (not a persisted md file) and there are no posts tagged with this tag slug either,
