@@ -18,9 +18,11 @@ const Article = ({ children }: Props) => {
 
             prose-h1:text-3xl
 
-            prose-h2:pt-4
+            prose-h2:pt-6
             prose-h2:text-2xl
             prose-h2:font-semibold
+
+            prose-p3:pt-5
 
             prose-p:last-of-type:mb-0
 
