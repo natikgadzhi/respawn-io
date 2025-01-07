@@ -4,6 +4,8 @@ excerpt: I've been here a year, here's what I have to show for it.
 created: 2025-01-03
 modified: 2025-01-03
 draft: false
+meta_description: "Airbyte 2024 year in review: new API connectors, Connnector Builder, Airbyte CDK features and PyAirbyte"
+meta_keywords: "airbyte, abctl, connectors, connector builder, airbyte cdk, pyairbyte"
 tags:
   - open-source
   - python
@@ -206,7 +208,7 @@ We needed to make it 10x easier to make new connectors, again. Airbyte CDK makes
 - With Connector Builder, making a connectors becomes doable in 30 minutes to a few hours.
 - AI Assist takes API vendor's docs website link, and then fills out most fields that the user needs to make connector work.
 
-![](./airbyte-2024-in-review/nov-meetup.png)
+![](airbyte-2024-in-review/nov-meetup.png)
 
 > We've made several attempts to make LLM-backed connector development possible. First two were unsuccessful, and there are other attempts at generating either `openapi` specs, or full on Airbyte connector `manifest.yaml` files given documentation links or `openapi` specs. We could not get this approach to scale well, so we had to go much deeper, and came up with co-pilot style approach with completions and suggestions for each individual field.
 
