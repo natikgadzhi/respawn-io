@@ -170,3 +170,9 @@ iframe[src*="youtube.com"] {
     margin: 2rem auto; /* Slightly reduced margins on mobile but still maintaining good spacing */
   }
 }
+
+
+
+figure > figcaption {
+  @apply text-center text-sm text-gray-600 dark:text-gray-400 mt-2;
+}
