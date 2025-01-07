@@ -155,3 +155,24 @@ article blockquote {
         display: block;
     }
 }
+
+/* YouTube video container styles */
+iframe[src*="youtube.com"] {
+  aspect-ratio: 16/11;
+  max-width: 100%;
+  margin: 2.5rem auto; /* Increased vertical margins */
+  display: block;
+}
+
+/* For mobile devices, ensure the video and surrounding text stay properly aligned */
+@media (max-width: 768px) {
+  iframe[src*="youtube.com"] {
+    margin: 2rem auto; /* Slightly reduced margins on mobile but still maintaining good spacing */
+  }
+}
+
+
+
+figure > figcaption {
+  @apply text-center text-sm text-gray-600 dark:text-gray-400 mt-2;
+}

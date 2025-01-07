@@ -170,3 +170,8 @@ graph LR;
 
 
 Alright, back to year in review.
+
+
+## Follow-up: Excalidraw next?
+
+Mermaid is great for _a lot of things_, it's _write source code first, then visualize_. I figured, if I want to make more flexible what you see is what you get diagrams, it should be possible to use Excalidraw files embedded into Obsidian notes, [and rendered to SVG in the same approach we render Mermaid above](https://github.com/JRJurman/excalidraw-to-svg).
