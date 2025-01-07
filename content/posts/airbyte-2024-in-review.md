@@ -12,7 +12,7 @@ tags:
 
 # Airbyte in 2024: better extensibility primitives
 
-I've joined Airbyte in December 2023, conviniently aligned with calendar years. Since I'm one of the (un)lucky people
+I've joined Airbyte in December 2023, conveniently aligned with calendar years. Since I'm one of the (un)lucky people
 who identify themselves too much with their work, here's my year in review.
 
 <WithAside>
@@ -79,7 +79,7 @@ flowchart LR
     </WithAside>
 
 A company like this has a few must-haves:
-- **Airbyte is only as good as it's connectors**. If the platform is great but it doesn't support the required APIs, nobody
+- **Airbyte is only as good as its connectors**. If the platform is great but it doesn't support the required APIs, nobody
   would use it.
 - **Airbyte needs to be very easy to work with**, in any environment, for data engineers to reach for it instead of making a quick python script.
 - **Airbyte has one job — move data**. We better not drop it, and we should do it very, very fast. Ideally, Airbyte should
@@ -300,7 +300,7 @@ Contributions are very welcome, btw! If you like Go more than Kotlin, Java, and 
 
 The biggest PITA with Airbyte, according to folks on `r/dataengineering` is that it's, quote, “over-engineered overbloated pile of crap”. OP hurt my feelings, but there's kernel of truth there — we've built Airbyte to be extensible and flexible, and _it does not appreciate the beauty of running on a $5 VPS on Hetzner_.
 
-So we pulled off the reverse-basta-rhymes and made Airbyte without Airbyte, so you can use Airbyte connectors while you don't have Airbyte Platform per-se. Since connectors just expect their client to be able to consume messages they emit in `AirbyteProtocol`, we've made a Python library that does just that.
+So we pulled off the reverse-pimp-my-ride maneuver and made Airbyte without Airbyte, so you can use Airbyte connectors while you don't have Airbyte Platform per-se. Since connectors just expect their client to be able to consume messages they emit in `AirbyteProtocol`, we've made a Python library that does just that.
 
 It's in [`airbytehq/pyairbyte`](https://github.com/airbytehq/pyairbyte), and it also has a strong little community going on. `@aaronsteers` takes working with contributors seriously, and
 [has a bunch of issues marked with `accepting pull requests` and `good first issue`](https://github.com/airbytehq/PyAirbyte/issues?q=is:issue%20state:open%20label:%22accepting%20pull%20requests%22)
@@ -325,7 +325,7 @@ source.select_all_streams()
 result = source.read()
 ```
 
-PyAirbyte is using DuckDB to cache data locally, so you sort of get a local destination as well. PyAirbyte also works in Jypyter Notebooks and Colab — `%pip install airbyte` should be enough.
+PyAirbyte is using DuckDB to cache data locally, so you sort of get a local destination as well. PyAirbyte also works in Jupyter Notebooks and Colab — `%pip install airbyte` should be enough.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7tMr3U-_epI?si=0sA3ZelPZtMpD3fA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
