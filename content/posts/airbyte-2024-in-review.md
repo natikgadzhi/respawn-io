@@ -8,6 +8,7 @@ meta_description: "Airbyte 2024 year in review: new API connectors, Connnector B
 meta_keywords: "airbyte, abctl, connectors, connector builder, airbyte cdk, pyairbyte"
 tags:
   - open-source
+  - engineering-leadership
   - python
   - airbyte
 ---

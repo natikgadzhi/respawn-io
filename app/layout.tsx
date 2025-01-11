@@ -54,10 +54,8 @@ export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
       <Analytics />
-      <Head>
-        <Counterscale />
-      </Head>
       <body className="dark:bg-stone-950 text-stone-950 dark:text-gray-50">
+        <Counterscale />
         <main className="min-h-screen max-w-3xl mx-auto">
           <div className="container mx-auto px-5">
             <Header />
