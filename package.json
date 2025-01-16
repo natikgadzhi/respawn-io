@@ -32,7 +32,7 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.1",
     "remark-wiki-link": "^2.0.1",
-    "shiki": "^1.26.1",
+    "shiki": "^1.27.2",
     "unified": "^11.0.5",
     "unist-util-remove": "^4.0.0",
     "unist-util-visit": "^5.0.0",
@@ -42,8 +42,8 @@
     "@biomejs/biome": "^1.9.4",
     "@mermaid-js/mermaid-cli": "^11.4.2",
     "@next/env": "^14.2.22",
-    "@puppeteer/browsers": "^2.6.1",
-    "@tailwindcss/typography": "^0.5.15",
+    "@puppeteer/browsers": "^2.7.0",
+    "@tailwindcss/typography": "^0.5.16",
     "@types/hast": "^3.0.4",
     "@types/mdast": "^4.0.4",
     "@types/mdx": "^2.0.13",
@@ -52,9 +52,9 @@
     "@types/unist": "^3.0.3",
     "autoprefixer": "^10.4.20",
     "concurrently": "^9.1.2",
-    "postcss": "^8.4.49",
+    "postcss": "^8.5.1",
     "tailwindcss": "^3.4.17",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   }
 }
