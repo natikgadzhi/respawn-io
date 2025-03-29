@@ -1,10 +1,10 @@
 import { config } from "blog.config";
 import { allPages } from "contentlayer/generated";
-import { mdxComponents } from "lib/mdxComponents";
 import type { Metadata } from "next";
-import { useMDXComponent } from "next-contentlayer2/hooks";
+import { notFound } from "next/navigation";
 
 import Article from "components/article";
+import { MDXRenderer } from "components/mdx-renderer";
 
 export const metadata: Metadata = {
   metadataBase: new URL(config.baseURL),
@@ -33,12 +33,15 @@ export const metadata: Metadata = {
 
 export default function About() {
   const page = allPages.find((page) => page._raw.sourceFileName === "about.md");
-  const MDXComponent = useMDXComponent(page.body.code);
+  
+  if (!page) {
+    return notFound();
+  }
 
   return (
     <>
       <Article>
-        <MDXComponent components={mdxComponents} />
+        <MDXRenderer code={page.body.code} />
       </Article>
     </>
   );

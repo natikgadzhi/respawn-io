@@ -1,4 +1,18 @@
-import { ReactNode, isValidElement, cloneElement, Children } from "react";
+import {
+  ReactNode,
+  isValidElement,
+  cloneElement,
+  Children,
+  ReactElement,
+  PropsWithChildren,
+} from "react";
+
+interface ReactElementWithChildren extends ReactElement {
+  props: {
+    children?: ReactNode;
+    [key: string]: any;
+  };
+}
 
 function hasNestedNodes(node: ReactNode): boolean {
   // Check if it's an array
@@ -8,7 +22,7 @@ function hasNestedNodes(node: ReactNode): boolean {
 
   // Check if it's a React element and has children
   if (isValidElement(node)) {
-    return Children.count(node.props.children) > 0;
+    return Children.count((node as ReactElementWithChildren).props.children) > 0;
   }
 
   // If it's just a string or number, it doesn't have nested nodes
@@ -27,12 +41,9 @@ export const titleCase = (input: ReactNode): ReactNode => {
 
   // If it's a React element with children, process its children
   if (isValidElement(input) && hasNestedNodes(input)) {
-    // return cloneElement(input, {
-    //   children: titleCase(input.props.children),
-    // });
-    return cloneElement(input, {
-      // @ts-ignore
-      children: titleCase(input.props.children),
+    const typedInput = input as ReactElementWithChildren;
+    return cloneElement(typedInput, {
+      children: titleCase(typedInput.props.children),
     });
   }
 
@@ -40,6 +51,14 @@ export const titleCase = (input: ReactNode): ReactNode => {
   if (isValidElement(input)) {
     return input;
   }
+
+  // Handle null, undefined, or non-string values
+  if (input === null || input === undefined) {
+    return "";
+  }
+
+  // Convert to string
+  const stringInput = String(input);
 
   const lowers = [
     "A",
@@ -74,8 +93,7 @@ export const titleCase = (input: ReactNode): ReactNode => {
   const exceptionsRegex = new RegExp(`\\b(${exceptions.join("|")})\\b`, "g");
 
   // Capitalize each word
-  return input
-    .toString()
+  return stringInput
     .replace(/([^\W_]+[^\s-]*) */g, (word) =>
       exceptionsRegex.test(word)
         ? word

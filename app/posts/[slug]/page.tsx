@@ -3,25 +3,20 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 
 import { format, parseISO } from "date-fns";
-import { mdxComponents } from "lib/mdxComponents";
-import { getMDXComponent } from "next-contentlayer2/hooks";
-
 import Article from "components/article";
 import { TagsList } from "components/tags";
+import { MDXRenderer } from "components/mdx-renderer";
 
 import { config } from "blog.config";
 
-type PostPageProps = {
-  params: {
-    slug: string;
-  };
-};
+type Params = Promise<{ slug: string }>;
 
 export async function generateMetadata(
-  { params }: PostPageProps,
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
-  const post = allPosts.find((post) => post.slug === params.slug);
+  { params }: { params: Params },
+  _parent: ResolvingMetadata
+) {
+  const { slug } = await params;
+  const post = allPosts.find((post) => post.slug === slug);
 
   if (!post) {
     notFound();
@@ -30,7 +25,10 @@ export async function generateMetadata(
   return {
     metadataBase: new URL(config.baseURL),
     title: post.formattedTitle,
-    description: post.meta_description === undefined ? post.rawExcerpt : post.meta_description,
+    description:
+      post.meta_description === undefined
+        ? post.rawExcerpt
+        : post.meta_description,
     keywords: post.meta_keywords,
     authors: [{ name: config.author.name, url: config.baseURL }],
     openGraph: {
@@ -63,24 +61,26 @@ export async function generateMetadata(
 }
 
 export async function generateStaticParams() {
-  return allPosts.map((post) => {
-    slug: post.slug;
-  });
+  return allPosts.map((post) => ({
+    slug: post.slug,
+  }));
 }
 
-export default async function PostPage({ params }: PostPageProps) {
-  const post = allPosts.find((post) => post.slug === params.slug);
+export default async function PostPage({ params }: { params: Params }) {
+  // Await the params Promise to get the actual slug
+  const { slug } = await params;
+  const post = allPosts.find((post) => post.slug === slug);
 
   if (!post) {
     notFound();
   }
 
-  const MDXContent = getMDXComponent(post.body.code);
+  // No longer using getMDXComponent here - it will be used in the client component
 
   return (
     <>
       <Article>
-        <MDXContent components={mdxComponents} />
+        <MDXRenderer code={post.body.code} />
 
         <div className="text-2xl font-regular mt-20 mb-8 relative flex items-center justify-center">
           <div className="border-t border-gray-300 dark:border-gray-700 flex-grow"></div>
@@ -90,16 +90,16 @@ export default async function PostPage({ params }: PostPageProps) {
 
         {post.tags && <TagsList tags={post.tags} className="mb-4" />}
 
+        <div>
+          Originally published on&nbsp;
+          {format(parseISO(post.created), "MMM do yyyy")}.
+        </div>
+        {post.created !== post.modified && (
           <div>
-            Originally published on&nbsp;
-            {format(parseISO(post.created), "MMM do yyyy")}.
+            Last update on&nbsp;
+            {format(parseISO(post.modified), "MMM do yyyy")}.
           </div>
-          {post.created !== post.modified && (
-            <div>
-              Last update on&nbsp;
-              {format(parseISO(post.modified), "MMM do yyyy")}.
-            </div>
-          )}
+        )}
       </Article>
     </>
   );
