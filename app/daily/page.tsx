@@ -5,8 +5,7 @@ import type { Metadata } from "next";
 import { config } from "blog.config";
 import { LinkedH4 } from "components/headerLinks";
 import { compareDesc, format, parse } from "date-fns";
-import { mdxComponents } from "lib/mdxComponents";
-import { getMDXComponent } from "next-contentlayer2/hooks";
+import { MDXRenderer } from "components/mdx-renderer";
 
 const getDailyNotes = async () => {
   const env_name = process.env.ENV_NAME;
@@ -53,7 +52,6 @@ export const metadata: Metadata = {
 
 // A component to render a single daily note.
 function DailyNote({ daily }: { daily: Daily }) {
-  const MDXContent = getMDXComponent(daily.body.code);
   return (
     <>
       <Link href={`/daily/${daily.slug}`} className="no-underline hover:underline">
@@ -65,7 +63,7 @@ function DailyNote({ daily }: { daily: Daily }) {
       </Link>
 
       <div className="mt-2">
-        <MDXContent components={mdxComponents} />
+        <MDXRenderer code={daily.body.code} />
       </div>
     </>
   );

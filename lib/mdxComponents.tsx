@@ -47,6 +47,29 @@ export const mdxComponents: MDXComponents = {
     )
   },
   
+  // Handle iframe elements with correct React property casing
+  iframe: (props: any) => {
+    // Create a new props object with properly cased React properties
+    const safeProps = {
+      ...props,
+      frameBorder: props.frameBorder || "0",
+      allowFullScreen: props.allowFullScreen || true,
+    };
+    
+    // Handle any HTML-style lowercase attributes that might be in the MDX
+    if ('frameborder' in props) {
+      safeProps.frameBorder = props.frameborder;
+      delete safeProps.frameborder;
+    }
+    
+    if ('allowfullscreen' in props) {
+      safeProps.allowFullScreen = props.allowfullscreen;
+      delete safeProps.allowfullscreen;
+    }
+    
+    return <iframe {...safeProps} />;
+  },
+  
   Script: ({ src }) => <Script src={src} />,
   Aside,
   WithAside,

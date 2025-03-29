@@ -2,15 +2,10 @@ import { allDailies } from "contentlayer/generated";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { config } from "../../../blog.config";
-import { getMDXComponent } from "next-contentlayer2/hooks";
-import { mdxComponents } from "lib/mdxComponents";
 import { format, parse } from "date-fns";
+import { MDXRenderer } from "components/mdx-renderer";
 
-type DailyPageParams = {
-  params: {
-    slug: string;
-  };
-};
+type Params = Promise<{ slug: string }>;
 
 export async function generateStaticParams() {
   const env_name = process.env.ENV_NAME;
@@ -21,12 +16,18 @@ export async function generateStaticParams() {
     }));
 }
 
-export async function generateMetadata({ params }: DailyPageParams): Promise<Metadata> {
-  const daily = allDailies.find((d) => d.slug === params.slug);
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+  const { slug } = await params;
+  const daily = allDailies.find((d) => d.slug === slug);
   if (!daily) return notFound();
 
-  const formattedDate = format(parse(daily.slug, "yyyy-MM-dd", new Date()), "MMMM do, yyyy");
-  const title = daily.title ? `${daily.title} - ${formattedDate}` : formattedDate;
+  const formattedDate = format(
+    parse(daily.slug, "yyyy-MM-dd", new Date()),
+    "MMMM do, yyyy",
+  );
+  const title = daily.title
+    ? `${daily.title} - ${formattedDate}`
+    : formattedDate;
   const canonicalURL = `${config.baseURL}/daily/${daily.slug}`;
 
   return {
@@ -52,21 +53,26 @@ export async function generateMetadata({ params }: DailyPageParams): Promise<Met
   };
 }
 
-export default async function DailyPage({ params }: DailyPageParams) {
-  const daily = allDailies.find((d) => d.slug === params.slug);
+export default async function DailyPage({ params }: { params: Params }) {
+  const { slug } = await params;
+  const daily = allDailies.find((d) => d.slug === slug);
   if (!daily) return notFound();
 
-  const formattedDate = format(parse(daily.slug, "yyyy-MM-dd", new Date()), "MMMM do, yyyy");
-  const MDXContent = getMDXComponent(daily.body.code);
+  const formattedDate = format(
+    parse(daily.slug, "yyyy-MM-dd", new Date()),
+    "MMMM do, yyyy",
+  );
 
   return (
     <article className="prose dark:prose-invert">
       <header className="mb-8">
-        <time className="text-sm text-gray-600 dark:text-gray-400">{formattedDate}</time>
+        <time className="text-sm text-gray-600 dark:text-gray-400">
+          {formattedDate}
+        </time>
         {daily.title && <h1 className="mt-2">{daily.title}</h1>}
       </header>
 
-      <MDXContent components={mdxComponents} />
+      <MDXRenderer code={daily.body.code} />
 
       {daily.tags && daily.tags.length > 0 && (
         <footer className="mt-8">
@@ -84,4 +90,4 @@ export default async function DailyPage({ params }: DailyPageParams) {
       )}
     </article>
   );
-} 
+}

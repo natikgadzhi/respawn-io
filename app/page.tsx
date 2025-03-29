@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import React from "react";
 
 import { config as blogConfig } from "blog.config";
 import { allPosts } from "contentlayer/generated";

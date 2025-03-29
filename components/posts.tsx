@@ -1,7 +1,5 @@
 import type { Post } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
-import { mdxComponents } from "lib/mdxComponents";
-import { getMDXComponent } from "next-contentlayer2/hooks";
 import Link from "next/link";
 
 type PostsListProps = {
@@ -12,14 +10,54 @@ type PostDescriptionProps = {
   post: Post;
 };
 
+// Safely render the post description without MDX
 export const PostDescription = ({ post }: PostDescriptionProps) => {
-  const MDXContent = getMDXComponent(post.excerpt.code);
-  return <MDXContent components={mdxComponents} />;
+  // For debugging purposes only
+  if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
+    console.log(`Rendering description for post: ${post.slug}`);
+  }
+  
+  // Use the computed rawExcerpt which should already be stripped of markdown
+  if (post.rawExcerpt) {
+    return <p>{post.rawExcerpt}</p>;
+  }
+  
+  // Fallback to raw excerpt if available
+  if (post.excerpt && typeof post.excerpt === 'object' && post.excerpt.raw) {
+    return <p>{post.excerpt.raw}</p>;
+  }
+  
+  // Last resort fallback
+  if (typeof post.excerpt === 'string') {
+    return <p>{post.excerpt}</p>;
+  }
+  
+  return <p>No excerpt available</p>;
 };
 
+// Safely render the post title without MDX
 const PostTitle = ({ post }: PostDescriptionProps) => {
-  const MDXContent = getMDXComponent(post.title.code);
-  return <MDXContent components={mdxComponents} />;
+  // For debugging purposes only
+  if (typeof process !== 'undefined' && process.env.NODE_ENV === 'development') {
+    console.log(`Rendering title for post: ${post.slug}`);
+  }
+  
+  // Use formattedTitle if available (which should be a string)
+  if (post.formattedTitle) {
+    return <>{post.formattedTitle}</>;
+  }
+  
+  // Fallback to raw title if available
+  if (post.title && typeof post.title === 'object' && post.title.raw) {
+    return <>{post.title.raw}</>;
+  }
+  
+  // Last resort fallback
+  if (typeof post.title === 'string') {
+    return <>{post.title}</>;
+  }
+  
+  return <>Untitled</>;
 };
 
 export const PostsList = ({ posts }: PostsListProps) => {
