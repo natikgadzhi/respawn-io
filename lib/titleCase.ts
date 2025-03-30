@@ -4,7 +4,6 @@ import {
   cloneElement,
   Children,
   ReactElement,
-  PropsWithChildren,
 } from "react";
 
 interface ReactElementWithChildren extends ReactElement {
@@ -86,7 +85,7 @@ export const titleCase = (input: ReactNode): ReactNode => {
   ];
 
   const exceptions = ["SwiftUI"];
-  const uppers = ["Id", "Tv", "HJ", "Css", "Js", "Json", "Xml", "Rss"];
+  const uppers = ["Id", "Tv", "HJ", "Css", "Js", "Json", "Xml", "Rss", "Mdx"];
 
   const lowersRegex = new RegExp(`\\s(${lowers.join("|")})\\s`, "g");
   const uppersRegex = new RegExp(`\\b(${uppers.join("|")})\\b`, "g");

@@ -156,6 +156,32 @@ article blockquote {
     }
 }
 
+/*
+ * Excalidraw diagrams
+ */
+.excalidraw-diagram {
+    @apply mx-auto my-8 flex items-center justify-center;
+}
+
+.excalidraw-diagram img {
+    @apply max-h-[500px] lg:max-h-[600px] w-auto max-w-full;
+    min-height: 0; /* Allow image to shrink below max-height */
+}
+
+.excalidraw-dark {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .excalidraw-light {
+        display: none;
+    }
+    
+    .excalidraw-dark {
+        display: block;
+    }
+}
+
 /* YouTube video container styles */
 iframe[src*="youtube.com"] {
   aspect-ratio: 16/11;

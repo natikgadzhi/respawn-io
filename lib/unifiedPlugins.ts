@@ -9,6 +9,8 @@
 
 import rehypePrettyCode, { type Options } from "rehype-pretty-code";
 import rehypeMermaid from "./rehypeMermaid";
+import rehypeExcalidraw from "./rehypeExcalidraw";
+import { config } from "../blog.config";
 
 // Using two color themes explicitly will make rehype-pretty-code render
 // two code blocks of each theme, and you can toggle between them in CSS.
@@ -35,13 +37,15 @@ import callouts from "remark-callouts";
 // website.
 import wikilinks from "remark-wiki-link";
 
+const rootURL = process.env.ENV_NAME === "localhost" ? "http://localhost:3000" : config.baseURL;
+
 // TODO: This will NOT work for links in daily posts, though.
 //
 // The resolver will not attempt to check if the link actually exists, which
 // is a problem. A potential fix is to make this a little bit bigger,
 // and verify that said link is in fact valid to a `Post` or a `Daily` or a
 // `Tag`.
-const hrefTemplate = (permalink: string) => `https://respawn.io/posts/${permalink}`;
+const hrefTemplate = (permalink: string) => `${rootURL}/posts/${permalink}`;
 const pageResolver = (name: string) => [name];
 
 export const remarkPlugins = [
@@ -55,6 +59,9 @@ export const rehypePlugins = [
   [rehypeMermaid, { 
     background: "transparent", 
     className: "mermaid-diagram",
+  }],
+  [rehypeExcalidraw, {
+    className: "excalidraw-diagram",
   }],
   [rehypePrettyCode, prettyCodeOptions],
 ];

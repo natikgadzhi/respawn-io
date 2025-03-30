@@ -62,3 +62,7 @@ graph TD;
     B-->D;
     C-->D;
 ```
+
+You can [[contentlayer-with-excalidraw|embed excalidraw diagrams as inline SVG]] too!
+
+![[contentlayer-with-excalidraw 2025-03-30.excalidraw]]

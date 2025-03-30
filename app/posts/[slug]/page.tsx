@@ -39,7 +39,7 @@ export async function generateMetadata(
       publishedTime: post.modified,
       images: [
         {
-          url: post.ogImageURL,
+          url: `/posts/${post.slug}/og-image.png?title=${encodeURIComponent(post.formattedTitle)}&url=${encodeURIComponent(post.absoluteURL)}&excerpt=${encodeURIComponent(post.rawExcerpt)}&hideDescription=${post.og_image_hide_description ? 'true' : 'false'}`,
           width: 1200,
           height: 630,
           alt: `${post.formattedTitle}. ${post.excerpt}`,
