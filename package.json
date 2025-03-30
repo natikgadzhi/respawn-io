@@ -21,8 +21,8 @@
     "mdast-util-from-markdown": "^2.0.2",
     "next": "^15.2.4",
     "next-contentlayer2": "^0.5.4",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "rehype-pretty-code": "^0.14.1",
     "rehype-stringify": "^10.0.1",
     "remark": "^15.0.1",
@@ -40,6 +40,7 @@
     "vfile": "^6.0.3"
   },
   "devDependencies": {
+    "19": "^0.0.0",
     "@biomejs/biome": "^1.9.4",
     "@mermaid-js/mermaid-cli": "^11.4.2",
     "@next/env": "^15.2.4",
@@ -49,7 +50,7 @@
     "@types/mdast": "^4.0.4",
     "@types/mdx": "^2.0.13",
     "@types/node": "^22.13.14",
-    "@types/react": "^18.2.69",
+    "@types/react": "^19.0.12",
     "@types/unist": "^3.0.3",
     "autoprefixer": "^10.4.21",
     "concurrently": "^9.1.2",
