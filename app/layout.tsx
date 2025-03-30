@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 
 import "../styles/index.css";
@@ -7,7 +8,6 @@ import { config as blogConfig } from "../blog.config";
 import Footer from "components/footer";
 import Header from "components/header/header";
 import Counterscale from "components/counterscale";
-import Head from "next/head";
 
 type Props = {
   children: React.ReactNode;
@@ -53,6 +53,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
+      <SpeedInsights />
       <Analytics />
       <body className="dark:bg-stone-950 text-stone-950 dark:text-gray-50">
         <Counterscale />
