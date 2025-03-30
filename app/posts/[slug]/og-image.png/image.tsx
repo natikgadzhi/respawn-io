@@ -1,8 +1,14 @@
 import { PostDescription } from "components/posts";
-import type { Post } from "contentlayer/generated";
+
+type PostData = {
+  formattedTitle: string;
+  absoluteURL: string;
+  excerpt: string;
+  og_image_hide_description: boolean;
+};
 
 type Props = {
-  post: Post;
+  post: PostData;
   width: number;
   height: number;
 };
@@ -33,7 +39,7 @@ export default function OpengraphImage({ post, width, height }: Props) {
 
         {post.formattedTitle.length < 60 && !post.og_image_hide_description && (
           <p tw="mt-4 text-4xl font-extrabold leading-normal">
-            <PostDescription post={post} />
+            {post.excerpt}
           </p>
         )}
 
