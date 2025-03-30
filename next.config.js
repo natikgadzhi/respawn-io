@@ -1,6 +1,9 @@
 import { withContentlayer } from "next-contentlayer2";
 
 const nextConfig = {
+  outputFileTracingExcludes: {
+    "posts/[slug]/og-image.png": ["./content"]
+  },
   images: {
     remotePatterns: [
       {
