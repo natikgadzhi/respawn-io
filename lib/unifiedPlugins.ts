@@ -7,19 +7,19 @@
 // shit about importing react-dom-server.
 //
 
-import rehypePrettyCode, { type Options } from "rehype-pretty-code";
+import rehypeShiki from "@shikijs/rehype";
 import rehypeMermaid from "./rehypeMermaid";
 import rehypeExcalidraw from "./rehypeExcalidraw";
 import { config } from "../blog.config";
 
-// Using two color themes explicitly will make rehype-pretty-code render
+// Using two color themes explicitly will make Shiki render
 // two code blocks of each theme, and you can toggle between them in CSS.
-const prettyCodeOptions: Partial<Options> = {
-  theme: {
+const shikiOptions = {
+  themes: {
     light: "catppuccin-latte",
     dark: "github-dark",
   },
-  bypassInlineCode: true,
+  inline: 'tailing-curly-colon',
 };
 
 // remark-figure-caption makes nice captions under images, and supports
@@ -63,5 +63,5 @@ export const rehypePlugins = [
   [rehypeExcalidraw, {
     className: "excalidraw-diagram",
   }],
-  [rehypePrettyCode, prettyCodeOptions],
+  [rehypeShiki, shikiOptions],
 ];

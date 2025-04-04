@@ -1,6 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../tailwind.config.cjs';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 /*
  * post descriptions
@@ -31,14 +49,29 @@ code::after {
     display: none;
 }
 
-:not(pre) > code {
-    @apply bg-gray-100 text-gray-800 rounded px-1 py-0.5 font-mono;
+/* Regular inline code without syntax highlighting */
+:not(pre) > code:not(.highlighted) {
+    @apply bg-gray-100 text-gray-800 rounded-sm px-1 py-0.5 font-mono;
 }
 
-/* Dark mode support */
+/* Dark mode support for regular inline code */
 @media (prefers-color-scheme: dark) {
-    :not(pre) > code {
+    :not(pre) > code:not(.highlighted) {
         @apply bg-gray-700 text-gray-200;
+    }
+}
+
+/* Highlighted inline code */
+:not(pre) > code.highlighted {
+    @apply rounded-sm px-1 py-0.5 font-mono;
+    color: var(--shiki-light);
+    background-color: var(--shiki-light-bg);
+}
+
+@media (prefers-color-scheme: dark) {
+    :not(pre) > code.highlighted {
+        color: var(--shiki-dark);
+        background-color: var(--shiki-dark-bg);
     }
 }
 
@@ -88,17 +121,30 @@ pre > code > .line {
     min-width: 100%;
 }
 
-code[data-theme*=" "],
-code[data-theme*=" "] span {
+/* 
+ * Shiki theme handling for code blocks
+ * The CSS variables are automatically injected by Shiki
+ */
+pre > code {
+    color: var(--shiki-light);
+    background-color: var(--shiki-light-bg);
+}
+
+pre > code.themed,
+pre > code.themed span {
     color: var(--shiki-light);
     background-color: var(--shiki-light-bg);
 }
 
 @media (prefers-color-scheme: dark) {
-    code[data-theme*=" "],
-    code[data-theme*=" "] span {
-        color: var(--shiki-dark);
-        background-color: var(--shiki-dark-bg);
+    .shiki,
+    .shiki span {
+        color: var(--shiki-dark) !important;
+        background-color: var(--shiki-dark-bg) !important;
+        /* Optional, if you also want font styles */
+        font-style: var(--shiki-dark-font-style) !important;
+        font-weight: var(--shiki-dark-font-weight) !important;
+        text-decoration: var(--shiki-dark-text-decoration) !important;
     }
 }
 
@@ -138,8 +184,14 @@ article blockquote {
 }
 
 .mermaid-diagram img {
-    @apply max-h-[300px] lg:max-h-[400px] w-auto max-w-full;
-    min-height: 0; /* Allow image to shrink below max-height */
+    @apply max-w-full w-auto;
+    max-height: 300px;
+}
+
+@media (min-width: 1024px) {
+    .mermaid-diagram img {
+        max-height: 400px;
+    }
 }
 
 .mermaid-dark {
@@ -164,8 +216,14 @@ article blockquote {
 }
 
 .excalidraw-diagram img {
-    @apply max-h-[500px] lg:max-h-[600px] w-auto max-w-full;
-    min-height: 0; /* Allow image to shrink below max-height */
+    @apply max-w-full w-auto;
+    max-height: 500px;
+}
+
+@media (min-width: 1024px) {
+    .excalidraw-diagram img {
+        max-height: 600px;
+    }
 }
 
 .excalidraw-dark {
@@ -196,8 +254,6 @@ iframe[src*="youtube.com"] {
     margin: 2rem auto; /* Slightly reduced margins on mobile but still maintaining good spacing */
   }
 }
-
-
 
 figure > figcaption {
   @apply text-center text-sm text-gray-600 dark:text-gray-400 mt-2;

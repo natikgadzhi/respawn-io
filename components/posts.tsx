@@ -1,4 +1,3 @@
-"use client";
 
 import type { Post } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";

@@ -1,5 +1,3 @@
-"use client";
-
 import { mdxComponents } from "lib/mdxComponents";
 import { getMDXComponent } from "next-contentlayer2/hooks";
 
