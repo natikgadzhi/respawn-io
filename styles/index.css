@@ -1,6 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../tailwind.config.cjs';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 /*
  * post descriptions
@@ -33,7 +51,7 @@ code::after {
 
 /* Regular inline code without syntax highlighting */
 :not(pre) > code:not([data-inline-highlighted]) {
-    @apply bg-gray-100 text-gray-800 rounded px-1 py-0.5 font-mono;
+    @apply bg-gray-100 text-gray-800 rounded-sm px-1 py-0.5 font-mono;
 }
 
 /* Dark mode support for regular inline code */
@@ -45,7 +63,7 @@ code::after {
 
 /* Highlighted inline code */
 :not(pre) > code[data-inline-highlighted] {
-    @apply rounded px-1 py-0.5 font-mono;
+    @apply rounded-sm px-1 py-0.5 font-mono;
     color: var(--shiki-light);
     background-color: var(--shiki-light-bg);
 }

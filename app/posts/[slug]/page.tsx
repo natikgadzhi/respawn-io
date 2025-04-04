@@ -83,9 +83,9 @@ export default async function PostPage({ params }: { params: Params }) {
         <MDXRenderer code={post.body.code} />
 
         <div className="text-2xl font-regular mt-20 mb-8 relative flex items-center justify-center">
-          <div className="border-t border-gray-300 dark:border-gray-700 flex-grow"></div>
+          <div className="border-t border-gray-300 dark:border-gray-700 grow"></div>
           <div className="px-4">⌘ ⌘ ⌘</div>
-          <div className="border-t border-gray-300 dark:border-gray-700 flex-grow"></div>
+          <div className="border-t border-gray-300 dark:border-gray-700 grow"></div>
         </div>
 
         {post.tags && <TagsList tags={post.tags} className="mb-4" />}

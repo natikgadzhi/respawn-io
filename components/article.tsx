@@ -24,15 +24,15 @@ const Article = ({ children }: Props) => {
 
             prose-p3:pt-5
 
-            prose-p:last-of-type:mb-0
+            last-of-type:prose-p:mb-0
 
             lg:prose-p:mb-8
 
             prose-a:text-blue-600
-            prose-a:dark:text-sky-300
+            dark:prose-a:text-sky-300
 
             prose-blockquote:border-blue-600
-            prose-blockquote:dark:border-blue-400
+            dark:prose-blockquote:border-blue-400
             prose-blockquote:border-l-4
 
             prose-blockquote:font-normal
