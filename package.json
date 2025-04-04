@@ -40,7 +40,6 @@
     "vfile": "^6.0.3"
   },
   "devDependencies": {
-    "19": "^0.0.0",
     "@biomejs/biome": "^1.9.4",
     "@mermaid-js/mermaid-cli": "^11.4.2",
     "@next/env": "^15.2.4",
