@@ -19,6 +19,7 @@ const shikiOptions = {
     light: "catppuccin-latte",
     dark: "github-dark",
   },
+  inline: 'tailing-curly-colon',
 };
 
 // remark-figure-caption makes nice captions under images, and supports

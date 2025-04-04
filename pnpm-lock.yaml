@@ -11,9 +11,6 @@ importers:
       '@microflash/remark-figure-caption':
         specifier: ^2.0.2
         version: 2.0.2
-      '@shikijs/rehype':
-        specifier: ^3.2.1
-        version: 3.2.1
       '@vercel/analytics':
         specifier: ^1.5.0
         version: 1.5.0(next@15.2.4(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(vue@3.5.13(typescript@5.8.2))
@@ -108,6 +105,9 @@ importers:
       '@puppeteer/browsers':
         specifier: ^2.9.0
         version: 2.9.0
+      '@shikijs/rehype':
+        specifier: ^3.2.1
+        version: 3.2.1
       '@tailwindcss/typography':
         specifier: ^0.5.16
         version: 0.5.16(tailwindcss@3.4.17)
