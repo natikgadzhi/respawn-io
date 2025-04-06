@@ -1,4 +1,3 @@
-
 import type { Post } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
 import { mdxComponents } from "lib/mdxComponents";
@@ -35,8 +34,8 @@ export const PostsList = ({ posts }: PostsListProps) => {
                   <PostTitle post={post} />
                 </Link>
               </h3>
-              <time 
-                dateTime={post.created} 
+              <time
+                dateTime={post.created}
                 className="text-sm lg:text-base text-blue-700 dark:text-sky-400 whitespace-nowrap"
               >
                 {format(parseISO(post.created), "MMM do yyyy")}
