@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @config '../tailwind.config.cjs';
 
@@ -11,13 +11,13 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentcolor);
+    }
 }
 
 /*
@@ -121,7 +121,7 @@ pre > code > .line {
     min-width: 100%;
 }
 
-/* 
+/*
  * Shiki theme handling for code blocks
  * The CSS variables are automatically injected by Shiki
  */
@@ -202,7 +202,7 @@ article blockquote {
     .mermaid-light {
         display: none;
     }
-    
+
     .mermaid-dark {
         display: block;
     }
@@ -234,7 +234,7 @@ article blockquote {
     .excalidraw-light {
         display: none;
     }
-    
+
     .excalidraw-dark {
         display: block;
     }
@@ -242,19 +242,58 @@ article blockquote {
 
 /* YouTube video container styles */
 iframe[src*="youtube.com"] {
-  aspect-ratio: 16/11;
-  max-width: 100%;
-  margin: 2.5rem auto; /* Increased vertical margins */
-  display: block;
+    aspect-ratio: 16/11;
+    max-width: 100%;
+    margin: 2.5rem auto; /* Increased vertical margins */
+    display: block;
 }
 
 /* For mobile devices, ensure the video and surrounding text stay properly aligned */
 @media (max-width: 768px) {
-  iframe[src*="youtube.com"] {
-    margin: 2rem auto; /* Slightly reduced margins on mobile but still maintaining good spacing */
-  }
+    iframe[src*="youtube.com"] {
+        margin: 2rem auto; /* Slightly reduced margins on mobile but still maintaining good spacing */
+    }
 }
 
 figure > figcaption {
-  @apply text-center text-sm text-gray-600 dark:text-gray-400 mt-2;
+    @apply text-center text-sm text-gray-600 dark:text-gray-400 mt-2;
+}
+/*
+ * Tables in posts
+ */
+.prose table {
+    @apply w-full border;
+    border-color: rgba(107, 114, 128, 0.2);
+}
+
+.prose thead {
+    @apply bg-gray-50 dark:bg-gray-800;
+}
+
+.prose th {
+    @apply text-left font-semibold px-4 py-3;
+    border-color: rgba(107, 114, 128, 0.2);
+}
+
+.prose td {
+    @apply px-4 py-3;
+    border-color: rgba(107, 114, 128, 0.2);
+}
+
+.prose tr {
+    @apply border-t;
+    border-color: rgba(107, 114, 128, 0.2);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .prose table {
+        border-color: rgba(209, 213, 219, 0.2);
+    }
+
+    .prose tr,
+    .prose th,
+    .prose td {
+        border-color: rgba(209, 213, 219, 0.2);
+    }
 }
