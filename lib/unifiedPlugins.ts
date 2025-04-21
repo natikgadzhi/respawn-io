@@ -39,13 +39,16 @@ import wikilinks from "remark-wiki-link";
 
 const rootURL = process.env.ENV_NAME === "localhost" ? "http://localhost:3000" : config.baseURL;
 
-// TODO: This will NOT work for links in daily posts, though.
-//
-// The resolver will not attempt to check if the link actually exists, which
-// is a problem. A potential fix is to make this a little bit bigger,
-// and verify that said link is in fact valid to a `Post` or a `Daily` or a
-// `Tag`.
-const hrefTemplate = (permalink: string) => `${rootURL}/posts/${permalink}`;
+// Handle links for both posts and daily notes based on the link format
+// If a link starts with "daily/", it links to a daily note, otherwise it's a post
+const hrefTemplate = (permalink: string) => {
+  if (permalink.startsWith("daily/")) {
+    // Remove "daily/" prefix when generating the URL
+    const dailySlug = permalink.replace("daily/", "");
+    return `${rootURL}/daily/${dailySlug}`;
+  }
+  return `${rootURL}/posts/${permalink}`;
+};
 const pageResolver = (name: string) => [name];
 
 export const remarkPlugins = [
