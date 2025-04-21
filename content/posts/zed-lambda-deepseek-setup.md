@@ -66,3 +66,8 @@ I'm assuming you are already using Zed. You'll need to grab a Lambda API key ([g
 Honestly, that's it. As we ship new models, you can experiment with them by switching the model name, or on https://lambda.chat. Here's the same in a video:
 
 <iframe width="560" height="380" src="https://www.youtube.com/embed/2Uk7n0nrUV8?si=Ly7objH16UwVSY7D" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+## Bonus
+
+[[daily/2025-04-20|You can use Claude Code in a terminal pane in Zed and that's also pretty cool!]]
