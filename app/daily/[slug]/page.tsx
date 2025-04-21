@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { config } from "../../../blog.config";
 import { format, parse } from "date-fns";
 import { MDXRenderer } from "components/mdx-renderer";
+import { TagsList } from "components/tags";
 
 type Params = Promise<{ slug: string }>;
 
@@ -76,16 +77,7 @@ export default async function DailyPage({ params }: { params: Params }) {
 
       {daily.tags && daily.tags.length > 0 && (
         <footer className="mt-8">
-          <div className="flex gap-2">
-            {daily.tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-sm px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded-md"
-              >
-                #{tag}
-              </span>
-            ))}
-          </div>
+          <TagsList tags={daily.tags} className="flex gap-2" />
         </footer>
       )}
     </article>
