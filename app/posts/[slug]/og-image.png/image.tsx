@@ -20,27 +20,23 @@ export default function OpengraphImage({ post, width, height }: Props) {
         style={{
           width: width,
           height: height,
-          backgroundImage: "linear-gradient(90deg, #cbd5e1 0%, #f8fafc 100%)",
+          backgroundColor: "#F9F5E9", // Light beige, Claude-style
         }}
-        tw="flex flex-col justify-start w-full h-full p-12 px-24 bg-slate-50"
+        tw="flex flex-col justify-start w-full h-full p-12 px-24"
       >
         <h1
           style={{
-            backgroundImage: "linear-gradient(90deg, #1d4ed8 0%, #581c87 100%)",
-            backgroundClip: "text",
-            /* @ts-ignore */
-            "-webkit-background-clip": "text",
-            color: "transparent",
+            color: "#000000",
+            fontWeight: 1000, // Extra black weight for maximum boldness
+            textShadow: "0px 0px 3px rgba(0,0,0,0.1)", // Subtle shadow for more presence
           }}
-          tw="text-6xl break-keep font-extrabold mb-8"
+          tw="text-7xl break-keep font-black mb-8 tracking-tight"
         >
           {post.formattedTitle}
         </h1>
 
         {post.formattedTitle.length < 60 && !post.og_image_hide_description && (
-          <p tw="mt-4 text-4xl font-extrabold leading-normal">
-            {post.excerpt}
-          </p>
+          <p tw="mt-4 text-6xl font-extrabold leading-normal">{post.excerpt}</p>
         )}
 
         {post.formattedTitle.length < 60 && (
