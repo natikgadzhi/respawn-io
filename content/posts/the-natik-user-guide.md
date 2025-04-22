@@ -23,6 +23,16 @@ As I'm ramping up at Lambda, I'll post my version of this, but internally and he
 - **Energy patterns**: I might be slow 4pm — 6pm. I'm peaking at 10am — 1pm Pacific.
 - **You will see me snacking on calls**: don’t take this as disrespectful please. You don’t want me hangry. 👹
 
+## IRL
+
+- I live in Bend, Oregon! Before that, I’ve spent 8-ish years in San Francisco, and I’m about to move back there in the next few months.
+- My mornings are usually a breakfast with the family and a dog walk, then dropping off my 5 y/o daughter at school.
+- I love reading — both fiction and non-fiction, and connecting ideas between books in my Obsidian book notes vault.
+- I love contributing to OSS projects. `@natikgadzhi` is my personal GitHub account. I even did some Swift on Server stuff! (Almost like a real software engineer, huh).
+- I don’t really have a consistent fitness habit, but I like running! Find me on Strava or something. I’m always down for a running-and-coffee-after 1:1 meeting.
+- I'm into music. As in I listen to music maybe one hour a day, but I _have some gear_, including IEMs, DACs, headphone amps, speaker amps, and a record player that is older than me.
+- Why yes I have four keyboards and they are all unique and for different things, okay? No, it's not too much.
+
 ## Communication & Collaboration
 
 - **Preferred communication channels**:
