@@ -57,7 +57,7 @@ export const PostsList = ({ posts }: PostsListProps) => {
                     {format(parseISO(post.created), "MMM do yyyy")}
                   </time>
                 </div>
-                <div className="mt-1 md:mt-2 text-md md:text-base">
+                <div className="mt-0.5 md:mt-0 text-md md:text-base">
                   <PostDescription post={post} />
                 </div>
               </li>
