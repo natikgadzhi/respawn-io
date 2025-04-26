@@ -25,6 +25,9 @@ content-backup
 
 # Assets copied over from content for production builds
 /public/**/*.png
+/public/**/*.jpg
+/public/**/*.jpeg
+/public/**/*.gif
 
 # misc
 .DS_Store
