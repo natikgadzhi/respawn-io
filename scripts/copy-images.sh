@@ -26,3 +26,7 @@ copy_images "content/posts"
 
 # Process daily notes
 copy_images "content/daily"
+
+# Optimize all images in the public directory
+echo "Optimizing images..."
+find public -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" \) -exec npx sharp-cli --input {} --output {} --quality 80 \;
