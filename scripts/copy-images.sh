@@ -2,6 +2,7 @@
 
 # Copy function to handle each content type directory
 copy_images() {
+  echo "Copying images from $1 to public"
   local source_dir=$1
   local dest_dir="public"
 
