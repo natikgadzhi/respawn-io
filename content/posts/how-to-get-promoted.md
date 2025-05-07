@@ -11,7 +11,7 @@ tags:
 
 # How to get promoted faster
 
-Companies generally suck at promoting you at _what feels to you as_ the right time. Either you're in a startup and promotions feel concervative, or you're in a FAANG company and they're overly political. /shrug
+Companies generally suck at promoting you at _what feels to you as_ the right time. Either you're in a startup and promotions feel conservative, or you're in a FAANG company and they're overly political. /shrug
 
 **You get paid for the job that you already do**, not the job that you _want_ to do in the future. If you want to be promoted to the next level, you need to consistently perform at that level for a quarter or longer.
 
@@ -31,7 +31,12 @@ Your manager should generally ensure you have a _growth plan_, they should advoc
 
 ## The growth plan
 
-A good growth plan is a document that describes the list of behaviors and skills that you need to master in order to grow to the next milestone or level. **It's not a checklist**. You don't get the promotion when you checked every item on the list of things to learn. But it should give you an idea of your skill and behavior gap.
+<WithAside>
+A good growth plan is a document that describes the list of behaviors and skills that you need to master in order to grow to the next milestone or level. **It's not a checklist**. You don't get the promotion when you checked every item on the list of things to learn. Instead, the list is a guideline and a roadmap that should give you focus and direction, and inform your vision for your future promotion package (more on that below).
+<Aside>
+Patrick Nilan says: "not a checklist" comment hits it both ways. Just because a person "checks all the boxes" doesn't mean they're automatically going to be promoted, but also, just because a person may not "check all the boxes" doesn't mean they're not ready for promotion — it's more important to focus on the projects/work that have a business impact than to shirk responsibilities just to say "hey I did this thing that no one asked for."
+</Aside>
+</WithAside>
 
 The easiest way to make a growth plan is to take the leveling guide your company has for your level and the level above, sit down with your manager, and write down all the things that are required of the next level that you don't currently do well.
 
@@ -78,6 +83,8 @@ The manager will have to convince their boss and their peers that you already pe
 TODO: Link a template / example.
 </Aside>
 </WithAside>
+
+The vision for your promotion is a living document. If you have enough trust with your manager, work on it with them, if not yet — it's your responsibility. But, it's a document that you update every month and clarify both your assumptions of what is worth a promotion, and how much closer to that did you get.
 
 This exercise helps bridge the gap between working through your growth plan, and pushing for the next level promotion. You should absolutely show that to your manager — and they would likely disagree with your version. That's valuable! That way you can understand where the gap is, and improve your plans to bridge it sooner.
 
