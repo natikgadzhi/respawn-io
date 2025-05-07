@@ -1,6 +1,6 @@
 ---
-created: 2025-04-11
-modified: 2025-04-11
+created: 2025-05-07
+modified: 2025-05-07
 title: How to get promoted faster
 excerpt: Make your own growth plans, brag lists, prepare promotion packages, and for the love of gawd start writing.
 tags:
@@ -59,12 +59,10 @@ The [[airbyte-2024-in-review|2024 at Airbyte]] post is basically a brag list, hy
 </Aside>
 </WithAside>
 
-
-| Good | Meh |
-| ---- | --- |
-| Implemented nested decoders (link) frontend in Connector Builder. **This unblocked a `%{$XYZ}` deal with `%{specific large enterprise customer}`.** | Shipped a feature in connector builder that required changes on the frontend, a new component that we didn't have yet, and an extensive CDK feature. This improved code styles and readability. |
-| Prioritized ACL / permissions metadata work **to secure `%{customer deal}`, and to work closely with Airbridge and prepare for Semantic Layer work.** | Managed product priorities with our enterprise, experimental product teams, and engineering requirements so the team were happy, productive, and shipped ACL and metadata support. |
-
+| Good                                                                                                                                                  | Meh                                                                                                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Implemented nested decoders (link) frontend in Connector Builder. **This unblocked a `%{$XYZ}` deal with `%{specific large enterprise customer}`.**   | Shipped a feature in connector builder that required changes on the frontend, a new component that we didn't have yet, and an extensive CDK feature. This improved code styles and readability. |
+| Prioritized ACL / permissions metadata work **to secure `%{customer deal}`, and to work closely with Airbridge and prepare for Semantic Layer work.** | Managed product priorities with our enterprise, experimental product teams, and engineering requirements so the team were happy, productive, and shipped ACL and metadata support.              |
 
 Your brag list is the easiest correct answer to “tell me about yourself” on an intro conversation with a recruiter from a company that makes your heart skip a beat.
 
@@ -94,3 +92,5 @@ Makes sure it hurts a little bit. [[pain-is-a-part-of-the-process|You don't grow
 </WithAside>
 
 **Always lift others as you go.**
+
+> Special thank you to [Parick Nilan](https://www.linkedin.com/in/patricknilan/) for helping with this post! He kindly agreed to review and edit it, and provide the example growth plan linked above.
