@@ -34,18 +34,15 @@ Your manager should generally ensure you have a _growth plan_, they should advoc
 <WithAside>
 A good growth plan is a document that describes the list of behaviors and skills that you need to master in order to grow to the next milestone or level. **It's not a checklist**. You don't get the promotion when you checked every item on the list of things to learn. Instead, the list is a guideline and a roadmap that should give you focus and direction, and inform your vision for your future promotion package (more on that below).
 <Aside>
-Patrick Nilan says: "not a checklist" comment hits it both ways. Just because a person "checks all the boxes" doesn't mean they're automatically going to be promoted, but also, just because a person may not "check all the boxes" doesn't mean they're not ready for promotion — it's more important to focus on the projects/work that have a business impact than to shirk responsibilities just to say "hey I did this thing that no one asked for."
+[Patrick Nilan](https://www.linkedin.com/in/patricknilan/) says: "not a checklist" comment hits it both ways. Just because a person "checks all the boxes" doesn't mean they're automatically going to be promoted, but also, just because a person may not "check all the boxes" doesn't mean they're not ready for promotion — it's more important to focus on the projects/work that have a business impact than to shirk responsibilities just to say "hey I did this thing that no one asked for."
 </Aside>
 </WithAside>
 
 The easiest way to make a growth plan is to take the leveling guide your company has for your level and the level above, sit down with your manager, and write down all the things that are required of the next level that you don't currently do well.
 
-<WithAside>
 Once you have the plan, you can use it to guide what type of problems or projects you work on next every month. The plan is only helpful if you actually use it, which means returning to it every few weeks to check your progress.
-<Aside>
-TODO: Here's a template based on growth plans of several folks I supported at Airbyte.
-</Aside>
-</WithAside>
+
+> Here is [an example growth plan](https://docs.google.com/document/d/10j0o6vnBLIu-eI5DxjnYj-vH1axbvBo-zq6KCAwu5AQ/edit?tab=t.0) that we've put together with Patrick Nilan at Airbyte.
 
 For junior levels, a growh plan can cover the whole levels. At senior+, a growth plan usually covers one area of work in which you want to improve — leading cross-team projects, prioritizing, scopign complex projects, managing tech debt, managing expectations, etc etc.
 
