@@ -44,7 +44,7 @@ Once you have the plan, you can use it to guide what type of problems or project
 
 > Here is [an example growth plan](https://docs.google.com/document/d/10j0o6vnBLIu-eI5DxjnYj-vH1axbvBo-zq6KCAwu5AQ/edit?tab=t.0) that we've put together with Patrick Nilan at Airbyte.
 
-For junior levels, a growh plan can cover the whole levels. At senior+, a growth plan usually covers one area of work in which you want to improve — leading cross-team projects, prioritizing, scopign complex projects, managing tech debt, managing expectations, etc etc.
+For junior levels, a growh plan can cover the whole levels. At senior+, a growth plan usually covers one area of work in which you want to improve — leading cross-team projects, prioritizing, scoping complex projects, managing tech debt, managing expectations, etc etc.
 
 ## The brag list
 
