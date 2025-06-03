@@ -1,6 +1,6 @@
 ---
 created: 2025-05-07
-modified: 2025-05-07
+modified: 2025-06-03
 title: How to get promoted faster
 excerpt: Make your own growth plans, brag lists, prepare promotion packages, and for the love of gawd start writing.
 tags:
@@ -12,6 +12,10 @@ tags:
 # How to get promoted faster
 
 Companies generally suck at promoting you at _what feels to you as_ the right time. Either you're in a startup and promotions feel conservative, or you're in a FAANG company and they're overly political. /shrug
+
+> [!warning]
+> This note is far from perfect and it has several baked assumptions. One of them is that your org has an **open and clear** leveling guide that. If it's not clear to you what is the difference in impact, outcomes, and behaviors of mid-career and senior engineer from reading your leveling guides, you're in a different kind of trouble.
+> [Engineering Ladders](https://www.engineeringladders.com/) is a good starting point for a reality check.
 
 **You get paid for the job that you already do**, not the job that you _want_ to do in the future. If you want to be promoted to the next level, you need to consistently perform at that level for a quarter or longer.
 
