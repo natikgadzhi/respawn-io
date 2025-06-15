@@ -1,5 +1,5 @@
 ---
-title: The Trade-offs of Designing in HTML and Rails
+title: The Trade-Offs of Designing in HTML and Rails
 excerpt: "Rails approach to designing products (in code) allows teams to build _extremely quickly_, but constraints the team's ability to think with unorthodox or new approaches. Here's what I've seen happen in practice, when designing in code works well, what are some of the downsides, and when it just doesn't work at all."
 created: 2023-11-30
 modified: 2023-12-01
@@ -11,7 +11,7 @@ tags:
 og_image_hide_description: true
 ---
 
-# The Trade-offs of Designing in HTML and Rails
+# The Trade-Offs of Designing in HTML and Rails
 
 Folks at 37Signals have [_strong opinions_](https://world.hey.com/dhh/design-for-the-web-without-figma-4bc3a218) on how to design and build products for the Web. Between ShapeUp, design philosophy, and Rails approaches to frontend, monolith vs services, and infrastructure, there are a _number of conventions_.
 
@@ -57,7 +57,7 @@ Admittedly, _most Rails apps don't need to push design to the limit of what's po
 
 But sometimes, you need to drop the constraints of the technology that you have today, and think about what a great solution to the problem looks like, and then think backwards from that — think about what technology you need to make that solution a reality. If you only have designers-who-html on the team, they likely won't be as great at that type of work.
 
-## The cost of lifting the product design process away from HTML
+## The Cost of Lifting the Product Design Process Away From HTML
 
 Designing a good product starts with the problem, and describes the _why_, _what_, and _how_ of the solution. It's not just the visuals. Starting with what and why means thinking about the product and the people using it, and what success looks like to them, and articulating that thinking in a format that others can read and debate.
 

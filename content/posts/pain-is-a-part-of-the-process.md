@@ -1,13 +1,13 @@
 ---
 created: 2024-06-17
 modified: 2024-06-17
-title: Pain is a part of the process
+title: Pain Is a Part of the Process
 excerpt: You 👏 won't 👏 grow 👏 without 👏 stetch 👏 goals.
 tags:
   - engineering-leadership
   - growth
 ---
-# Pain is a part of the process
+# Pain Is a Part of the Process
 
 It's like those Russian-Jewish ballet teachers. If your feet aren't bleeding, you're not doing it right.
 

@@ -1,12 +1,12 @@
 ---
-title: Preparing for hiring manager interviews
+title: Preparing for Hiring Manager Interviews
 excerpt: Just google the company and the team, ok?
 created: 2024-10-14
 modified: 2024-10-14
 tags: 
 draft: true
 ---
-# Preparing for hiring manager interviews
+# Preparing for Hiring Manager Interviews
 
 Every interview pipeline is different, although there are common patterns. In my companies, hiring manager interview is the first one after the recruiter screen.
 

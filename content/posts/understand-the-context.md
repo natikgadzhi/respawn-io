@@ -1,5 +1,5 @@
 ---
-title: Understand the context, make yourself visible
+title: Understand the Context, Make Yourself Visible
 excerpt: Career growth advice for junior engineers on remote teams.
 created: 2024-08-20
 modified: 2024-08-20
@@ -8,7 +8,7 @@ tags:
   - engineering-leadership
 draft: false
 ---
-# Understand the context, make yourself visible
+# Understand the Context, Make Yourself Visible
 
 At Airbyte, we have a _community devs_ team. They're folks who participated in our hackathons and did really well, so we established the team with a bounty program. I work closely with them, and folks asked me for career growth advice. Here's what I put together for one of them.
 

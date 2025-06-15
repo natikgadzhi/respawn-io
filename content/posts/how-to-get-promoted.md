@@ -1,7 +1,7 @@
 ---
 created: 2025-05-07
 modified: 2025-06-03
-title: How to get promoted faster
+title: How to Get Promoted Faster
 excerpt: Make your own growth plans, brag lists, prepare promotion packages, and for the love of gawd start writing.
 tags:
   - growth
@@ -9,7 +9,7 @@ tags:
   - engineering-leadership
 ---
 
-# How to get promoted faster
+# How to Get Promoted Faster
 
 Companies generally suck at promoting you at _what feels to you as_ the right time. Either you're in a startup and promotions feel conservative, or you're in a FAANG company and they're overly political. /shrug
 

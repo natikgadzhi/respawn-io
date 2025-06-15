@@ -1,5 +1,5 @@
 ---
-title: How to embed Excalidraw in MDX
+title: How to Embed Excalidraw in MDX
 excerpt: Embedding Excalidraw drawings from Obsidian in Contentlayer / MDX.
 created: 2025-03-30
 modified: 2025-03-30
@@ -9,7 +9,7 @@ tags:
 draft: false
 ---
 
-# How to embed Excalidraw in MDX
+# How to Embed Excalidraw in MDX
 
 Did I need this? Sort of. Not really. But I needed to keep my hands busy with something, so here we go.
 

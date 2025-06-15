@@ -1,5 +1,5 @@
 ---
-title: Capture now, improve later
+title: Capture Now, Improve Later
 excerpt: Get it out there. You can fill in the blanks later.
 created: 2024-12-25
 modified: 2024-12-25
@@ -7,7 +7,7 @@ workInProgress: true
 meta_description: A practical approach to consistent writing and note-taking by separating capture and polish phases
 ---
 
-# Capture now, improve later
+# Capture Now, Improve Later
 
 It's pretty common for great mid-career engineers to go MIA when they're supposed to share a design document, or just
 when you expect them to make a pull request with a feature, after they've already demonstrated a quick tracer bullet /

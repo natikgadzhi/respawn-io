@@ -1,7 +1,7 @@
 ---
 created: 2022-12-14
 modified: 2023-07-24
-title: "Setting up a New Mac with dotfiles, brew bundle, and mackup"
+title: "Setting Up a New Mac With Dotfiles, Brew Bundle, and Mackup"
 excerpt:
   "When you can't quite use the Migration Assistant, but not ready to geek out
   all the way with Ansible."
@@ -9,7 +9,7 @@ tags:
   - coding
 ---
 
-# Setting up a New Mac with dotfiles, brew bundle, and mackup
+# Setting Up a New Mac With Dotfiles, Brew Bundle, and Mackup
 
 I was rather stubborn at having just one laptop for work and personal use, but
 finally decided it's time to separate the two activities out. So it was time to
@@ -28,13 +28,13 @@ repo that I mostly used to to set things up on Linux boxes.
    necessarily the best way to manage your VSCode extensions.
 3. `mackup restore` grabs Mackup dump that has Mac-specific apps and settings.
 
-## Backing up the old machine
+## Backing Up the Old Machine
 
 To setup a new machine with just the software and configuration that you need,
 you first need to back it up from the old machine. Here's the minimal path to
 get it to work with the dotfiles like mine:
 
-### Backing up your dotfiles
+### Backing Up Your Dotfiles
 
 First, you need to install `dotbot` and move your existing configuration files
 into a dotfiles directory and push it up to a git or Mercurial repository.
@@ -142,7 +142,7 @@ The resulting file will include:
 **Note:** `Brewfile` is in the `dotfiles` repository, but it will not be
 symlinked into the target system with `dotbot`.
 
-### Backing up various Mac-specific app settings with Mackup
+### Backing Up Various Mac-Specific App Settings With Mackup
 
 [Mackup](https://github.com/lra/mackup) is a neat little backup utility for Mac
 computers that can backup a lot of applicaation specific and system settings
@@ -195,7 +195,7 @@ yabai
 
 > As a nice example, `mackup` backs up your Xcode keyboard shortcuts!
 
-## Restoring on a new Mac
+## Restoring on a New Mac
 
 Restoring is straightforward, and essentially walks the same steps as the
 backup:
@@ -210,7 +210,7 @@ backup:
    apps purchased too.
 4. `mackup restore` to get the rest of the apps and settings.
 
-## What's not covered?
+## What's Not Covered?
 
 I'm still looking for a way to backup some Mac-specific system settings — please
 @ me if you know how to get them backed up in an elegant way. Perhaps I should

@@ -1,5 +1,5 @@
 ---
-title: Automating Swift DocC with Github Actions
+title: Automating Swift DocC With GitHub Actions
 excerpt: Shipping your library's DocC documentation to GitHub Pages, and keeping it up to date with a GitHub action.
 created: 2023-06-16
 modified: 2023-06-16
@@ -14,7 +14,7 @@ Some languages have nice documentation tooling: Yardoc for Ruby, Pydoc for Pytho
 
 This is part 2 of [[swift-docc-publishing-workflow|Generating Swift DocC archives guide]]. In this post, you'll take the Vue.js app that Swift DocC builds, host it on GitHub Pages, and write a GitHub Action to automatically rebuild and update your docs when the source code changes.
 
-### Setting up a GitHub Pages site for your documentation
+### Setting Up a GitHub Pages Site for Your Documentation
 
 On GitHub, go to your repository Settings → Pages, and set it to deploy from a branch. Select `gh-pages` branch, and `/docs` folder. If the `gh-pages` is not on the list of available branches — create it, and push it up.
 
@@ -29,7 +29,7 @@ $ git push origin gh-pages
 > If you'd like to deploy DocC site to a custom domain — that'll work, too, but you will need to not set `--hosting-base-path`.
 
 
-### Manually deploying the documentation to GitHub Pages
+### Manually Deploying the Documentation to GitHub Pages
 
 For this example, I've [forked out `apple/swift-package-manager`](https://github.com/natikgadzhi/swift-package-manager). The code examples below work on that repository.
 
@@ -57,7 +57,7 @@ It takes a few minutes to process, but when it's done, you'll get a [webpage lik
 
 So far, you've generated Swift DocC documentation, exported it as a static website, and shipped it to GitHub pages. Now let's automate it, so every time you push an update to your library, you get the updated documentation website for free.
 
-### Using a GitHub action to deploy documentation
+### Using a GitHub Action to Deploy Documentation
 
 Here's a workflow that will build DocC website, and push it to GitHub pages automatically:
 

@@ -1,5 +1,5 @@
 ---
-title: The endless pile of notifications in remote work
+title: The Endless Pile of Notifications in Remote Work
 excerpt: How to lead a team in remote-first environment, and establish the communication systems and standards so that your team moves quickly, and people are healthy and happy and don't get routinely overwhelmed with notifications.
 created: 2023-12-08
 modified: 2023-12-08
@@ -12,7 +12,7 @@ tags:
   - engineering-leadership
 ---
 
-# The endless pile of notifications in remote work
+# The Endless Pile of Notifications in Remote Work
 
 Returning to an inbox of 400 notifications is no fun, yet you get that after a week off. On the chart of things that are difficult for [[remote-and-async-work|teams trying to work remotely]], managing communication channels and notification volume is up there at the top.
 
@@ -20,7 +20,7 @@ People on remote teams will get overwhelmed from time to time, inevitably. But y
 
 All you need to do is to make people agree on how quickly they expect each other to reply to what types of questions and messages, and on what channels. In practice, it's a little bit more complicated than that.
 
-## Cultures, intents, and expectations
+## Cultures, Intents, and Expectations
 
 Different people, different cultures. Remember the meme about what Americans and folks in different European countries mean when they say "Good" or "Interesting"? Remember how there's this stereotype about Eastern European engineers with Slavic accent being tone-deaf to the point of being rude? Right. Different cultures. We're going to make our own work culture, buckle up.
 
@@ -42,7 +42,7 @@ In practice, someone on the team will be unhappy because suddenly, they might re
 
 Don't think that the only difficult conversations will be with people who don't read or reply to Slack messages. The other way happens, too. If everyone agrees that a reply on Slack is expected within a day, and someone starts _texting_ their co-workers on their personal phones because they want an urgent Slack reply, that's unacceptable, too. If and when that happens, it might be that the offender will not be on your team. Good luck 🙃
 
-## Unsubscribe like you're getting paid every time you hit that button
+## Unsubscribe Like You're Getting Paid Every Time You Hit That Button
 
 Once you and your team agree on _how we want to talk to each other, and how we expect each other to respond_, you can write down the next most important document — a guide on how to set up all the notifications on all tools that you use for work. That should be in your handbook. *WDYM you don't have a handbook in a remote-first team?!*
 
@@ -54,7 +54,7 @@ So, you make a guide on how to set up notifications, and you make sure everyone 
 - **Is only subscribed to the stuff that matters to them**. If your team agreed that get someone's attention we mention them specifically by handle, and we don't expect them to read every thread of every document otherwise — well, that means that people can opt to only be notified when they are mentioned by name. Great!
 - Set up notifications for each platform. Some folks prefer keeping their email inbox empty, and check-in with each platform separately, and others prefer to dump all notifications into email, and grind through their inbox, combined. If you make a guide on how to do either of these approaches, though — that will help your engineers a lot. They're not trained to do this, so they'd appreciate the help.
 
-## Default on notification debt intentionally when you have to
+## Default on Notification Debt Intentionally When You Have To
 
 Having hundreds of unread notifications that are two weeks old is not helping anyone. Give people a way out — teach them how to default on their notification debt.
 
@@ -69,7 +69,7 @@ This ritual needs to be alright with everyone. It's not because people are lazy,
 Just like unlimited PTO, of course, it's a trap. If someone starts every other week with "Happy Monday! I won't read my notifications, ping me if you need me" — you two are overdue for a chat.
 
 
-## When mentioning people, leave meaningful context
+## When Mentioning People, Leave Meaningful Context
 
 This one is best in a form of an example.
 
@@ -95,7 +95,7 @@ It Patrick asked you how they could improve their comment, you should tell them 
 
 
 
-## Read more
+## Read More
 
 I've posted a few notes on remote work:
 - [[remote-team-health-check|Remote team health check]] on how to quickly assess strong and weak sides of a team, and figure out what to focus on as a leader.

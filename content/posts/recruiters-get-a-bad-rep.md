@@ -1,5 +1,5 @@
 ---
-title: Why recruiters get a bad reputation among technologists
+title: Why Recruiters Get a Bad Reputation Among Technologists
 excerpt: Spray and pray and find out
 created: 2024-11-26
 modified: 2024-11-26
@@ -7,7 +7,7 @@ draft: false
 tags:
   - growth
 ---
-# Why recruiters get a bad reputation among technologists
+# Why Recruiters Get a Bad Reputation Among Technologists
 
 You know why recruiters get bad rep among technologists? Well, I'll give you two examples.
 

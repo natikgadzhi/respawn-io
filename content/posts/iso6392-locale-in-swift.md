@@ -1,5 +1,5 @@
 ---
-title: How to get `iso639.2` locale code in Swift
+title: How to Get `iso639.2` Locale Code in Swift
 excerpt: Or how Claude sent me on a side quest for the perfect language code API.
 created: 2024-12-23
 modified: 2024-12-23
@@ -8,7 +8,7 @@ tags:
   - swift
   - coding
 ---
-# How to get `iso639.2` locale code in Swift
+# How to Get `iso639.2` Locale Code in Swift
 
 This one was wild. TLDR:
 * I needed an `iso639.2` language codes in my hobby Swift app.

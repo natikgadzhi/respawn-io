@@ -1,7 +1,7 @@
 ---
 created: 2024-12-31
 modified: 2024-12-31
-title: Ghostty is awesome
+title: Ghostty Is Awesome
 excerpt: "`@mitchellh`'s new terminal app is pretty great."
 meta_description: Switching from iTerm to Ghostty and configuring minimal keybinds.
 tags:
@@ -10,7 +10,7 @@ tags:
   - open-source
 ---
 
-# Ghostty is awesome
+# Ghostty Is Awesome
 
 I've used iTerm2 for as long as I can remember myself using a Mac. I'd say iTerm and I are on good terms in our relationship.
 
@@ -70,7 +70,7 @@ auto-update = download
 term = xterm-256color
 ```
 
-## Configuration caveats
+## Configuration Caveats
 
 **You probably will want a system-wide command to open your terminal even if Ghostty is not running**. I'm using `skhd` for this:
 
@@ -85,6 +85,6 @@ If you're using Raycast, you might just set an Application shortcut for Ghostty 
 
 **Ghostty is using OS-native tabs on MacOS**. If you're still using Yabai (tiling window manager), it freaks out when you make a new tab and you have to retile. Honestly, it's probably time to switch to Raycast for tiling, but alternatively, you could probably get away with `unconsumed:` keybind modifier in Ghostty, and then catch the same keybind in `skhd` and retile on it, after sleeping for 0.2 seconds or something. Hacky.
 
-## Open source!
+## Open Source!
 
 Unsurprisingly Ghostty is open source under Apache 2 License, and it's written in Zig. Just like with Zed, I'm very excited that if I need any changes to my favorite text editor or terminal, I can, in theory, just go and work on them myself, and learn a lot in the process. If you want to play around with Zig, here's a [bunch of `contributor friendly` issues](https://github.com/ghostty-org/ghostty/issues?q=is:issue%20state:open%20label:%22contributor%20friendly%22).

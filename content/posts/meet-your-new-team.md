@@ -1,5 +1,5 @@
 ---
-title: Meet your new team
+title: Meet Your New Team
 excerpt: Things to do to get to know your new team, and start building trust.
 created: 2023-06-25
 modified: 2023-06-25
@@ -8,7 +8,7 @@ tags:
   - engineering-leadership
 ---
 
-# Meet your team
+# Meet Your New Team
 
 Joining an existing team as an engineering manager can be scary and awkward, but that's part of the job when you start a new position, or your teams reorganize in the company.
 

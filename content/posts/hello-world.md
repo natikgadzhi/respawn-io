@@ -1,5 +1,5 @@
 ---
-title: New site! Obsidian, Next.js, and Vercel
+title: New Site! Obsidian, Next.js, and Vercel
 excerpt: "I had a couple hours on a Thursday night, and wanted to clean up my website. The result is this: a blog built with Obsidian, Markdown, Next.js, Contentlayer, and a few hacks to glue things together."
 created: 2022-06-16
 modified: 2025-01-02

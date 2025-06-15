@@ -1,14 +1,14 @@
 ---
 created: 2024-01-14
 modified: 2024-01-14
-title: I think I fixed the RSS content markup?
+title: I Think I Fixed the RSS Content Markup?
 excerpt: Turns out, rendering MDX in an RSS feed in Next.js is a PITA
 tags:
   - coding
   - obsidian
   - contentlayer
 ---
-# I think I fixed the RSS markup?
+# I Think I Fixed the RSS Content Markup?
 
 Looking back at [[hello-world| when I just started writing]], I'm happy with where it ended up. Tinkering with it is a good adventure, but some things are way more painful than they have to be.
 
@@ -29,7 +29,7 @@ Neither of those approaches give you  a page that you can compose with React cod
 
 To render that outside of a React context, you _can_ hypothetically to `ReactDOMServer.renderToString`, but Vercel does not like that.
 
-## Workaround for MDX in RSS is to, well, not use MDX in RSS
+## Workaround for MDX in RSS Is to, Well, Not Use MDX in RSS
 
 Instead, I ended up extracting up the `remark` and `rehype` plugins I'm using into a reusable block, and [making a separate method that renders post markup with regular remark → rehype pipeline, without MDX](https://github.com/natikgadzhi/respawn-io/blob/f2b2881914ec592ac6a3c8bbd2de8a4b63bf2cbb/lib/markdownToHTML.ts).
 
@@ -43,7 +43,7 @@ The other tricky problem in Obsidian + Next.js combo are paths to posts and asse
 
 But, for the RSS feed and for a newsletter, you'd have to either set absolute asset URLs, or inline them. So I've set up `rehype-embed-images` replace image sources with base64 encoded images. That way, RSS readers should be able to pick them up.
 
-## Just use Jekyll
+## Just Use Jekyll
 
 Seriously, there are a number of ways to build a blog the easy way. Author in Obsidian, iA Writer, Ulysses, whatever you want — just publish with something battle-tested and simple, like Jekyll. Or Obsidian Publish. Or _maybe_ Astro? I haven't tried that one yet. But Next.js for a blog is a bit of an overkill.
 

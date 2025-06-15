@@ -1,5 +1,5 @@
 ---
-title: "Switching to Asynchronous remote work: challenges and best practices"
+title: "Switching to Asynchronous Remote Work: Challenges and Best Practices"
 excerpt: Remote doesn't suck. Attempts to shove in-office meeting HiPPO culture into a remote medium suck. Here's how to help your teams work better in an asynchronous environment.
 created: 2023-11-05
 modified: 2023-11-05
@@ -9,7 +9,7 @@ meta_keywords: Remote, remote work, working remotely, async remote work, trust-d
 tags:
   - remote
 ---
-# Switching to Asynchronous remote work: challenges and best practices
+# Switching to Asynchronous Remote Work: Challenges and Best Practices
 
 Someone recently mentioned to me that they've gone back to the office for two days each week, and it gave them a huge productivity boost — "we get so much done in those two days — stuff that we can't otherwise get done in a month".
 
@@ -25,7 +25,7 @@ That mode of work requires everyone to trust each other and treat each other lik
 
 
 
-## Embracing asynchronous work
+## Embracing Asynchronous Work
 
 When leaders (and all teammates, really) start working remotely, a few things are usually new to them. They would try and do things just like they used to in the office, replacing a meeting room with a Zoom window. But it doesn't work well. That approach doesn't play to the strengths of the remote environment.
 
@@ -33,7 +33,7 @@ If you like snowboarding and surfing, you wouldn't try and surf wearing your ful
 
 Here's the list of things that I highlight to people that I mentor, and how I explain the pros, cons, and reasoning behind each of them.
 
-### Communicating with radical transparency
+### Communicating With Radical Transparency
 
 Whether you're making a decision, or just asking where in your codebase a certain feature is, please, try to have all work project-related conversations in the open channels with clear naming, _instead of direct messages_.
 
@@ -49,7 +49,7 @@ Whether you're making a decision, or just asking where in your codebase a certai
   > You will have to do this many times with many people on your team. Some people get comformtable posting in the open quickly, but others might take several nudges to change their ways.
 
 
-### Making and documenting decisions
+### Making and Documenting Decisions
 
 In the office, you can just sit down with the team that you need and make the decision in a meeting quickly. Working remotely, you can still run a meeting (and it has its own pros and cons), or you can drive to a decision asynchronously.
 

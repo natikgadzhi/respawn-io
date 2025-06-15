@@ -1,14 +1,14 @@
 ---
 created: 2025-04-05
 modified: 2025-04-05
-title: Pattern recognition
+title: Pattern Recognition
 excerpt: Half of your job is to handle surprises. Some of those come from above. The kicker is you can learn to see the surprises brewing before the shitstorm hits. You've seen this movie before.
 tags:
   - engineering-leadership
   - managing-up
 ---
 
-# Pattern recognition
+# Pattern Recognition
 
 As a manager, you're a part of at least two teams. You're a peer in the leadership team, and you're a leader in your team or managers or ICs. Your words and actions have weight on both of them.
 

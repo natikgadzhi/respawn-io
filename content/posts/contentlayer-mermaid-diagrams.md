@@ -1,5 +1,5 @@
 ---
-title: Mermaid diagrams in a static site using MDX and Contentlayer
+title: Mermaid Diagrams in a Static Site Using MDX and Contentlayer
 excerpt: With dark mode support and a custom Vercel build script.
 created: 2025-01-02
 modified: 2025-01-02
@@ -12,7 +12,7 @@ tags:
 draft: false
 ---
 
-# Mermaid diagrams in a static site using MDX and Contentlayer
+# Mermaid Diagrams in a Static Site Using MDX and Contentlayer
 
 Who doesn't love some late holiday season yak shaving, eh? I was writing my Airbyte year in review, and _really_ needed a diagram. Remembered [[hello-world|I wanted Mermaid support for 2 years now]], and thought I can quickly get it to work.
 
