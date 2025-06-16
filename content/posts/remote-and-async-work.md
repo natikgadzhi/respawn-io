@@ -4,8 +4,8 @@ excerpt: Remote doesn't suck. Attempts to shove in-office meeting HiPPO culture 
 created: 2023-11-05
 modified: 2023-11-05
 draft: false
-meta_description: Remote doesn't suck. Attempts to shove in-office meeting HiPPO culture into a remote medium suck. Here's how to help your teams work better in an asynchronous environment.
-meta_keywords: Remote, remote work, working remotely, async remote work, trust-driven work
+meta_description: "Transform your engineering team from meeting-heavy to async-first. Practical guide to documentation, decision-making, and communication in distributed teams."
+meta_keywords: "asynchronous engineering teams, async remote work, distributed team communication, remote engineering best practices, async decision making, documentation culture, remote team productivity"
 tags:
   - remote
 ---

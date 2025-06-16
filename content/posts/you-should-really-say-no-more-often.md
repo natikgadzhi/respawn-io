@@ -4,8 +4,8 @@ excerpt: Saying "No" is extremely valuable. But not just for you — for your te
 created: 2023-08-05
 modified: 2023-08-05
 draft: false
-meta_description: For engineering management, saying no is extremely valuable. But not just for you — for your team and larger organization as well. Here's how delegating your work unlocks value for your team.
-meta_keywords: Engineering management, engineering leadership, coaching engineers
+meta_description: "Why saying no as an engineering leader creates more value than saying yes. How to delegate effectively, protect your time, and grow your team through strategic rejection."
+meta_keywords: "engineering manager time management, saying no leadership, delegation engineering teams, manager burnout prevention, strategic leadership, engineering productivity, effective delegation, work life balance engineering"
 tags:
   - engineering-leadership
 ---

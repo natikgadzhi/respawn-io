@@ -3,6 +3,8 @@ created: 2025-04-05
 modified: 2025-04-05
 title: Pattern Recognition
 excerpt: Half of your job is to handle surprises. Some of those come from above. The kicker is you can learn to see the surprises brewing before the shitstorm hits. You've seen this movie before.
+meta_description: "How engineering leaders can anticipate organizational changes and protect their teams. Reading leadership patterns, managing up, and navigating company politics."
+meta_keywords: "engineering leadership patterns, managing up engineering, organizational change management, engineering politics, leadership intuition, reading the room engineering"
 tags:
   - engineering-leadership
   - managing-up

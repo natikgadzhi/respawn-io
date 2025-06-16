@@ -3,6 +3,8 @@ created: 2024-06-17
 modified: 2024-06-17
 title: Pain Is a Part of the Process
 excerpt: You 👏 won't 👏 grow 👏 without 👏 stetch 👏 goals.
+meta_description: "Why stretch goals and constructive discomfort drive engineering team growth. How to challenge your team effectively while maintaining psychological safety."
+meta_keywords: "engineering team growth, stretch goals engineering, challenging engineering teams, growth mindset engineering management, team development strategies"
 tags:
   - engineering-leadership
   - growth

@@ -3,6 +3,8 @@ created: 2025-04-20
 modified: 2024-04-20
 title: The Natik User Guide
 excerpt: Here's how I work, how to work with me, and known failure modes.
+meta_description: "Engineering leader's personal user manual: communication preferences, work style, feedback approach. Template for creating your own manager README."
+meta_keywords: "manager readme template, engineering manager user guide, leadership working style, manager communication preferences, working with me document, engineering leadership transparency"
 tags:
   - engineering-leadership
   - lifting-others

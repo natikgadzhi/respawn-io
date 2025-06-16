@@ -4,6 +4,8 @@ created: 2023-12-30
 modified: 2023-12-30
 excerpt: Lead your teams with integrity, honesty, and transparency. Don't let   fear and cynicism poison the team.
 draft: false
+meta_description: "How to avoid toxic 'us vs them' dynamics as an engineering leader. Build trust between your team and leadership while maintaining integrity and transparency."
+meta_keywords: "engineering team culture, toxic team dynamics, us vs them leadership, engineering management integrity, team trust building, middle management challenges"
 tags:
   - engineering-leadership
 ---

@@ -3,6 +3,8 @@ created: 2025-05-07
 modified: 2025-06-03
 title: How to Get Promoted Faster
 excerpt: Make your own growth plans, brag lists, prepare promotion packages, and for the love of gawd start writing.
+meta_description: "Practical guide for engineers: create growth plans, maintain brag lists, write promotion packages, and navigate the promotion process. Real examples and templates included."
+meta_keywords: "engineering promotion, software engineer career advancement, promotion package template, growth plan engineering, brag list examples, how to get promoted as developer, engineering career growth, tech promotion tips"
 tags:
   - growth
   - lifting-others

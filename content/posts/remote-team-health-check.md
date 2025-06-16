@@ -4,6 +4,8 @@ excerpt: How to quickly check-in with your team, and make sure people feel safe,
 created: 2023-06-25
 modified: 2023-07-03
 draft: false
+meta_description: "5-minute remote engineering team assessment: evaluate communication, psychological safety, and engagement. Actionable fixes for common remote team problems."
+meta_keywords: "remote engineering team health, remote team assessment, distributed team management, remote engineering culture, team health metrics, remote team engagement"
 tags:
   - engineering-leadership
   - remote

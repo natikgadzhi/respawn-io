@@ -3,6 +3,8 @@ created: 2022-11-29
 modified: 2022-11-29
 title: "Barebones Engineering Management Interview Questions"
 excerpt: "Here's a minimal set of signals I'm looking for when interviewing engineering managers."
+meta_description: "Essential engineering manager interview questions that reveal leadership ability: handling failed projects, managing underperformance, building trust. With detailed answer guidance."
+meta_keywords: "engineering manager interview questions, hiring engineering managers, EM interview guide, technical leadership hiring, manager interview best practices, engineering management interview"
 tags:
   - engineering-leadership
 

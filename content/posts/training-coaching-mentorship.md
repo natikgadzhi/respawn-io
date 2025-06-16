@@ -3,6 +3,7 @@ created: 2022-08-23
 modified: 2022-08-23
 title: "Training, Coaching, and Mentoring as an Engineering Manager"
 excerpt: "What role you play for each person on your team, and in your organization."
+meta_description: "Understanding the differences between training, coaching, and mentoring in engineering leadership. When and how to use each approach to develop your team effectively."
 meta_keywords: "Engineering leadership, engineering management, mentorship for engineering managers"
 tags:
   - engineering-leadership

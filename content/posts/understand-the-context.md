@@ -7,6 +7,8 @@ tags:
   - growth
   - engineering-leadership
 draft: false
+meta_description: "Career advancement guide for junior engineers on remote teams: build visibility, understand company context, and accelerate growth with proven strategies."
+meta_keywords: "junior engineer career growth, remote engineer visibility, career advancement remote work, engineering career advice, junior developer promotion, remote team career development"
 ---
 # Understand the Context, Make Yourself Visible
 

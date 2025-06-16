@@ -4,6 +4,8 @@ excerpt: |
   Getting un-stuck and picking up one learning subject at a time.
 created: 2022-08-08
 modified: 2022-08-08
+meta_description: "How to balance multiple learning goals as an engineering leader. Framework for prioritizing skills development between management, technical depth, and career growth."
+meta_keywords: "engineering manager learning plan, technical leadership development, balancing coding and management, engineering career development, continuous learning engineering"
 tags:
   - growth
 ---

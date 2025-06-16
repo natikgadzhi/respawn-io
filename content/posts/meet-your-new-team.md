@@ -4,6 +4,8 @@ excerpt: Things to do to get to know your new team, and start building trust.
 created: 2023-06-25
 modified: 2023-06-25
 draft: true
+meta_description: "First 90 days playbook for engineering managers joining existing teams. Build trust, understand team dynamics, and establish leadership with proven onboarding strategies."
+meta_keywords: "new engineering manager onboarding, first 90 days engineering manager, joining existing team as manager, engineering manager checklist, team building engineering leadership"
 tags:
   - engineering-leadership
 ---

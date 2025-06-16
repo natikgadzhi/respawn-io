@@ -4,8 +4,8 @@ excerpt: How to lead a team in remote-first environment, and establish the commu
 created: 2023-12-08
 modified: 2023-12-08
 draft: false
-meta_description: How to lead a remote team, and help them manage notifications and mentions across Slack, Google Docs, Figma, and all the tools they are using.
-meta_keywords: Remote, remote work, remote communications, notifications
+meta_description: "Practical guide to managing notification overload in remote engineering teams. Set communication expectations, reduce interruptions, and maintain team productivity."
+meta_keywords: "remote work notifications, engineering team communication, notification fatigue, slack overload, remote team productivity, async communication rules, distributed team notifications, managing interruptions"
 og_image_hide_description: true
 tags:
   - remote
