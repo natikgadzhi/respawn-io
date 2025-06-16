@@ -2,6 +2,8 @@
 title: Slow and Has a Soul
 tags:
   - startups
+  - remote
+  - engineering-leadership
 excerpt: A take on the trajectory of two YC W20 companies
 created: 2025-06-15
 modified: 2025-06-15
