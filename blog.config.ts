@@ -2,7 +2,7 @@
 
 export const config = {
   title: "Natik's Journal",
-  description: "Notes on enginering leadership and software development.",
+  description: "Notes on engineering leadership and software development.",
   baseURL: "https://respawn.io",
   githubURL: "https://github.com/natikgadzhi/respawn-io",
 

@@ -3,6 +3,7 @@ created: 2024-01-14
 modified: 2024-01-14
 title: I Think I Fixed the RSS Content Markup?
 excerpt: Turns out, rendering MDX in an RSS feed in Next.js is a PITA
+meta_description: "Solving MDX rendering challenges in Next.js RSS feeds. Workarounds for Contentlayer, image inlining, and why you might just want to use Jekyll."
 tags:
   - coding
   - obsidian

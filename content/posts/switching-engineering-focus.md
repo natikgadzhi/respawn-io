@@ -1,6 +1,7 @@
 ---
 title: Levels of Engineering (Management) Focus
 excerpt: "Switching back and forth between engineering and engineering management is totally fine."
+meta_description: "Navigate the pendulum between engineering management and IC roles. Understanding different focus levels and why switching back to coding is okay."
 created: 2022-07-03
 modified: 2022-07-03
 tags:

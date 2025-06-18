@@ -1,6 +1,7 @@
 ---
 title: How to Embed Excalidraw in MDX
 excerpt: Embedding Excalidraw drawings from Obsidian in Contentlayer / MDX.
+meta_description: "Build a rehype plugin to embed Excalidraw diagrams in MDX blog posts. Complete guide for Obsidian + Contentlayer setup with code examples."
 created: 2025-03-30
 modified: 2025-03-30
 tags:

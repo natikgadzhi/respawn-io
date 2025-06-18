@@ -1,6 +1,7 @@
 ---
 title: Why Recruiters Get a Bad Reputation Among Technologists
 excerpt: Spray and pray and find out
+meta_description: "Why recruiters damage their reputation with lazy outreach. Real examples of failed recruiting attempts and why doing basic homework matters."
 created: 2024-11-26
 modified: 2024-11-26
 draft: false

@@ -34,6 +34,11 @@ export const Daily = defineDocumentType(() => ({
       required: false,
       description: "Whether the note is a draft",
     },
+    meta_description: {
+      type: "string",
+      description: "The meta description of the daily note",
+      required: false,
+    },
   },
   computedFields: {
     slug: {

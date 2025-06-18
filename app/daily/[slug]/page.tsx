@@ -33,13 +33,13 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
   return {
     title: `${title} - ${config.title}`,
-    description: daily.title || `Daily TIL note from ${formattedDate}`,
+    description: daily.meta_description || daily.title || `Daily TIL note from ${formattedDate}`,
     alternates: {
       canonical: canonicalURL,
     },
     openGraph: {
       title: `${title} - ${config.title}`,
-      description: daily.title || `Daily TIL note from ${formattedDate}`,
+      description: daily.meta_description || daily.title || `Daily TIL note from ${formattedDate}`,
       url: canonicalURL,
       type: "article",
       publishedTime: daily.created || daily.slug,
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     },
     twitter: {
       title: `${title} - ${config.title}`,
-      description: daily.title || `Daily note from ${formattedDate}`,
+      description: daily.meta_description || daily.title || `Daily note from ${formattedDate}`,
       card: "summary",
     },
   };
