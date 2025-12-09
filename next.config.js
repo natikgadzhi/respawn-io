@@ -1,6 +1,7 @@
 import { withContentlayer } from "next-contentlayer2";
 
 const nextConfig = {
+  output: "standalone",
   outputFileTracingExcludes: {
     "posts/[slug]/og-image.png": [
       "./content",       // Exclude all content files

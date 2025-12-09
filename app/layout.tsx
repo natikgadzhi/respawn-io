@@ -1,5 +1,3 @@
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 
 import "../styles/index.css";
@@ -53,8 +51,6 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
-      <SpeedInsights />
-      <Analytics />
       <body className="dark:bg-stone-950 text-stone-950 dark:text-gray-50">
         <Counterscale />
         <main className="min-h-screen max-w-3xl mx-auto">
