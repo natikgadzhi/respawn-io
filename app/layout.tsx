@@ -13,13 +13,14 @@ type Props = {
 
 export const metadata: Metadata = {
   category: "technology",
+  metadataBase: new URL(blogConfig.siteURL),
 
   alternates: {
     canonical: blogConfig.baseURL,
     types: {
-      "application/rss+xml": `${blogConfig.baseURL}'/rss/feed.xml`,
-      "application/rss+json": `${blogConfig.baseURL}'/rss/feed.json`,
-      "application/atom+xml": `${blogConfig.baseURL}'/rss/atom.xml`,
+      "application/rss+xml": "/rss/feed.xml",
+      "application/rss+json": "/rss/feed.json",
+      "application/atom+xml": "/rss/atom.xml",
     },
   },
 
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     title: blogConfig.title,
     locale: "en_US",
     siteName: blogConfig.title,
-    url: blogConfig.baseURL,
+    url: blogConfig.siteURL,
   },
 
   twitter: {

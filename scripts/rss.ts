@@ -29,32 +29,36 @@ export default async function generateFeeds() {
     link: config.author.fediverseURL,
   };
 
+  // Use siteURL for RSS - this is the serving domain
+  const siteURL = config.siteURL;
+
   const feed = new Feed({
     title: config.title,
     description: config.description,
-    id: config.baseURL,
-    link: config.baseURL,
+    id: siteURL,
+    link: siteURL,
     language: "en",
-    image: `${config.baseURL}/images/logo.svg`,
-    favicon: `${config.baseURL}/favicon.ico`,
+    image: `${siteURL}/images/logo.svg`,
+    favicon: `${siteURL}/favicon.ico`,
     copyright: config.footer.copyright,
     updated: new Date(posts[0].modified),
     generator: "Next.js using Feed for Node.js",
     feedLinks: {
-      rss2: `${config.baseURL}/rss/feed.xml`,
-      json: `${config.baseURL}/rss/feed.json`,
-      atom: `${config.baseURL}/rss/atom.xml`,
+      rss2: `${siteURL}/rss/feed.xml`,
+      json: `${siteURL}/rss/feed.json`,
+      atom: `${siteURL}/rss/atom.xml`,
     },
     author,
   });
 
   const feedItems = await Promise.all(
     posts.map(async (post) => {
+      const postURL = `${siteURL}${post.url}`;
       return {
         title: post.formattedTitle,
         id: post.url,
-        link: post.absoluteURL,
-        guid: post.absoluteURL,
+        link: postURL,
+        guid: postURL,
         description: post.rawExcerpt,
         // @ts-ignore
         content: await markdownToHTML(post),

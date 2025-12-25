@@ -3,7 +3,13 @@
 export const config = {
   title: "Natik's Journal",
   description: "Notes on engineering leadership and software development.",
+  // Canonical URL for SEO - always respawn.io
   baseURL: "https://respawn.io",
+  // Public serving URL - set via SITE_URL env var at container runtime
+  // Falls back to baseURL if not set
+  get siteURL() {
+    return process.env.SITE_URL || this.baseURL;
+  },
   githubURL: "https://github.com/natikgadzhi/respawn-io",
 
   meta: {

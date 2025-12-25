@@ -2,10 +2,12 @@ import { allDailies, allPosts } from "contentlayer/generated";
 import { compareDesc } from "date-fns";
 import type { MetadataRoute } from "next";
 import { getTagsWithCounts } from "lib/tagHelpers";
-
 import { config } from "blog.config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Use the serving URL for sitemap
+  const baseURL = config.siteURL;
+
   const posts = allPosts
     .filter((post) => !post.draft)
     .sort((a, b) => compareDesc(new Date(a.created), new Date(b.created)));
@@ -18,17 +20,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const index = [
     {
-      url: config.baseURL,
+      url: baseURL,
       lastModified: new Date(posts[0].modified),
       changeFrequency: "daily",
     },
     {
-      url: `${config.baseURL}/daily`,
+      url: `${baseURL}/daily`,
       lastModified: new Date(daily[0].slug),
       changeFrequency: "daily",
     },
     {
-      url: `${config.baseURL}/about`,
+      url: `${baseURL}/about`,
       lastModified: new Date(posts[0].modified),
       changeFrequency: "daily",
     },
@@ -37,7 +39,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // @ts-ignore: Type 'string' is not assignable to type '"always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never"'.
   const withPosts = index.concat(
     posts.map((post) => ({
-      url: post.absoluteURL,
+      url: `${baseURL}${post.url}`,
       lastModified: new Date(post.modified),
       changeFrequency: "daily",
     })),
@@ -47,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // @ts-ignore
   const withDaily = withPosts.concat(
     daily.map((d) => ({
-      url: `${config.baseURL}/daily/${d.slug}`,
+      url: `${baseURL}/daily/${d.slug}`,
       lastModified: new Date(d.modified || d.created || d.slug),
       changeFrequency: "daily",
     })),
@@ -56,7 +58,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // @ts-ignore
   const withTags = withDaily.concat(
     tags.map((tag) => ({
-      url: `${config.baseURL}/tags/${tag.tag}`,
+      url: `${baseURL}/tags/${tag.tag}`,
       lastModified: new Date(posts[0].modified ? posts[0].modified : posts[0].created),
       changeFrequency: "daily",
     })),

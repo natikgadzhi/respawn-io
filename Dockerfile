@@ -64,6 +64,11 @@ RUN mkdir -p public && \
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 
+# SITE_URL can be passed at build time for different domains
+# Example: docker build --build-arg SITE_URL=https://natik.dev -t natik-dev .
+ARG SITE_URL=https://respawn.io
+ENV SITE_URL=$SITE_URL
+
 RUN pnpm run build:content && \
     pnpm run og-images && \
     pnpm exec next build && \
