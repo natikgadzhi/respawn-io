@@ -57,7 +57,7 @@ const rehypeMermaid: Plugin<[MermaidOptions?], Root> = (options = {}) => {
                 try {
                     // Generate light mode SVG
                     const backgroundArg = options.background ? `-b "${options.background}"` : "-b transparent";
-                    const configArg = process.env.ENV_NAME === 'localhost' ? '' : '-p puppeteer-vercel.config.json';
+                    const configArg = '-p puppeteer.config.json';
                     execSync(
                         `npx -p @mermaid-js/mermaid-cli mmdc -i "${inputFile}" -o "${outputLightFile}" ${backgroundArg} ${configArg}`,
                         { stdio: "pipe" }
