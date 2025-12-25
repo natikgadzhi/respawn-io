@@ -1,7 +1,6 @@
-import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
 
 import rehypeShiki from "@shikijs/rehype";
 import rehypeMermaid from "./lib/rehypeMermaid.ts";
@@ -22,7 +21,7 @@ const shikiOptions = {
     light: "catppuccin-latte",
     dark: "github-dark",
   },
-  inline: 'tailing-curly-colon',
+  inline: "tailing-curly-colon",
 };
 
 // Handle links for both posts and daily notes based on the link format
@@ -44,23 +43,25 @@ const remarkPlugins = [
 ];
 
 const rehypePlugins = [
-  [rehypeMermaid, {
-    background: "transparent",
-    className: "mermaid-diagram",
-  }],
-  [rehypeExcalidraw, {
-    className: "excalidraw-diagram",
-  }],
+  [
+    rehypeMermaid,
+    {
+      background: "transparent",
+      className: "mermaid-diagram",
+    },
+  ],
+  [
+    rehypeExcalidraw,
+    {
+      className: "excalidraw-diagram",
+    },
+  ],
   [rehypeShiki, shikiOptions],
 ];
 
 export default defineConfig({
   site: baseURL,
-  integrations: [
-    mdx(),
-    sitemap(),
-    tailwind(),
-  ],
+  integrations: [mdx(), sitemap()],
   markdown: {
     remarkPlugins,
     rehypePlugins,

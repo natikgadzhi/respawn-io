@@ -11,7 +11,6 @@ import fs from "node:fs";
 import path from "node:path";
 import puppeteer from "puppeteer";
 import { getCollection } from "astro:content";
-import { config } from "../blog.config.ts";
 import { titleCase } from "../src/lib/titleCase.ts";
 import { getRawExcerpt, getPostAbsoluteUrl } from "../src/lib/content-utils.ts";
 
@@ -108,12 +107,16 @@ function generateHTML(post: {
 <body>
   <div class="container">
     <h1>${escapeHtml(post.formattedTitle)}</h1>
-    ${showExcerpt ? `<p class="excerpt">${escapeHtml(post.rawExcerpt)}</p>` : ''}
-    ${showURL ? `
+    ${showExcerpt ? `<p class="excerpt">${escapeHtml(post.rawExcerpt)}</p>` : ""}
+    ${
+      showURL
+        ? `
     <div class="footer">
       <span class="url">${escapeHtml(post.absoluteURL)}</span>
     </div>
-    ` : ''}
+    `
+        : ""
+    }
   </div>
 </body>
 </html>
@@ -127,7 +130,7 @@ async function generateOGImages() {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
   // Get all posts from Astro content collections
-  const allPosts = await getCollection('posts');
+  const allPosts = await getCollection("posts");
 
   // Launch browser
   const browser = await puppeteer.launch({

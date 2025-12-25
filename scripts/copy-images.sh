@@ -23,11 +23,11 @@ copy_images() {
 }
 
 # Process posts
-copy_images "content/posts"
+copy_images "src/content/posts"
 
 # Process daily notes
-copy_images "content/daily"
+copy_images "src/content/daily"
 
 # Optimize all images in the public directory
 echo "Optimizing images..."
-find public -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" \) -exec npx sharp-cli --input {} --output {} --quality 80 \;
+find public -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" \) -exec pnpm exec sharp --input {} --output {} --quality 80 \;
