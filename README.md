@@ -1,27 +1,56 @@
 # respawn.io
 
-This repo contains the source code for (yet another?) iteration of
-[respawn.io](https://respawn.io) blog. That one uses Next, Tailwind, and Contentlayer.
+Source code for [respawn.io](https://respawn.io) (also served on [natik.dev](https://natik.dev)). Built with Next.js 16, Tailwind, and Contentlayer.
 
-A few more things under the hood:
+## Features
 
-- Content pipeline is handled by `contentlayer`. See [Contentlayer with multiple data types](http://respawn.io/posts/contentlayer-with-multiple-data-types).
-- RSS feed that includes all posts.
-- Mark posts as `draft: true` in front matter to hide them from the generated
-  site.
-- MDX support for posts, pre-configured to use `next/image` and `next/link`.
-  Also supports Markdown image tags. Callouts support is pending.
-- Support for generating opengraph images via `ImageResponse` in `edge runtime`, see
-  [hello-world.md](https://respawn.io/posts/hello-world) for details.
-- Uses Vercel built-in analytics with zero configuration.
+- **Content pipeline** via Contentlayer. See [Contentlayer with multiple data types](https://respawn.io/posts/contentlayer-with-multiple-data-types).
+- **Mermaid diagrams** rendered at build time with Puppeteer. See [Mermaid Diagrams in MDX](https://respawn.io/posts/contentlayer-mermaid-diagrams).
+- **OG images** generated at build time with Puppeteer (no edge runtime required).
+- **RSS/Atom/JSON feeds** for all published posts.
+- **MDX support** with `next/image`, `next/link`, and markdown image tags.
+- **Draft posts** via `draft: true` in front matter.
 
-## Using this for your own site
+## Docker Deployment
 
-You're very welcome to use any of the code, or the whole repo as a starting point. A few recommendations:
+The site is deployed as a standalone Docker container. Build and run:
 
-- I'm using Obsidian as the editor of choice (and a backend, of sorts) for my posts, but you don't have to.
-- Please **please please** make sure you change any analytics IDs in `blog.config.ts`.
-- Use `pnpm run dev` to start both the contentlayer and dev server simultaneously.
+```bash
+# Build for respawn.io (default)
+docker build -t respawn-io .
+
+# Build for a different domain
+docker build --build-arg SITE_URL=https://natik.dev -t natik-dev .
+
+# Run the container
+docker run -p 3000:3000 respawn-io
+```
+
+### Multi-Domain Support
+
+The site supports serving on multiple domains with proper SEO:
+
+| Config | Value | Purpose |
+|--------|-------|---------|
+| `baseURL` | `https://respawn.io` | Canonical URL (always, for SEO) |
+| `siteURL` | From `SITE_URL` build arg | Serving URL (og:url, RSS, sitemap) |
+
+Since Next.js bakes metadata into static pages at build time, `SITE_URL` must be passed as a Docker build argument, not a runtime environment variable.
+
+## Local Development
+
+```bash
+pnpm install
+pnpm run dev
+```
+
+## Using This for Your Own Site
+
+Feel free to use any of the code as a starting point:
+
+- I use Obsidian as the editor, but any markdown editor works.
+- Update `blog.config.ts` with your own URLs, analytics IDs, and author info.
+- The `content/` directory contains posts and daily notes.
 
 ## License
 
