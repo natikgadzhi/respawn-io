@@ -13,7 +13,7 @@ type Props = {
 
 export const metadata: Metadata = {
   category: "technology",
-  metadataBase: new URL(blogConfig.siteURL),
+  metadataBase: new URL(blogConfig.baseURL),
 
   alternates: {
     canonical: blogConfig.baseURL,
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: blogConfig.title,
     locale: "en_US",
     siteName: blogConfig.title,
-    url: blogConfig.siteURL,
+    url: blogConfig.baseURL,
   },
 
   twitter: {

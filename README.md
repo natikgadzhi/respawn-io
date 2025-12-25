@@ -13,29 +13,14 @@ Source code for [respawn.io](https://respawn.io) (also served on [natik.dev](htt
 
 ## Docker Deployment
 
-The site is deployed as a standalone Docker container. Build and run:
+The site is deployed as a standalone Docker container:
 
 ```bash
-# Build for respawn.io (default)
 docker build -t respawn-io .
-
-# Build for a different domain
-docker build --build-arg SITE_URL=https://natik.dev -t natik-dev .
-
-# Run the container
 docker run -p 3000:3000 respawn-io
 ```
 
-### Multi-Domain Support
-
-The site supports serving on multiple domains with proper SEO:
-
-| Config | Value | Purpose |
-|--------|-------|---------|
-| `baseURL` | `https://respawn.io` | Canonical URL (always, for SEO) |
-| `siteURL` | From `SITE_URL` build arg | Serving URL (og:url, RSS, sitemap) |
-
-Since Next.js bakes metadata into static pages at build time, `SITE_URL` must be passed as a Docker build argument, not a runtime environment variable.
+The same container can be served on multiple domains (e.g., `respawn.io` and `natik.dev`) via ingress. All absolute URLs in metadata point to the canonical domain (`respawn.io`), while relative links work on any domain.
 
 ## Local Development
 

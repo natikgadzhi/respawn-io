@@ -29,8 +29,7 @@ export default async function generateFeeds() {
     link: config.author.fediverseURL,
   };
 
-  // Use siteURL for RSS - this is the serving domain
-  const siteURL = config.siteURL;
+  const siteURL = config.baseURL;
 
   const feed = new Feed({
     title: config.title,

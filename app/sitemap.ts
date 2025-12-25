@@ -5,8 +5,7 @@ import { getTagsWithCounts } from "lib/tagHelpers";
 import { config } from "blog.config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Use the serving URL for sitemap
-  const baseURL = config.siteURL;
+  const baseURL = config.baseURL;
 
   const posts = allPosts
     .filter((post) => !post.draft)

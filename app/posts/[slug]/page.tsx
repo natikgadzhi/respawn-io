@@ -23,7 +23,7 @@ export async function generateMetadata(
   }
 
   return {
-    metadataBase: new URL(config.siteURL),
+    metadataBase: new URL(config.baseURL),
     title: post.formattedTitle,
     description:
       post.meta_description === undefined
@@ -33,15 +33,13 @@ export async function generateMetadata(
     authors: [{ name: config.author.name, url: config.baseURL }],
     openGraph: {
       type: "article",
-      // Absolute URL using the serving domain
-      url: `${config.siteURL}${post.url}`,
+      url: `${config.baseURL}${post.url}`,
       title: post.formattedTitle,
       description: post.rawExcerpt,
       publishedTime: post.modified,
       images: [
         {
-          // Static OG images are generated at build time
-          url: `${config.siteURL}${post.ogImageURL}`,
+          url: `${config.baseURL}${post.ogImageURL}`,
           width: 1200,
           height: 630,
           alt: `${post.formattedTitle}. ${post.rawExcerpt}`,
@@ -55,10 +53,9 @@ export async function generateMetadata(
       creator: config.author.twitterHandle,
       site: config.author.twitterHandle,
       card: "summary_large_image",
-      images: [`${config.siteURL}${post.ogImageURL}`],
+      images: [`${config.baseURL}${post.ogImageURL}`],
     },
     alternates: {
-      // Canonical always points to the primary domain
       canonical: `${config.baseURL}${post.url}`,
     },
   };
