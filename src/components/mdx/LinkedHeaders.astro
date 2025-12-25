@@ -1,0 +1,35 @@
+---
+interface Props {
+  level: 1 | 2 | 3 | 4;
+  text: string;
+  id?: string;
+}
+
+const { level, text, id } = Astro.props;
+const headerId = id || text.toString().toLowerCase().replace(/[^\w]/g, "-");
+
+const Tag = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4';
+
+const baseHeaderStyles = `
+  group relative
+  before:content-['#']
+  before:absolute
+  before:-left-5
+  before:opacity-0
+  before:transition-opacity
+  before:duration-100
+  hover:before:opacity-100
+`;
+
+const headerLinkStyles = `
+  no-underline
+  hover:no-underline
+  not-prose
+`;
+---
+
+<Tag id={headerId} class={baseHeaderStyles}>
+  <a href={`#${headerId}`} class={headerLinkStyles}>
+    <slot>{text}</slot>
+  </a>
+</Tag>

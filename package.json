@@ -3,12 +3,12 @@
   "type": "module",
   "scripts": {
     "copy-images": "./scripts/copy-images.sh",
-    "dev": "concurrently --kill-others-on-fail \"ENV_NAME=localhost contentlayer2 dev\" \"ENV_NAME=localhost next dev\"",
-    "build": "pnpm run copy-images && pnpm run build:content && pnpm run og-images && next build && pnpm run rss",
-    "build:content": "contentlayer2 build",
-    "start": "next start",
-    "rss": "tsx scripts/rss.ts",
-    "og-images": "tsx scripts/og-images.ts"
+    "dev": "astro dev",
+    "build": "pnpm run copy-images && pnpm run og-images && astro build && pnpm run rss",
+    "preview": "astro preview",
+    "start": "astro dev",
+    "rss": "tsx --tsconfig tsconfig.json scripts/rss-astro.ts",
+    "og-images": "tsx --tsconfig tsconfig.json scripts/og-images-astro.ts"
   },
   "dependencies": {
     "@microflash/remark-figure-caption": "^2.0.2",

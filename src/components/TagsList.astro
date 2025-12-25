@@ -1,0 +1,31 @@
+---
+interface Props {
+  tags: string[];
+  showCounts?: boolean;
+  counts?: Record<string, number>;
+  class?: string;
+}
+
+const {
+  tags,
+  showCounts = false,
+  counts = {},
+  class: className = '',
+} = Astro.props;
+
+if (!tags || tags.length === 0) {
+  return null;
+}
+---
+
+<div class={`text-sm md:text-base flex flex-wrap not-prose ${className}`}>
+  {tags.map((tag) => (
+    <a
+      href={`/tags/${tag.toLowerCase()}`}
+      class="underline-offset-2 hover:underline pr-3"
+    >
+      #{tag}
+      {showCounts && counts[tag] && counts[tag] > 1 ? ` (${counts[tag]})` : ''}
+    </a>
+  ))}
+</div>

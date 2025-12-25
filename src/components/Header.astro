@@ -1,0 +1,16 @@
+---
+import { config } from '../../blog.config';
+import BlogTitle from './BlogTitle.astro';
+import Navigation from './Navigation.astro';
+---
+
+<section class="my-8 md:mt-12 md:mb-16">
+  <div class="flex justify-between items-baseline md:items-center">
+    <BlogTitle />
+    <Navigation class="hidden md:inline-flex" />
+  </div>
+
+  <p class="flex text-left text-md md:text-lg mt-2">{config.description}</p>
+
+  <Navigation class="my-2 inline-flex md:hidden" />
+</section>

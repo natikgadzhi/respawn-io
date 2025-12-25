@@ -1,0 +1,45 @@
+---
+import Icons from './Icons.astro';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<ul class={`${className} text-md md:text-lg flex-row justify-start space-x-4 text-blue-700 dark:text-sky-500`}>
+  <li class="inline-block">
+    <a
+      href="/about"
+      class="whitespace-nowrap hover:underline hover:decoration-2 underline-offset-4 flex items-baseline"
+    >
+      <div class="flex items-center space-x-1">
+        <Icons icon="user-circle" />
+        <span class="pl-0.25">About</span>
+      </div>
+    </a>
+  </li>
+  <li class="inline-block">
+    <a
+      href="/daily"
+      class="whitespace-nowrap hover:underline hover:decoration-2 underline-offset-4 flex items-baseline"
+    >
+      <div class="flex items-center space-x-1">
+        <Icons icon="chat-bubble" />
+        <span class="pl-0.25">TIL</span>
+      </div>
+    </a>
+  </li>
+  <li class="inline-block">
+    <a
+      href="/rss/feed.xml"
+      class="whitespace-nowrap hover:underline hover:decoration-2 underline-offset-4 flex items-baseline"
+    >
+      <div class="flex items-center space-x-1">
+        <Icons icon="rss" />
+        <span class="pl-0.25">RSS</span>
+      </div>
+    </a>
+  </li>
+</ul>
