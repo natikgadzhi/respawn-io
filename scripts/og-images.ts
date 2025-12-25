@@ -1,25 +1,35 @@
 /**
- * Build-time OG Image Generator
+ * Build-time OG Image Generator for Astro
  *
  * Generates static OG images for all posts using Puppeteer.
- * This replaces the dynamic @next/og edge runtime approach with
- * pre-generated images that work in any deployment environment.
+ * Images are saved to public/og-images/{slug}.png
  *
  * Usage: pnpm run og-images
- *
- * Images are saved to public/og-images/{slug}.png
  */
 
 import fs from "node:fs";
 import path from "node:path";
 import puppeteer from "puppeteer";
-
-import { allPosts } from "../.contentlayer/generated/index.mjs";
-import { config } from "../blog.config";
+import { getCollection } from "astro:content";
+import { config } from "../blog.config.ts";
+import { titleCase } from "../src/lib/titleCase.ts";
+import { getRawExcerpt, getPostAbsoluteUrl } from "../src/lib/content-utils.ts";
 
 const OUTPUT_DIR = "./public/og-images";
 const WIDTH = 1200;
 const HEIGHT = 630;
+
+/**
+ * Escape HTML special characters
+ */
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
 
 /**
  * Generate the HTML template for an OG image
@@ -110,26 +120,16 @@ function generateHTML(post: {
 `;
 }
 
-/**
- * Escape HTML special characters
- */
-function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
 async function generateOGImages() {
   console.log("[OG Images] Starting generation...");
 
   // Ensure output directory exists
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
-  // Launch browser with same config as mermaid
-  // Use system Chromium if PUPPETEER_EXECUTABLE_PATH is set (Docker builds)
+  // Get all posts from Astro content collections
+  const allPosts = await getCollection('posts');
+
+  // Launch browser
   const browser = await puppeteer.launch({
     args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
     headless: true,
@@ -144,7 +144,7 @@ async function generateOGImages() {
 
   for (const post of allPosts) {
     // Skip drafts
-    if (post.draft) {
+    if (post.data.draft) {
       console.log(`[OG Images] Skipping draft: ${post.slug}`);
       skipped++;
       continue;
@@ -153,10 +153,9 @@ async function generateOGImages() {
     const outputPath = path.join(OUTPUT_DIR, `${post.slug}.png`);
 
     // Check if image already exists (for incremental builds)
-    // In a full build, you might want to regenerate all
     if (fs.existsSync(outputPath)) {
       const stat = fs.statSync(outputPath);
-      const postModified = new Date(post.modified);
+      const postModified = post.data.modified;
 
       // Skip if image is newer than post
       if (stat.mtime > postModified) {
@@ -167,11 +166,15 @@ async function generateOGImages() {
     }
 
     try {
+      const formattedTitle = titleCase(post.data.title);
+      const rawExcerpt = getRawExcerpt(post.data.excerpt);
+      const absoluteURL = getPostAbsoluteUrl(post.slug);
+
       const html = generateHTML({
-        formattedTitle: post.formattedTitle,
-        rawExcerpt: post.rawExcerpt,
-        absoluteURL: post.absoluteURL,
-        og_image_hide_description: post.og_image_hide_description,
+        formattedTitle,
+        rawExcerpt,
+        absoluteURL,
+        og_image_hide_description: post.data.og_image_hide_description,
       });
 
       await page.setContent(html, { waitUntil: "domcontentloaded" });

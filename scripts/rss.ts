@@ -1,27 +1,22 @@
 import fs from "node:fs";
-import { compareDesc } from "date-fns";
 import { Feed } from "feed";
+import { getCollection } from "astro:content";
 
-import { markdownToHTML } from "../lib/markdownToHTML";
-
-import { allPosts } from "../.contentlayer/generated/index.mjs";
-import { config } from "../blog.config";
+import { markdownToHTML } from "../lib/markdownToHTML-astro.ts";
+import { config } from "../blog.config.ts";
+import { sortPostsByDate } from "../src/lib/content-utils.ts";
+import { titleCase } from "../src/lib/titleCase.ts";
+import { getRawExcerpt, getPostUrl, getPostAbsoluteUrl } from "../src/lib/content-utils.ts";
 
 export default async function generateFeeds() {
-  const env_name = process.env.ENV_NAME;
-  const posts = allPosts
-    .filter((post) => {
-      // In development, show all posts except drafts
-      if (env_name === "localhost") {
-        //@ts-ignore
-        return !post.draft; 
-      }
-      
-      // In production, exclude both drafts and work in progress posts from RSS
-      //@ts-ignore
-      return !post.draft && !post.workInProgress;
+  const allPosts = await getCollection('posts');
+
+  const posts = sortPostsByDate(
+    allPosts.filter((post) => {
+      // Exclude both drafts and work in progress posts from RSS
+      return !post.data.draft && !post.data.workInProgress;
     })
-    .sort((a, b) => compareDesc(new Date(a.created), new Date(b.created)));
+  );
 
   const author = {
     name: config.author.name,
@@ -40,8 +35,8 @@ export default async function generateFeeds() {
     image: `${siteURL}/images/logo.svg`,
     favicon: `${siteURL}/favicon.ico`,
     copyright: config.footer.copyright,
-    updated: new Date(posts[0].modified),
-    generator: "Next.js using Feed for Node.js",
+    updated: posts[0].data.modified,
+    generator: "Astro using Feed for Node.js",
     feedLinks: {
       rss2: `${siteURL}/rss/feed.xml`,
       json: `${siteURL}/rss/feed.json`,
@@ -52,18 +47,20 @@ export default async function generateFeeds() {
 
   const feedItems = await Promise.all(
     posts.map(async (post) => {
-      const postURL = `${siteURL}${post.url}`;
+      const postURL = getPostAbsoluteUrl(post.slug);
+      const formattedTitle = titleCase(post.data.title);
+      const rawExcerpt = getRawExcerpt(post.data.excerpt);
+
       return {
-        title: post.formattedTitle,
-        id: post.url,
+        title: formattedTitle,
+        id: getPostUrl(post.slug),
         link: postURL,
         guid: postURL,
-        description: post.rawExcerpt,
-        // @ts-ignore
+        description: rawExcerpt,
         content: await markdownToHTML(post),
         author: [author],
         contributor: [author],
-        date: new Date(post.created),
+        date: post.data.created,
       };
     }),
   );

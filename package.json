@@ -7,8 +7,8 @@
     "build": "pnpm run copy-images && pnpm run og-images && astro build && pnpm run rss",
     "preview": "astro preview",
     "start": "astro dev",
-    "rss": "tsx --tsconfig tsconfig.json scripts/rss-astro.ts",
-    "og-images": "tsx --tsconfig tsconfig.json scripts/og-images-astro.ts"
+    "rss": "tsx --tsconfig tsconfig.json scripts/rss.ts",
+    "og-images": "tsx --tsconfig tsconfig.json scripts/og-images.ts"
   },
   "dependencies": {
     "@microflash/remark-figure-caption": "^2.0.2",
