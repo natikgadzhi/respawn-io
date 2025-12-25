@@ -4,10 +4,11 @@
   "scripts": {
     "copy-images": "./scripts/copy-images.sh",
     "dev": "concurrently --kill-others-on-fail \"ENV_NAME=localhost contentlayer2 dev\" \"ENV_NAME=localhost next dev\"",
-    "build": "pnpm run copy-images && pnpm run build:content && next build && pnpm run rss",
+    "build": "pnpm run copy-images && pnpm run build:content && pnpm run og-images && next build && pnpm run rss",
     "build:content": "contentlayer2 build",
     "start": "next start",
-    "rss": "tsx scripts/rss.ts"
+    "rss": "tsx scripts/rss.ts",
+    "og-images": "tsx scripts/og-images.ts"
   },
   "dependencies": {
     "@microflash/remark-figure-caption": "^2.0.2",
@@ -42,6 +43,7 @@
     "@mermaid-js/mermaid-cli": "^11.12.0",
     "@next/env": "^16.1.1",
     "@puppeteer/browsers": "^2.11.0",
+    "puppeteer": "^24.10.1",
     "@shikijs/rehype": "^3.20.0",
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/typography": "^0.5.19",
@@ -61,7 +63,8 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "contentlayer2",
-      "esbuild"
+      "esbuild",
+      "puppeteer"
     ],
     "overrides": {
       "glob@>=11.0.0 <11.1.0": "11.1.0"

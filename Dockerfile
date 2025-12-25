@@ -34,6 +34,13 @@ FROM base AS builder
 
 WORKDIR /app
 
+# Install Chromium for Puppeteer (used by mermaid-cli and og-images)
+RUN apk add --no-cache chromium
+
+# Tell Puppeteer to use system Chromium instead of downloading
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
 # Copy dependencies from deps stage
 COPY --from=deps /app/node_modules ./node_modules
 
@@ -53,11 +60,12 @@ RUN mkdir -p public && \
         cp "$file" "$dest"; \
     done
 
-# Build contentlayer first, then Next.js
+# Build contentlayer, generate OG images, then Next.js
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 
 RUN pnpm run build:content && \
+    pnpm run og-images && \
     pnpm exec next build && \
     pnpm run rss
 

@@ -90,7 +90,8 @@ export const Post = defineDocumentType(() => ({
     },
     ogImageURL: {
       type: "string",
-      resolve: (doc) => `/posts/${doc._raw.sourceFileName.replace(/\.md$/, "")}/og-image.png?title=${encodeURIComponent(doc.formattedTitle)}&url=${encodeURIComponent(doc.absoluteURL)}&excerpt=${encodeURIComponent(doc.rawExcerpt)}&hideDescription=${doc.og_image_hide_description ? 'true' : 'false'}`,
+      // Static OG images are generated at build time to public/og-images/{slug}.png
+      resolve: (doc) => `/og-images/${doc._raw.sourceFileName.replace(/\.md$/, "")}.png`,
     },
   },
 }));

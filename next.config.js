@@ -3,13 +3,6 @@ import { withContentlayer } from "next-contentlayer2";
 const nextConfig = {
   output: "standalone",
   turbopack: {},
-  outputFileTracingExcludes: {
-    "posts/[slug]/og-image.png": [
-      "./content",       // Exclude all content files
-      "./contentlayer",  // Exclude contentlayer generated files
-      "./node_modules/contentlayer2" // Exclude contentlayer2 from the edge function
-    ]
-  },
   images: {
     remotePatterns: [
       {
