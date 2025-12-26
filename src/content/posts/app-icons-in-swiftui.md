@@ -136,7 +136,7 @@ struct IconExportView: View {
 }
 ```
 
-![`IconExportView` as a Mac Catalyst app preview](app-icons-in-swiftui/app-icons-in-swiftui-export.png)
+![`IconExportView` as a Mac Catalyst app preview](_assets/app-icons-in-swiftui/app-icons-in-swiftui-export.png)
 > [!note]
 > In theory, you could save the `UIImage` data and present a share sheet to export it into anything you want. Saving into a directory from within a Mac Catalyst app is just the fastest way I've found, personally. Using `Pictures` is just the first thing that came to my mind and was in the list of autocompletions.
 

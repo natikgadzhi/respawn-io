@@ -4,13 +4,13 @@
   "scripts": {
     "copy-images": "./scripts/copy-images.sh",
     "dev": "astro dev",
-    "build": "pnpm run copy-images && astro build && pnpm run rss",
+    "build": "pnpm run copy-images && astro build",
     "preview": "astro preview",
-    "start": "astro dev",
-    "rss": "tsx --tsconfig tsconfig.json scripts/rss.ts"
+    "start": "astro dev"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
+    "@astrojs/rss": "^4.0.14",
     "@astrojs/sitemap": "^3.2.2",
     "@microflash/remark-figure-caption": "^2.0.2",
     "astro": "^5.1.6",

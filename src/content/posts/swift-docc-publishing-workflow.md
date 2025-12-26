@@ -51,7 +51,7 @@ $ swift package --disable-sandbox generate-documentation \
 	--target PackageDescription
 ```
 
-![Xcode documentation viewer with `PackageDescription`](swift-docc-publishing-workflow/docarchive.png)
+![Xcode documentation viewer with `PackageDescription`](_assets/swift-docc-publishing-workflow/docarchive.png)
 
 **Step three**: you can _also_ export your documentation to be served as a static website, and there are multiple ways to do it:
 - The minimal approach is that you can use `.htaccess` rules to [serve the archive as is](https://developer.apple.com/documentation/Xcode/distributing-documentation-to-external-developers#Host-a-documentation-archive-using-custom-routing).
@@ -70,7 +70,7 @@ swift package --disable-sandbox preview-documentation \
 	--target PackageDescription
 ```
 
-![](swift-docc-publishing-workflow/docc-local-preview.png)
+![](_assets/swift-docc-publishing-workflow/docc-local-preview.png)
 
 You get filtering and search out of the box. Since the resulting directory is a static website, you can host it pretty much anywhere you want.
 

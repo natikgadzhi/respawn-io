@@ -24,7 +24,7 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
       if (node.children.length === 1 && node.children[0].type === "text") {
         const textNode = node.children[0];
         const regex = /^!\[\[(.*\.excalidraw)\]\]$/;
-        
+
         if (regex.test(textNode.value.trim())) {
           paragraphsToReplace.push(node);
         }
@@ -39,28 +39,28 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
 
       const diagramName = match[1];
       const parentDir = dirname(file.path);
-      const assetsDir = join(parentDir, "assets");
-      
+      const assetsDir = join(parentDir, "_assets/general-assets");
+
       const lightSvgPath = join(assetsDir, `${diagramName}.light.svg`);
       const darkSvgPath = join(assetsDir, `${diagramName}.dark.svg`);
-      
+
       try {
         if (existsSync(lightSvgPath) && existsSync(darkSvgPath)) {
           const lightSvgContent = readFileSync(lightSvgPath, "utf-8");
           const darkSvgContent = readFileSync(darkSvgPath, "utf-8");
-          
-          const lightDataUrl = `data:image/svg+xml;base64,${Buffer.from(
-            lightSvgContent
-          ).toString("base64")}`;
-          const darkDataUrl = `data:image/svg+xml;base64,${Buffer.from(
-            darkSvgContent
-          ).toString("base64")}`;
-          
+
+          const lightDataUrl = `data:image/svg+xml;base64,${Buffer.from(lightSvgContent).toString(
+            "base64",
+          )}`;
+          const darkDataUrl = `data:image/svg+xml;base64,${Buffer.from(darkSvgContent).toString(
+            "base64",
+          )}`;
+
           paragraph.tagName = "div";
           paragraph.properties = {
-            className: options.className || "excalidraw-diagram"
+            className: options.className || "excalidraw-diagram",
           };
-          
+
           paragraph.children = [
             {
               type: "element",
@@ -68,9 +68,9 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
               properties: {
                 src: lightDataUrl,
                 className: "excalidraw-light",
-                alt: `Diagram: ${diagramName}`
+                alt: `Diagram: ${diagramName}`,
               },
-              children: []
+              children: [],
             },
             {
               type: "element",
@@ -78,10 +78,10 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
               properties: {
                 src: darkDataUrl,
                 className: "excalidraw-dark",
-                alt: `Diagram: ${diagramName}`
+                alt: `Diagram: ${diagramName}`,
               },
-              children: []
-            }
+              children: [],
+            },
           ];
         }
       } catch (error) {

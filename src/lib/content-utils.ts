@@ -1,7 +1,7 @@
-import type { CollectionEntry } from 'astro:content';
-import { titleCase } from './titleCase';
+import type { CollectionEntry } from "astro:content";
+import { titleCase } from "./titleCase";
 
-const baseURL = 'https://respawn.io';
+const baseURL = "https://respawn.io";
 
 export function getPostUrl(slug: string): string {
   return `/posts/${slug}`;
@@ -44,22 +44,22 @@ export function getRawExcerpt(excerpt: string): string {
     .replace(/~~(.*?)~~/g, "$1"); // Remove ~~ tags
 }
 
-export function sortPostsByDate(posts: CollectionEntry<'posts'>[]): CollectionEntry<'posts'>[] {
+export function sortPostsByDate(posts: CollectionEntry<"posts">[]): CollectionEntry<"posts">[] {
   return posts.sort((a, b) => b.data.created.getTime() - a.data.created.getTime());
 }
 
-export function sortDailyByDate(daily: CollectionEntry<'daily'>[]): CollectionEntry<'daily'>[] {
+export function sortDailyByDate(daily: CollectionEntry<"daily">[]): CollectionEntry<"daily">[] {
   return daily.sort((a, b) => {
-    const aDate = a.data.created || new Date(0);
-    const bDate = b.data.created || new Date(0);
-    return bDate.getTime() - aDate.getTime();
+    // Sort by ID (filename), which is in YYYY-MM-DD format
+    // Reverse sort for most recent first
+    return b.id.localeCompare(a.id);
   });
 }
 
-export function getAllTags(posts: CollectionEntry<'posts'>[]): string[] {
+export function getAllTags(posts: CollectionEntry<"posts">[]): string[] {
   const tags = new Set<string>();
-  posts.forEach(post => {
-    post.data.tags.forEach(tag => tags.add(tag));
+  posts.forEach((post) => {
+    post.data.tags.forEach((tag) => tags.add(tag));
   });
   return Array.from(tags).sort();
 }

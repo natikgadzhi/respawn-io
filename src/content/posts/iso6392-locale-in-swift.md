@@ -34,7 +34,7 @@ let languageCode = Locale.current.language.languagecode
 
 ~~BUT, there's no way to go from 2 to 3 letters programmatically with `Foundation` APIs. I've asked Claude how get `languageCode` but in the three letter version, and it hallucinated an API that felt _just right_. Look at it!~~
 
-![](iso6392-locale-in-swift/claude-swift-locales.png)
+![](_assets/iso6392-locale-in-swift/claude-swift-locales.png)
 ~~So I figured I'd just make one like this. [Here's the gist on GitHub](https://gist.github.com/natikgadzhi/de784f2ba6c2cca2a7697511a77ad876).~~
 
 
