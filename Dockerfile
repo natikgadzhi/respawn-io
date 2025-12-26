@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
-# Multi-stage Dockerfile for respawn.io Next.js blog
-# Uses standalone output for minimal image size
+# Multi-stage Dockerfile for respawn.io Astro blog
+# Builds static site and serves with lightweight HTTP server
 
 # =============================================================================
 # Base stage - shared Node.js setup
@@ -11,8 +11,8 @@ FROM node:22-alpine AS base
 # Install pnpm
 RUN corepack enable && corepack prepare pnpm@10.7.0 --activate
 
-# Install libc6-compat for Next.js compatibility on Alpine
-RUN apk add --no-cache libc6-compat
+# Install bash for build scripts
+RUN apk add --no-cache bash
 
 WORKDIR /app
 
@@ -34,8 +34,8 @@ FROM base AS builder
 
 WORKDIR /app
 
-# Install Chromium for Puppeteer (used by mermaid-cli and og-images)
-RUN apk add --no-cache chromium
+# Install bash and Chromium for Puppeteer (used by mermaid-cli and og-images)
+RUN apk add --no-cache bash chromium nss freetype harfbuzz ca-certificates ttf-freefont
 
 # Tell Puppeteer to use system Chromium instead of downloading
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
@@ -47,54 +47,26 @@ COPY --from=deps /app/node_modules ./node_modules
 # Copy source files
 COPY . .
 
-# Copy images from content to public (build step)
-RUN mkdir -p public && \
-    find content/posts -name "*.png" -o -name "*.jpg" 2>/dev/null | while read file; do \
-        dest="${file/content\/posts/public\/posts}"; \
-        mkdir -p "$(dirname "$dest")"; \
-        cp "$file" "$dest"; \
-    done && \
-    find content/daily -name "*.png" -o -name "*.jpg" 2>/dev/null | while read file; do \
-        dest="${file/content\/daily/public\/daily}"; \
-        mkdir -p "$(dirname "$dest")"; \
-        cp "$file" "$dest"; \
-    done
-
-# Build contentlayer, generate OG images, then Next.js
-ENV NEXT_TELEMETRY_DISABLED=1
+# Build the Astro site (includes image copying)
 ENV NODE_ENV=production
 
-RUN pnpm run build:content && \
-    pnpm run og-images && \
-    pnpm exec next build && \
-    pnpm run rss
+# Bust cache to ensure fresh build
+ARG CACHEBUST=1
+
+RUN pnpm run build
 
 # =============================================================================
-# Runner stage - production image
+# Runner stage - production image with nginx
 # =============================================================================
-FROM node:22-alpine AS runner
+FROM nginx:alpine AS runner
 
-WORKDIR /app
+# Copy custom nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Create non-root user for security
-RUN addgroup --system --gid 1001 nodejs && \
-    adduser --system --uid 1001 nextjs
-
-# Set environment variables
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
-ENV PORT=3000
-ENV HOSTNAME="0.0.0.0"
-
-# Copy static files and standalone build
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-# Switch to non-root user
-USER nextjs
+# Copy built static site from builder
+COPY --from=builder /app/dist /usr/share/nginx/html
 
 EXPOSE 3000
 
-# Start the application
-CMD ["node", "server.js"]
+# Run nginx in foreground
+CMD ["nginx", "-g", "daemon off;"]
