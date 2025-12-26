@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sortDailyByDate } from '../../lib/content-utils';
 import { config } from '../../../blog.config';
@@ -33,11 +33,11 @@ function formatDate(dateStr: string): string {
 
     <ul class="list-none pl-0">
       {dailies.map(async (daily) => {
-        const { Content } = await daily.render();
+        const { Content } = await render(daily);
         return (
           <li class="text-md md:text-lg pl-0 pt-5">
             <a
-              href={`/daily/${daily.slug}`}
+              href={`/daily/${daily.id}`}
               class="no-underline hover:underline"
             >
               <h4 class="pr-1 md:pr-2 inline group relative
@@ -48,7 +48,7 @@ function formatDate(dateStr: string): string {
                 before:transition-opacity
                 before:duration-100
                 hover:before:opacity-100">
-                {formatDate(daily.slug)}:
+                {formatDate(daily.id)}:
               </h4>
 
               {daily.data.title && daily.data.title.length > 0 && (

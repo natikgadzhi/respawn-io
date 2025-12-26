@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import TagsList from '../../components/TagsList.astro';
@@ -13,13 +13,13 @@ export const getStaticPaths = (async () => {
     return true;
   });
   return daily.map((note) => ({
-    params: { slug: note.slug },
+    params: { slug: note.id },
     props: { note },
   }));
 }) satisfies GetStaticPaths;
 
 const { note } = Astro.props;
-const { Content } = await note.render();
+const { Content } = await render(note);
 
 function formatDate(dateStr: string): string {
   const [year, month, day] = dateStr.split('-').map(Number);
@@ -31,7 +31,7 @@ function formatDate(dateStr: string): string {
   }).format(date);
 }
 
-const formattedDate = formatDate(note.slug);
+const formattedDate = formatDate(note.id);
 const title = note.data.title
   ? `${note.data.title} - ${formattedDate}`
   : formattedDate;

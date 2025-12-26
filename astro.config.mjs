@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
+import ogImagesIntegration from "./scripts/og-images-integration.ts";
 
 import rehypeShiki from "@shikijs/rehype";
 import rehypeMermaid from "./lib/rehypeMermaid.ts";
@@ -61,7 +62,7 @@ const rehypePlugins = [
 
 export default defineConfig({
   site: baseURL,
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), sitemap(), ogImagesIntegration()],
   markdown: {
     remarkPlugins,
     rehypePlugins,

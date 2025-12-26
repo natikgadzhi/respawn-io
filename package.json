@@ -4,11 +4,10 @@
   "scripts": {
     "copy-images": "./scripts/copy-images.sh",
     "dev": "astro dev",
-    "build": "pnpm run copy-images && pnpm run og-images && astro build && pnpm run rss",
+    "build": "pnpm run copy-images && astro build && pnpm run rss",
     "preview": "astro preview",
     "start": "astro dev",
-    "rss": "tsx --tsconfig tsconfig.json scripts/rss.ts",
-    "og-images": "tsx --tsconfig tsconfig.json scripts/og-images.ts"
+    "rss": "tsx --tsconfig tsconfig.json scripts/rss.ts"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",
@@ -29,6 +28,7 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.2",
     "remark-wiki-link": "^2.0.1",
+    "sharp": "^0.34.5",
     "shiki": "^3.20.0",
     "unified": "^11.0.5",
     "unist-util-remove": "^4.0.0",

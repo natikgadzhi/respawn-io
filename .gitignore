@@ -13,9 +13,9 @@ content-backup
 # editor config
 /.vscode
 
+# Astro and builds
 /.astro/
-
-# production
+/dist
 /build
 /public/rss
 /public/sitemap*
