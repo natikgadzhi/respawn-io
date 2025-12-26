@@ -1,0 +1,67 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sortDailyByDate } from '../../lib/content-utils';
+import { config } from '../../../blog.config';
+
+const allDaily = await getCollection('daily', ({ data }) => {
+  if (import.meta.env.PROD) {
+    return !data.draft;
+  }
+  return true;
+});
+
+const dailies = sortDailyByDate(allDaily);
+
+function formatDate(dateStr: string): string {
+  const [year, month, day] = dateStr.split('-').map(Number);
+  const date = new Date(year, month - 1, day);
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
+}
+---
+
+<BaseLayout
+  title={`TIL and Daily Notes: ${config.title}`}
+  description={config.daily.description}
+>
+  <section class="prose prose-slate dark:prose-invert">
+    <h1 class="text-xl md:text-2xl font-bold">Daily Notes</h1>
+    <p class="text-md md:text-lg">{config.daily.description}</p>
+
+    <ul class="list-none pl-0">
+      {dailies.map(async (daily) => {
+        const { Content } = await render(daily);
+        return (
+          <li class="text-md md:text-lg pl-0 pt-5">
+            <a
+              href={`/daily/${daily.id}`}
+              class="no-underline hover:underline"
+            >
+              <h4 class="pr-1 md:pr-2 inline group relative
+                before:content-['#']
+                before:absolute
+                before:-left-5
+                before:opacity-0
+                before:transition-opacity
+                before:duration-100
+                hover:before:opacity-100">
+                {formatDate(daily.id)}:
+              </h4>
+
+              {daily.data.title && daily.data.title.length > 0 && (
+                <strong class="pr-1 md:pr-2">{daily.data.title}</strong>
+              )}
+            </a>
+
+            <div class="mt-2">
+              <Content />
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </section>
+</BaseLayout>

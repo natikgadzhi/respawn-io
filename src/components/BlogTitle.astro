@@ -1,0 +1,18 @@
+---
+import { config } from '../../blog.config';
+
+const { pathname } = Astro.url;
+const isHomepage = pathname === '/';
+---
+
+{isHomepage ? (
+  <h1 class="inline-flex text-xl md:text-2xl font-bold tracking-tighter leading-tight">
+    {config.title}
+  </h1>
+) : (
+  <h2 class="inline-flex text-xl md:text-2xl font-bold tracking-tighter leading-tight">
+    <a href="/" class="hover:underline hover:decoration-2 underline-offset-4">
+      {config.title}
+    </a>
+  </h2>
+)}

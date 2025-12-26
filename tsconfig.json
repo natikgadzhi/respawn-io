@@ -1,50 +1,38 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "incremental": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "isolatedModules": true,
     "jsx": "react-jsx",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "jsxImportSource": "react",
     "baseUrl": ".",
     "paths": {
-      "contentlayer/generated": [
-        ".contentlayer/generated"
-      ]
+      "@/*": ["./src/*"]
     },
-    "types": [
-      "mdx"
-    ],
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "types": ["astro/client", "mdx"],
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "strict": false,
+    "allowJs": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "allowImportingTsExtensions": true
   },
   "include": [
-    "next-env.d.ts",
+    "src/**/*",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.astro",
     "**/*.mdx",
-    "postcss.config.js",
-    "tailwind.config.js",
-    ".contentlayer/generated",
-    ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    "scripts/**/*",
+    "lib/**/*",
+    "blog.config.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist",
+    ".astro"
   ]
 }

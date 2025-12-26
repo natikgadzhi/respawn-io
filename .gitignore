@@ -13,11 +13,9 @@ content-backup
 # editor config
 /.vscode
 
-# next.js
-/.next/
-/out/
-
-# production
+# Astro and builds
+/.astro/
+/dist
 /build
 /public/rss
 /public/sitemap*

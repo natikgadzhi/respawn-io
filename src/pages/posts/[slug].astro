@@ -1,0 +1,97 @@
+---
+import { getCollection, render } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TagsList from "../../components/TagsList.astro";
+import { getFormattedTitle, getRawExcerpt, getOgImageUrl } from "../../lib/content-utils";
+import { config } from "../../../blog.config";
+import LinkedHeaders from "../../components/mdx/LinkedHeaders.astro";
+import Aside from "../../components/mdx/Aside.astro";
+import WithAside from "../../components/mdx/WithAside.astro";
+import Script from "../../components/mdx/Script.astro";
+import { titleCase } from "../../lib/titleCase";
+
+export const getStaticPaths = (async () => {
+    const posts = await getCollection("posts");
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: { post },
+    }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const formattedTitle = titleCase(post.data.title);
+const rawExcerpt = getRawExcerpt(post.data.excerpt);
+const ogImageUrl = getOgImageUrl(post.id);
+
+const description = post.data.meta_description || rawExcerpt;
+
+function formatDate(date: Date): string {
+    return new Intl.DateTimeFormat("en-US", {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+    }).format(date);
+}
+---
+
+<BaseLayout title={formattedTitle} description={description} ogImage={ogImageUrl} ogType="article">
+    <article
+        class="prose prose-slate
+      dark:prose-invert
+      prose-li:leading-relaxed
+      prose-p:leading-relaxed
+      text-stone-700
+      dark:text-gray-300
+      prose-h1:text-3xl
+      prose-h2:pt-6
+      prose-h2:text-2xl
+      prose-h2:font-semibold
+      prose-p3:pt-5
+      last-of-type:prose-p:mb-0
+      lg:prose-p:mb-8
+      prose-a:text-blue-600
+      dark:prose-a:text-sky-300
+      prose-blockquote:border-blue-600
+      dark:prose-blockquote:border-blue-400
+      prose-blockquote:border-l-4
+      prose-blockquote:font-normal
+      prose-blockquote:not-italic
+      prose-quoteless
+      md:prose-base
+      lg:prose-base
+      prose-pre:not-prose
+      prose-pre:text-sm
+      prose-img:mx-auto
+      mb-24"
+    >
+        <Content components={{ LinkedHeaders, Aside, WithAside, Script }} />
+
+        <div class="text-2xl font-regular mt-20 mb-8 relative flex items-center justify-center">
+            <div class="border-t border-gray-300 dark:border-gray-700 grow"></div>
+            <div class="px-4">⌘ ⌘ ⌘</div>
+            <div class="border-t border-gray-300 dark:border-gray-700 grow"></div>
+        </div>
+
+        {
+            post.data.tags && post.data.tags.length > 0 && (
+                <TagsList tags={post.data.tags} class="mb-4" />
+            )
+        }
+
+        <div>
+            Originally published on&nbsp;
+            {formatDate(post.data.created)}.
+        </div>
+        {
+            post.data.created.getTime() !== post.data.modified.getTime() && (
+                <div>
+                    Last update on&nbsp;
+                    {formatDate(post.data.modified)}.
+                </div>
+            )
+        }
+    </article>
+</BaseLayout>

@@ -1,22 +1,19 @@
 /**
- * Build-time OG Image Generator for Astro
+ * Astro Integration for OG Image Generation
  *
- * Generates static OG images for all posts using Puppeteer.
- * Images are saved to public/og-images/{slug}.png
- *
- * Usage: pnpm run og-images
+ * Generates static OG images for all posts using Puppeteer at build time.
+ * Uses the astro:build:done hook to access content collections after build.
  */
 
 import fs from "node:fs";
 import path from "node:path";
 import puppeteer from "puppeteer";
-import { getCollection } from "astro:content";
-import { titleCase } from "../src/lib/titleCase.ts";
-import { getRawExcerpt, getPostAbsoluteUrl } from "../src/lib/content-utils.ts";
+import type { AstroIntegration } from "astro";
 
 const OUTPUT_DIR = "./public/og-images";
 const WIDTH = 1200;
 const HEIGHT = 630;
+const BASE_URL = "https://respawn.io";
 
 /**
  * Escape HTML special characters
@@ -31,6 +28,27 @@ function escapeHtml(text: string): string {
 }
 
 /**
+ * Title case a string
+ */
+function titleCase(str: string): string {
+  return str.replace(/\w\S*/g, (txt) => {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
+
+/**
+ * Remove markdown formatting from excerpt
+ */
+function getRawExcerpt(excerpt: string): string {
+  return excerpt
+    .replace(/\*\*(.*?)\*\*/g, "$1") // Remove ** tags
+    .replace(/\*(.*?)\*/g, "$1") // Remove * tags
+    .replace(/__(.*?)__/g, "$1") // Remove __ tags
+    .replace(/_(.*?)_/g, "$1") // Remove _ tags
+    .replace(/~~(.*?)~~/g, "$1"); // Remove ~~ tags
+}
+
+/**
  * Generate the HTML template for an OG image
  */
 function generateHTML(post: {
@@ -39,7 +57,8 @@ function generateHTML(post: {
   absoluteURL: string;
   og_image_hide_description?: boolean;
 }): string {
-  const showExcerpt = post.formattedTitle.length < 60 && !post.og_image_hide_description;
+  const showExcerpt =
+    post.formattedTitle.length < 60 && !post.og_image_hide_description;
   const showURL = post.formattedTitle.length < 60;
 
   return `
@@ -123,18 +142,41 @@ function generateHTML(post: {
 `;
 }
 
-async function generateOGImages() {
-  console.log("[OG Images] Starting generation...");
+async function generateOGImages(dir: URL, logger: any) {
+  logger.info("Starting OG image generation...");
 
   // Ensure output directory exists
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
-  // Get all posts from Astro content collections
-  const allPosts = await getCollection("posts");
+  // Read the data store JSON file that Astro creates
+  const dataStorePath = path.join(dir.pathname, "data-store.json");
+
+  if (!fs.existsSync(dataStorePath)) {
+    logger.warn("Data store not found, skipping OG image generation");
+    return;
+  }
+
+  const dataStore = JSON.parse(fs.readFileSync(dataStorePath, "utf-8"));
+
+  // Extract posts from the data store
+  const posts = Object.entries(dataStore.collections?.posts?.entries || {})
+    .map(([id, entry]: [string, any]) => ({
+      slug: id,
+      data: entry.data,
+    }));
+
+  if (posts.length === 0) {
+    logger.warn("No posts found in data store");
+    return;
+  }
 
   // Launch browser
   const browser = await puppeteer.launch({
-    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+    ],
     headless: true,
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
   });
@@ -145,10 +187,10 @@ async function generateOGImages() {
   let generated = 0;
   let skipped = 0;
 
-  for (const post of allPosts) {
+  for (const post of posts) {
     // Skip drafts
     if (post.data.draft) {
-      console.log(`[OG Images] Skipping draft: ${post.slug}`);
+      logger.info(`Skipping draft: ${post.slug}`);
       skipped++;
       continue;
     }
@@ -158,11 +200,11 @@ async function generateOGImages() {
     // Check if image already exists (for incremental builds)
     if (fs.existsSync(outputPath)) {
       const stat = fs.statSync(outputPath);
-      const postModified = post.data.modified;
+      const postModified = new Date(post.data.modified);
 
       // Skip if image is newer than post
       if (stat.mtime > postModified) {
-        console.log(`[OG Images] Skipping (up to date): ${post.slug}`);
+        logger.info(`Skipping (up to date): ${post.slug}`);
         skipped++;
         continue;
       }
@@ -171,7 +213,7 @@ async function generateOGImages() {
     try {
       const formattedTitle = titleCase(post.data.title);
       const rawExcerpt = getRawExcerpt(post.data.excerpt);
-      const absoluteURL = getPostAbsoluteUrl(post.slug);
+      const absoluteURL = `${BASE_URL}/posts/${post.slug}`;
 
       const html = generateHTML({
         formattedTitle,
@@ -186,23 +228,25 @@ async function generateOGImages() {
         type: "png",
       });
 
-      console.log(`[OG Images] Generated: ${post.slug}`);
+      logger.info(`Generated: ${post.slug}`);
       generated++;
     } catch (error) {
-      console.error(`[OG Images] Error generating ${post.slug}:`, error);
+      logger.error(`Error generating ${post.slug}: ${error}`);
     }
   }
 
   await browser.close();
 
-  console.log(`[OG Images] Done! Generated: ${generated}, Skipped: ${skipped}`);
+  logger.info(`OG Images Done! Generated: ${generated}, Skipped: ${skipped}`);
 }
 
-generateOGImages()
-  .then(() => {
-    process.exit(0);
-  })
-  .catch((err) => {
-    console.error("[OG Images] Fatal error:", err);
-    process.exit(1);
-  });
+export default function ogImagesIntegration(): AstroIntegration {
+  return {
+    name: "og-images",
+    hooks: {
+      "astro:build:done": async ({ dir, logger }) => {
+        await generateOGImages(dir, logger);
+      },
+    },
+  };
+}

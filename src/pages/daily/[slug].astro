@@ -1,0 +1,62 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TagsList from '../../components/TagsList.astro';
+import { config } from '../../../blog.config';
+
+export const getStaticPaths = (async () => {
+  const daily = await getCollection('daily', ({ data }) => {
+    if (import.meta.env.PROD) {
+      return !data.draft;
+    }
+    return true;
+  });
+  return daily.map((note) => ({
+    params: { slug: note.id },
+    props: { note },
+  }));
+}) satisfies GetStaticPaths;
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+
+function formatDate(dateStr: string): string {
+  const [year, month, day] = dateStr.split('-').map(Number);
+  const date = new Date(year, month - 1, day);
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  }).format(date);
+}
+
+const formattedDate = formatDate(note.id);
+const title = note.data.title
+  ? `${note.data.title} - ${formattedDate}`
+  : formattedDate;
+const description = note.data.meta_description || note.data.title || `Daily TIL note from ${formattedDate}`;
+---
+
+<BaseLayout
+  title={`${title} | ${config.title}`}
+  description={description}
+  ogType="article"
+>
+  <article class="prose dark:prose-invert">
+    <header class="mb-8">
+      <time class="text-sm text-gray-600 dark:text-gray-400">
+        {formattedDate}
+      </time>
+      {note.data.title && <h1 class="mt-2">{note.data.title}</h1>}
+    </header>
+
+    <Content />
+
+    {note.data.tags && note.data.tags.length > 0 && (
+      <footer class="mt-8">
+        <TagsList tags={note.data.tags} class="flex gap-2" />
+      </footer>
+    )}
+  </article>
+</BaseLayout>

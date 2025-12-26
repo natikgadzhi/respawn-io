@@ -1,0 +1,62 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getPostUrl } from '../lib/content-utils';
+
+interface Props {
+  posts: CollectionEntry<'posts'>[];
+}
+
+const { posts } = Astro.props;
+
+// Group posts by year
+const postsByYear = posts.reduce<Record<string, CollectionEntry<'posts'>[]>>((acc, post) => {
+  const year = post.data.created.getFullYear().toString();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {});
+
+// Sort years in descending order
+const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a));
+
+// Format date helper
+function formatDate(date: Date): string {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  }).format(date);
+}
+---
+
+<section class="mt-6 md:mt-8">
+  {sortedYears.map((year) => (
+    <div key={year} class="mb-16">
+      <h2 class="text-2xl font-extrabold tracking-tighter mb-6">{year}</h2>
+      <ul class="post-list space-y-8 md:space-y-12">
+        {postsByYear[year].map((post) => (
+          <li class="post-item" key={post.id}>
+            <div class="flex flex-col gap-1 md:flex-row md:gap-0 md:justify-between md:items-baseline">
+              <h3 class="text-lg lg:text-xl font-chonkymedium leading-snug tracking-tight md:mr-4">
+                <a href={getPostUrl(post.id)}>
+                  {post.data.title}
+                </a>
+              </h3>
+              <time
+                datetime={post.data.created.toISOString()}
+                class="text-sm lg:text-base text-blue-700 dark:text-sky-400 whitespace-nowrap"
+              >
+                {formatDate(post.data.created)}
+              </time>
+            </div>
+            <div class="mt-0.5 md:mt-0 text-md md:text-base">
+              {post.data.excerpt}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</section>

@@ -1,0 +1,131 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostsList from '../../components/PostsList.astro';
+import { config } from '../../../blog.config';
+import { sortPostsByDate, sortDailyByDate } from '../../lib/content-utils';
+
+// Get all unique tags from posts and dailies
+export const getStaticPaths = (async () => {
+  const allPosts = await getCollection('posts');
+  const allDaily = await getCollection('daily');
+  const allTags = await getCollection('tags');
+
+  const postTags = allPosts
+    .flatMap((post) => post.data.tags || [])
+    .map((tag) => tag.toLowerCase());
+
+  const dailyTags = allDaily
+    .flatMap((daily) => daily.data.tags || [])
+    .map((tag) => tag.toLowerCase());
+
+  const mdTags = allTags.map((tag) => tag.data.title.toLowerCase());
+
+  const uniqueTags = Array.from(new Set([...postTags, ...dailyTags, ...mdTags]));
+
+  return uniqueTags.map((tag) => ({
+    params: { slug: tag.toLowerCase() },
+  }));
+}) satisfies GetStaticPaths;
+
+const { slug } = Astro.params;
+
+const allTags = await getCollection('tags');
+const tag = allTags.find((t) => t.id === slug);
+const tagName = tag ? tag.data.title.toLowerCase() : slug;
+
+// Get posts with this tag
+const allPosts = await getCollection('posts');
+const posts = sortPostsByDate(
+  allPosts.filter((post) =>
+    post.data.tags?.map(t => t.toLowerCase()).includes(tagName)
+  )
+);
+
+// Get dailies with this tag
+const allDaily = await getCollection('daily');
+const dailies = sortDailyByDate(
+  allDaily.filter((daily) =>
+    daily.data.tags?.map(t => t.toLowerCase()).includes(tagName)
+  )
+);
+
+// If no tag file and no content, this is a 404
+if (!tag && posts.length === 0 && dailies.length === 0) {
+  return Astro.redirect('/404');
+}
+
+const title = `#${tag ? tag.data.title : slug}`;
+const description = tag?.data.description || `Posts tagged with #${tag ? tag.data.title : slug} in ${config.title}`;
+
+let TagContent;
+if (tag) {
+  const rendered = await render(tag);
+  TagContent = rendered.Content;
+}
+
+function formatDate(dateStr: string): string {
+  const [year, month, day] = dateStr.split('-').map(Number);
+  const date = new Date(year, month - 1, day);
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
+}
+---
+
+<BaseLayout title={title} description={description}>
+  <h1 class="text-3xl font-bold font-mono mb-4">
+    {title}
+  </h1>
+
+  {tag && TagContent && (
+    <div class="prose dark:prose-invert max-w-none mb-8">
+      <TagContent />
+    </div>
+  )}
+
+  {posts.length > 0 && <PostsList posts={posts} />}
+
+  {dailies.length > 0 && (
+    <>
+      {posts.length > 0 && <hr class="my-10" />}
+
+      <section class="mt-6 md:mt-8 prose dark:prose-invert">
+        <h2 class="text-2xl font-extrabold tracking-tighter mb-6">Daily Notes</h2>
+        <ul class="list-none pl-0 space-y-12">
+          {dailies.map(async (daily) => {
+            const { Content } = await render(daily);
+            return (
+              <li class="text-md md:text-lg pl-0 pt-5">
+                <a
+                  href={`/daily/${daily.id}`}
+                  class="no-underline hover:underline"
+                >
+                  <h4 class="pr-1 md:pr-2 inline group relative
+                    before:content-['#']
+                    before:absolute
+                    before:-left-5
+                    before:opacity-0
+                    before:transition-opacity
+                    before:duration-100
+                    hover:before:opacity-100">
+                    {formatDate(daily.id)}:
+                  </h4>
+                  {daily.data.title && daily.data.title.length > 0 && (
+                    <strong class="pr-1 md:pr-2">{daily.data.title}</strong>
+                  )}
+                </a>
+
+                <div class="mt-2">
+                  <Content />
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    </>
+  )}
+</BaseLayout>

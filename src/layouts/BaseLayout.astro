@@ -1,0 +1,88 @@
+---
+import { config } from '../../blog.config';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/index.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: string;
+}
+
+const {
+  title = config.title,
+  description = config.description,
+  ogImage,
+  ogType = 'website',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const fullTitle = title === config.title ? title : `${title} | ${config.title}`;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="category" content="technology" />
+
+    <!-- Feeds -->
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss/feed.xml" />
+    <link rel="alternate" type="application/rss+json" title="JSON Feed" href="/rss/feed.json" />
+    <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/rss/atom.xml" />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content={config.title} />
+    <meta property="og:url" content={canonicalURL} />
+    {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site)} />}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:creator" content={config.author.twitterHandle} />
+    <meta name="twitter:site" content={config.author.twitterHandle} />
+    {ogImage && <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />}
+
+    <!-- Manifest -->
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fediverse verification -->
+    <link rel="me" href={config.author.fediverseURL} />
+
+    <!-- Counterscale Analytics -->
+    <script is:inline>
+      (function () {
+        window.counterscale = {
+          q: [["set", "siteId", "respawn-io"], ["trackPageview"]],
+        };
+      })();
+    </script>
+    <script
+      id="counterscale-script"
+      src="https://1ca90c7a.counterscale-a1l.pages.dev/tracker.js"
+      defer
+    ></script>
+  </head>
+  <body class="dark:bg-stone-950 text-stone-950 dark:text-gray-50">
+    <main class="min-h-screen max-w-3xl mx-auto">
+      <div class="container mx-auto px-5">
+        <Header />
+        <slot />
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,47 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { config } from "../../blog.config";
+
+const pages = await getCollection("pages");
+const aboutPage = pages.find((page) => page.id === "about" || page.id === "about.md");
+
+if (!aboutPage) {
+    return Astro.redirect("/404");
+}
+
+const { Content } = await render(aboutPage);
+---
+
+<BaseLayout title={config.title} description={config.meta.description}>
+    <article
+        class="prose prose-slate
+      dark:prose-invert
+      prose-li:leading-relaxed
+      prose-p:leading-relaxed
+      text-stone-700
+      dark:text-gray-300
+      prose-h1:text-3xl
+      prose-h2:pt-6
+      prose-h2:text-2xl
+      prose-h2:font-semibold
+      prose-p3:pt-5
+      last-of-type:prose-p:mb-0
+      lg:prose-p:mb-8
+      prose-a:text-blue-600
+      dark:prose-a:text-sky-300
+      prose-blockquote:border-blue-600
+      dark:prose-blockquote:border-blue-400
+      prose-blockquote:border-l-4
+      prose-blockquote:font-normal
+      prose-blockquote:not-italic
+      prose-quoteless
+      md:prose-base
+      lg:prose-base
+      prose-pre:not-prose
+      prose-pre:text-sm
+      mb-24"
+    >
+        <Content />
+    </article>
+</BaseLayout>

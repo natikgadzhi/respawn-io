@@ -1,0 +1,34 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = '' } = Astro.props;
+---
+
+<aside
+  class={`
+    text-sm text-stone-600 dark:text-stone-400
+
+    mt-4
+    mx-8
+    max-w-xl
+
+    xl:mt-0
+    xl:mx-0
+    xl:text-left
+    xl:max-w-none
+    xl:absolute
+    xl:-right-72
+    xl:w-56
+    xl:top-0
+    xl:pl-8
+
+    [&>p]:mt-0
+    [&>p]:mb-0
+
+    ${className}
+  `}
+>
+  <slot />
+</aside>
