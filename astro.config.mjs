@@ -69,4 +69,7 @@ export default defineConfig({
     // Disable default syntax highlighting since we use Shiki
     syntaxHighlight: false,
   },
+  build: {
+    format: "file",
+  },
 });
