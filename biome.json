@@ -7,11 +7,12 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": [".next/**", ".contentlayer/**", ".vercel/**", "node_modules/**", "public/**"]
+    "ignore": [".astro/**", "node_modules/**", "public/**"]
   },
   "formatter": {
-    "enabled": false,
-    "indentStyle": "tab"
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
   },
   "organizeImports": {
     "enabled": true
