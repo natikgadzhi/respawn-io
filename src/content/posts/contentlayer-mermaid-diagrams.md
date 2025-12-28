@@ -83,7 +83,7 @@ If you try to deploy the site above to Vercel, it will fail and say something li
         "buildCommand": "pnpm build",
         "installCommand": "dnf install -y $(cat chrome-dependencies.txt) && \ 
             pnpm install && \
-            pnpm exec browsers install chrome@131.0.6778.204 --path /vercel/.cache/puppeteer",
+            pnpm exec browsers install 'chrome@131.0.6778.204' --path /vercel/.cache/puppeteer",
         "framework": "nextjs"
     }
    ```

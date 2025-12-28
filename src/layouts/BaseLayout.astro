@@ -19,7 +19,13 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const fullTitle = title === config.title ? title : `${title} | ${config.title}`;
+// Use provided ogImage or fall back to default
+const finalOgImage = ogImage || '/og-images/default.png';
+// For articles, use just the title (matching previous NextJS behavior)
+// For other pages, append the site name
+const fullTitle = ogType === 'article' || title === config.title
+  ? title
+  : `${title} | ${config.title}`;
 ---
 
 <!DOCTYPE html>
@@ -46,7 +52,7 @@ const fullTitle = title === config.title ? title : `${title} | ${config.title}`;
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content={config.title} />
     <meta property="og:url" content={canonicalURL} />
-    {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site)} />}
+    <meta property="og:image" content={new URL(finalOgImage, Astro.site)} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -54,7 +60,7 @@ const fullTitle = title === config.title ? title : `${title} | ${config.title}`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:creator" content={config.author.twitterHandle} />
     <meta name="twitter:site" content={config.author.twitterHandle} />
-    {ogImage && <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />}
+    <meta name="twitter:image" content={new URL(finalOgImage, Astro.site)} />
 
     <!-- Manifest -->
     <link rel="manifest" href="/site.webmanifest" />

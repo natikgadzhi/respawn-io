@@ -13,6 +13,7 @@ import puppeteer from "puppeteer";
 import { getCollection } from "astro:content";
 import { titleCase } from "../src/lib/titleCase.ts";
 import { getRawExcerpt, getPostAbsoluteUrl } from "../src/lib/content-utils.ts";
+import { config } from "../blog.config.ts";
 
 const OUTPUT_DIR = "./public/og-images";
 const WIDTH = 1200;
@@ -148,12 +149,12 @@ async function generateOGImages() {
   for (const post of allPosts) {
     // Skip drafts
     if (post.data.draft) {
-      console.log(`[OG Images] Skipping draft: ${post.slug}`);
+      console.log(`[OG Images] Skipping draft: ${post.id}`);
       skipped++;
       continue;
     }
 
-    const outputPath = path.join(OUTPUT_DIR, `${post.slug}.png`);
+    const outputPath = path.join(OUTPUT_DIR, `${post.id}.png`);
 
     // Check if image already exists (for incremental builds)
     if (fs.existsSync(outputPath)) {
@@ -162,7 +163,7 @@ async function generateOGImages() {
 
       // Skip if image is newer than post
       if (stat.mtime > postModified) {
-        console.log(`[OG Images] Skipping (up to date): ${post.slug}`);
+        console.log(`[OG Images] Skipping (up to date): ${post.id}`);
         skipped++;
         continue;
       }
@@ -171,7 +172,7 @@ async function generateOGImages() {
     try {
       const formattedTitle = titleCase(post.data.title);
       const rawExcerpt = getRawExcerpt(post.data.excerpt);
-      const absoluteURL = getPostAbsoluteUrl(post.slug);
+      const absoluteURL = getPostAbsoluteUrl(post.id);
 
       const html = generateHTML({
         formattedTitle,
@@ -186,16 +187,37 @@ async function generateOGImages() {
         type: "png",
       });
 
-      console.log(`[OG Images] Generated: ${post.slug}`);
+      console.log(`[OG Images] Generated: ${post.id}`);
       generated++;
     } catch (error) {
-      console.error(`[OG Images] Error generating ${post.slug}:`, error);
+      console.error(`[OG Images] Error generating ${post.id}:`, error);
     }
+  }
+
+  // Generate default OG image for non-post pages
+  const defaultOutputPath = path.join(OUTPUT_DIR, "default.png");
+  try {
+    const html = generateHTML({
+      formattedTitle: config.title,
+      rawExcerpt: config.description,
+      absoluteURL: config.baseURL,
+      og_image_hide_description: false,
+    });
+
+    await page.setContent(html, { waitUntil: "domcontentloaded" });
+    await page.screenshot({
+      path: defaultOutputPath,
+      type: "png",
+    });
+
+    console.log(`[OG Images] Generated: default`);
+  } catch (error) {
+    console.error(`[OG Images] Error generating default:`, error);
   }
 
   await browser.close();
 
-  console.log(`[OG Images] Done! Generated: ${generated}, Skipped: ${skipped}`);
+  console.log(`[OG Images] Done! Generated: ${generated + 1}, Skipped: ${skipped}`);
 }
 
 generateOGImages()

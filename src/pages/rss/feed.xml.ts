@@ -26,7 +26,7 @@ export async function GET(context: APIContext) {
         title: formattedTitle,
         description: rawExcerpt,
         content: content,
-        link: `/posts/${post.id}/`,
+        link: `/posts/${post.id}`,
         pubDate: post.data.created,
         author: config.author.email,
       };

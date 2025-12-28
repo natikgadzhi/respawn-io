@@ -70,6 +70,7 @@ export default defineConfig({
     syntaxHighlight: false,
   },
   build: {
-    format: "file",
+    format: "directory",
   },
+  trailingSlash: "never",
 });
