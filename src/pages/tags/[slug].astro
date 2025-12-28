@@ -63,7 +63,7 @@ const description =
   tag?.data.description ||
   `Posts tagged with #${tag ? tag.data.title : slug} in ${config.title}`;
 
-let TagContent;
+let TagContent: Awaited<ReturnType<typeof render>>["Content"] | undefined;
 if (tag) {
   const rendered = await render(tag);
   TagContent = rendered.Content;

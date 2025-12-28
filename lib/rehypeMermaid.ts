@@ -1,8 +1,8 @@
-import { execSync } from "child_process";
-import { readFileSync, unlinkSync, writeFileSync } from "fs";
+import { execSync } from "node:child_process";
+import { readFileSync, unlinkSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import type { Element, Root } from "hast";
-import { tmpdir } from "os";
-import { join } from "path";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 

@@ -84,9 +84,15 @@ code::after {
 pre > code {
   display: grid;
   width: 100%;
-  padding: 0.75vw !important;
+  padding: 0.75vw;
   white-space: pre-wrap; /* Enable soft wrapping on mobile */
   word-break: break-word;
+}
+
+/* Override Shiki's default padding with higher specificity */
+pre.shiki > code,
+pre > code.shiki {
+  padding: 0.75vw;
 }
 
 /* Disable soft wrapping on larger screens */
@@ -137,14 +143,21 @@ pre > code.themed span {
 }
 
 @media (prefers-color-scheme: dark) {
-  .shiki,
-  .shiki span {
-    color: var(--shiki-dark) !important;
-    background-color: var(--shiki-dark-bg) !important;
+  /* Use higher specificity to override Shiki's styles */
+  /* Target both pre.shiki and code.shiki structures */
+  pre.shiki > code,
+  pre > code.shiki,
+  pre.shiki > code span,
+  pre > code.shiki span,
+  /* Also include original selectors with parent context for higher specificity */
+  pre .shiki,
+  pre .shiki span {
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
     /* Optional, if you also want font styles */
-    font-style: var(--shiki-dark-font-style) !important;
-    font-weight: var(--shiki-dark-font-weight) !important;
-    text-decoration: var(--shiki-dark-text-decoration) !important;
+    font-style: var(--shiki-dark-font-style);
+    font-weight: var(--shiki-dark-font-weight);
+    text-decoration: var(--shiki-dark-text-decoration);
   }
 }
 
@@ -172,8 +185,10 @@ article blockquote {
   @apply leading-loose;
 }
 
-.bluesky-embed {
-  margin-top: 1.25em !important;
+/* Override prose styles with higher specificity */
+article .bluesky-embed,
+.prose .bluesky-embed {
+  margin-top: 1.25em;
 }
 
 /*

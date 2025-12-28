@@ -1,6 +1,6 @@
-import { existsSync, readFileSync } from "fs";
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
 import type { Root } from "hast";
-import { dirname, join } from "path";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 

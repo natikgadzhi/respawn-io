@@ -65,7 +65,9 @@ export function sortDailyByDate(
 export function getAllTags(posts: CollectionEntry<"posts">[]): string[] {
   const tags = new Set<string>();
   posts.forEach((post) => {
-    post.data.tags.forEach((tag) => tags.add(tag));
+    post.data.tags.forEach((tag) => {
+      tags.add(tag);
+    });
   });
   return Array.from(tags).sort();
 }

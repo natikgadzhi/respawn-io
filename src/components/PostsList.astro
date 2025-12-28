@@ -23,7 +23,7 @@ const postsByYear = posts.reduce<Record<string, CollectionEntry<"posts">[]>>(
 
 // Sort years in descending order
 const sortedYears = Object.keys(postsByYear).sort(
-  (a, b) => parseInt(b) - parseInt(a),
+  (a, b) => parseInt(b, 10) - parseInt(a, 10),
 );
 
 // Format date helper

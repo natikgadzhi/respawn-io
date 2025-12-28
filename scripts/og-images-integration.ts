@@ -7,13 +7,36 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import type { AstroIntegration } from "astro";
+import type { AstroIntegration, Logger } from "astro";
 import puppeteer from "puppeteer";
 
 const OUTPUT_DIR = "./public/og-images";
 const WIDTH = 1200;
 const HEIGHT = 630;
 const BASE_URL = "https://respawn.io";
+
+/**
+ * Type for post data from the data store
+ */
+interface PostData {
+  title: string;
+  excerpt: string;
+  created: string;
+  modified: string;
+  tags?: string[] | null;
+  draft?: boolean;
+  workInProgress?: boolean;
+  meta_description?: string | null;
+  meta_keywords?: string | null;
+  og_image_hide_description?: boolean;
+}
+
+/**
+ * Type for data store entry
+ */
+interface DataStoreEntry {
+  data: PostData;
+}
 
 /**
  * Escape HTML special characters
@@ -142,7 +165,7 @@ function generateHTML(post: {
 `;
 }
 
-async function generateOGImages(dir: URL, logger: any) {
+async function generateOGImages(dir: URL, logger: Logger) {
   logger.info("Starting OG image generation...");
 
   // Ensure output directory exists
@@ -159,12 +182,13 @@ async function generateOGImages(dir: URL, logger: any) {
   const dataStore = JSON.parse(fs.readFileSync(dataStorePath, "utf-8"));
 
   // Extract posts from the data store
-  const posts = Object.entries(dataStore.collections?.posts?.entries || {}).map(
-    ([id, entry]: [string, any]) => ({
-      slug: id,
-      data: entry.data,
-    }),
-  );
+  const posts = Object.entries(
+    (dataStore.collections?.posts?.entries as Record<string, DataStoreEntry>) ||
+      {},
+  ).map(([id, entry]) => ({
+    slug: id,
+    data: entry.data,
+  }));
 
   if (posts.length === 0) {
     logger.warn("No posts found in data store");
