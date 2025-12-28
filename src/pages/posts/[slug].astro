@@ -22,10 +22,12 @@ export const getStaticPaths = (async () => {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-const formattedTitle = titleCase(post.data.title);
+const postTitle = titleCase(post.data.title);
 const rawExcerpt = getRawExcerpt(post.data.excerpt);
 const ogImageUrl = getOgImageUrl(post.id);
 
+// Use meta_description if available, otherwise use full excerpt (not truncated)
+// This ensures descriptions are not too short
 const description = post.data.meta_description || rawExcerpt;
 
 function formatDate(date: Date): string {
@@ -37,7 +39,7 @@ function formatDate(date: Date): string {
 }
 ---
 
-<BaseLayout title={formattedTitle} description={description} ogImage={ogImageUrl} ogType="article">
+<BaseLayout title={postTitle} description={description} ogImage={ogImageUrl} ogType="article">
     <article
         class="prose prose-slate
       dark:prose-invert

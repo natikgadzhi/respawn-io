@@ -18,8 +18,10 @@ const {
   ogType = 'website',
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const fullTitle = title === config.title ? title : `${title} | ${config.title}`;
+// Remove .html extension from pathname to match NextJS canonical URLs
+const pathnameWithoutHtml = Astro.url.pathname.replace(/\.html$/, '');
+const canonicalURL = new URL(pathnameWithoutHtml, Astro.site);
+
 ---
 
 <!DOCTYPE html>
@@ -30,7 +32,7 @@ const fullTitle = title === config.title ? title : `${title} | ${config.title}`;
     <link rel="canonical" href={canonicalURL} />
     <link rel="sitemap" href="/sitemap-index.xml" />
 
-    <title>{fullTitle}</title>
+    <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="category" content="technology" />
 
@@ -46,7 +48,14 @@ const fullTitle = title === config.title ? title : `${title} | ${config.title}`;
     <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content={config.title} />
     <meta property="og:url" content={canonicalURL} />
-    {ogImage && <meta property="og:image" content={new URL(ogImage, Astro.site)} />}
+    {ogImage && (
+      <>
+        <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+      </>
+    )}
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -54,7 +63,9 @@ const fullTitle = title === config.title ? title : `${title} | ${config.title}`;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:creator" content={config.author.twitterHandle} />
     <meta name="twitter:site" content={config.author.twitterHandle} />
-    {ogImage && <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />}
+    {ogImage && (
+      <meta name="twitter:image" content={new URL(ogImage, Astro.site).toString()} />
+    )}
 
     <!-- Manifest -->
     <link rel="manifest" href="/site.webmanifest" />

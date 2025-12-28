@@ -25,7 +25,7 @@ Here's how this thing works:
 - **Analytics** is on Vercel's side, out of the box.
 - Opengraph images are [generated with `@vercel/og`](https://github.com/natikgadzhi/respawn-io/commit/ab9ee315b62c094da27cb4e5cc7226d042fb2b19). This feels like dark magic and I have no idea how it works, but hey, it works. Here's an example for this post:
 
-<img src="https://respawn.io/posts/hello-world/og-image.png" width="1200" height="630" />
+<img src="https://respawn.io/og-images/hello-world.png" width="1200" height="630" />
 
 - **RSS feed** is rendered with `feed` library using a script in `scripts/rss.ts`, invoked with `tsx`. Images in the RSS feed are base64-encoded and inlined.
 
