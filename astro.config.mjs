@@ -62,11 +62,17 @@ const rehypePlugins = [
 
 export default defineConfig({
   site: baseURL,
-  integrations: [mdx(), sitemap(), ogImagesIntegration()],
+  integrations: [
+    mdx(),
+    sitemap(),
+    ogImagesIntegration(),
+  ],
   markdown: {
     remarkPlugins,
     rehypePlugins,
+
     // Disable default syntax highlighting since we use Shiki
+    // TODO: Check if we should ditch Shiki instead.
     syntaxHighlight: false,
   },
   build: {
