@@ -1,19 +1,19 @@
-import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
-import type { APIContext } from 'astro';
-import { config } from '../../../blog.config';
-import { sortPostsByDate, getRawExcerpt } from '../../lib/content-utils';
-import { titleCase } from '../../lib/titleCase';
-import { markdownToHTML } from '../../../lib/markdownToHTML-astro';
+import { getCollection } from "astro:content";
+import rss from "@astrojs/rss";
+import type { APIContext } from "astro";
+import { config } from "../../../blog.config";
+import { markdownToHTML } from "../../../lib/markdownToHTML-astro";
+import { getRawExcerpt, sortPostsByDate } from "../../lib/content-utils";
+import { titleCase } from "../../lib/titleCase";
 
 export async function GET(context: APIContext) {
-  const allPosts = await getCollection('posts');
+  const allPosts = await getCollection("posts");
 
   const posts = sortPostsByDate(
     allPosts.filter((post) => {
       // Exclude both drafts and work in progress posts from RSS
       return !post.data.draft && !post.data.workInProgress;
-    })
+    }),
   );
 
   const items = await Promise.all(
@@ -30,7 +30,7 @@ export async function GET(context: APIContext) {
         pubDate: post.data.created,
         author: config.author.email,
       };
-    })
+    }),
   );
 
   return rss({

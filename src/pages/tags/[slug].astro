@@ -1,16 +1,16 @@
 ---
-import { getCollection, render } from 'astro:content';
-import type { GetStaticPaths } from 'astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PostsList from '../../components/PostsList.astro';
-import { config } from '../../../blog.config';
-import { sortPostsByDate, sortDailyByDate } from '../../lib/content-utils';
+import { getCollection, render } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import { config } from "../../../blog.config";
+import PostsList from "../../components/PostsList.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { sortDailyByDate, sortPostsByDate } from "../../lib/content-utils";
 
 // Get all unique tags from posts and dailies
 export const getStaticPaths = (async () => {
-  const allPosts = await getCollection('posts');
-  const allDaily = await getCollection('daily');
-  const allTags = await getCollection('tags');
+  const allPosts = await getCollection("posts");
+  const allDaily = await getCollection("daily");
+  const allTags = await getCollection("tags");
 
   const postTags = allPosts
     .flatMap((post) => post.data.tags || [])
@@ -22,7 +22,9 @@ export const getStaticPaths = (async () => {
 
   const mdTags = allTags.map((tag) => tag.data.title.toLowerCase());
 
-  const uniqueTags = Array.from(new Set([...postTags, ...dailyTags, ...mdTags]));
+  const uniqueTags = Array.from(
+    new Set([...postTags, ...dailyTags, ...mdTags]),
+  );
 
   return uniqueTags.map((tag) => ({
     params: { slug: tag.toLowerCase() },
@@ -31,33 +33,35 @@ export const getStaticPaths = (async () => {
 
 const { slug } = Astro.params;
 
-const allTags = await getCollection('tags');
+const allTags = await getCollection("tags");
 const tag = allTags.find((t) => t.id === slug);
 const tagName = tag ? tag.data.title.toLowerCase() : slug;
 
 // Get posts with this tag
-const allPosts = await getCollection('posts');
+const allPosts = await getCollection("posts");
 const posts = sortPostsByDate(
   allPosts.filter((post) =>
-    post.data.tags?.map(t => t.toLowerCase()).includes(tagName)
-  )
+    post.data.tags?.map((t) => t.toLowerCase()).includes(tagName),
+  ),
 );
 
 // Get dailies with this tag
-const allDaily = await getCollection('daily');
+const allDaily = await getCollection("daily");
 const dailies = sortDailyByDate(
   allDaily.filter((daily) =>
-    daily.data.tags?.map(t => t.toLowerCase()).includes(tagName)
-  )
+    daily.data.tags?.map((t) => t.toLowerCase()).includes(tagName),
+  ),
 );
 
 // If no tag file and no content, this is a 404
 if (!tag && posts.length === 0 && dailies.length === 0) {
-  return Astro.redirect('/404');
+  return Astro.redirect("/404");
 }
 
 const title = `#${tag ? tag.data.title : slug}`;
-const description = tag?.data.description || `Posts tagged with #${tag ? tag.data.title : slug} in ${config.title}`;
+const description =
+  tag?.data.description ||
+  `Posts tagged with #${tag ? tag.data.title : slug} in ${config.title}`;
 
 let TagContent;
 if (tag) {
@@ -66,11 +70,11 @@ if (tag) {
 }
 
 function formatDate(dateStr: string): string {
-  const [year, month, day] = dateStr.split('-').map(Number);
+  const [year, month, day] = dateStr.split("-").map(Number);
   const date = new Date(year, month - 1, day);
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'long',
-    day: 'numeric'
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric",
   }).format(date);
 }
 ---

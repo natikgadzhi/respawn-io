@@ -1,17 +1,15 @@
-import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import ogImagesIntegration from "./scripts/og-images-integration.ts";
-
-import rehypeShiki from "@shikijs/rehype";
-import rehypeMermaid from "./lib/rehypeMermaid.ts";
-import rehypeExcalidraw from "./lib/rehypeExcalidraw.ts";
-
 // Remark plugins
 import remarkFigureCaption from "@microflash/remark-figure-caption";
-import remarkGfm from "remark-gfm";
+import rehypeShiki from "@shikijs/rehype";
+import { defineConfig } from "astro/config";
 import callouts from "remark-callouts";
+import remarkGfm from "remark-gfm";
 import wikilinks from "remark-wiki-link";
+import rehypeExcalidraw from "./lib/rehypeExcalidraw.ts";
+import rehypeMermaid from "./lib/rehypeMermaid.ts";
+import ogImagesIntegration from "./scripts/og-images-integration.ts";
 
 const baseURL = "https://respawn.io";
 
@@ -38,7 +36,10 @@ const pageResolver = (name) => [name];
 
 const remarkPlugins = [
   remarkGfm,
-  [remarkFigureCaption, { captionClassName: "text-center italic mx-auto block" }],
+  [
+    remarkFigureCaption,
+    { captionClassName: "text-center italic mx-auto block" },
+  ],
   [wikilinks, { pageResolver, hrefTemplate, aliasDivider: "|" }],
   callouts,
 ];
@@ -62,11 +63,7 @@ const rehypePlugins = [
 
 export default defineConfig({
   site: baseURL,
-  integrations: [
-    mdx(),
-    sitemap(),
-    ogImagesIntegration(),
-  ],
+  integrations: [mdx(), sitemap(), ogImagesIntegration()],
   markdown: {
     remarkPlugins,
     rehypePlugins,

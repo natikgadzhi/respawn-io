@@ -6,8 +6,14 @@
     "useIgnoreFile": false
   },
   "files": {
-    "ignoreUnknown": false,
-    "includes": ["**", "!**/.astro", "!**/node_modules", "!**/public"]
+    "ignoreUnknown": true,
+    "includes": [
+      "**",
+      "!**/.astro",
+      "!**/node_modules",
+      "!**/public",
+      "!**/dist"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -17,10 +23,15 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "correctness": {
+        "noUnusedVariables": "off",
+        "noUnusedImports": "off"
+      }
     }
   },
   "javascript": {
+    "globals": ["Astro"],
     "formatter": {
       "quoteStyle": "double"
     }

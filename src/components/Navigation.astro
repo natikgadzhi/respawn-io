@@ -1,11 +1,11 @@
 ---
-import Icons from './Icons.astro';
+import Icons from "./Icons.astro";
 
 interface Props {
   class?: string;
 }
 
-const { class: className = '' } = Astro.props;
+const { class: className = "" } = Astro.props;
 ---
 
 <ul class={`${className} text-md md:text-lg flex-row justify-start space-x-4 text-blue-700 dark:text-sky-500`}>

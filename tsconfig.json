@@ -30,9 +30,5 @@
     "lib/**/*",
     "blog.config.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    ".astro"
-  ]
+  "exclude": ["node_modules", "dist", ".astro"]
 }

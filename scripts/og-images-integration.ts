@@ -7,8 +7,8 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import puppeteer from "puppeteer";
 import type { AstroIntegration } from "astro";
+import puppeteer from "puppeteer";
 
 const OUTPUT_DIR = "./public/og-images";
 const WIDTH = 1200;
@@ -159,11 +159,12 @@ async function generateOGImages(dir: URL, logger: any) {
   const dataStore = JSON.parse(fs.readFileSync(dataStorePath, "utf-8"));
 
   // Extract posts from the data store
-  const posts = Object.entries(dataStore.collections?.posts?.entries || {})
-    .map(([id, entry]: [string, any]) => ({
+  const posts = Object.entries(dataStore.collections?.posts?.entries || {}).map(
+    ([id, entry]: [string, any]) => ({
       slug: id,
       data: entry.data,
-    }));
+    }),
+  );
 
   if (posts.length === 0) {
     logger.warn("No posts found in data store");

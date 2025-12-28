@@ -1,32 +1,37 @@
 ---
-import type { CollectionEntry } from 'astro:content';
-import { getPostUrl } from '../lib/content-utils';
+import type { CollectionEntry } from "astro:content";
+import { getPostUrl } from "../lib/content-utils";
 
 interface Props {
-  posts: CollectionEntry<'posts'>[];
+  posts: CollectionEntry<"posts">[];
 }
 
 const { posts } = Astro.props;
 
 // Group posts by year
-const postsByYear = posts.reduce<Record<string, CollectionEntry<'posts'>[]>>((acc, post) => {
-  const year = post.data.created.getFullYear().toString();
-  if (!acc[year]) {
-    acc[year] = [];
-  }
-  acc[year].push(post);
-  return acc;
-}, {});
+const postsByYear = posts.reduce<Record<string, CollectionEntry<"posts">[]>>(
+  (acc, post) => {
+    const year = post.data.created.getFullYear().toString();
+    if (!acc[year]) {
+      acc[year] = [];
+    }
+    acc[year].push(post);
+    return acc;
+  },
+  {},
+);
 
 // Sort years in descending order
-const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a));
+const sortedYears = Object.keys(postsByYear).sort(
+  (a, b) => parseInt(b) - parseInt(a),
+);
 
 // Format date helper
 function formatDate(date: Date): string {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric'
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
   }).format(date);
 }
 ---

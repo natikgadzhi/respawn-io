@@ -8,9 +8,9 @@
 //
 
 import rehypeShiki from "@shikijs/rehype";
-import rehypeMermaid from "./rehypeMermaid";
-import rehypeExcalidraw from "./rehypeExcalidraw";
 import { config } from "../blog.config";
+import rehypeExcalidraw from "./rehypeExcalidraw";
+import rehypeMermaid from "./rehypeMermaid";
 
 // Using two color themes explicitly will make Shiki render
 // two code blocks of each theme, and you can toggle between them in CSS.
@@ -19,25 +19,26 @@ const shikiOptions = {
     light: "catppuccin-latte",
     dark: "github-dark",
   },
-  inline: 'tailing-curly-colon',
+  inline: "tailing-curly-colon",
 };
 
 // remark-figure-caption makes nice captions under images, and supports
 // grabbing the markdown image comment, i.e. ![path](caption) into them.
 import remarkFigureCaption from "@microflash/remark-figure-caption";
-
-// GFM for extended markdown, including todo items and such.
-import remarkGfm from "remark-gfm";
-
 // Callouts support, i.e. `>[!note]`.
 import callouts from "remark-callouts";
+// GFM for extended markdown, including todo items and such.
+import remarkGfm from "remark-gfm";
 
 // Links between pages. Converts links from the source markdown code in
 // Obsidian (that are valid in Obsidian) into links that are valid on the
 // website.
 import wikilinks from "remark-wiki-link";
 
-const rootURL = process.env.ENV_NAME === "localhost" ? "http://localhost:3000" : config.baseURL;
+const rootURL =
+  process.env.ENV_NAME === "localhost"
+    ? "http://localhost:3000"
+    : config.baseURL;
 
 // Handle links for both posts and daily notes based on the link format
 // If a link starts with "daily/", it links to a daily note, otherwise it's a post
@@ -53,18 +54,27 @@ const pageResolver = (name: string) => [name];
 
 export const remarkPlugins = [
   remarkGfm,
-  [remarkFigureCaption, { captionClassName: "text-center italic mx-auto block" }],
+  [
+    remarkFigureCaption,
+    { captionClassName: "text-center italic mx-auto block" },
+  ],
   [wikilinks, { pageResolver, hrefTemplate, aliasDivider: "|" }],
   callouts,
 ];
 
 export const rehypePlugins = [
-  [rehypeMermaid, { 
-    background: "transparent", 
-    className: "mermaid-diagram",
-  }],
-  [rehypeExcalidraw, {
-    className: "excalidraw-diagram",
-  }],
+  [
+    rehypeMermaid,
+    {
+      background: "transparent",
+      className: "mermaid-diagram",
+    },
+  ],
+  [
+    rehypeExcalidraw,
+    {
+      className: "excalidraw-diagram",
+    },
+  ],
   [rehypeShiki, shikiOptions],
 ];

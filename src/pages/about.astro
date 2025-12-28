@@ -1,13 +1,15 @@
 ---
 import { getCollection, render } from "astro:content";
-import BaseLayout from "../layouts/BaseLayout.astro";
 import { config } from "../../blog.config";
+import BaseLayout from "../layouts/BaseLayout.astro";
 
 const pages = await getCollection("pages");
-const aboutPage = pages.find((page) => page.id === "about" || page.id === "about.md");
+const aboutPage = pages.find(
+  (page) => page.id === "about" || page.id === "about.md",
+);
 
 if (!aboutPage) {
-    return Astro.redirect("/404");
+  return Astro.redirect("/404");
 }
 
 const { Content } = await render(aboutPage);

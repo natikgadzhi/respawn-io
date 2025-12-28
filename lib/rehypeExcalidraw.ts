@@ -1,8 +1,8 @@
-import { visit } from "unist-util-visit";
 import { existsSync, readFileSync } from "fs";
-import { join, dirname } from "path";
-import type { Plugin } from "unified";
 import type { Root } from "hast";
+import { dirname, join } from "path";
+import type { Plugin } from "unified";
+import { visit } from "unist-util-visit";
 
 // Options for the Excalidraw plugin
 interface ExcalidrawOptions {
@@ -14,7 +14,7 @@ interface ExcalidrawOptions {
 const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
   return (tree, file) => {
     // Track paragraphs that contain Excalidraw diagrams
-    let paragraphsToReplace = [];
+    const paragraphsToReplace = [];
 
     // Find paragraphs containing Excalidraw diagrams
     visit(tree, "element", (node) => {
@@ -49,12 +49,12 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
           const lightSvgContent = readFileSync(lightSvgPath, "utf-8");
           const darkSvgContent = readFileSync(darkSvgPath, "utf-8");
 
-          const lightDataUrl = `data:image/svg+xml;base64,${Buffer.from(lightSvgContent).toString(
-            "base64",
-          )}`;
-          const darkDataUrl = `data:image/svg+xml;base64,${Buffer.from(darkSvgContent).toString(
-            "base64",
-          )}`;
+          const lightDataUrl = `data:image/svg+xml;base64,${Buffer.from(
+            lightSvgContent,
+          ).toString("base64")}`;
+          const darkDataUrl = `data:image/svg+xml;base64,${Buffer.from(
+            darkSvgContent,
+          ).toString("base64")}`;
 
           paragraph.tagName = "div";
           paragraph.properties = {
@@ -85,7 +85,10 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
           ];
         }
       } catch (error) {
-        console.error(`Failed to process Excalidraw diagram ${diagramName}:`, error);
+        console.error(
+          `Failed to process Excalidraw diagram ${diagramName}:`,
+          error,
+        );
       }
     }
 

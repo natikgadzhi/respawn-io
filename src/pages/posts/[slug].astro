@@ -1,14 +1,13 @@
 ---
 import { getCollection, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import TagsList from "../../components/TagsList.astro";
-import { getFormattedTitle, getRawExcerpt, getOgImageUrl } from "../../lib/content-utils";
-import { config } from "../../../blog.config";
-import LinkedHeaders from "../../components/mdx/LinkedHeaders.astro";
 import Aside from "../../components/mdx/Aside.astro";
-import WithAside from "../../components/mdx/WithAside.astro";
+import LinkedHeaders from "../../components/mdx/LinkedHeaders.astro";
 import Script from "../../components/mdx/Script.astro";
+import WithAside from "../../components/mdx/WithAside.astro";
+import TagsList from "../../components/TagsList.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getOgImageUrl, getRawExcerpt } from "../../lib/content-utils";
 import { titleCase } from "../../lib/titleCase";
 
 export const getStaticPaths = (async () => {

@@ -8,7 +8,7 @@ interface Props {
 const { level, text, id } = Astro.props;
 const headerId = id || text.toString().toLowerCase().replace(/[^\w]/g, "-");
 
-const Tag = `h${level}` as 'h1' | 'h2' | 'h3' | 'h4';
+const Tag = `h${level}` as "h1" | "h2" | "h3" | "h4";
 
 const baseHeaderStyles = `
   group relative

@@ -1,6 +1,6 @@
-import type { CollectionEntry } from 'astro:content';
+import type { CollectionEntry } from "astro:content";
 
-export function getTagsWithCounts(posts: CollectionEntry<'posts'>[]) {
+export function getTagsWithCounts(posts: CollectionEntry<"posts">[]) {
   const tagCounts = posts.reduce(
     (acc, post) => {
       if (!post.data.tags) return acc;
@@ -20,8 +20,13 @@ export function getTagsWithCounts(posts: CollectionEntry<'posts'>[]) {
     .map(([tag, count]) => ({ tag, count }));
 }
 
-export function getPostsByTag(posts: CollectionEntry<'posts'>[], tagSlug: string): CollectionEntry<'posts'>[] {
+export function getPostsByTag(
+  posts: CollectionEntry<"posts">[],
+  tagSlug: string,
+): CollectionEntry<"posts">[] {
   return posts.filter((post) =>
-    post.data.tags.map((tagLabel) => tagLabel.toLowerCase()).includes(tagSlug.toLowerCase()),
+    post.data.tags
+      .map((tagLabel) => tagLabel.toLowerCase())
+      .includes(tagSlug.toLowerCase()),
   );
 }

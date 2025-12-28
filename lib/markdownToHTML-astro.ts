@@ -1,21 +1,20 @@
 // Provides a utility function to convert a markdown to HTML,
 // without MDX component support
 
-import { resolve } from 'node:path';
-import { VFile } from 'vfile';
-import type { CollectionEntry } from 'astro:content';
-
-import rehypeStringify from 'rehype-stringify';
+import type { CollectionEntry } from "astro:content";
+import { resolve } from "node:path";
+import rehypeStringify from "rehype-stringify";
 import remarkEmbedImages from "remark-embed-images";
-import remarkParse from 'remark-parse';
-import remarkRehype from 'remark-rehype';
-import { unified } from 'unified';
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import { unified } from "unified";
+import { VFile } from "vfile";
 
-import { rehypePlugins, remarkPlugins } from './unifiedPlugins';
+import { rehypePlugins, remarkPlugins } from "./unifiedPlugins";
 
 const wrapInArticle = (html: string) => `<article>${html}</article>`;
 
-export async function markdownToHTML(post: CollectionEntry<'posts'>) {
+export async function markdownToHTML(post: CollectionEntry<"posts">) {
   const processor = unified();
   const plugins = [
     remarkParse,
@@ -30,7 +29,7 @@ export async function markdownToHTML(post: CollectionEntry<'posts'>) {
     if (Array.isArray(plugin)) {
       processor.use(plugin[0], plugin[1]);
     } else {
-      // @ts-ignore
+      // @ts-expect-error
       processor.use(plugin);
     }
   });
@@ -40,8 +39,8 @@ export async function markdownToHTML(post: CollectionEntry<'posts'>) {
     path: resolve("src/content/posts", `${post.id}`),
   });
 
-  // @ts-ignore
+  // @ts-expect-error
   const result = await processor.process(file);
-  // @ts-ignore
+  // @ts-expect-error
   return wrapInArticle(result.value.toString());
 }

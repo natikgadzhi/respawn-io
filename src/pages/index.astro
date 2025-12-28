@@ -1,13 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import PostsList from '../components/PostsList.astro';
-import TagsList from '../components/TagsList.astro';
-import { getTagsWithCounts } from '../lib/tagHelpers';
-import { sortPostsByDate } from '../lib/content-utils';
-import { config } from '../../blog.config';
+import { getCollection } from "astro:content";
+import { config } from "../../blog.config";
+import PostsList from "../components/PostsList.astro";
+import TagsList from "../components/TagsList.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { sortPostsByDate } from "../lib/content-utils";
+import { getTagsWithCounts } from "../lib/tagHelpers";
 
-const allPosts = await getCollection('posts', ({ data }) => {
+const allPosts = await getCollection("posts", ({ data }) => {
   // Filter out drafts in production
   if (import.meta.env.PROD) {
     return !data.draft;
@@ -18,7 +18,9 @@ const allPosts = await getCollection('posts', ({ data }) => {
 const posts = sortPostsByDate(allPosts);
 const tagsWithCounts = getTagsWithCounts(allPosts);
 const tags = tagsWithCounts.map(({ tag }) => tag);
-const counts = Object.fromEntries(tagsWithCounts.map(({ tag, count }) => [tag, count]));
+const counts = Object.fromEntries(
+  tagsWithCounts.map(({ tag, count }) => [tag, count]),
+);
 ---
 
 <BaseLayout title={config.title} description={config.description}>

@@ -7,12 +7,12 @@
  * Usage: pnpm run og-images
  */
 
+import { getCollection } from "astro:content";
 import fs from "node:fs";
 import path from "node:path";
 import puppeteer from "puppeteer";
-import { getCollection } from "astro:content";
+import { getPostAbsoluteUrl, getRawExcerpt } from "../src/lib/content-utils.ts";
 import { titleCase } from "../src/lib/titleCase.ts";
-import { getRawExcerpt, getPostAbsoluteUrl } from "../src/lib/content-utils.ts";
 
 const OUTPUT_DIR = "./public/og-images";
 const WIDTH = 1200;
@@ -39,7 +39,8 @@ function generateHTML(post: {
   absoluteURL: string;
   og_image_hide_description?: boolean;
 }): string {
-  const showExcerpt = post.formattedTitle.length < 60 && !post.og_image_hide_description;
+  const showExcerpt =
+    post.formattedTitle.length < 60 && !post.og_image_hide_description;
   const showURL = post.formattedTitle.length < 60;
 
   return `
@@ -134,7 +135,11 @@ async function generateOGImages() {
 
   // Launch browser
   const browser = await puppeteer.launch({
-    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+    ],
     headless: true,
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
   });
