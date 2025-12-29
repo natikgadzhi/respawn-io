@@ -7,10 +7,10 @@
 # Builder stage - build the application
 # Uses Debian for Playwright compatibility (rehype-mermaid uses Playwright)
 # =============================================================================
-FROM node:22-slim AS builder
+FROM node:25-slim AS builder
 
-# Install pnpm
-RUN corepack enable && corepack prepare pnpm@10.7.0 --activate
+# Install pnpm globally
+RUN npm i -g pnpm@10.7.0
 
 WORKDIR /app
 
