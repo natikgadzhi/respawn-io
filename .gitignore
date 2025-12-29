@@ -12,6 +12,9 @@ content-backup
 
 # editor config
 /.vscode
+/.zed
+/.claude
+/.cursor
 
 # Astro and builds
 /.astro/
