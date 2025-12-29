@@ -73,14 +73,30 @@ const canonicalURL = new URL(pathnameWithoutHtml, Astro.site);
     <link rel="me" href={config.author.fediverseURL} />
 
     <!-- Counterscale Analytics -->
-    <script is:inline>
+    <script is:inline define:vars={{ counterscaleSiteId: config.counterscale.siteId }}>
       (function () {
         window.counterscale = {
-          q: [["set", "siteId", "respawn-io"], ["trackPageview"]],
+          q: [["set", "siteId", counterscaleSiteId], ["trackPageview"]],
         };
       })();
     </script>
-    <script id="counterscale-script" src="https://1ca90c7a.counterscale-a1l.pages.dev/tracker.js" defer></script>
+    <script id="counterscale-script" src={`${config.counterscale.url}/tracker.js`} defer></script>
+
+    <!-- Privacy-friendly analytics by Plausible -->
+    <script async src={`${config.plausible.url}/js/${config.plausible.scriptId}.js`}></script>
+    <script is:inline>
+      ((window.plausible =
+        window.plausible ||
+        function () {
+          (plausible.q = plausible.q || []).push(arguments);
+        }),
+        (plausible.init =
+          plausible.init ||
+          function (i) {
+            plausible.o = i || {};
+          }));
+      plausible.init();
+    </script>
   </head>
   <body
     class="bg-white dark:bg-[#0f0f0e] text-stone-800 dark:text-stone-200 selection:bg-stone-100 dark:selection:bg-stone-800 transition-colors duration-300"

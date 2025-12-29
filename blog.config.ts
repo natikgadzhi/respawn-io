@@ -34,4 +34,9 @@ export const config = {
     siteId: "respawn-io",
     url: "https://1ca90c7a.counterscale-a1l.pages.dev",
   },
+
+  plausible: {
+    scriptId: "pa-wSp7pBzCYOQ0W7O-WgH1K",
+    url: "https://analytics.respawn.io",
+  },
 };
