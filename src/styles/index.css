@@ -193,33 +193,23 @@ article .bluesky-embed,
 
 /*
  * Mermaid diagrams
+ * rehype-mermaid outputs figures with class "rehype-mermaid"
+ * With dark: true, it uses <picture> with media queries for light/dark mode
  */
-.mermaid-diagram {
+.rehype-mermaid {
   @apply mx-auto my-8 flex items-center justify-center;
 }
 
-.mermaid-diagram img {
+.rehype-mermaid picture,
+.rehype-mermaid img {
   @apply max-w-full w-auto;
   max-height: 300px;
 }
 
 @media (min-width: 1024px) {
-  .mermaid-diagram img {
+  .rehype-mermaid picture,
+  .rehype-mermaid img {
     max-height: 400px;
-  }
-}
-
-.mermaid-dark {
-  display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  .mermaid-light {
-    display: none;
-  }
-
-  .mermaid-dark {
-    display: block;
   }
 }
 

@@ -2,26 +2,16 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 // Remark plugins
 import remarkFigureCaption from "@microflash/remark-figure-caption";
-import rehypeShiki from "@shikijs/rehype";
 import { defineConfig } from "astro/config";
 import callouts from "remark-callouts";
 import remarkGfm from "remark-gfm";
 import wikilinks from "remark-wiki-link";
+// Rehype plugins
 import rehypeExcalidraw from "./lib/rehypeExcalidraw.ts";
-import rehypeMermaid from "./lib/rehypeMermaid.ts";
+import rehypeMermaid from "rehype-mermaid";
 import ogImagesIntegration from "./scripts/og-images-integration.ts";
 
 const baseURL = "https://respawn.io";
-
-// Using two color themes explicitly will make Shiki render
-// two code blocks of each theme, and you can toggle between them in CSS.
-const shikiOptions = {
-  themes: {
-    light: "catppuccin-latte",
-    dark: "github-dark",
-  },
-  inline: "tailing-curly-colon",
-};
 
 // Handle links for both posts and daily notes based on the link format
 // If a link starts with "daily/", it links to a daily note, otherwise it's a post
@@ -48,8 +38,8 @@ const rehypePlugins = [
   [
     rehypeMermaid,
     {
-      background: "transparent",
-      className: "mermaid-diagram",
+      strategy: "img-svg",
+      dark: true,
     },
   ],
   [
@@ -58,7 +48,6 @@ const rehypePlugins = [
       className: "excalidraw-diagram",
     },
   ],
-  [rehypeShiki, shikiOptions],
 ];
 
 export default defineConfig({
@@ -67,10 +56,17 @@ export default defineConfig({
   markdown: {
     remarkPlugins,
     rehypePlugins,
-
-    // Disable default syntax highlighting since we use Shiki
-    // TODO: Check if we should ditch Shiki instead.
-    syntaxHighlight: false,
+    // Use Astro's built-in Shiki syntax highlighting
+    syntaxHighlight: {
+      type: "shiki",
+      excludeLangs: ["mermaid"],
+    },
+    shikiConfig: {
+      themes: {
+        light: "catppuccin-latte",
+        dark: "github-dark",
+      },
+    },
   },
   build: {
     format: "file",

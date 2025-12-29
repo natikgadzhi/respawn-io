@@ -34,7 +34,7 @@ FROM base AS builder
 
 WORKDIR /app
 
-# Install bash and Chromium for Puppeteer (used by mermaid-cli and og-images)
+# Install bash and Chromium for Puppeteer (used by rehype-mermaid and og-images)
 RUN apk add --no-cache bash chromium nss freetype harfbuzz ca-certificates ttf-freefont
 
 # Tell Puppeteer to use system Chromium instead of downloading

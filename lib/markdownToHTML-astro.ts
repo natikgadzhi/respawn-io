@@ -1,5 +1,6 @@
-// Provides a utility function to convert a markdown to HTML,
-// without MDX component support
+// Provides a utility function to convert markdown to HTML for RSS feeds.
+// This is simpler than the Astro markdown pipeline since RSS readers
+// don't support syntax highlighting or interactive diagrams.
 
 import type { CollectionEntry } from "astro:content";
 import { resolve } from "node:path";
@@ -10,37 +11,49 @@ import remarkRehype from "remark-rehype";
 import { unified } from "unified";
 import { VFile } from "vfile";
 
-import { rehypePlugins, remarkPlugins } from "./unifiedPlugins";
+// Remark plugins for RSS
+import remarkFigureCaption from "@microflash/remark-figure-caption";
+import callouts from "remark-callouts";
+import remarkGfm from "remark-gfm";
+import wikilinks from "remark-wiki-link";
+
+import { config } from "../blog.config";
+
+const rootURL =
+  process.env.ENV_NAME === "localhost"
+    ? "http://localhost:3000"
+    : config.baseURL;
+
+// Handle links for both posts and daily notes
+const hrefTemplate = (permalink: string) => {
+  if (permalink.startsWith("daily/")) {
+    const dailySlug = permalink.replace("daily/", "");
+    return `${rootURL}/daily/${dailySlug}`;
+  }
+  return `${rootURL}/posts/${permalink}`;
+};
+const pageResolver = (name: string) => [name];
 
 const wrapInArticle = (html: string) => `<article>${html}</article>`;
 
 export async function markdownToHTML(post: CollectionEntry<"posts">) {
-  const processor = unified();
-  const plugins = [
-    remarkParse,
-    remarkEmbedImages,
-    ...remarkPlugins,
-    remarkRehype,
-    ...rehypePlugins,
-    rehypeStringify,
-  ];
-
-  plugins.forEach((plugin) => {
-    if (Array.isArray(plugin)) {
-      processor.use(plugin[0], plugin[1]);
-    } else {
-      // @ts-expect-error
-      processor.use(plugin);
-    }
-  });
+  const processor = unified()
+    .use(remarkParse)
+    .use(remarkEmbedImages)
+    .use(remarkGfm)
+    .use(remarkFigureCaption, {
+      captionClassName: "text-center italic mx-auto block",
+    })
+    .use(wikilinks, { pageResolver, hrefTemplate, aliasDivider: "|" })
+    .use(callouts)
+    .use(remarkRehype)
+    .use(rehypeStringify);
 
   const file = new VFile({
     value: post.body,
     path: resolve("src/content/posts", `${post.id}`),
   });
 
-  // @ts-expect-error
   const result = await processor.process(file);
-  // @ts-expect-error
   return wrapInArticle(result.value.toString());
 }

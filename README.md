@@ -7,7 +7,7 @@ Source code for [respawn.io](https://respawn.io) (also served on [natik.dev](htt
 ## Features
 
 - **Content Collections** with full TypeScript support for posts, daily notes, pages, and tags.
-- **Mermaid diagrams** rendered at build time with Puppeteer.
+- **Mermaid diagrams** rendered at build time with rehype-mermaid.
 - **OG images** generated at build time with Puppeteer (no edge runtime required).
 - **RSS/Atom/JSON feeds** for all published posts.
 - **MDX support** with optimized images and wikilinks.
