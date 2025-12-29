@@ -15,21 +15,20 @@ RUN npm i -g pnpm@10.7.0
 WORKDIR /app
 
 # Copy package files and install dependencies
+# This layer is cached unless package.json or pnpm-lock.yaml changes
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/root/.local/share/pnpm/store \
+    pnpm install --frozen-lockfile
 
 # Install Playwright browser and its system dependencies
+# This layer is cached unless package.json changes (Playwright version)
 RUN pnpm exec playwright install chromium --with-deps
 
 # Copy source files
 COPY . .
 
-# Build the Astro site (includes image copying)
+# Build the Astro site (includes image copying and OG generation)
 ENV NODE_ENV=production
-
-# Bust cache to ensure fresh build
-ARG CACHEBUST=1
-
 RUN pnpm run build
 
 # =============================================================================
