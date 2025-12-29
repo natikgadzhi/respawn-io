@@ -1,41 +1,34 @@
 /**
  * Astro Integration for OG Image Generation
  *
- * Generates static OG images for all posts using Puppeteer at build time.
- * Uses the astro:build:done hook to access content collections after build.
+ * Generates static OG images for all posts using Playwright at build time.
+ * Reads post frontmatter directly from markdown files for reliability.
  */
 
 import fs from "node:fs";
 import path from "node:path";
 import type { AstroIntegration, Logger } from "astro";
-import puppeteer from "puppeteer";
+import matter from "gray-matter";
+import { chromium } from "playwright";
 
-const OUTPUT_DIR = "./public/og-images";
+const CACHE_DIR = "./public/og-images"; // Cache for incremental builds & dev mode
+const OUTPUT_DIR = "og-images"; // Relative to dist/
+const POSTS_DIR = "./src/content/posts";
 const WIDTH = 1200;
 const HEIGHT = 630;
 const BASE_URL = "https://respawn.io";
 
 /**
- * Type for post data from the data store
+ * Type for post frontmatter
  */
-interface PostData {
+interface PostFrontmatter {
   title: string;
   excerpt: string;
   created: string;
   modified: string;
   tags?: string[] | null;
   draft?: boolean;
-  workInProgress?: boolean;
-  meta_description?: string | null;
-  meta_keywords?: string | null;
   og_image_hide_description?: boolean;
-}
-
-/**
- * Type for data store entry
- */
-interface DataStoreEntry {
-  data: PostData;
 }
 
 /**
@@ -167,41 +160,38 @@ function generateHTML(post: {
 async function generateOGImages(dir: URL, logger: Logger) {
   logger.info("Starting OG image generation...");
 
-  // Ensure output directory exists
-  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+  // Use public/og-images as cache for incremental builds and dev mode
+  fs.mkdirSync(CACHE_DIR, { recursive: true });
 
-  // Read the data store JSON file that Astro creates
-  const dataStorePath = path.join(dir.pathname, "data-store.json");
+  // Final output goes to dist/og-images
+  const distOutputDir = path.join(dir.pathname, OUTPUT_DIR);
+  fs.mkdirSync(distOutputDir, { recursive: true });
 
-  if (!fs.existsSync(dataStorePath)) {
-    logger.warn("Data store not found, skipping OG image generation");
-    return;
-  }
+  // Read posts directly from markdown files
+  const postFiles = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
 
-  const dataStore = JSON.parse(fs.readFileSync(dataStorePath, "utf-8"));
-
-  // Extract posts from the data store
-  const posts = Object.entries((dataStore.collections?.posts?.entries as Record<string, DataStoreEntry>) || {}).map(
-    ([id, entry]) => ({
-      slug: id,
-      data: entry.data,
-    }),
-  );
+  const posts = postFiles.map((file) => {
+    const filePath = path.join(POSTS_DIR, file);
+    const content = fs.readFileSync(filePath, "utf-8");
+    const { data } = matter(content);
+    const slug = file.replace(/\.(md|mdx)$/, "");
+    return { slug, data: data as PostFrontmatter, filePath };
+  });
 
   if (posts.length === 0) {
-    logger.warn("No posts found in data store");
+    logger.warn("No posts found");
     return;
   }
 
-  // Launch browser
-  const browser = await puppeteer.launch({
+  logger.info(`Found ${posts.length} posts`);
+
+  // Launch browser (Playwright uses the browser installed by `playwright install chromium`)
+  const browser = await chromium.launch({
     args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
-    headless: true,
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
   });
 
   const page = await browser.newPage();
-  await page.setViewport({ width: WIDTH, height: HEIGHT });
+  await page.setViewportSize({ width: WIDTH, height: HEIGHT });
 
   let generated = 0;
   let skipped = 0;
@@ -214,15 +204,15 @@ async function generateOGImages(dir: URL, logger: Logger) {
       continue;
     }
 
-    const outputPath = path.join(OUTPUT_DIR, `${post.slug}.png`);
+    const cachePath = path.join(CACHE_DIR, `${post.slug}.png`);
 
-    // Check if image already exists (for incremental builds)
-    if (fs.existsSync(outputPath)) {
-      const stat = fs.statSync(outputPath);
-      const postModified = new Date(post.data.modified);
+    // Check if image already exists in cache (for incremental builds)
+    if (fs.existsSync(cachePath)) {
+      const imageStat = fs.statSync(cachePath);
+      const postStat = fs.statSync(post.filePath);
 
-      // Skip if image is newer than post
-      if (stat.mtime > postModified) {
+      // Skip if cached image is newer than the post file
+      if (imageStat.mtime > postStat.mtime) {
         logger.info(`Skipping (up to date): ${post.slug}`);
         skipped++;
         continue;
@@ -241,9 +231,9 @@ async function generateOGImages(dir: URL, logger: Logger) {
         og_image_hide_description: post.data.og_image_hide_description,
       });
 
-      await page.setContent(html, { waitUntil: "domcontentloaded" });
+      await page.setContent(html, { waitUntil: "domcontentloaded" as const });
       await page.screenshot({
-        path: outputPath,
+        path: cachePath,
         type: "png",
       });
 
@@ -255,6 +245,13 @@ async function generateOGImages(dir: URL, logger: Logger) {
   }
 
   await browser.close();
+
+  // Copy all cached images to dist output directory
+  const cachedImages = fs.readdirSync(CACHE_DIR).filter((f) => f.endsWith(".png"));
+  for (const image of cachedImages) {
+    fs.copyFileSync(path.join(CACHE_DIR, image), path.join(distOutputDir, image));
+  }
+  logger.info(`Copied ${cachedImages.length} OG images to output directory`);
 
   logger.info(`OG Images Done! Generated: ${generated}, Skipped: ${skipped}`);
 }
