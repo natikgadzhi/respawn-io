@@ -6,7 +6,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["astro/client", "mdx"],
+    "types": ["astro/client"],
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
@@ -14,7 +14,7 @@
     "module": "ESNext",
     "target": "ESNext",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "strict": false,
+    "strict": true,
     "allowJs": true,
     "noEmit": true,
     "isolatedModules": true,

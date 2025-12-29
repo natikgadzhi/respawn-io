@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-import type { Root } from "hast";
+import type { Element, Root } from "hast";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
 
@@ -14,7 +14,7 @@ interface ExcalidrawOptions {
 const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
   return (tree, file) => {
     // Track paragraphs that contain Excalidraw diagrams
-    const paragraphsToReplace = [];
+    const paragraphsToReplace: Element[] = [];
 
     // Find paragraphs containing Excalidraw diagrams
     visit(tree, "element", (node) => {
@@ -34,6 +34,7 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
     // Process the paragraphs
     for (const paragraph of paragraphsToReplace) {
       const textNode = paragraph.children[0];
+      if (textNode.type !== "text") continue;
       const match = textNode.value.trim().match(/^!\[\[(.*\.excalidraw)\]\]$/);
       if (!match || !match[1]) continue;
 
