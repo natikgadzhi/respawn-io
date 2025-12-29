@@ -12,19 +12,13 @@ export const getStaticPaths = (async () => {
   const allDaily = await getCollection("daily");
   const allTags = await getCollection("tags");
 
-  const postTags = allPosts
-    .flatMap((post) => post.data.tags || [])
-    .map((tag) => tag.toLowerCase());
+  const postTags = allPosts.flatMap((post) => post.data.tags || []).map((tag) => tag.toLowerCase());
 
-  const dailyTags = allDaily
-    .flatMap((daily) => daily.data.tags || [])
-    .map((tag) => tag.toLowerCase());
+  const dailyTags = allDaily.flatMap((daily) => daily.data.tags || []).map((tag) => tag.toLowerCase());
 
   const mdTags = allTags.map((tag) => tag.data.title.toLowerCase());
 
-  const uniqueTags = Array.from(
-    new Set([...postTags, ...dailyTags, ...mdTags]),
-  );
+  const uniqueTags = Array.from(new Set([...postTags, ...dailyTags, ...mdTags]));
 
   return uniqueTags.map((tag) => ({
     params: { slug: tag.toLowerCase() },
@@ -39,18 +33,12 @@ const tagName = tag ? tag.data.title.toLowerCase() : slug;
 
 // Get posts with this tag
 const allPosts = await getCollection("posts");
-const posts = sortPostsByDate(
-  allPosts.filter((post) =>
-    post.data.tags?.map((t) => t.toLowerCase()).includes(tagName),
-  ),
-);
+const posts = sortPostsByDate(allPosts.filter((post) => post.data.tags?.map((t) => t.toLowerCase()).includes(tagName)));
 
 // Get dailies with this tag
 const allDaily = await getCollection("daily");
 const dailies = sortDailyByDate(
-  allDaily.filter((daily) =>
-    daily.data.tags?.map((t) => t.toLowerCase()).includes(tagName),
-  ),
+  allDaily.filter((daily) => daily.data.tags?.map((t) => t.toLowerCase()).includes(tagName)),
 );
 
 // If no tag file and no content, this is a 404
@@ -59,9 +47,7 @@ if (!tag && posts.length === 0 && dailies.length === 0) {
 }
 
 const title = `#${tag ? tag.data.title : slug}`;
-const description =
-  tag?.data.description ||
-  `Posts tagged with #${tag ? tag.data.title : slug} in ${config.title}`;
+const description = tag?.data.description || `Posts tagged with #${tag ? tag.data.title : slug} in ${config.title}`;
 
 let TagContent: Awaited<ReturnType<typeof render>>["Content"] | undefined;
 if (tag) {

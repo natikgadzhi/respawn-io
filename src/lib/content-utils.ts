@@ -44,17 +44,11 @@ export function getRawExcerpt(excerpt: string): string {
     .replace(/~~(.*?)~~/g, "$1"); // Remove ~~ tags
 }
 
-export function sortPostsByDate(
-  posts: CollectionEntry<"posts">[],
-): CollectionEntry<"posts">[] {
-  return posts.sort(
-    (a, b) => b.data.created.getTime() - a.data.created.getTime(),
-  );
+export function sortPostsByDate(posts: CollectionEntry<"posts">[]): CollectionEntry<"posts">[] {
+  return posts.sort((a, b) => b.data.created.getTime() - a.data.created.getTime());
 }
 
-export function sortDailyByDate(
-  daily: CollectionEntry<"daily">[],
-): CollectionEntry<"daily">[] {
+export function sortDailyByDate(daily: CollectionEntry<"daily">[]): CollectionEntry<"daily">[] {
   return daily.sort((a, b) => {
     // Sort by ID (filename), which is in YYYY-MM-DD format
     // Reverse sort for most recent first

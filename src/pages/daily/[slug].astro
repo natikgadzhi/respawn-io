@@ -32,13 +32,8 @@ function formatDate(dateStr: string): string {
 }
 
 const formattedDate = formatDate(note.id);
-const title = note.data.title
-  ? `${note.data.title} - ${formattedDate}`
-  : formattedDate;
-const description =
-  note.data.meta_description ||
-  note.data.title ||
-  `Daily TIL note from ${formattedDate}`;
+const title = note.data.title ? `${note.data.title} - ${formattedDate}` : formattedDate;
+const description = note.data.meta_description || note.data.title || `Daily TIL note from ${formattedDate}`;
 ---
 
 <BaseLayout

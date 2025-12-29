@@ -18,10 +18,7 @@ import { VFile } from "vfile";
 
 import { config } from "../blog.config";
 
-const rootURL =
-  process.env.ENV_NAME === "localhost"
-    ? "http://localhost:3000"
-    : config.baseURL;
+const rootURL = process.env.ENV_NAME === "localhost" ? "http://localhost:3000" : config.baseURL;
 
 // Handle links for both posts and daily notes
 const hrefTemplate = (permalink: string) => {

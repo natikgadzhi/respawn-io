@@ -9,22 +9,17 @@ interface Props {
 const { posts } = Astro.props;
 
 // Group posts by year
-const postsByYear = posts.reduce<Record<string, CollectionEntry<"posts">[]>>(
-  (acc, post) => {
-    const year = post.data.created.getFullYear().toString();
-    if (!acc[year]) {
-      acc[year] = [];
-    }
-    acc[year].push(post);
-    return acc;
-  },
-  {},
-);
+const postsByYear = posts.reduce<Record<string, CollectionEntry<"posts">[]>>((acc, post) => {
+  const year = post.data.created.getFullYear().toString();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {});
 
 // Sort years in descending order
-const sortedYears = Object.keys(postsByYear).sort(
-  (a, b) => parseInt(b, 10) - parseInt(a, 10),
-);
+const sortedYears = Object.keys(postsByYear).sort((a, b) => parseInt(b, 10) - parseInt(a, 10));
 
 // Format date helper
 function formatDate(date: Date): string {

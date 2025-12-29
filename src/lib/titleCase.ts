@@ -34,9 +34,7 @@ export const titleCase = (input: string): string => {
   // Capitalize each word
   return input
     .replace(/([^\W_]+[^\s-]*) */g, (word) =>
-      exceptionsRegex.test(word)
-        ? word
-        : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
+      exceptionsRegex.test(word) ? word : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase(),
     )
     .replace(lowersRegex, (word) => word.toLowerCase())
     .replace(uppersRegex, (word) => word.toUpperCase());

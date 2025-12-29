@@ -80,8 +80,7 @@ function generateHTML(post: {
   absoluteURL: string;
   og_image_hide_description?: boolean;
 }): string {
-  const showExcerpt =
-    post.formattedTitle.length < 60 && !post.og_image_hide_description;
+  const showExcerpt = post.formattedTitle.length < 60 && !post.og_image_hide_description;
   const showURL = post.formattedTitle.length < 60;
 
   return `
@@ -182,13 +181,12 @@ async function generateOGImages(dir: URL, logger: Logger) {
   const dataStore = JSON.parse(fs.readFileSync(dataStorePath, "utf-8"));
 
   // Extract posts from the data store
-  const posts = Object.entries(
-    (dataStore.collections?.posts?.entries as Record<string, DataStoreEntry>) ||
-      {},
-  ).map(([id, entry]) => ({
-    slug: id,
-    data: entry.data,
-  }));
+  const posts = Object.entries((dataStore.collections?.posts?.entries as Record<string, DataStoreEntry>) || {}).map(
+    ([id, entry]) => ({
+      slug: id,
+      data: entry.data,
+    }),
+  );
 
   if (posts.length === 0) {
     logger.warn("No posts found in data store");
@@ -197,11 +195,7 @@ async function generateOGImages(dir: URL, logger: Logger) {
 
   // Launch browser
   const browser = await puppeteer.launch({
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-    ],
+    args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
     headless: true,
     executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || undefined,
   });

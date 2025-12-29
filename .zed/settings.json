@@ -1,0 +1,9 @@
+{
+  "languages": {
+    "Astro": {
+      "preferred_line_length": 120,
+      "auto_indent_on_paste": true,
+      "tab_size": 2,
+    },
+  },
+}

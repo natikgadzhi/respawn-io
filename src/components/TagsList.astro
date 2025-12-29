@@ -6,12 +6,7 @@ interface Props {
   class?: string;
 }
 
-const {
-  tags,
-  showCounts = false,
-  counts = {},
-  class: className = "",
-} = Astro.props;
+const { tags, showCounts = false, counts = {}, class: className = "" } = Astro.props;
 
 if (!tags || tags.length === 0) {
   return null;

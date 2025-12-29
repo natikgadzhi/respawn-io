@@ -49,12 +49,8 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
           const lightSvgContent = readFileSync(lightSvgPath, "utf-8");
           const darkSvgContent = readFileSync(darkSvgPath, "utf-8");
 
-          const lightDataUrl = `data:image/svg+xml;base64,${Buffer.from(
-            lightSvgContent,
-          ).toString("base64")}`;
-          const darkDataUrl = `data:image/svg+xml;base64,${Buffer.from(
-            darkSvgContent,
-          ).toString("base64")}`;
+          const lightDataUrl = `data:image/svg+xml;base64,${Buffer.from(lightSvgContent).toString("base64")}`;
+          const darkDataUrl = `data:image/svg+xml;base64,${Buffer.from(darkSvgContent).toString("base64")}`;
 
           paragraph.tagName = "div";
           paragraph.properties = {
@@ -85,10 +81,7 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
           ];
         }
       } catch (error) {
-        console.error(
-          `Failed to process Excalidraw diagram ${diagramName}:`,
-          error,
-        );
+        console.error(`Failed to process Excalidraw diagram ${diagramName}:`, error);
       }
     }
 

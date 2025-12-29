@@ -20,13 +20,8 @@ export function getTagsWithCounts(posts: CollectionEntry<"posts">[]) {
     .map(([tag, count]) => ({ tag, count }));
 }
 
-export function getPostsByTag(
-  posts: CollectionEntry<"posts">[],
-  tagSlug: string,
-): CollectionEntry<"posts">[] {
+export function getPostsByTag(posts: CollectionEntry<"posts">[], tagSlug: string): CollectionEntry<"posts">[] {
   return posts.filter((post) =>
-    post.data.tags
-      .map((tagLabel) => tagLabel.toLowerCase())
-      .includes(tagSlug.toLowerCase()),
+    post.data.tags.map((tagLabel) => tagLabel.toLowerCase()).includes(tagSlug.toLowerCase()),
   );
 }
