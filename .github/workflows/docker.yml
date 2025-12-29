@@ -125,4 +125,3 @@ jobs:
             Triggered by: ${{ github.event.head_commit.message }}
           commit-message: "chore: update respawn-io to ${{ steps.sha.outputs.short }}"
           delete-branch: true
-          update-pull-request-title-and-body: true
