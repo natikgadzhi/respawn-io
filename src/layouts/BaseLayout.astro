@@ -80,10 +80,10 @@ const canonicalURL = new URL(pathnameWithoutHtml, Astro.site);
         };
       })();
     </script>
-    <script id="counterscale-script" src={`${config.counterscale.url}/tracker.js`} defer></script>
+    <script is:inline id="counterscale-script" src={`${config.counterscale.url}/tracker.js`} defer></script>
 
     <!-- Privacy-friendly analytics by Plausible -->
-    <script async src={`${config.plausible.url}/js/${config.plausible.scriptId}.js`}></script>
+    <script is:inline async src={`${config.plausible.url}/js/${config.plausible.scriptId}.js`}></script>
     <script is:inline>
       ((window.plausible =
         window.plausible ||

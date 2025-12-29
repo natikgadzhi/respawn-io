@@ -33,11 +33,11 @@ function formatDate(date: Date): string {
 
 <section class="mt-6 md:mt-8">
   {sortedYears.map((year) => (
-    <div key={year} class="mb-16">
+    <div class="mb-16">
       <h2 class="text-2xl font-extrabold tracking-tighter mb-6">{year}</h2>
       <ul class="post-list space-y-8 md:space-y-12">
         {postsByYear[year].map((post) => (
-          <li class="post-item" key={post.id}>
+          <li class="post-item">
             <div class="flex flex-col gap-1 md:flex-row md:gap-0 md:justify-between md:items-baseline">
               <h3 class="text-lg lg:text-xl font-chonkymedium leading-snug tracking-tight md:mr-4">
                 <a href={getPostUrl(post.id)}>

@@ -2,8 +2,8 @@ import { getCollection } from "astro:content";
 import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
 import { config } from "../../../blog.config";
-import { markdownToHTML } from "../../../lib/markdownToHTML-astro";
 import { getRawExcerpt, sortPostsByDate } from "../../lib/content-utils";
+import { markdownToHTML } from "../../lib/markdownToHTML-astro";
 import { titleCase } from "../../lib/titleCase";
 
 export async function GET(context: APIContext) {

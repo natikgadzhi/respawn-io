@@ -1,7 +1,8 @@
 import type { CollectionEntry } from "astro:content";
+import { config } from "../../blog.config";
 import { titleCase } from "./titleCase";
 
-const baseURL = "https://respawn.io";
+const baseURL = config.baseURL;
 
 export function getPostUrl(slug: string): string {
   return `/posts/${slug}`;

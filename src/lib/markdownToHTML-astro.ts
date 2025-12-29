@@ -16,9 +16,10 @@ import wikilinks from "remark-wiki-link";
 import { unified } from "unified";
 import { VFile } from "vfile";
 
-import { config } from "../blog.config";
+import { config } from "../../blog.config";
 
-const rootURL = process.env.ENV_NAME === "localhost" ? "http://localhost:3000" : config.baseURL;
+// RSS feeds are generated at build time, always use production URL
+const rootURL = config.baseURL;
 
 // Handle links for both posts and daily notes
 const hrefTemplate = (permalink: string) => {

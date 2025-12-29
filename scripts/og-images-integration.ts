@@ -7,16 +7,24 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import type { AstroIntegration, Logger } from "astro";
+import type { AstroIntegration } from "astro";
+
+interface Logger {
+  info: (message: string) => void;
+  warn: (message: string) => void;
+  error: (message: string) => void;
+}
 import matter from "gray-matter";
 import { chromium } from "playwright";
+import { config } from "../blog.config";
+import { getRawExcerpt } from "../src/lib/content-utils";
+import { titleCase } from "../src/lib/titleCase";
 
 const CACHE_DIR = "./public/og-images"; // Cache for incremental builds & dev mode
 const OUTPUT_DIR = "og-images"; // Relative to dist/
 const POSTS_DIR = "./src/content/posts";
 const WIDTH = 1200;
 const HEIGHT = 630;
-const BASE_URL = "https://respawn.io";
 
 /**
  * Type for post frontmatter
@@ -41,27 +49,6 @@ function escapeHtml(text: string): string {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
-}
-
-/**
- * Title case a string
- */
-function titleCase(str: string): string {
-  return str.replace(/\w\S*/g, (txt) => {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-  });
-}
-
-/**
- * Remove markdown formatting from excerpt
- */
-function getRawExcerpt(excerpt: string): string {
-  return excerpt
-    .replace(/\*\*(.*?)\*\*/g, "$1") // Remove ** tags
-    .replace(/\*(.*?)\*/g, "$1") // Remove * tags
-    .replace(/__(.*?)__/g, "$1") // Remove __ tags
-    .replace(/_(.*?)_/g, "$1") // Remove _ tags
-    .replace(/~~(.*?)~~/g, "$1"); // Remove ~~ tags
 }
 
 /**
@@ -222,7 +209,7 @@ async function generateOGImages(dir: URL, logger: Logger) {
     try {
       const formattedTitle = titleCase(post.data.title);
       const rawExcerpt = getRawExcerpt(post.data.excerpt);
-      const absoluteURL = `${BASE_URL}/posts/${post.slug}`;
+      const absoluteURL = `${config.baseURL}/posts/${post.slug}`;
 
       const html = generateHTML({
         formattedTitle,

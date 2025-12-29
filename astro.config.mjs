@@ -7,11 +7,14 @@ import rehypeMermaid from "rehype-mermaid";
 import callouts from "remark-callouts";
 import remarkGfm from "remark-gfm";
 import wikilinks from "remark-wiki-link";
-// Rehype plugins
-import rehypeExcalidraw from "./lib/rehypeExcalidraw.ts";
+import { config } from "./blog.config.ts";
+// Build integrations
+import copyImagesIntegration from "./scripts/copy-images-integration.ts";
 import ogImagesIntegration from "./scripts/og-images-integration.ts";
+// Rehype plugins
+import rehypeExcalidraw from "./src/lib/rehypeExcalidraw.ts";
 
-const baseURL = "https://respawn.io";
+const baseURL = config.baseURL;
 
 // Handle links for both posts and daily notes based on the link format
 // If a link starts with "daily/", it links to a daily note, otherwise it's a post
@@ -49,7 +52,7 @@ const rehypePlugins = [
 
 export default defineConfig({
   site: baseURL,
-  integrations: [mdx(), sitemap(), ogImagesIntegration()],
+  integrations: [copyImagesIntegration(), mdx(), sitemap(), ogImagesIntegration()],
   markdown: {
     remarkPlugins,
     rehypePlugins,
