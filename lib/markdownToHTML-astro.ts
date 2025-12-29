@@ -4,18 +4,17 @@
 
 import type { CollectionEntry } from "astro:content";
 import { resolve } from "node:path";
-import rehypeStringify from "rehype-stringify";
-import remarkEmbedImages from "remark-embed-images";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import { unified } from "unified";
-import { VFile } from "vfile";
-
 // Remark plugins for RSS
 import remarkFigureCaption from "@microflash/remark-figure-caption";
+import rehypeStringify from "rehype-stringify";
 import callouts from "remark-callouts";
+import remarkEmbedImages from "remark-embed-images";
 import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
 import wikilinks from "remark-wiki-link";
+import { unified } from "unified";
+import { VFile } from "vfile";
 
 import { config } from "../blog.config";
 

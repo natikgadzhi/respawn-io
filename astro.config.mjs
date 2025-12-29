@@ -3,12 +3,12 @@ import sitemap from "@astrojs/sitemap";
 // Remark plugins
 import remarkFigureCaption from "@microflash/remark-figure-caption";
 import { defineConfig } from "astro/config";
+import rehypeMermaid from "rehype-mermaid";
 import callouts from "remark-callouts";
 import remarkGfm from "remark-gfm";
 import wikilinks from "remark-wiki-link";
 // Rehype plugins
 import rehypeExcalidraw from "./lib/rehypeExcalidraw.ts";
-import rehypeMermaid from "rehype-mermaid";
 import ogImagesIntegration from "./scripts/og-images-integration.ts";
 
 const baseURL = "https://respawn.io";
