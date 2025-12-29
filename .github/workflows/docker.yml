@@ -93,12 +93,12 @@ jobs:
           cd homelab
           sed -i 's/newTag: .*/newTag: ${{ steps.sha.outputs.short }}/' k8s/apps/respawn-io/overlays/host01/kustomization.yaml
 
-      - name: Create Pull Request
+      - name: Create or Update Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.HOMELAB_PAT }}
           path: homelab
-          branch: deploy/respawn-io-${{ steps.sha.outputs.short }}
+          branch: deploy/respawn-io
           title: "Deploy respawn-io ${{ steps.sha.outputs.short }}"
           body: |
             Automated deployment PR for respawn-io.
@@ -109,3 +109,4 @@ jobs:
             Triggered by: ${{ github.event.head_commit.message }}
           commit-message: "chore: update respawn-io to ${{ steps.sha.outputs.short }}"
           delete-branch: true
+          update-pull-request-title-and-body: true
