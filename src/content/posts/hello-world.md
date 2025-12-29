@@ -13,8 +13,7 @@ tags:
 # Obsidian, Next.js, and Vercel
 
 > [!warning]
-> `Contentlayer` was stuck at `0.3.4` for some time. That version was behind and broken compatibility with a few things.
-> For now, there is `contentlayer2` with `0.5.3` at the time of this update that works well with `Next 14.2`, and seems to work for folks on `Next 15` and `React 19`.
+> `Contentlayer` is kinda half dead. Stop bolting things together, [[2025-time-for-a-rewrite|just use Astro]].
 
 Here's how this thing works:
 
