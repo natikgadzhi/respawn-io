@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import type { Element, Root } from "hast";
 import type { Plugin } from "unified";
@@ -8,6 +8,8 @@ import { visit } from "unist-util-visit";
 interface ExcalidrawOptions {
   className?: string;
 }
+
+const EXCALIDRAW_PATTERN = /^!\[\[(.*\.excalidraw)\]\]$/;
 
 // Walks over the document tree and replaces Excalidraw wikilinks with inline SVG images
 // for both light and dark theme.
@@ -22,10 +24,7 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
 
       // Check if this paragraph has a text node with the Excalidraw pattern
       if (node.children.length === 1 && node.children[0].type === "text") {
-        const textNode = node.children[0];
-        const regex = /^!\[\[(.*\.excalidraw)\]\]$/;
-
-        if (regex.test(textNode.value.trim())) {
+        if (EXCALIDRAW_PATTERN.test(node.children[0].value.trim())) {
           paragraphsToReplace.push(node);
         }
       }
@@ -35,7 +34,7 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
     for (const paragraph of paragraphsToReplace) {
       const textNode = paragraph.children[0];
       if (textNode.type !== "text") continue;
-      const match = textNode.value.trim().match(/^!\[\[(.*\.excalidraw)\]\]$/);
+      const match = textNode.value.trim().match(EXCALIDRAW_PATTERN);
       if (!match || !match[1]) continue;
 
       const diagramName = match[1];
@@ -46,41 +45,39 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
       const darkSvgPath = join(assetsDir, `${diagramName}.dark.svg`);
 
       try {
-        if (existsSync(lightSvgPath) && existsSync(darkSvgPath)) {
-          const lightSvgContent = readFileSync(lightSvgPath, "utf-8");
-          const darkSvgContent = readFileSync(darkSvgPath, "utf-8");
+        const lightSvgContent = readFileSync(lightSvgPath, "utf-8");
+        const darkSvgContent = readFileSync(darkSvgPath, "utf-8");
 
-          const lightDataUrl = `data:image/svg+xml;base64,${Buffer.from(lightSvgContent).toString("base64")}`;
-          const darkDataUrl = `data:image/svg+xml;base64,${Buffer.from(darkSvgContent).toString("base64")}`;
+        const lightDataUrl = `data:image/svg+xml;base64,${Buffer.from(lightSvgContent).toString("base64")}`;
+        const darkDataUrl = `data:image/svg+xml;base64,${Buffer.from(darkSvgContent).toString("base64")}`;
 
-          paragraph.tagName = "div";
-          paragraph.properties = {
-            className: options.className || "excalidraw-diagram",
-          };
+        paragraph.tagName = "div";
+        paragraph.properties = {
+          className: options.className || "excalidraw-diagram",
+        };
 
-          paragraph.children = [
-            {
-              type: "element",
-              tagName: "img",
-              properties: {
-                src: lightDataUrl,
-                className: "excalidraw-light",
-                alt: `Diagram: ${diagramName}`,
-              },
-              children: [],
+        paragraph.children = [
+          {
+            type: "element",
+            tagName: "img",
+            properties: {
+              src: lightDataUrl,
+              className: "excalidraw-light",
+              alt: `Diagram: ${diagramName}`,
             },
-            {
-              type: "element",
-              tagName: "img",
-              properties: {
-                src: darkDataUrl,
-                className: "excalidraw-dark",
-                alt: `Diagram: ${diagramName}`,
-              },
-              children: [],
+            children: [],
+          },
+          {
+            type: "element",
+            tagName: "img",
+            properties: {
+              src: darkDataUrl,
+              className: "excalidraw-dark",
+              alt: `Diagram: ${diagramName}`,
             },
-          ];
-        }
+            children: [],
+          },
+        ];
       } catch (error) {
         console.error(`Failed to process Excalidraw diagram ${diagramName}:`, error);
       }

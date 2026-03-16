@@ -14,6 +14,7 @@ interface Logger {
   warn: (message: string) => void;
   error: (message: string) => void;
 }
+
 import matter from "gray-matter";
 import { chromium } from "playwright";
 import { config } from "../blog.config";
