@@ -1,10 +1,20 @@
 import { getCollection } from "astro:content";
 import rss from "@astrojs/rss";
 import type { APIContext } from "astro";
+import rehypeStringify from "rehype-stringify";
+import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import { unified } from "unified";
 import { config } from "../../../blog.config";
 import { getRawExcerpt, sortPostsByDate } from "../../lib/content-utils";
-import { markdownToHTML } from "../../lib/markdownToHTML-astro";
 import { titleCase } from "../../lib/titleCase";
+
+/** Convert post markdown body to simple HTML suitable for RSS readers. */
+async function bodyToHTML(body: string): Promise<string> {
+  const result = await unified().use(remarkParse).use(remarkGfm).use(remarkRehype).use(rehypeStringify).process(body);
+  return `<article>${result.value.toString()}</article>`;
+}
 
 export async function GET(context: APIContext) {
   const allPosts = await getCollection("posts");
@@ -20,7 +30,7 @@ export async function GET(context: APIContext) {
     posts.map(async (post) => {
       const formattedTitle = titleCase(post.data.title);
       const rawExcerpt = getRawExcerpt(post.data.excerpt);
-      const content = await markdownToHTML(post);
+      const content = post.body ? await bodyToHTML(post.body) : "";
 
       return {
         title: formattedTitle,
