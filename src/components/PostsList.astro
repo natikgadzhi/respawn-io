@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { getPostUrl } from "../lib/content-utils";
+import { getFormattedTitle, getPostUrl } from "../lib/content-utils";
 
 interface Props {
   posts: CollectionEntry<"posts">[];
@@ -41,7 +41,7 @@ function formatDate(date: Date): string {
             <div class="flex flex-col gap-1 md:flex-row md:gap-0 md:justify-between md:items-baseline">
               <h3 class="text-lg lg:text-xl font-chonkymedium leading-snug tracking-tight md:mr-4">
                 <a href={getPostUrl(post.id)}>
-                  {post.data.title}
+                  {getFormattedTitle(post.data.title)}
                 </a>
               </h3>
               <time

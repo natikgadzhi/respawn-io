@@ -74,6 +74,16 @@ function formatDate(date: Date): string {
       prose-img:mx-auto
       mb-24"
   >
+    <header class="not-prose mb-10">
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">{postTitle}</h1>
+    </header>
+
+    <style is:inline>
+      article > :first-child:is(h1) {
+        display: none;
+      }
+    </style>
+
     <Content components={{ LinkedHeaders, Aside, WithAside, Script }} />
 
     <div class="text-2xl font-regular mt-20 mb-8 relative flex items-center justify-center">
