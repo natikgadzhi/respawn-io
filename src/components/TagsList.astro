@@ -17,7 +17,7 @@ if (!tags || tags.length === 0) {
   {tags.map((tag) => (
     <a
       href={`/tags/${tag.toLowerCase()}`}
-      class="text-muted hover:text-accent underline-offset-4 hover:underline pr-3"
+      class="text-ink hover:text-accent underline-offset-4 hover:underline pr-3"
     >
       {tag}
       {showCounts && counts[tag] && counts[tag] > 1 ? ` (${counts[tag]})` : ''}

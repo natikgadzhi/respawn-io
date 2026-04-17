@@ -19,6 +19,26 @@ module.exports = {
         sans: ["var(--font-sans)"],
       },
       typography: {
+        DEFAULT: {
+          css: {
+            "--tw-prose-body": "var(--color-ink)",
+            "--tw-prose-headings": "var(--color-ink)",
+            "--tw-prose-lead": "var(--color-muted)",
+            "--tw-prose-links": "var(--color-accent)",
+            "--tw-prose-bold": "var(--color-ink)",
+            "--tw-prose-counters": "var(--color-faint)",
+            "--tw-prose-bullets": "var(--color-rule)",
+            "--tw-prose-hr": "var(--color-rule)",
+            "--tw-prose-quotes": "var(--color-muted)",
+            "--tw-prose-quote-borders": "var(--color-accent)",
+            "--tw-prose-captions": "var(--color-faint)",
+            "--tw-prose-code": "var(--color-ink)",
+            "--tw-prose-pre-code": "var(--color-ink)",
+            "--tw-prose-pre-bg": "var(--color-surface)",
+            "--tw-prose-th-borders": "var(--color-rule)",
+            "--tw-prose-td-borders": "var(--color-rule)",
+          },
+        },
         quoteless: {
           css: {
             "blockquote p:first-of-type::before": { content: "none" },

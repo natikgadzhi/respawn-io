@@ -41,9 +41,9 @@ const description = note.data.meta_description || note.data.title || `Daily TIL 
   description={description}
   ogType="article"
 >
-  <article class="prose dark:prose-invert">
+  <article class="prose prose-quoteless max-w-none mb-24">
     <header class="mb-8">
-      <time class="text-sm text-gray-600 dark:text-gray-400">
+      <time class="font-mono text-sm text-faint">
         {formattedDate}
       </time>
       {note.data.title && <h1 class="mt-2">{note.data.title}</h1>}

@@ -71,7 +71,7 @@ function formatDate(dateStr: string): string {
   </h1>
 
   {tag && TagContent && (
-    <div class="prose dark:prose-invert max-w-none mb-8">
+    <div class="prose prose-quoteless max-w-none mb-8">
       <TagContent />
     </div>
   )}
@@ -82,7 +82,7 @@ function formatDate(dateStr: string): string {
     <>
       {posts.length > 0 && <hr class="my-10" />}
 
-      <section class="mt-6 md:mt-8 prose dark:prose-invert">
+      <section class="mt-6 md:mt-8 prose prose-quoteless max-w-none">
         <h2 class="text-2xl font-extrabold tracking-tighter mb-6">Daily Notes</h2>
         <ul class="list-none pl-0 space-y-12">
           {dailies.map(async (daily) => {
