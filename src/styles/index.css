@@ -1,31 +1,42 @@
 @import "tailwindcss";
 
+@import "@fontsource/ibm-plex-serif/400.css";
+@import "@fontsource/ibm-plex-serif/400-italic.css";
+@import "@fontsource/ibm-plex-serif/600.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+
 @config "../../tailwind.config.cjs";
 
 /*
  * Design tokens — Flexoki paper (light) + Everforest dark.
  */
 :root {
-  --color-bg: #FFFCF0;
-  --color-surface: #F2F0E5;
-  --color-rule: #CECDC3;
+  --color-bg: #fffcf0;
+  --color-surface: #f2f0e5;
+  --color-rule: #cecdc3;
   --color-faint: #878580;
   --color-muted: #575653;
-  --color-ink: #100F0F;
-  --color-accent: #205EA6;
-  --color-accent-hover: #4385BE;
+  --color-ink: #100f0f;
+  --color-accent: #205ea6;
+  --color-accent-hover: #4385be;
+
+  --font-serif: "IBM Plex Serif", "Iowan Old Style", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #2D353B;
-    --color-surface: #343F44;
+    --color-bg: #2d353b;
+    --color-surface: #343f44;
     --color-rule: #475258;
     --color-faint: #859289;
-    --color-muted: #9DA9A0;
-    --color-ink: #D3C6AA;
-    --color-accent: #7FBBB3;
-    --color-accent-hover: #A7C080;
+    --color-muted: #9da9a0;
+    --color-ink: #d3c6aa;
+    --color-accent: #7fbbb3;
+    --color-accent-hover: #a7c080;
   }
 }
 

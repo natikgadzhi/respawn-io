@@ -13,6 +13,11 @@ module.exports = {
         accent: "var(--color-accent)",
         "accent-hover": "var(--color-accent-hover)",
       },
+      fontFamily: {
+        serif: ["var(--font-serif)"],
+        mono: ["var(--font-mono)"],
+        sans: ["var(--font-sans)"],
+      },
       typography: {
         quoteless: {
           css: {
