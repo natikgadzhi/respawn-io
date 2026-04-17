@@ -48,22 +48,9 @@ module.exports = {
           },
         },
       },
-      letterSpacing: {
-        tighter: "-.04em",
-      },
       lineHeight: {
         tight: 1.2,
         relaxed: 1.7,
-      },
-      fontWeight: {
-        chonkymedium: 500,
-      },
-      fontSize: {
-        "5xl": "2.5rem",
-        "6xl": "2.75rem",
-      },
-      boxShadow: {
-        sm: "0 3px 6px rgba(0, 0, 0, 0.075)",
       },
     },
   },
