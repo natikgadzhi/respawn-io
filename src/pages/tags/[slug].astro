@@ -47,8 +47,9 @@ if (!tag && posts.length === 0 && dailies.length === 0) {
   return Astro.redirect("/404");
 }
 
-const title = `#${tag ? tag.data.title : slug}`;
-const description = tag?.data.description || `Posts tagged with #${tag ? tag.data.title : slug} in ${config.title}`;
+const tagTitle = tag ? tag.data.title : slug;
+const pageTitle = `#${tagTitle}`;
+const description = tag?.data.description || `Posts tagged with #${tagTitle} in ${config.title}`;
 
 let TagContent: Awaited<ReturnType<typeof render>>["Content"] | undefined;
 if (tag) {
@@ -57,13 +58,16 @@ if (tag) {
 }
 ---
 
-<BaseLayout title={title} description={description}>
-  <h1 class="text-3xl font-bold font-mono mb-4">
-    {title}
-  </h1>
+<BaseLayout title={pageTitle} description={description}>
+  <header class="mb-10">
+    <p class="font-mono text-xs uppercase tracking-[0.18em] text-faint">Topic</p>
+    <h1 class="font-serif text-3xl md:text-4xl font-semibold text-ink mt-2 leading-tight">
+      {tagTitle}
+    </h1>
+  </header>
 
   {tag && TagContent && (
-    <div class="prose prose-quoteless max-w-none mb-8">
+    <div class="prose prose-quoteless max-w-none mb-10">
       <TagContent />
     </div>
   )}
