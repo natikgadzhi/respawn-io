@@ -6,12 +6,12 @@ const isHomepage = pathname === "/";
 ---
 
 {isHomepage ? (
-  <h1 class="inline-flex text-xl md:text-2xl font-bold tracking-tighter leading-tight">
+  <h1 class="font-serif text-2xl md:text-3xl font-semibold text-ink leading-tight">
     {config.title}
   </h1>
 ) : (
-  <h2 class="inline-flex text-xl md:text-2xl font-bold tracking-tighter leading-tight">
-    <a href="/" class="hover:underline hover:decoration-2 underline-offset-4">
+  <h2 class="font-serif text-2xl md:text-3xl font-semibold text-ink leading-tight">
+    <a href="/" class="hover:text-accent">
       {config.title}
     </a>
   </h2>

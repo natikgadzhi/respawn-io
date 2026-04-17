@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  daily: CollectionEntry<"daily">[];
+}
+
+const { daily } = Astro.props;
+
+function formatDate(dateStr: string): string {
+  const [y, m, d] = dateStr.split("-").map(Number);
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  }).format(new Date(y, m - 1, d));
+}
+---
+
+<ul class="list-none p-0 m-0 space-y-2 md:space-y-2.5">
+  {daily.map((note) => (
+    <li class="flex items-baseline justify-between gap-6">
+      <a
+        href={`/daily/${note.id}`}
+        class="font-serif text-sm md:text-base text-ink hover:text-accent underline-offset-4 hover:underline leading-snug"
+      >
+        {note.data.title && note.data.title.length > 0 ? note.data.title : "Note"}
+      </a>
+      <time
+        datetime={note.id}
+        class="font-mono text-sm text-faint tabular-nums whitespace-nowrap shrink-0"
+      >
+        {formatDate(note.id)}
+      </time>
+    </li>
+  ))}
+</ul>

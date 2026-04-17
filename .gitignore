@@ -16,6 +16,10 @@ content-backup
 /.claude
 /.cursor
 
+# Worktrees
+/.worktrees
+PLAN.md
+
 # Astro and builds
 /.astro/
 /dist

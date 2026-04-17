@@ -66,6 +66,9 @@ export default defineConfig({
         light: "catppuccin-latte",
         dark: "github-dark",
       },
+      // Emit both themes as CSS variables so our media-query override can
+      // pick between --shiki-light / --shiki-dark without fighting inline styles.
+      defaultColor: false,
     },
   },
   build: {

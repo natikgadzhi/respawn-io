@@ -13,14 +13,16 @@ if (!tags || tags.length === 0) {
 }
 ---
 
-<div class={`text-sm md:text-base flex flex-wrap not-prose ${className}`}>
+<div class={`font-serif text-sm md:text-base flex flex-wrap not-prose ${className}`}>
   {tags.map((tag) => (
     <a
       href={`/tags/${tag.toLowerCase()}`}
-      class="underline-offset-2 hover:underline pr-3"
+      class="text-ink hover:text-accent underline-offset-4 hover:underline pr-3"
     >
-      #{tag}
-      {showCounts && counts[tag] && counts[tag] > 1 ? ` (${counts[tag]})` : ''}
+      {tag}
+      {showCounts && counts[tag] && (
+        <span class="font-mono text-xs text-faint">({counts[tag]})</span>
+      )}
     </a>
   ))}
 </div>

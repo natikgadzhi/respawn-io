@@ -1,34 +1,61 @@
 @import "tailwindcss";
 
+@import "@fontsource/ibm-plex-serif/400.css";
+@import "@fontsource/ibm-plex-serif/400-italic.css";
+@import "@fontsource/ibm-plex-serif/600.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+
 @config "../../tailwind.config.cjs";
 
 /*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+ * Design tokens — Flexoki paper (light) + Everforest dark.
+ */
+:root {
+  --color-bg: #fffcf0;
+  --color-surface: #f2f0e5;
+  --color-rule: #cecdc3;
+  --color-faint: #878580;
+  --color-muted: #575653;
+  --color-ink: #100f0f;
+  --color-accent: #205ea6;
+  --color-accent-hover: #4385be;
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
+  --font-serif: "IBM Plex Serif", "Iowan Old Style", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #2d353b;
+    --color-surface: #343f44;
+    --color-rule: #475258;
+    --color-faint: #859289;
+    --color-muted: #9da9a0;
+    --color-ink: #d3c6aa;
+    --color-accent: #7fbbb3;
+    --color-accent-hover: #a7c080;
+  }
+}
+
+/*
+ * Tailwind v4 changed the default border color to `currentcolor`.
+ * Pin it to the rule token so unstyled borders read correctly.
+ */
 @layer base {
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--color-rule);
   }
 }
 
 /*
- * post descriptions
- */
-.post-item p {
-  @apply leading-relaxed;
-}
-
-/*
- * gfm task lists in posts
+ * GFM task lists
  */
 ul.contains-task-list {
   @apply ml-0 pl-0;
@@ -39,9 +66,7 @@ ul.contains-task-list {
 }
 
 /*
- * Inline code blocks
- * Apply a nice background, but don't mess with
- * the bigger code blocks.
+ * Inline code
  */
 code::before,
 code::after {
@@ -49,19 +74,10 @@ code::after {
   display: none;
 }
 
-/* Regular inline code without syntax highlighting */
 :not(pre) > code:not(.highlighted) {
-  @apply bg-gray-100 text-gray-800 rounded-sm px-1 py-0.5 font-mono;
+  @apply bg-surface text-ink rounded-sm px-1 py-0.5 font-mono;
 }
 
-/* Dark mode support for regular inline code */
-@media (prefers-color-scheme: dark) {
-  :not(pre) > code:not(.highlighted) {
-    @apply bg-gray-700 text-gray-200;
-  }
-}
-
-/* Highlighted inline code */
 :not(pre) > code.highlighted {
   @apply rounded-sm px-1 py-0.5 font-mono;
   color: var(--shiki-light);
@@ -76,26 +92,21 @@ code::after {
 }
 
 /*
- * Code blocks:
- * We're using shiki to do code highlighting,
- * the CSS below makes tailwind act nice.
+ * Code blocks (shiki)
  */
-
 pre > code {
   display: grid;
   width: 100%;
   padding: 0.75vw;
-  white-space: pre-wrap; /* Enable soft wrapping on mobile */
+  white-space: pre-wrap;
   word-break: break-word;
 }
 
-/* Override Shiki's default padding with higher specificity */
 pre.shiki > code,
 pre > code.shiki {
   padding: 0.75vw;
 }
 
-/* Disable soft wrapping on larger screens */
 @media (min-width: 768px) {
   pre > code {
     white-space: pre;
@@ -106,61 +117,58 @@ pre > code.shiki {
 pre {
   --tw-prose-pre-bg: initial;
   position: relative;
-  margin-inline: -2vw; /* Same as your blockquote margin */
-  overflow-x: auto; /* For horizontal scrolling on desktop */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  margin-inline: -2vw;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 
-  /* For larger screens, extend even further */
   @media (min-width: 768px) {
     margin-inline: -4vw;
   }
 
-  /* For even larger screens */
   @media (min-width: 1024px) {
     margin-inline: -8vw;
   }
 }
 
-/* Make sure line numbers (if enabled) stay in place */
 pre > code > .line {
   display: inline-block;
   min-width: 100%;
 }
 
 /*
- * Shiki dual-theme handling for Astro markdown code blocks.
- * Astro emits `.astro-code` blocks with inline light-theme styles, so the
- * dark override needs the right class target and `!important`.
+ * Shiki dual-theme: with defaultColor: false, Astro emits both themes
+ * as CSS variables on each token. Pick the right theme per color-scheme.
  */
 .astro-code,
 .astro-code span {
-  color: var(--shiki-light) !important;
-  background-color: var(--shiki-light-bg) !important;
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+  text-decoration: var(--shiki-light-text-decoration);
 }
 
 @media (prefers-color-scheme: dark) {
   .astro-code,
   .astro-code span {
-    color: var(--shiki-dark) !important;
-    background-color: var(--shiki-dark-bg) !important;
-    font-style: var(--shiki-dark-font-style) !important;
-    font-weight: var(--shiki-dark-font-weight) !important;
-    text-decoration: var(--shiki-dark-text-decoration) !important;
+    color: var(--shiki-dark);
+    background-color: var(--shiki-dark-bg);
+    font-style: var(--shiki-dark-font-style);
+    font-weight: var(--shiki-dark-font-weight);
+    text-decoration: var(--shiki-dark-text-decoration);
   }
 }
 
 /*
- * Callout blocks
+ * Callout blocks (Obsidian-style)
  */
 article blockquote {
   margin-inline: -2vw;
 }
 
 .callout {
-  position: relative;
-  padding: 1rem;
+  @apply bg-surface relative p-4;
   margin-inline: -2vw;
-  @apply bg-stone-50 dark:bg-stone-900;
 }
 
 .callout-title,
@@ -173,7 +181,6 @@ article blockquote {
   @apply leading-loose;
 }
 
-/* Override prose styles with higher specificity */
 article .bluesky-embed,
 .prose .bluesky-embed {
   margin-top: 1.25em;
@@ -181,8 +188,6 @@ article .bluesky-embed,
 
 /*
  * Mermaid diagrams
- * rehype-mermaid outputs figures with class "rehype-mermaid"
- * With dark: true, it uses <picture> with media queries for light/dark mode
  */
 .rehype-mermaid {
   @apply mx-auto my-8 flex items-center justify-center;
@@ -233,60 +238,45 @@ article .bluesky-embed,
   }
 }
 
-/* YouTube video container styles */
+/*
+ * YouTube embeds
+ */
 iframe[src*="youtube.com"] {
   aspect-ratio: 16 / 11;
   max-width: 100%;
-  margin: 2.5rem auto; /* Increased vertical margins */
+  margin: 2.5rem auto;
   display: block;
 }
 
-/* For mobile devices, ensure the video and surrounding text stay properly aligned */
 @media (max-width: 768px) {
   iframe[src*="youtube.com"] {
-    margin: 2rem auto; /* Slightly reduced margins on mobile but still maintaining good spacing */
+    margin: 2rem auto;
   }
 }
 
 figure > figcaption {
-  @apply text-center text-sm text-gray-600 dark:text-gray-400 mt-2;
+  @apply text-center text-sm text-faint mt-2;
 }
+
 /*
  * Tables in posts
  */
 .prose table {
-  @apply w-full border;
-  border-color: rgba(107, 114, 128, 0.2);
+  @apply w-full border border-rule;
 }
 
 .prose thead {
-  @apply bg-gray-50 dark:bg-gray-800;
+  @apply bg-surface;
 }
 
 .prose th {
-  @apply text-left font-semibold px-4 py-3;
-  border-color: rgba(107, 114, 128, 0.2);
+  @apply text-left font-semibold px-4 py-3 border-rule;
 }
 
 .prose td {
-  @apply px-4 py-3;
-  border-color: rgba(107, 114, 128, 0.2);
+  @apply px-4 py-3 border-rule;
 }
 
 .prose tr {
-  @apply border-t;
-  border-color: rgba(107, 114, 128, 0.2);
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .prose table {
-    border-color: rgba(209, 213, 219, 0.2);
-  }
-
-  .prose tr,
-  .prose th,
-  .prose td {
-    border-color: rgba(209, 213, 219, 0.2);
-  }
+  @apply border-t border-rule;
 }
