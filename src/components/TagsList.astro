@@ -13,7 +13,7 @@ if (!tags || tags.length === 0) {
 }
 ---
 
-<div class={`font-mono text-sm flex flex-wrap not-prose ${className}`}>
+<div class={`font-serif text-sm md:text-base flex flex-wrap not-prose ${className}`}>
   {tags.map((tag) => (
     <a
       href={`/tags/${tag.toLowerCase()}`}
