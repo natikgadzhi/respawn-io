@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import type { GetStaticPaths } from "astro";
 import { config } from "../../../blog.config";
+import DailyList from "../../components/DailyList.astro";
 import PostsList from "../../components/PostsList.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { sortDailyByDate, sortPostsByDate } from "../../lib/content-utils";
@@ -54,15 +55,6 @@ if (tag) {
   const rendered = await render(tag);
   TagContent = rendered.Content;
 }
-
-function formatDate(dateStr: string): string {
-  const [year, month, day] = dateStr.split("-").map(Number);
-  const date = new Date(year, month - 1, day);
-  return new Intl.DateTimeFormat("en-US", {
-    month: "long",
-    day: "numeric",
-  }).format(date);
-}
 ---
 
 <BaseLayout title={title} description={description}>
@@ -79,43 +71,9 @@ function formatDate(dateStr: string): string {
   {posts.length > 0 && <PostsList posts={posts} />}
 
   {dailies.length > 0 && (
-    <>
-      {posts.length > 0 && <hr class="my-10" />}
-
-      <section class="mt-6 md:mt-8 prose prose-quoteless max-w-none">
-        <h2 class="text-2xl font-extrabold tracking-tighter mb-6">Daily Notes</h2>
-        <ul class="list-none pl-0 space-y-12">
-          {dailies.map(async (daily) => {
-            const { Content } = await render(daily);
-            return (
-              <li class="text-md md:text-lg pl-0 pt-5">
-                <a
-                  href={`/daily/${daily.id}`}
-                  class="no-underline hover:underline"
-                >
-                  <h4 class="pr-1 md:pr-2 inline group relative
-                    before:content-['#']
-                    before:absolute
-                    before:-left-5
-                    before:opacity-0
-                    before:transition-opacity
-                    before:duration-100
-                    hover:before:opacity-100">
-                    {formatDate(daily.id)}:
-                  </h4>
-                  {daily.data.title && daily.data.title.length > 0 && (
-                    <strong class="pr-1 md:pr-2">{daily.data.title}</strong>
-                  )}
-                </a>
-
-                <div class="mt-2">
-                  <Content />
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-    </>
+    <section class="mt-10">
+      <h2 class="font-mono text-xs uppercase tracking-[0.18em] text-faint mb-3">Daily Notes</h2>
+      <DailyList daily={dailies} />
+    </section>
   )}
 </BaseLayout>
