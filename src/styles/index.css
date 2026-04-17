@@ -3,6 +3,33 @@
 @config "../../tailwind.config.cjs";
 
 /*
+ * Design tokens — Flexoki paper (light) + Everforest dark.
+ */
+:root {
+  --color-bg: #FFFCF0;
+  --color-surface: #F2F0E5;
+  --color-rule: #CECDC3;
+  --color-faint: #878580;
+  --color-muted: #575653;
+  --color-ink: #100F0F;
+  --color-accent: #205EA6;
+  --color-accent-hover: #4385BE;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #2D353B;
+    --color-surface: #343F44;
+    --color-rule: #475258;
+    --color-faint: #859289;
+    --color-muted: #9DA9A0;
+    --color-ink: #D3C6AA;
+    --color-accent: #7FBBB3;
+    --color-accent-hover: #A7C080;
+  }
+}
+
+/*
   The default border color has changed to `currentcolor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
   looks the same as it did with Tailwind CSS v3.

@@ -3,6 +3,16 @@ module.exports = {
   plugins: [require("@tailwindcss/typography")],
   theme: {
     extend: {
+      colors: {
+        paper: "var(--color-bg)",
+        surface: "var(--color-surface)",
+        rule: "var(--color-rule)",
+        faint: "var(--color-faint)",
+        muted: "var(--color-muted)",
+        ink: "var(--color-ink)",
+        accent: "var(--color-accent)",
+        "accent-hover": "var(--color-accent-hover)",
+      },
       typography: {
         quoteless: {
           css: {
