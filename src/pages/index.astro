@@ -25,7 +25,7 @@ const counts = Object.fromEntries(tagsWithCounts.map(({ tag, count }) => [tag, c
   {tagsWithCounts.length > 0 && (
     <section class="mt-8 md:mt-4 mb-10">
       <h2 class="font-mono text-xs uppercase tracking-[0.18em] text-faint mb-3">Topics</h2>
-      <TagsList tags={tags} showCounts={false} />
+      <TagsList tags={tags} showCounts={true} counts={counts} />
     </section>
   )}
   <PostsList posts={posts} />

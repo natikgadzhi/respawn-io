@@ -20,7 +20,9 @@ if (!tags || tags.length === 0) {
       class="text-ink hover:text-accent underline-offset-4 hover:underline pr-3"
     >
       {tag}
-      {showCounts && counts[tag] && counts[tag] > 1 ? ` (${counts[tag]})` : ''}
+      {showCounts && counts[tag] && (
+        <span class="font-mono text-xs text-faint ml-1">({counts[tag]})</span>
+      )}
     </a>
   ))}
 </div>
