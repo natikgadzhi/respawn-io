@@ -46,45 +46,56 @@ function formatDate(date: Date): string {
 
 <BaseLayout title={postTitle} description={description} ogImage={ogImageUrl} ogType="article">
   <article
-    class="prose prose-slate
-      dark:prose-invert
+    class="prose prose-quoteless max-w-none mb-24
+      [--tw-prose-body:var(--color-ink)]
+      [--tw-prose-headings:var(--color-ink)]
+      [--tw-prose-lead:var(--color-muted)]
+      [--tw-prose-links:var(--color-accent)]
+      [--tw-prose-bold:var(--color-ink)]
+      [--tw-prose-counters:var(--color-faint)]
+      [--tw-prose-bullets:var(--color-rule)]
+      [--tw-prose-hr:var(--color-rule)]
+      [--tw-prose-quotes:var(--color-muted)]
+      [--tw-prose-quote-borders:var(--color-accent)]
+      [--tw-prose-captions:var(--color-faint)]
+      [--tw-prose-code:var(--color-ink)]
+      [--tw-prose-pre-code:var(--color-ink)]
+      [--tw-prose-pre-bg:var(--color-surface)]
+      [--tw-prose-th-borders:var(--color-rule)]
+      [--tw-prose-td-borders:var(--color-rule)]
       prose-li:leading-relaxed
       prose-p:leading-relaxed
-      text-stone-700
-      dark:text-gray-300
       prose-h1:text-3xl
       prose-h2:pt-6
       prose-h2:text-2xl
       prose-h2:font-semibold
-      prose-p3:pt-5
       last-of-type:prose-p:mb-0
       lg:prose-p:mb-8
-      prose-a:text-blue-600
-      dark:prose-a:text-sky-300
-      prose-blockquote:border-blue-600
-      dark:prose-blockquote:border-blue-400
+      prose-a:underline-offset-4
+      hover:prose-a:text-accent-hover
       prose-blockquote:border-l-4
       prose-blockquote:font-normal
       prose-blockquote:not-italic
-      prose-quoteless
       md:prose-base
       lg:prose-base
       prose-pre:not-prose
       prose-pre:text-sm
-      prose-img:mx-auto
-      mb-24"
+      prose-img:mx-auto"
   >
     <header class="not-prose mb-10">
       <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">{postTitle}</h1>
     </header>
 
+    <div class="post-body">
+      <Content components={{ LinkedHeaders, Aside, WithAside, Script }} />
+    </div>
+
     <style is:inline>
-      article > :first-child:is(h1) {
+      /* Hide a body-rendered H1 that duplicates the page header */
+      .post-body > h1:first-child {
         display: none;
       }
     </style>
-
-    <Content components={{ LinkedHeaders, Aside, WithAside, Script }} />
 
     <div class="text-2xl font-regular mt-20 mb-8 relative flex items-center justify-center">
       <div class="border-t border-gray-300 dark:border-gray-700 grow"></div>
