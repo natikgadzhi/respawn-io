@@ -18,6 +18,7 @@ content-backup
 
 # Worktrees
 /.worktrees
+PLAN.md
 
 # Astro and builds
 /.astro/
