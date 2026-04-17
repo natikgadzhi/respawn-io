@@ -33,27 +33,23 @@ function formatDate(date: Date): string {
 
 <section class="mt-6 md:mt-8">
   {sortedYears.map((year) => (
-    <div class="mb-16">
-      <h2 class="text-2xl font-extrabold tracking-tighter mb-6">{year}</h2>
-      <ul class="post-list space-y-8 md:space-y-12">
+    <div class="mb-10">
+      <h2 class="font-mono text-xs uppercase tracking-[0.18em] text-faint mb-3">{year}</h2>
+      <ul class="list-none p-0 m-0 space-y-2 md:space-y-2.5">
         {postsByYear[year].map((post) => (
-          <li class="post-item">
-            <div class="flex flex-col gap-1 md:flex-row md:gap-0 md:justify-between md:items-baseline">
-              <h3 class="text-lg lg:text-xl font-chonkymedium leading-snug tracking-tight md:mr-4">
-                <a href={getPostUrl(post.id)}>
-                  {getFormattedTitle(post.data.title)}
-                </a>
-              </h3>
-              <time
-                datetime={post.data.created.toISOString()}
-                class="text-sm lg:text-base text-blue-700 dark:text-sky-400 whitespace-nowrap"
-              >
-                {formatDate(post.data.created)}
-              </time>
-            </div>
-            <div class="mt-0.5 md:mt-0 text-md md:text-base">
-              {post.data.excerpt}
-            </div>
+          <li class="flex items-baseline justify-between gap-6">
+            <a
+              href={getPostUrl(post.id)}
+              class="font-serif text-base md:text-lg text-ink hover:text-accent underline-offset-4 hover:underline leading-snug"
+            >
+              {getFormattedTitle(post.data.title)}
+            </a>
+            <time
+              datetime={post.data.created.toISOString()}
+              class="font-mono text-sm text-faint tabular-nums whitespace-nowrap shrink-0"
+            >
+              {formatDate(post.data.created)}
+            </time>
           </li>
         ))}
       </ul>

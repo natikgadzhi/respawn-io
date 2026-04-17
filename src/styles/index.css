@@ -59,13 +59,6 @@
 }
 
 /*
- * post descriptions
- */
-.post-item p {
-  @apply leading-relaxed;
-}
-
-/*
  * gfm task lists in posts
  */
 ul.contains-task-list {
