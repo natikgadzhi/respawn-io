@@ -5,12 +5,12 @@ import Navigation from "./Navigation.astro";
 ---
 
 <section class="my-8 md:mt-12 md:mb-16">
-  <div class="flex justify-between items-baseline md:items-center">
+  <div class="flex justify-between items-baseline gap-6">
     <BlogTitle />
     <Navigation class="hidden md:inline-flex" />
   </div>
 
-  <p class="flex text-left text-md md:text-lg mt-2">{config.description}</p>
+  <p class="mt-2 text-muted text-base md:text-lg">{config.description}</p>
 
-  <Navigation class="my-2 inline-flex md:hidden" />
+  <Navigation class="mt-3 inline-flex md:hidden" />
 </section>
