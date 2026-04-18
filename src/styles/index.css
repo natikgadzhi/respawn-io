@@ -36,7 +36,7 @@
     --color-muted: #9da9a0;
     --color-ink: #d3c6aa;
     --color-accent: #7fbbb3;
-    --color-accent-hover: #a7c080;
+    --color-accent-hover: #a5d2cb;
   }
 }
 
@@ -256,6 +256,30 @@ iframe[src*="youtube.com"] {
 
 figure > figcaption {
   @apply text-center text-sm text-faint mt-2;
+}
+
+/*
+ * Editorial primitives
+ *
+ * `%% text %%` on its own paragraph → .dek (full-width italic serif lede)
+ * `==text==` inline → <mark> styled as mono-caps eyebrow/label
+ */
+.prose .dek {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--color-muted);
+  margin-top: 0.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose mark {
+  background: transparent;
+  color: var(--color-faint);
+  font-family: var(--font-mono);
+  font-size: 0.75em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0;
 }
 
 /*

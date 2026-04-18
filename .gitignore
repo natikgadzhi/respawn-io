@@ -19,6 +19,7 @@ content-backup
 # Worktrees
 /.worktrees
 PLAN.md
+.playwright-mcp/
 
 # Astro and builds
 /.astro/

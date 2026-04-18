@@ -1,0 +1,144 @@
+---
+title: 2026 Redesign
+excerpt: Typography-first refresh — IBM Plex, a Flexoki/Everforest palette, and a quieter layout.
+created: 2026-04-17
+modified: 2026-04-17
+---
+
+I remember a year ago LLMs really sucked at putting together _beautiful and cohesive_ web pages.
+They could get the job done, but it all was very obviously mediocre react. Garbage in, garbage out.
+
+Figured I'd test how it works now, if I use Claude Code's `/frontend-design` and playwright, and holy hell.
+
+It now reads more like a journal and less like a template — set in IBM Plex Serif with IBM Plex Mono for labels, a cream paper background borrowed from Flexoki, and an Everforest dark mode. The nav went text-only, and the styles are consistent across the site.
+
+Screens below.
+
+<style>{`
+.showcase { margin: 2.5rem 0; }
+.showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 0;
+}
+.showcase-figure { margin: 0; }
+.showcase-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid var(--color-rule);
+  border-radius: 3px;
+  background: var(--color-surface);
+}
+.showcase-frame img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  margin: 0 !important;
+}
+.showcase-links {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-faint);
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 1.25rem;
+  justify-content: flex-end;
+}
+.showcase-links a {
+  color: var(--color-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-rule);
+}
+.showcase-links a:hover {
+  color: var(--color-muted);
+  border-bottom-color: var(--color-muted);
+}
+@media (max-width: 640px) {
+  .showcase-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .showcase-frame { aspect-ratio: 3 / 4; }
+}
+`}</style>
+
+## Homepage
+
+%% The list of posts stayed the list of posts. Everything around it quieted down — text-only nav, a topic row above the years, a softer background. %%
+
+<div className="showcase">
+  <div className="showcase-grid">
+    <figure className="showcase-figure">
+      <p>==Before==</p>
+      <div className="showcase-frame">
+        <img src="/src/content/posts/_assets/2026-redesign/before-home.png" alt="Homepage, before the redesign" />
+      </div>
+    </figure>
+    <figure className="showcase-figure">
+      <p>==After==</p>
+      <div className="showcase-frame">
+        <img src="/src/content/posts/_assets/2026-redesign/after-home.png" alt="Homepage, after the redesign" />
+      </div>
+    </figure>
+  </div>
+  <div className="showcase-links">
+    <a href="/src/content/posts/_assets/2026-redesign/before-home.png">Full before ↗</a>
+    <a href="/src/content/posts/_assets/2026-redesign/after-home.png">Full after ↗</a>
+  </div>
+</div>
+
+## Post
+
+%% Serif body type takes over. Code blocks sit on a soft surface tint instead of the default blue; the footer rule fades into three command glyphs. %%
+
+<div className="showcase">
+  <div className="showcase-grid">
+    <figure className="showcase-figure">
+      <p>==Before==</p>
+      <div className="showcase-frame">
+        <img src="/src/content/posts/_assets/2026-redesign/before-post.png" alt="Post page, before the redesign" />
+      </div>
+    </figure>
+    <figure className="showcase-figure">
+      <p>==After==</p>
+      <div className="showcase-frame">
+        <img src="/src/content/posts/_assets/2026-redesign/after-post.png" alt="Post page, after the redesign" />
+      </div>
+    </figure>
+  </div>
+  <div className="showcase-links">
+    <a href="/src/content/posts/_assets/2026-redesign/before-post.png">Full before ↗</a>
+    <a href="/src/content/posts/_assets/2026-redesign/after-post.png">Full after ↗</a>
+  </div>
+</div>
+
+## Topic
+
+%% Tags became topics: a mono TOPIC eyebrow, a serif subject, a one-line description. The pound sign retired. %%
+
+<div className="showcase">
+  <div className="showcase-grid">
+    <figure className="showcase-figure">
+      <p>==Before==</p>
+      <div className="showcase-frame">
+        <img src="/src/content/posts/_assets/2026-redesign/before-tag.png" alt="Topic page, before the redesign" />
+      </div>
+    </figure>
+    <figure className="showcase-figure">
+      <p>==After==</p>
+      <div className="showcase-frame">
+        <img src="/src/content/posts/_assets/2026-redesign/after-tag.png" alt="Topic page, after the redesign" />
+      </div>
+    </figure>
+  </div>
+  <div className="showcase-links">
+    <a href="/src/content/posts/_assets/2026-redesign/before-tag.png">Full before ↗</a>
+    <a href="/src/content/posts/_assets/2026-redesign/after-tag.png">Full after ↗</a>
+  </div>
+</div>
+
+---
+
+Colors come from [Flexoki](https://stephango.com/flexoki) (light) and [Everforest](https://github.com/sainnhe/everforest) (dark). Type is [IBM Plex](https://www.ibm.com/plex/). Everything else is just Tailwind tokens in a trench coat.

@@ -13,6 +13,8 @@ import copyImagesIntegration from "./scripts/copy-images-integration.ts";
 import ogImagesIntegration from "./scripts/og-images-integration.ts";
 // Rehype plugins
 import rehypeExcalidraw from "./src/lib/rehypeExcalidraw.ts";
+import remarkDek from "./src/lib/remarkDek.ts";
+import remarkMark from "./src/lib/remarkMark.ts";
 
 const baseURL = config.baseURL;
 
@@ -29,6 +31,8 @@ const pageResolver = (name) => [name];
 
 const remarkPlugins = [
   remarkGfm,
+  remarkDek,
+  remarkMark,
   [remarkFigureCaption, { captionClassName: "text-center italic mx-auto block" }],
   [wikilinks, { pageResolver, hrefTemplate, aliasDivider: "|" }],
   callouts,
