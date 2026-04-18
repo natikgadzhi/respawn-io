@@ -99,6 +99,7 @@ jobs:
           token: ${{ secrets.HOMELAB_PAT }}
           path: homelab
           branch: deploy/respawn-io
+          labels: auto-merge
           title: "Deploy respawn-io ${{ steps.sha.outputs.short }}"
           body: |
             Automated deployment PR for respawn-io.
