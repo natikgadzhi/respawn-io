@@ -56,7 +56,21 @@ const rehypePlugins = [
 
 export default defineConfig({
   site: baseURL,
-  integrations: [copyImagesIntegration(), mdx(), sitemap(), ogImagesIntegration()],
+  integrations: [
+    copyImagesIntegration(),
+    mdx(),
+    // Emit clean URLs in the sitemap (strip .html) so they match the canonical
+    // tags and nginx's 301 redirects — avoids Google flagging pages as
+    // "Alternate page with proper canonical tag".
+    sitemap({
+      serialize(item) {
+        // `/foo/index.html` → `/foo/`, `/foo.html` → `/foo`
+        item.url = item.url.replace(/\/index\.html(\?|$)/, "/$1").replace(/\.html(\?|$)/, "$1");
+        return item;
+      },
+    }),
+    ogImagesIntegration(),
+  ],
   markdown: {
     remarkPlugins,
     rehypePlugins,
