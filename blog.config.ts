@@ -32,7 +32,7 @@ export const config = {
 
   counterscale: {
     siteId: "respawn-io",
-    url: "https://1ca90c7a.counterscale-a1l.pages.dev",
+    url: "https://patient-butterfly-cfd2.nate-bf6.workers.dev",
   },
 
   plausible: {

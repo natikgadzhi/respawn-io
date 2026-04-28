@@ -73,14 +73,13 @@ const canonicalURL = new URL(pathnameWithoutHtml, Astro.site);
     <link rel="me" href={config.author.fediverseURL} />
 
     <!-- Counterscale Analytics -->
-    <script is:inline define:vars={{ counterscaleSiteId: config.counterscale.siteId }}>
-      (function () {
-        window.counterscale = {
-          q: [["set", "siteId", counterscaleSiteId], ["trackPageview"]],
-        };
-      })();
-    </script>
-    <script is:inline id="counterscale-script" src={`${config.counterscale.url}/tracker.js`} defer></script>
+    <script
+      is:inline
+      id="counterscale-script"
+      data-site-id={config.counterscale.siteId}
+      src={`${config.counterscale.url}/tracker.js`}
+      defer
+    />
 
     <!-- Privacy-friendly analytics by Plausible -->
     <script is:inline async src={`${config.plausible.url}/js/${config.plausible.scriptId}.js`}></script>
