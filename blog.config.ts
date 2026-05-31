@@ -29,4 +29,9 @@ export const config = {
   footer: {
     copyright: "© Natik Gadzhi",
   },
+
+  counterscale: {
+    siteId: "respawn-io",
+    url: "https://patient-butterfly-cfd2.nate-bf6.workers.dev",
+  },
 };

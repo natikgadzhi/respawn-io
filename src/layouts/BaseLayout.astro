@@ -72,6 +72,14 @@ const canonicalURL = new URL(pathnameWithoutHtml, Astro.site);
     <!-- Fediverse verification -->
     <link rel="me" href={config.author.fediverseURL} />
 
+    <!-- Counterscale Analytics -->
+    <script
+      is:inline
+      id="counterscale-script"
+      data-site-id={config.counterscale.siteId}
+      src={`${config.counterscale.url}/tracker.js`}
+      defer
+    />
   </head>
   <body class="bg-paper text-ink font-serif selection:bg-surface">
     <main class="min-h-screen max-w-3xl mx-auto px-6 md:px-8">

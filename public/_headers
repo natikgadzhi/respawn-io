@@ -22,7 +22,9 @@
   Cache-Control: public, max-age=31536000, immutable
 /*.woff
   Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
 /*.woff2
   Cache-Control: public, max-age=31536000, immutable
+  Access-Control-Allow-Origin: *
 /*.webp
   Cache-Control: public, max-age=31536000, immutable
