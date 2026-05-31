@@ -40,11 +40,19 @@ const remarkPlugins = [
 
 const rehypePlugins = [
   [
-    rehypeMermaid,
-    {
-      strategy: "img-svg",
-      dark: true,
+    // Wrap rehypeMermaid so a missing Playwright browser (local dev, CI before install)
+    // degrades gracefully instead of crashing the build.
+    (options) => {
+      const transformer = rehypeMermaid(options);
+      return async (tree, file) => {
+        try {
+          await transformer(tree, file);
+        } catch (e) {
+          console.warn(`rehype-mermaid: skipping diagrams in ${file.history?.[0] ?? "unknown"} — ${e.message.slice(0, 120)}`);
+        }
+      };
     },
+    { strategy: "img-svg", dark: true },
   ],
   [
     rehypeExcalidraw,

@@ -1,50 +1,34 @@
-/**
- * Astro Integration for OG Image Generation
- *
- * Generates static OG images for all posts using Playwright at build time.
- * Reads post frontmatter directly from markdown files for reliability.
- */
-
-import fs from "node:fs";
-import path from "node:path";
-import type { AstroIntegration } from "astro";
-
-interface Logger {
-  info: (message: string) => void;
-  warn: (message: string) => void;
-  error: (message: string) => void;
-}
-
-import matter from "gray-matter";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import { chromium } from "playwright";
-import { config } from "../blog.config";
-import { getRawExcerpt } from "../src/lib/content-utils";
-import { titleCase } from "../src/lib/titleCase";
+import matter from "gray-matter";
+import type { AstroIntegration, Logger } from "astro";
 
-const CACHE_DIR = "./public/og-images"; // Cache for incremental builds & dev mode
-const OUTPUT_DIR = "og-images"; // Relative to dist/
-const POSTS_DIR = "./src/content/posts";
 const WIDTH = 1200;
 const HEIGHT = 630;
+const POSTS_DIR = "src/content/posts";
+const CACHE_DIR = "public/og-images";
+const OUTPUT_DIR = "og-images";
 
-/**
- * Type for post frontmatter
- */
 interface PostFrontmatter {
   title: string;
-  excerpt: string;
-  created: string;
-  modified: string;
-  tags?: string[] | null;
+  excerpt?: string;
+  created: Date;
   draft?: boolean;
   og_image_hide_description?: boolean;
 }
 
-/**
- * Escape HTML special characters
- */
-function escapeHtml(text: string): string {
-  return text
+interface PostData {
+  slug: string;
+  data: PostFrontmatter;
+  filePath: string;
+  absoluteURL: string;
+  formattedTitle: string;
+  rawExcerpt: string;
+}
+
+function escapeHtml(str: string): string {
+  return str
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
@@ -52,23 +36,13 @@ function escapeHtml(text: string): string {
     .replace(/'/g, "&#039;");
 }
 
-/**
- * Generate the HTML template for an OG image
- */
-function generateHTML(post: {
-  formattedTitle: string;
-  rawExcerpt: string;
-  absoluteURL: string;
-  og_image_hide_description?: boolean;
-}): string {
-  const showExcerpt = post.formattedTitle.length < 60 && !post.og_image_hide_description;
-  const showURL = post.formattedTitle.length < 60;
-
+function generateHTML(post: PostData, showExcerpt: boolean, showURL: boolean): string {
   return `
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * {
       margin: 0;
@@ -79,36 +53,38 @@ function generateHTML(post: {
     body {
       width: ${WIDTH}px;
       height: ${HEIGHT}px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #fffcf0;
+      font-family: 'Georgia', 'Times New Roman', serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
 
     .container {
+      padding: 64px;
       width: 100%;
       height: 100%;
-      background-color: #F9F5E9;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      padding: 48px 96px;
+      justify-content: center;
     }
 
     h1 {
-      color: #000000;
-      font-size: 72px;
-      font-weight: 900;
-      line-height: 1.1;
+      font-size: 52px;
+      font-weight: 700;
+      line-height: 1.15;
+      color: #100f0f;
       letter-spacing: -0.02em;
-      margin-bottom: 32px;
-      text-shadow: 0px 0px 3px rgba(0,0,0,0.1);
-      word-break: break-word;
+      max-width: 900px;
     }
 
-    .excerpt {
-      font-size: 36px;
-      font-weight: 700;
-      line-height: 1.4;
-      color: #333;
-      margin-top: 16px;
+    p.excerpt {
+      font-size: 28px;
+      line-height: 1.5;
+      color: #6f6e69;
+      margin-top: 24px;
+      max-width: 900px;
     }
 
     .footer {
@@ -199,49 +175,51 @@ async function generateOGImages(dir: URL, logger: Logger) {
       const imageStat = fs.statSync(cachePath);
       const postStat = fs.statSync(post.filePath);
 
-      // Skip if cached image is newer than the post file
-      if (imageStat.mtime > postStat.mtime) {
-        logger.info(`Skipping (up to date): ${post.slug}`);
+      if (imageStat.mtimeMs >= postStat.mtimeMs) {
+        // Copy from cache to dist
+        fs.copyFileSync(cachePath, path.join(distOutputDir, `${post.slug}.png`));
+        logger.info(`Using cached OG image: ${post.slug}`);
         skipped++;
         continue;
       }
     }
 
-    try {
-      const formattedTitle = titleCase(post.data.title);
-      const rawExcerpt = getRawExcerpt(post.data.excerpt);
-      const absoluteURL = `${config.baseURL}/posts/${post.slug}`;
+    // Generate HTML for the OG image
+    const showExcerpt = !post.data.og_image_hide_description;
+    const showURL = true;
 
-      const html = generateHTML({
-        formattedTitle,
-        rawExcerpt,
-        absoluteURL,
-        og_image_hide_description: post.data.og_image_hide_description,
-      });
+    // Format title and excerpt
+    const formattedTitle = post.data.title || post.slug;
+    const rawExcerpt = post.data.excerpt || "";
+    const absoluteURL = `respawn.io/posts/${post.slug}`;
 
-      await page.setContent(html, { waitUntil: "domcontentloaded" as const });
-      await page.screenshot({
-        path: cachePath,
-        type: "png",
-      });
+    const postData: PostData = {
+      slug: post.slug,
+      data: post.data,
+      filePath: post.filePath,
+      absoluteURL,
+      formattedTitle,
+      rawExcerpt,
+    };
 
-      logger.info(`Generated: ${post.slug}`);
-      generated++;
-    } catch (error) {
-      logger.error(`Error generating ${post.slug}: ${error}`);
-    }
+    const html = generateHTML(postData, showExcerpt, showURL);
+
+    await page.setContent(html, { waitUntil: "networkidle" });
+    const screenshot = await page.screenshot({ type: "png" });
+
+    // Save to cache
+    fs.writeFileSync(cachePath, screenshot);
+
+    // Copy to dist
+    fs.copyFileSync(cachePath, path.join(distOutputDir, `${post.slug}.png`));
+
+    logger.info(`Generated OG image: ${post.slug}`);
+    generated++;
   }
 
   await browser.close();
 
-  // Copy all cached images to dist output directory
-  const cachedImages = fs.readdirSync(CACHE_DIR).filter((f) => f.endsWith(".png"));
-  for (const image of cachedImages) {
-    fs.copyFileSync(path.join(CACHE_DIR, image), path.join(distOutputDir, image));
-  }
-  logger.info(`Copied ${cachedImages.length} OG images to output directory`);
-
-  logger.info(`OG Images Done! Generated: ${generated}, Skipped: ${skipped}`);
+  logger.info(`OG images: ${generated} generated, ${skipped} skipped`);
 }
 
 export default function ogImagesIntegration(): AstroIntegration {
@@ -249,7 +227,11 @@ export default function ogImagesIntegration(): AstroIntegration {
     name: "og-images",
     hooks: {
       "astro:build:done": async ({ dir, logger }) => {
-        await generateOGImages(dir, logger);
+        try {
+          await generateOGImages(dir, logger);
+        } catch (e) {
+          logger.warn(`OG image generation failed (Playwright may not be installed): ${(e as Error).message.slice(0, 120)}`);
+        }
       },
     },
   };
