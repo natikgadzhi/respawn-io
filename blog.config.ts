@@ -29,14 +29,4 @@ export const config = {
   footer: {
     copyright: "© Natik Gadzhi",
   },
-
-  counterscale: {
-    siteId: "respawn-io",
-    url: "https://patient-butterfly-cfd2.nate-bf6.workers.dev",
-  },
-
-  plausible: {
-    scriptId: "pa-wSp7pBzCYOQ0W7O-WgH1K",
-    url: "https://analytics.respawn.io",
-  },
 };
