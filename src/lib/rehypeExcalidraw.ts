@@ -53,7 +53,7 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
 
         paragraph.tagName = "div";
         paragraph.properties = {
-          className: options.className || "excalidraw-diagram",
+          className: [options.className || "excalidraw-diagram"],
         };
 
         paragraph.children = [
@@ -62,7 +62,7 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
             tagName: "img",
             properties: {
               src: lightDataUrl,
-              className: "excalidraw-light",
+              className: ["excalidraw-light"],
               alt: `Diagram: ${diagramName}`,
             },
             children: [],
@@ -72,7 +72,7 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
             tagName: "img",
             properties: {
               src: darkDataUrl,
-              className: "excalidraw-dark",
+              className: ["excalidraw-dark"],
               alt: `Diagram: ${diagramName}`,
             },
             children: [],

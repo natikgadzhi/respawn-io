@@ -1,8 +1,8 @@
 import * as fs from "node:fs";
 import * as path from "node:path";
-import { chromium } from "playwright";
+import type { AstroIntegration, AstroIntegrationLogger } from "astro";
 import matter from "gray-matter";
-import type { AstroIntegration, Logger } from "astro";
+import { chromium } from "playwright";
 
 const WIDTH = 1200;
 const HEIGHT = 630;
@@ -121,7 +121,7 @@ function generateHTML(post: PostData, showExcerpt: boolean, showURL: boolean): s
 `;
 }
 
-async function generateOGImages(dir: URL, logger: Logger) {
+async function generateOGImages(dir: URL, logger: AstroIntegrationLogger) {
   logger.info("Starting OG image generation...");
 
   // Use public/og-images as cache for incremental builds and dev mode
@@ -230,7 +230,9 @@ export default function ogImagesIntegration(): AstroIntegration {
         try {
           await generateOGImages(dir, logger);
         } catch (e) {
-          logger.warn(`OG image generation failed (Playwright may not be installed): ${(e as Error).message.slice(0, 120)}`);
+          logger.warn(
+            `OG image generation failed (Playwright may not be installed): ${(e as Error).message.slice(0, 120)}`,
+          );
         }
       },
     },
