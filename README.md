@@ -14,16 +14,11 @@ Source code for [respawn.io](https://respawn.io) (also served on [natik.dev](htt
 - **Draft posts** via `draft: true` in front matter.
 - **Minimal JavaScript** — static HTML with optional hydration for interactive components.
 
-## Docker Deployment
+## Deployment
 
-The site is deployed as a standalone Docker container:
+The site is deployed to [Cloudflare Pages](https://pages.cloudflare.com) via GitHub Actions (`.github/workflows/cloudflare-pages.yml`): pushes to `main` deploy to production, and pull requests get per-branch preview deployments with the URL commented on the PR.
 
-```bash
-docker build -t respawn-io .
-docker run -p 3000:3000 respawn-io
-```
-
-The same container can be served on multiple domains (e.g., `respawn.io` and `natik.dev`) via ingress. All absolute URLs in metadata point to the canonical domain (`respawn.io`), while relative links work on any domain.
+The same deployment is served on multiple domains (e.g., `respawn.io` and `natik.dev`). All absolute URLs in metadata point to the canonical domain (`respawn.io`), while relative links work on any domain. Redirects and headers are configured in `public/_redirects` and `public/_headers`.
 
 ## Local Development
 
