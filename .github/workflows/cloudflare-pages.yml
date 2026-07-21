@@ -15,6 +15,8 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+    outputs:
+      preview-url: ${{ steps.deploy.outputs.deployment-url }}
 
     steps:
       - name: Checkout repository
@@ -60,6 +62,68 @@ jobs:
             const alias = "${{ steps.deploy.outputs.pages-deployment-alias-url }}";
             const marker = "<!-- cloudflare-pages-preview -->";
             const body = `${marker}\n**Cloudflare Pages preview:** ${alias || url}\n\nLatest deployment: ${url}`;
+            const { data: comments } = await github.rest.issues.listComments({
+              ...context.repo,
+              issue_number: context.issue.number,
+            });
+            const existing = comments.find((c) => c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({ ...context.repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ ...context.repo, issue_number: context.issue.number, body });
+            }
+
+  # Informational visual + markup regression check: screenshots the preview
+  # deployment against production and posts a per-page diff summary on the PR.
+  # Never fails the build — content-driven differences are expected.
+  visual-diff:
+    name: Visual diff vs production
+    runs-on: ubuntu-latest
+    needs: build-and-deploy
+    if: github.event_name == 'pull_request' && needs.build-and-deploy.outputs.preview-url != ''
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install chromium --with-deps
+
+      - name: Compare preview against production
+        run: node --experimental-strip-types scripts/visual-diff.ts
+        env:
+          PREVIEW_URL: ${{ needs.build-and-deploy.outputs.preview-url }}
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-diff-report
+          path: visual-diff-report/
+
+      - name: Comment diff summary on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require("fs");
+            const marker = "<!-- visual-diff-report -->";
+            const summary = fs.readFileSync("visual-diff-report/summary.md", "utf-8");
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = `${marker}\n## Visual diff vs production\n\n${summary}\n\n[Full report artifact](${runUrl})`;
             const { data: comments } = await github.rest.issues.listComments({
               ...context.repo,
               issue_number: context.issue.number,
