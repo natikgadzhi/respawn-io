@@ -6,7 +6,6 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import rehypeMermaid from "rehype-mermaid";
 import callouts from "remark-callouts";
-import remarkGfm from "remark-gfm";
 import wikilinks from "remark-wiki-link";
 import { config } from "./blog.config.ts";
 // Build integrations
@@ -30,8 +29,9 @@ const hrefTemplate = (permalink) => {
 };
 const pageResolver = (name) => [name];
 
+// remark-gfm is not listed here: Astro applies GFM by default
+// (markdown.gfm: true), so adding it would run the transform twice.
 const remarkPlugins = [
-  remarkGfm,
   remarkDek,
   remarkMark,
   [remarkFigureCaption, { captionClassName: "text-center italic mx-auto block" }],
