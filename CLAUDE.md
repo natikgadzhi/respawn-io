@@ -7,5 +7,5 @@ Agent instructions:
 - Never use `Any` type in Typescript. Never ignore typing errors. If you hit a typing error multiple times in a row, ask the user for help.
 
 Deployment:
-- This project builds a Docker image on merge to main.
-- The production deployment uses in K3s cluster in a homelab. Production deployment is triggered in a separate repository.
+- This project deploys to Cloudflare Pages via GitHub Actions (`.github/workflows/cloudflare-pages.yml`).
+- Pushes to main deploy to production; pull requests get per-branch preview deployments.

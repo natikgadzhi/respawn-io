@@ -1,5 +1,7 @@
 # Migrate respawn.io to Cloudflare Pages
 
+> **Status: complete.** The site is served from Cloudflare Pages. The Docker/nginx/K3s pipeline described below has been removed from this repository; this document is kept as a historical record of the migration.
+
 ## Current state
 
 - Astro static site, built with `pnpm run build`, output in `dist/`
