@@ -25,9 +25,12 @@ interface Props {
 
 const { title = config.title, description = config.description, ogImage, ogType = "website" } = Astro.props;
 
-// Remove .html extension from pathname to match NextJS canonical URLs
-const pathnameWithoutHtml = Astro.url.pathname.replace(/\.html$/, "");
-const canonicalURL = new URL(pathnameWithoutHtml, Astro.site);
+// Normalize the pathname to the site's canonical URLs (build.format: "file").
+// Strip a trailing `.html`, then collapse a trailing `/index` to `/` so the
+// homepage canonicalizes to `https://respawn.io/` instead of `.../index`
+// (keeps canonical + og:url in agreement with the sitemap).
+const canonicalPathname = Astro.url.pathname.replace(/\.html$/, "").replace(/\/index$/, "/");
+const canonicalURL = new URL(canonicalPathname, Astro.site);
 ---
 
 <!doctype html>
