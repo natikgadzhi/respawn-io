@@ -36,6 +36,9 @@ const PAGES = [
   "/tags/astro",
 ];
 
+// Feeds get a markup-only comparison (no screenshots).
+const FEEDS = ["/rss/feed.xml"];
+
 const VIEWPORT = { width: 1280, height: 720 };
 // Pixel color distance threshold for pixelmatch (0-1); 0.1 is the usual default.
 const PIXEL_THRESHOLD = 0.1;
@@ -73,6 +76,38 @@ function countChangedLines(a: string[], b: string[]): number {
   let changed = 0;
   for (const count of counts.values()) changed += Math.abs(count);
   return changed;
+}
+
+/**
+ * Normalize a feed document: break the single-line XML into element-ish lines
+ * and strip values that legitimately change every build.
+ */
+function normalizeFeed(xml: string): string[] {
+  return xml
+    .replace(/<lastBuildDate>[^<]*<\/lastBuildDate>/g, "")
+    .replace(/<generator>[^<]*<\/generator>/g, "")
+    .replace(/></g, ">\n<")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0);
+}
+
+async function compareFeed(feedPath: string): Promise<PageResult> {
+  const [prodXml, previewXml] = await Promise.all(
+    [`${PROD_URL}${feedPath}`, `${PREVIEW_URL}${feedPath}`].map(async (url) => {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`${url} returned HTTP ${res.status}`);
+      return res.text();
+    }),
+  );
+  const prodLines = normalizeFeed(prodXml);
+  const previewLines = normalizeFeed(previewXml);
+  return {
+    path: feedPath,
+    pixelDiffRatio: 0,
+    markupChangedLines: countChangedLines(prodLines, previewLines),
+    markupTotalLines: Math.max(prodLines.length, previewLines.length),
+  };
 }
 
 async function screenshot(page: Page, url: string): Promise<Buffer> {
@@ -166,6 +201,22 @@ async function main(): Promise<void> {
 
   await browser.close();
 
+  for (const feedPath of FEEDS) {
+    try {
+      results.push(await compareFeed(feedPath));
+      console.log(`compared ${feedPath}`);
+    } catch (e) {
+      results.push({
+        path: feedPath,
+        pixelDiffRatio: Number.NaN,
+        markupChangedLines: 0,
+        markupTotalLines: 0,
+        error: (e as Error).message.slice(0, 200),
+      });
+      console.error(`failed ${feedPath}: ${(e as Error).message.slice(0, 200)}`);
+    }
+  }
+
   const lines = [
     `Comparing preview (${PREVIEW_URL}) against production (${PROD_URL}).`,
     "",
@@ -177,9 +228,9 @@ async function main(): Promise<void> {
       lines.push(`| \`${r.path}\` | — | — | ⚠️ ${r.error} |`);
       continue;
     }
-    const pct = (r.pixelDiffRatio * 100).toFixed(2);
+    const pct = FEEDS.includes(r.path) ? "—" : `${(r.pixelDiffRatio * 100).toFixed(2)}%`;
     const flag = r.pixelDiffRatio > FLAG_RATIO || r.markupChangedLines > 0 ? "👀" : "✅";
-    lines.push(`| \`${r.path}\` | ${pct}% | ${r.markupChangedLines} of ~${r.markupTotalLines} | ${flag} |`);
+    lines.push(`| \`${r.path}\` | ${pct} | ${r.markupChangedLines} of ~${r.markupTotalLines} | ${flag} |`);
   }
   lines.push(
     "",
