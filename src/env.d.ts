@@ -3,6 +3,7 @@
 
 declare module "@microflash/remark-figure-caption" {
   import type { Plugin } from "unified";
+
   interface Options {
     captionClassName?: string;
   }

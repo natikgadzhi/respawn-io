@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.11/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.5.5/schema.json",
   "vcs": {
     "enabled": false,
     "clientKind": "git",
@@ -7,7 +7,15 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!**/.astro", "!**/node_modules", "!**/public", "!**/dist", "!**/.zed"]
+    "includes": [
+      "**",
+      "!**/.astro",
+      "!**/node_modules",
+      "!**/public",
+      "!**/dist",
+      "!**/.zed",
+      "!src/content/**/_assets"
+    ]
   },
   "formatter": {
     "enabled": true,

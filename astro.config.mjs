@@ -2,6 +2,7 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 // Remark plugins
 import remarkFigureCaption from "@microflash/remark-figure-caption";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import rehypeMermaid from "rehype-mermaid";
 import callouts from "remark-callouts";
@@ -48,7 +49,9 @@ const rehypePlugins = [
         try {
           await transformer(tree, file);
         } catch (e) {
-          console.warn(`rehype-mermaid: skipping diagrams in ${file.history?.[0] ?? "unknown"} — ${e.message.slice(0, 120)}`);
+          console.warn(
+            `rehype-mermaid: skipping diagrams in ${file.history?.[0] ?? "unknown"} — ${e.message.slice(0, 120)}`,
+          );
         }
       };
     },
@@ -99,5 +102,8 @@ export default defineConfig({
   },
   build: {
     format: "file",
+  },
+  vite: {
+    plugins: [tailwindcss()],
   },
 });

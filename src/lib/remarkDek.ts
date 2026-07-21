@@ -1,3 +1,4 @@
+import type { Properties } from "hast";
 import type { Paragraph, Root, Text } from "mdast";
 import type { Plugin } from "unified";
 import { visit } from "unist-util-visit";
@@ -23,7 +24,7 @@ const remarkDek: Plugin<[], Root> = () => {
       lastText.value = lastText.value.replace(CLOSE, "");
 
       node.data = node.data ?? {};
-      const hProps = (node.data.hProperties ?? {}) as Record<string, unknown>;
+      const hProps = (node.data.hProperties ?? {}) as Properties;
       hProps.className = [...(Array.isArray(hProps.className) ? hProps.className : []), "dek"];
       node.data.hProperties = hProps;
     });
