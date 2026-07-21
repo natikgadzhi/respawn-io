@@ -35,7 +35,7 @@ const rehypeExcalidraw: Plugin<[ExcalidrawOptions?], Root> = (options = {}) => {
       const textNode = paragraph.children[0];
       if (textNode.type !== "text") continue;
       const match = textNode.value.trim().match(EXCALIDRAW_PATTERN);
-      if (!match || !match[1]) continue;
+      if (!match?.[1]) continue;
 
       const diagramName = match[1];
       const parentDir = dirname(file.path);

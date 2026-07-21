@@ -86,7 +86,10 @@ export default defineConfig({
     // Use Astro's built-in Shiki syntax highlighting
     syntaxHighlight: {
       type: "shiki",
-      excludeLangs: ["mermaid"],
+      // `mermaid` is rendered by rehype-mermaid; `pseudo-mermaid` is an
+      // intentional pseudo-code fence in a post — exclude both from Shiki so it
+      // doesn't warn "language doesn't exist, falling back to plaintext".
+      excludeLangs: ["mermaid", "pseudo-mermaid"],
     },
     shikiConfig: {
       themes: {

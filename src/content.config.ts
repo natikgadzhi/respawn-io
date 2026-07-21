@@ -1,5 +1,7 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
+// `z` re-exported from `astro:content` is deprecated; import it from astro/zod.
+import { z } from "astro/zod";
 
 const posts = defineCollection({
   loader: glob({
