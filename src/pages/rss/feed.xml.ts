@@ -67,7 +67,7 @@ export async function GET(context: APIContext) {
         title: formattedTitle,
         description: rawExcerpt,
         content: content,
-        link: `/posts/${post.id}/`,
+        link: `/posts/${post.id}`,
         pubDate: post.data.created,
         author: config.author.email,
       };
@@ -79,6 +79,12 @@ export async function GET(context: APIContext) {
     description: config.description,
     site: context.site || config.baseURL,
     items: items,
+    // The site builds with `build.format: "file"`, so canonical URLs have no
+    // trailing slash. @astrojs/rss appends one by default, which makes every
+    // feed-reader click take an extra Cloudflare 308 redirect and makes guids
+    // disagree with the pages' canonical URLs — turn it off so item links/guids
+    // match the canonical form.
+    trailingSlash: false,
     customData: `<language>en-us</language>`,
   });
 }
