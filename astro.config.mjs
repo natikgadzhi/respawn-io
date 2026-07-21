@@ -9,7 +9,6 @@ import callouts from "remark-callouts";
 import wikilinks from "remark-wiki-link";
 import { config } from "./blog.config.ts";
 // Build integrations
-import copyImagesIntegration from "./scripts/copy-images-integration.ts";
 import ogImagesIntegration from "./scripts/og-images-integration.ts";
 // Rehype plugins
 import rehypeExcalidraw from "./src/lib/rehypeExcalidraw.ts";
@@ -68,7 +67,6 @@ const rehypePlugins = [
 export default defineConfig({
   site: baseURL,
   integrations: [
-    copyImagesIntegration(),
     mdx(),
     // Emit clean URLs in the sitemap (strip .html) so they match the canonical
     // tags and nginx's 301 redirects — avoids Google flagging pages as
