@@ -35,6 +35,42 @@ function rehypeAbsoluteImages() {
   };
 }
 
+/**
+ * Strip MDX's ESM `import`/`export` statements from a post body.
+ *
+ * The RSS pipeline below is plain markdown (remark-parse), so it doesn't
+ * understand MDX. For `.mdx` posts whose body opens with `import x from "..."`,
+ * those lines would otherwise render as a paragraph of literal source in the
+ * feed (see #41). Astro's own MDX compiler drops them; this mirrors that.
+ *
+ * Lines inside fenced code blocks are left untouched, so tutorial posts that
+ * *show* import/export code in a fence keep it. JSX component tags (`<Aside>`,
+ * `<Script>`, …) don't need handling here — remark-rehype already drops raw
+ * HTML, so their tags vanish while the prose inside them survives.
+ *
+ * Only applied to `.mdx` bodies: a real `.md` post could legitimately open a
+ * prose line with the word "import"/"export", and those aren't ESM.
+ */
+function stripMdxEsm(body: string): string {
+  const fence = /^\s*(```+|~~~+)/;
+  const esm = /^\s*(import|export)\s/;
+  let openFence: string | null = null;
+  return body
+    .split("\n")
+    .filter((line) => {
+      const fenceMatch = line.match(fence);
+      if (fenceMatch) {
+        const marker = fenceMatch[1][0];
+        if (openFence === null) openFence = marker;
+        else if (line.trimStart().startsWith(openFence)) openFence = null;
+        return true;
+      }
+      // Drop top-level (non-fenced) ESM statement lines.
+      return openFence !== null || !esm.test(line);
+    })
+    .join("\n");
+}
+
 /** Convert post markdown body to simple HTML suitable for RSS readers. */
 async function bodyToHTML(body: string): Promise<string> {
   const result = await unified()
@@ -61,7 +97,8 @@ export async function GET(context: APIContext) {
     posts.map(async (post) => {
       const formattedTitle = titleCase(post.data.title);
       const rawExcerpt = getRawExcerpt(post.data.excerpt);
-      const content = post.body ? await bodyToHTML(post.body) : "";
+      const body = post.filePath?.endsWith(".mdx") && post.body ? stripMdxEsm(post.body) : post.body;
+      const content = body ? await bodyToHTML(body) : "";
 
       return {
         title: formattedTitle,
